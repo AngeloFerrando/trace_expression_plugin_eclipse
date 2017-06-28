@@ -3,20 +3,37 @@
  */
 package it.unige.dibris.trace_expression_language.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
+import it.unige.dibris.trace_expression_language.tExp.Cardinality;
+import it.unige.dibris.trace_expression_language.tExp.CatExpr;
+import it.unige.dibris.trace_expression_language.tExp.Channel;
+import it.unige.dibris.trace_expression_language.tExp.Constraint;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
+import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.NumberExpression;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
+import it.unige.dibris.trace_expression_language.tExp.Role;
+import it.unige.dibris.trace_expression_language.tExp.SeqExpr;
+import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr;
+import it.unige.dibris.trace_expression_language.tExp.Singletons;
+import it.unige.dibris.trace_expression_language.tExp.Size;
 import it.unige.dibris.trace_expression_language.tExp.StringExpression;
 import it.unige.dibris.trace_expression_language.tExp.Term;
+import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
+import it.unige.dibris.trace_expression_language.tExp.Together;
 import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
+import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
+import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
-import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -33,252 +50,946 @@ public class TExpGenerator extends AbstractGenerator {
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<TraceExpression> _filter = Iterables.<TraceExpression>filter(_iterable, TraceExpression.class);
+    Iterable<TraceExpression> _filter = Iterables.<TraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), TraceExpression.class);
     for (final TraceExpression tExp : _filter) {
       {
         String _name = tExp.getName();
         String _plus = (_name + ".pl");
-        String _compile = this.compile(tExp);
-        fsa.generateFile(_plus, _compile);
-        String _name_1 = tExp.getName();
-        String _substring = _name_1.substring(0, 1);
-        String _upperCase = _substring.toUpperCase();
-        String _name_2 = tExp.getName();
-        String _substring_1 = _name_2.substring(1);
-        String _plus_1 = (_upperCase + _substring_1);
+        fsa.generateFile(_plus, this.compile(tExp));
+        String _upperCase = tExp.getName().substring(0, 1).toUpperCase();
+        String _substring = tExp.getName().substring(1);
+        String _plus_1 = (_upperCase + _substring);
         String _plus_2 = (_plus_1 + ".java");
-        CharSequence _javaCompile = this.javaCompile(tExp);
-        fsa.generateFile(_plus_2, _javaCompile);
+        fsa.generateFile(_plus_2, this.javaCompile(tExp));
       }
     }
   }
   
   public CharSequence javaCompile(final TraceExpression tExp) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nSingletons cannot be resolved to a type."
-      + "\nSize cannot be resolved to a type."
-      + "\nCardinality cannot be resolved to a type."
-      + "\nThe method or field roles is undefined for the type TraceExpression"
-      + "\nThe method or field partition is undefined for the type TraceExpression"
-      + "\nThe method or field partition is undefined for the type TraceExpression"
-      + "\nThe method or field partition is undefined for the type TraceExpression"
-      + "\nThe method or field constraints is undefined for the type TraceExpression"
-      + "\nThe method or field roles is undefined for the type TraceExpression"
-      + "\nclass_ cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nclass_ cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nclass_ cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nargs cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n> cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nconstraints cannot be resolved"
-      + "\nroles cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nleft cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\ntogether cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nparMin cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminSingletons cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxSingletons cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminSingletons cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxSingletons cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminSingletons cannot be resolved"
-      + "\nmaxSingletons cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminSingletons cannot be resolved"
-      + "\nmaxSingletons cannot be resolved"
-      + "\nparMin cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminSize cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxSize cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminSize cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxSize cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminSize cannot be resolved"
-      + "\nmaxSize cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminSize cannot be resolved"
-      + "\nmaxSize cannot be resolved"
-      + "\nparMin cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminCardinality cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxCardinality cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminCardinality cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nmaxCardinality cannot be resolved"
-      + "\nparMax cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nminCardinality cannot be resolved"
-      + "\nmaxCardinality cannot be resolved"
-      + "\n- cannot be resolved"
-      + "\nminCardinality cannot be resolved"
-      + "\nmaxCardinality cannot be resolved"
-      + "\nname cannot be resolved");
+    StringConcatenation _builder = new StringConcatenation();
+    String _upperCase = tExp.getName().substring(0, 1).toUpperCase();
+    String _substring = tExp.getName().substring(1);
+    String name = (_upperCase + _substring);
+    _builder.newLineIfNotEmpty();
+    _builder.append("import java.io.IOException;");
+    _builder.newLine();
+    _builder.append("import java.util.ArrayList;");
+    _builder.newLine();
+    _builder.append("import java.util.List;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.Monitor;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.SnifferMonitorFactory;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.decentralized.Condition;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.decentralized.ConditionsFactory;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.decentralized.Partition;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.protocol.TraceExpression;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.exception.DecentralizedPartitionNotFoundException;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.utils.JPL.JPLInitializer;");
+    _builder.newLine();
+    _builder.append("import jade.core.Agent;");
+    _builder.newLine();
+    _builder.append("import jade.core.Profile;");
+    _builder.newLine();
+    _builder.append("import jade.core.ProfileImpl;");
+    _builder.newLine();
+    _builder.append("import jade.wrapper.AgentContainer;");
+    _builder.newLine();
+    _builder.append("import jade.wrapper.AgentController;");
+    _builder.newLine();
+    _builder.append("import jade.wrapper.StaleProxyException;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class ");
+    _builder.append(name);
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static void main(String[] args) throws StaleProxyException, DecentralizedPartitionNotFoundException, IOException {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("JPLInitializer.init();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("TraceExpression tExp = new TraceExpression(\"");
+    String _name = tExp.getName();
+    _builder.append(_name, "\t\t");
+    _builder.append(".pl\");");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("/* Initialize JADE environment */");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("jade.core.Runtime runtime = jade.core.Runtime.instance();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Profile profile = new ProfileImpl();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("AgentContainer container = runtime.createMainContainer(profile);\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("List<AgentController> agents = new ArrayList<>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    {
+      EList<Role> _roles = tExp.getRoles();
+      for(final Role role : _roles) {
+        {
+          String _class_ = role.getClass_();
+          boolean _tripleNotEquals = (_class_ != null);
+          if (_tripleNotEquals) {
+            _builder.append("\t\t");
+            String _class__1 = role.getClass_();
+            _builder.append(_class__1, "\t\t");
+            _builder.append(" ");
+            String _name_1 = role.getName();
+            _builder.append(_name_1, "\t\t");
+            _builder.append(" = new ");
+            String _class__2 = role.getClass_();
+            _builder.append(_class__2, "\t\t");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            _builder.append("Agent ");
+            String _name_2 = role.getName();
+            _builder.append(_name_2, "\t\t");
+            _builder.append(" = new Agent();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        String _name_3 = role.getName();
+        _builder.append(_name_3, "\t\t");
+        _builder.append(".setArguments(new String[] {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("\t");
+        boolean first = true;
+        _builder.append(" ");
+        _builder.newLineIfNotEmpty();
+        {
+          EList<String> _args = role.getArgs();
+          for(final String arg : _args) {
+            _builder.append("\t\t");
+            _builder.append("\t");
+            {
+              if (first) {
+                _builder.append(" ");
+                String _xblockexpression = null;
+                {
+                  first = false;
+                  _xblockexpression = "";
+                }
+                _builder.append(_xblockexpression, "\t\t\t");
+                _builder.newLineIfNotEmpty();
+              } else {
+                _builder.append("\t\t");
+                _builder.append("\t");
+                _builder.append(", ");
+                _builder.newLine();
+              }
+            }
+            _builder.append("\t\t");
+            _builder.append("\t");
+            String _replace = arg.replace("\'", "\"");
+            _builder.append(_replace, "\t\t\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.append("});");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("AgentController ");
+        String _name_4 = role.getName();
+        _builder.append(_name_4, "\t\t");
+        _builder.append("C = container.acceptNewAgent(\"");
+        String _name_5 = role.getName();
+        _builder.append(_name_5, "\t\t");
+        _builder.append("\", ");
+        String _name_6 = role.getName();
+        _builder.append(_name_6, "\t\t");
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("agents.add(");
+        String _name_7 = role.getName();
+        _builder.append(_name_7, "\t\t");
+        _builder.append("C);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((((tExp.getDecentralized() != null) && (tExp.getDecentralized().size() > 0)) && Objects.equal(tExp.getDecentralized().get(0), "true"))) {
+        _builder.append("\t\t");
+        _builder.append("/* Create and Set the partition */");
+        _builder.newLine();
+        {
+          if (((tExp.getPartition() != null) && (tExp.getPartition().size() > 0))) {
+            _builder.append("\t\t");
+            _builder.append("List<List<String>> groups = new ArrayList<>();");
+            _builder.newLine();
+            _builder.append("\t\t");
+            _builder.append("List<String> group;");
+            _builder.newLine();
+            {
+              EList<Together> _constraints = tExp.getPartition().get(0).getConstraints();
+              for(final Together constraint : _constraints) {
+                _builder.append("\t\t");
+                _builder.append("group = new ArrayList<>();");
+                _builder.newLine();
+                _builder.append("\t\t");
+                _builder.append("groups.add(group);");
+                _builder.newLine();
+                {
+                  EList<Role> _roles_1 = constraint.getRoles();
+                  for(final Role role_1 : _roles_1) {
+                    _builder.append("\t\t");
+                    _builder.append("group.add(\"");
+                    String _name_8 = role_1.getName();
+                    _builder.append(_name_8, "\t\t");
+                    _builder.append("\");");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+            _builder.append("\t\t");
+            _builder.append("Partition<String> partition = new Partition<>(groups);");
+            _builder.newLine();
+          } else {
+            {
+              EList<Constraint> _constraints_1 = tExp.getConstraints();
+              for(final Constraint constraint_1 : _constraints_1) {
+                {
+                  EList<Role> _left = constraint_1.getLeft();
+                  for(final Role role1 : _left) {
+                    {
+                      EList<Role> _right = constraint_1.getRight();
+                      for(final Role role2 : _right) {
+                        {
+                          String _together = constraint_1.getTogether();
+                          boolean _tripleNotEquals_1 = (_together != null);
+                          if (_tripleNotEquals_1) {
+                            _builder.append("\t\t");
+                            _builder.append("List<Condition<String>> constraints = new ArrayList<>();");
+                            _builder.newLine();
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createMustBeTogetherCondition(\"");
+                            String _name_9 = role1.getName();
+                            _builder.append(_name_9, "\t\t");
+                            _builder.append("\",\"");
+                            String _name_10 = role2.getName();
+                            _builder.append(_name_10, "\t\t");
+                            _builder.append("\"));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createMustBeSplitCondition(\"");
+                            String _name_11 = role1.getName();
+                            _builder.append(_name_11, "\t\t");
+                            _builder.append("\",\"");
+                            String _name_12 = role2.getName();
+                            _builder.append(_name_12, "\t\t");
+                            _builder.append("\"));");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                {
+                  if ((constraint_1 instanceof Singletons)) {
+                    {
+                      String _parMin = ((Singletons)constraint_1).getParMin();
+                      boolean _equals = Objects.equal(_parMin, "(");
+                      if (_equals) {
+                        {
+                          String _parMax = ((Singletons)constraint_1).getParMax();
+                          boolean _equals_1 = Objects.equal(_parMax, ")");
+                          if (_equals_1) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberSingletonsCondition(");
+                            int _minSingletons = ((Singletons)constraint_1).getMinSingletons();
+                            int _minus = (_minSingletons - 1);
+                            _builder.append(_minus, "\t\t");
+                            _builder.append(",");
+                            int _maxSingletons = ((Singletons)constraint_1).getMaxSingletons();
+                            int _minus_1 = (_maxSingletons - 1);
+                            _builder.append(_minus_1, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberSingletonsCondition(");
+                            int _minSingletons_1 = ((Singletons)constraint_1).getMinSingletons();
+                            int _minus_2 = (_minSingletons_1 - 1);
+                            _builder.append(_minus_2, "\t\t");
+                            _builder.append(",");
+                            int _maxSingletons_1 = ((Singletons)constraint_1).getMaxSingletons();
+                            _builder.append(_maxSingletons_1, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      } else {
+                        {
+                          String _parMax_1 = ((Singletons)constraint_1).getParMax();
+                          boolean _equals_2 = Objects.equal(_parMax_1, ")");
+                          if (_equals_2) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberSingletonsCondition(");
+                            int _minSingletons_2 = ((Singletons)constraint_1).getMinSingletons();
+                            _builder.append(_minSingletons_2, "\t\t");
+                            _builder.append(",");
+                            int _maxSingletons_2 = ((Singletons)constraint_1).getMaxSingletons();
+                            int _minus_3 = (_maxSingletons_2 - 1);
+                            _builder.append(_minus_3, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberSingletonsCondition(");
+                            int _minSingletons_3 = ((Singletons)constraint_1).getMinSingletons();
+                            _builder.append(_minSingletons_3, "\t\t");
+                            _builder.append(",");
+                            int _maxSingletons_3 = ((Singletons)constraint_1).getMaxSingletons();
+                            _builder.append(_maxSingletons_3, "\t\t");
+                            _builder.append("));\t\t\t\t");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                {
+                  if ((constraint_1 instanceof Size)) {
+                    {
+                      String _parMin_1 = ((Size)constraint_1).getParMin();
+                      boolean _equals_3 = Objects.equal(_parMin_1, "(");
+                      if (_equals_3) {
+                        {
+                          String _parMax_2 = ((Size)constraint_1).getParMax();
+                          boolean _equals_4 = Objects.equal(_parMax_2, ")");
+                          if (_equals_4) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(");
+                            int _minSize = ((Size)constraint_1).getMinSize();
+                            int _minus_4 = (_minSize - 1);
+                            _builder.append(_minus_4, "\t\t");
+                            _builder.append(",");
+                            int _maxSize = ((Size)constraint_1).getMaxSize();
+                            int _minus_5 = (_maxSize - 1);
+                            _builder.append(_minus_5, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(");
+                            int _minSize_1 = ((Size)constraint_1).getMinSize();
+                            int _minus_6 = (_minSize_1 - 1);
+                            _builder.append(_minus_6, "\t\t");
+                            _builder.append(",");
+                            int _maxSize_1 = ((Size)constraint_1).getMaxSize();
+                            _builder.append(_maxSize_1, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      } else {
+                        {
+                          String _parMax_3 = ((Size)constraint_1).getParMax();
+                          boolean _equals_5 = Objects.equal(_parMax_3, ")");
+                          if (_equals_5) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(");
+                            int _minSize_2 = ((Size)constraint_1).getMinSize();
+                            _builder.append(_minSize_2, "\t\t");
+                            _builder.append(",");
+                            int _maxSize_2 = ((Size)constraint_1).getMaxSize();
+                            int _minus_7 = (_maxSize_2 - 1);
+                            _builder.append(_minus_7, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(");
+                            int _minSize_3 = ((Size)constraint_1).getMinSize();
+                            _builder.append(_minSize_3, "\t\t");
+                            _builder.append(",");
+                            int _maxSize_3 = ((Size)constraint_1).getMaxSize();
+                            _builder.append(_maxSize_3, "\t\t");
+                            _builder.append("));\t\t\t\t");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                {
+                  if ((constraint_1 instanceof Cardinality)) {
+                    {
+                      String _parMin_2 = ((Cardinality)constraint_1).getParMin();
+                      boolean _equals_6 = Objects.equal(_parMin_2, "(");
+                      if (_equals_6) {
+                        {
+                          String _parMax_4 = ((Cardinality)constraint_1).getParMax();
+                          boolean _equals_7 = Objects.equal(_parMax_4, ")");
+                          if (_equals_7) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            int _minCardinality = ((Cardinality)constraint_1).getMinCardinality();
+                            int _minus_8 = (_minCardinality - 1);
+                            _builder.append(_minus_8, "\t\t");
+                            _builder.append(",");
+                            int _maxCardinality = ((Cardinality)constraint_1).getMaxCardinality();
+                            int _minus_9 = (_maxCardinality - 1);
+                            _builder.append(_minus_9, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            int _minCardinality_1 = ((Cardinality)constraint_1).getMinCardinality();
+                            int _minus_10 = (_minCardinality_1 - 1);
+                            _builder.append(_minus_10, "\t\t");
+                            _builder.append(",");
+                            int _maxCardinality_1 = ((Cardinality)constraint_1).getMaxCardinality();
+                            _builder.append(_maxCardinality_1, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      } else {
+                        {
+                          String _parMax_5 = ((Cardinality)constraint_1).getParMax();
+                          boolean _equals_8 = Objects.equal(_parMax_5, ")");
+                          if (_equals_8) {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            int _minCardinality_2 = ((Cardinality)constraint_1).getMinCardinality();
+                            _builder.append(_minCardinality_2, "\t\t");
+                            _builder.append(",");
+                            int _maxCardinality_2 = ((Cardinality)constraint_1).getMaxCardinality();
+                            int _minus_11 = (_maxCardinality_2 - 1);
+                            _builder.append(_minus_11, "\t\t");
+                            _builder.append("));");
+                            _builder.newLineIfNotEmpty();
+                          } else {
+                            _builder.append("\t\t");
+                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            int _minCardinality_3 = ((Cardinality)constraint_1).getMinCardinality();
+                            _builder.append(_minCardinality_3, "\t\t");
+                            _builder.append(",");
+                            int _maxCardinality_3 = ((Cardinality)constraint_1).getMaxCardinality();
+                            _builder.append(_maxCardinality_3, "\t\t");
+                            _builder.append("));\t\t\t");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            {
+              if ((((tExp.getMinimal() != null) && (tExp.getMinimal().size() > 0)) && Objects.equal(tExp.getMinimal().get(0), "true"))) {
+                _builder.append("\t\t");
+                _builder.append("Partition<String> partition = tExp.getFirstMonitoringSafePartition(constraints);");
+                _builder.newLine();
+              } else {
+                _builder.append("\t\t");
+                _builder.append("Partition<String> partition = tExp.getRandomMonitoringSafePartition(constraints);");
+                _builder.newLine();
+              }
+            }
+          }
+        }
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("/* Decentralized monitors */");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("for(Monitor m : SnifferMonitorFactory.createDecentralizedMonitors(tExp, partition, agents)){");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("\t");
+        _builder.append("container.acceptNewAgent(m.getMonitorName(), m).start();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("}");
+        _builder.newLine();
+      } else {
+        _builder.append("\t\t");
+        _builder.append("/* Centralized monitor */");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("SnifferMonitorFactory.createAndRunCentralizedMonitor(tExp, container, agents);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    {
+      EList<String> _gui = tExp.getGui();
+      boolean _equals_9 = Objects.equal(_gui, "true");
+      if (_equals_9) {
+        _builder.append("\t\t");
+        _builder.append("Monitor.setErrorMessageGUIVisible(true);");
+        _builder.newLine();
+      } else {
+        _builder.append("\t\t");
+        _builder.append("Monitor.setErrorMessageGUIVisible(false);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("/* Run the agents */");
+    _builder.newLine();
+    {
+      EList<Role> _roles_2 = tExp.getRoles();
+      for(final Role role_2 : _roles_2) {
+        _builder.append("\t\t");
+        String _name_13 = role_2.getName();
+        _builder.append(_name_13, "\t\t");
+        _builder.append("C.start();");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
   
   public String compile(final TraceExpression tExp) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field roles is undefined for the type TraceExpression"
-      + "\nname cannot be resolved"
-      + "\n+ cannot be resolved");
+    String _xblockexpression = null;
+    {
+      String str = ":- discontiguous match/3.\n";
+      String _str = str;
+      str = (_str + ":- discontiguous event/2.\n");
+      String _str_1 = str;
+      str = (_str_1 + ":- discontiguous reliable/3.\n\n");
+      this.tExpCurrentName = tExp.getName();
+      EList<String> _modules = tExp.getModules();
+      for (final String module : _modules) {
+        String _str_2 = str;
+        str = (_str_2 + ((":- ensure_loaded(" + module) + ").\n"));
+      }
+      String _str_3 = str;
+      str = (_str_3 + "\n");
+      String _str_4 = str;
+      str = (_str_4 + "roles([");
+      EList<Role> _roles = tExp.getRoles();
+      for (final Role role : _roles) {
+        String _str_5 = str;
+        String _name = role.getName();
+        String _plus = (_name + ",");
+        str = (_str_5 + _plus);
+      }
+      int _length = str.length();
+      int _minus = (_length - 1);
+      String _substring = str.substring(0, _minus);
+      String _plus_1 = (_substring + "]).\n\n");
+      str = _plus_1;
+      EList<EventType> _types = tExp.getTypes();
+      for (final EventType type : _types) {
+        String _str_6 = str;
+        String _compile = this.compile(type);
+        str = (_str_6 + _compile);
+      }
+      String _str_7 = str;
+      String _name_1 = tExp.getName();
+      String _plus_2 = (("\n\n" + "trace_expression(") + _name_1);
+      String _plus_3 = (_plus_2 + ", Main) :- \n");
+      str = (_str_7 + _plus_3);
+      EList<Term> _terms = tExp.getTerms();
+      for (final Term term : _terms) {
+        String _str_8 = str;
+        String _compile_1 = this.compile(term);
+        String _plus_4 = ("\t" + _compile_1);
+        String _plus_5 = (_plus_4 + ",\n");
+        str = (_str_8 + _plus_5);
+      }
+      int _length_1 = str.length();
+      int _minus_1 = (_length_1 - 2);
+      String _substring_1 = str.substring(0, _minus_1);
+      String _plus_6 = (_substring_1 + ", numbervars(Main, 0, _).\n");
+      _xblockexpression = str = _plus_6;
+    }
+    return _xblockexpression;
   }
   
   public String compile(final Term term) {
-    String _name = term.getName();
-    String _substring = _name.substring(0, 1);
-    String _upperCase = _substring.toUpperCase();
-    String _name_1 = term.getName();
-    String _substring_1 = _name_1.substring(1);
-    String _plus = (_upperCase + _substring_1);
+    String _upperCase = term.getName().substring(0, 1).toUpperCase();
+    String _substring = term.getName().substring(1);
+    String _plus = (_upperCase + _substring);
     String _plus_1 = (_plus + " = ");
-    Expression _expr = term.getExpr();
-    String _compile = this.compile(_expr);
+    String _compile = this.compile(term.getExpr());
     return (_plus_1 + _compile);
   }
   
   public String compile(final Expression expr) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nFilterExpr cannot be resolved to a type."
-      + "\nSeqExpr cannot be resolved to a type."
-      + "\nVarExpr cannot be resolved to a type."
-      + "\nTerminalExpr cannot be resolved to a type."
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field filterExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field seqExpr is undefined for the type Expression"
-      + "\nThe method or field varExpr is undefined for the type Expression"
-      + "\nThe method or field varExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nThe method or field terminalExpr is undefined for the type Expression"
-      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
-      + "\nfirst cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\ntypeFilter cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nfirst cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nexprs cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nbodyFilter cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\ntypeFilter cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nbodyFilter cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nfirst cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\ntypeSeq cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nfirst cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nexprs cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nbodySeq cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\ntypeSeq cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nbodySeq cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nvariable cannot be resolved"
-      + "\nbodyVar cannot be resolved"
-      + "\ncompile cannot be resolved"
-      + "\nterm cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nterm cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nsubstring cannot be resolved"
-      + "\ntoUpperCase cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\nterm cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nsubstring cannot be resolved"
-      + "\neps cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nexpr cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nexpr cannot be resolved"
-      + "\ncompile cannot be resolved");
+    if ((expr instanceof UnionExpr)) {
+      String _compile = this.compile(((UnionExpr)expr).getLeft());
+      String _plus = ("(" + _compile);
+      String _plus_1 = (_plus + " \\/ ");
+      String _compile_1 = this.compile(((UnionExpr)expr).getRight());
+      String _plus_2 = (_plus_1 + _compile_1);
+      return (_plus_2 + ")");
+    } else {
+      if ((expr instanceof ShuffleExpr)) {
+        String _compile_2 = this.compile(((ShuffleExpr)expr).getLeft());
+        String _plus_3 = ("(" + _compile_2);
+        String _plus_4 = (_plus_3 + " | ");
+        String _compile_3 = this.compile(((ShuffleExpr)expr).getRight());
+        String _plus_5 = (_plus_4 + _compile_3);
+        return (_plus_5 + ")");
+      } else {
+        if ((expr instanceof CatExpr)) {
+          String _compile_4 = this.compile(((CatExpr)expr).getLeft());
+          String _plus_6 = ("(" + _compile_4);
+          String _plus_7 = (_plus_6 + " * ");
+          String _compile_5 = this.compile(((CatExpr)expr).getRight());
+          String _plus_8 = (_plus_7 + _compile_5);
+          return (_plus_8 + ")");
+        } else {
+          if ((expr instanceof AndExpr)) {
+            String _compile_6 = this.compile(((AndExpr)expr).getLeft());
+            String _plus_9 = ("(" + _compile_6);
+            String _plus_10 = (_plus_9 + " /\\ ");
+            String _compile_7 = this.compile(((AndExpr)expr).getRight());
+            String _plus_11 = (_plus_10 + _compile_7);
+            return (_plus_11 + ")");
+          } else {
+            if ((expr instanceof FilterExpr)) {
+              PrologExpression _first = ((FilterExpr)expr).getFilterExpr().getFirst();
+              boolean _tripleNotEquals = (_first != null);
+              if (_tripleNotEquals) {
+                String _name = ((FilterExpr)expr).getFilterExpr().getTypeFilter().getName();
+                String _plus_12 = ("(" + _name);
+                String _plus_13 = (_plus_12 + "(");
+                String _compile_8 = this.compile(((FilterExpr)expr).getFilterExpr().getFirst());
+                String str = (_plus_13 + _compile_8);
+                EList<PrologExpression> _exprs = ((FilterExpr)expr).getFilterExpr().getExprs();
+                for (final PrologExpression arg : _exprs) {
+                  String _str = str;
+                  String _compile_9 = this.compile(arg);
+                  String _plus_14 = (", " + _compile_9);
+                  str = (_str + _plus_14);
+                }
+                String _str_1 = str;
+                String _compile_10 = this.compile(((FilterExpr)expr).getFilterExpr().getBodyFilter());
+                String _plus_15 = (") >> " + _compile_10);
+                String _plus_16 = (_plus_15 + ")");
+                str = (_str_1 + _plus_16);
+                return str;
+              } else {
+                String _name_1 = ((FilterExpr)expr).getFilterExpr().getTypeFilter().getName();
+                String _plus_17 = ("(" + _name_1);
+                String _plus_18 = (_plus_17 + " >> ");
+                String _compile_11 = this.compile(((FilterExpr)expr).getFilterExpr().getBodyFilter());
+                String _plus_19 = (_plus_18 + _compile_11);
+                return (_plus_19 + ")");
+              }
+            } else {
+              if (((expr.getTypeFilter() != null) && (expr.getBodyFilter() != null))) {
+                PrologExpression _first_1 = expr.getFirst();
+                boolean _tripleNotEquals_1 = (_first_1 != null);
+                if (_tripleNotEquals_1) {
+                  String _name_2 = expr.getTypeFilter().getName();
+                  String _plus_20 = ("(" + _name_2);
+                  String _plus_21 = (_plus_20 + "(");
+                  String _compile_12 = this.compile(expr.getFirst());
+                  String str_1 = (_plus_21 + _compile_12);
+                  EList<PrologExpression> _exprs_1 = expr.getExprs();
+                  for (final PrologExpression arg_1 : _exprs_1) {
+                    String _str_2 = str_1;
+                    String _compile_13 = this.compile(arg_1);
+                    String _plus_22 = (", " + _compile_13);
+                    str_1 = (_str_2 + _plus_22);
+                  }
+                  String _str_3 = str_1;
+                  String _compile_14 = this.compile(expr.getBodyFilter());
+                  String _plus_23 = (") >> " + _compile_14);
+                  String _plus_24 = (_plus_23 + ")");
+                  str_1 = (_str_3 + _plus_24);
+                  return str_1;
+                } else {
+                  String _name_3 = expr.getTypeFilter().getName();
+                  String _plus_25 = ("(" + _name_3);
+                  String _plus_26 = (_plus_25 + " >> ");
+                  String _compile_15 = this.compile(expr.getBodyFilter());
+                  String _plus_27 = (_plus_26 + _compile_15);
+                  return (_plus_27 + ")");
+                }
+              } else {
+                if ((expr instanceof SeqExpr)) {
+                  PrologExpression _first_2 = ((SeqExpr)expr).getSeqExpr().getFirst();
+                  boolean _tripleNotEquals_2 = (_first_2 != null);
+                  if (_tripleNotEquals_2) {
+                    String _name_4 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
+                    String _plus_28 = ("(" + _name_4);
+                    String _plus_29 = (_plus_28 + "(");
+                    String _compile_16 = this.compile(((SeqExpr)expr).getSeqExpr().getFirst());
+                    String str_2 = (_plus_29 + _compile_16);
+                    EList<PrologExpression> _exprs_2 = ((SeqExpr)expr).getSeqExpr().getExprs();
+                    for (final PrologExpression arg_2 : _exprs_2) {
+                      String _str_4 = str_2;
+                      String _compile_17 = this.compile(arg_2);
+                      String _plus_30 = (", " + _compile_17);
+                      str_2 = (_str_4 + _plus_30);
+                    }
+                    String _str_5 = str_2;
+                    String _compile_18 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
+                    String _plus_31 = (") :" + _compile_18);
+                    String _plus_32 = (_plus_31 + ")");
+                    str_2 = (_str_5 + _plus_32);
+                    return str_2;
+                  } else {
+                    String _name_5 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
+                    String _plus_33 = ("(" + _name_5);
+                    String _plus_34 = (_plus_33 + " : ");
+                    String _compile_19 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
+                    String _plus_35 = (_plus_34 + _compile_19);
+                    return (_plus_35 + ")");
+                  }
+                } else {
+                  if (((expr.getTypeSeq() != null) && (expr.getBodySeq() != null))) {
+                    PrologExpression _first_3 = expr.getFirst();
+                    boolean _tripleNotEquals_3 = (_first_3 != null);
+                    if (_tripleNotEquals_3) {
+                      String _name_6 = expr.getTypeSeq().getName();
+                      String _plus_36 = ("(" + _name_6);
+                      String _plus_37 = (_plus_36 + "(");
+                      String _compile_20 = this.compile(expr.getFirst());
+                      String str_3 = (_plus_37 + _compile_20);
+                      EList<PrologExpression> _exprs_3 = expr.getExprs();
+                      for (final PrologExpression arg_3 : _exprs_3) {
+                        String _str_6 = str_3;
+                        String _compile_21 = this.compile(arg_3);
+                        String _plus_38 = (", " + _compile_21);
+                        str_3 = (_str_6 + _plus_38);
+                      }
+                      String _str_7 = str_3;
+                      String _compile_22 = this.compile(expr.getBodySeq());
+                      String _plus_39 = (") : " + _compile_22);
+                      String _plus_40 = (_plus_39 + ")");
+                      str_3 = (_str_7 + _plus_40);
+                      return str_3;
+                    } else {
+                      String _name_7 = expr.getTypeSeq().getName();
+                      String _plus_41 = ("(" + _name_7);
+                      String _plus_42 = (_plus_41 + " : ");
+                      String _compile_23 = this.compile(expr.getBodySeq());
+                      String _plus_43 = (_plus_42 + _compile_23);
+                      return (_plus_43 + ")");
+                    }
+                  } else {
+                    if ((expr instanceof VarExpr)) {
+                      String _variable = ((VarExpr)expr).getVarExpr().getVariable();
+                      String _plus_44 = ("var( " + _variable);
+                      String _plus_45 = (_plus_44 + ", ");
+                      String _compile_24 = this.compile(((VarExpr)expr).getVarExpr().getBodyVar());
+                      String _plus_46 = (_plus_45 + _compile_24);
+                      return (_plus_46 + ")");
+                    } else {
+                      if ((expr instanceof TerminalExpr)) {
+                        Term _term = ((TerminalExpr)expr).getTerminalExpr().getTerm();
+                        boolean _tripleNotEquals_4 = (_term != null);
+                        if (_tripleNotEquals_4) {
+                          String _upperCase = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(0, 1).toUpperCase();
+                          String _substring = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(1);
+                          return (_upperCase + _substring);
+                        }
+                        String _eps = ((TerminalExpr)expr).getTerminalExpr().getEps();
+                        boolean _tripleNotEquals_5 = (_eps != null);
+                        if (_tripleNotEquals_5) {
+                          return "epsilon";
+                        }
+                        Expression _expr = ((TerminalExpr)expr).getTerminalExpr().getExpr();
+                        boolean _tripleNotEquals_6 = (_expr != null);
+                        if (_tripleNotEquals_6) {
+                          String _compile_25 = this.compile(((TerminalExpr)expr).getTerminalExpr().getExpr());
+                          String _plus_47 = ("(" + _compile_25);
+                          return (_plus_47 + ")");
+                        }
+                      } else {
+                        Term _term_1 = expr.getTerm();
+                        boolean _tripleNotEquals_7 = (_term_1 != null);
+                        if (_tripleNotEquals_7) {
+                          String _upperCase_1 = expr.getTerm().getName().substring(0, 1).toUpperCase();
+                          String _substring_1 = expr.getTerm().getName().substring(1);
+                          return (_upperCase_1 + _substring_1);
+                        } else {
+                          String _eps_1 = expr.getEps();
+                          boolean _tripleNotEquals_8 = (_eps_1 != null);
+                          if (_tripleNotEquals_8) {
+                            return "epsilon";
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return "";
   }
   
   public String compile(final EventType eventType) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field channel is undefined for the type EventType"
-      + "\nThe method or field channel is undefined for the type EventType"
-      + "\n!== cannot be resolved"
-      + "\nreliability cannot be resolved");
+    String str = "";
+    EList<Msg> _msgs = eventType.getMsgs();
+    for (final Msg msg : _msgs) {
+      {
+        String _str = str;
+        String _compile = this.compile(msg);
+        String _plus = ((("match(" + this.tExpCurrentName) + ", ") + _compile);
+        String _plus_1 = (_plus + ", ");
+        String _name = eventType.getName();
+        String _plus_2 = (_plus_1 + _name);
+        str = (_str + _plus_2);
+        PrologExpression _expr = eventType.getExpr();
+        boolean _tripleNotEquals = (_expr != null);
+        if (_tripleNotEquals) {
+          String _str_1 = str;
+          String _compile_1 = this.compile(eventType.getExpr());
+          String _plus_3 = ("(" + _compile_1);
+          str = (_str_1 + _plus_3);
+          EList<PrologExpression> _exprs = eventType.getExprs();
+          for (final PrologExpression e : _exprs) {
+            String _str_2 = str;
+            String _compile_2 = this.compile(e);
+            String _plus_4 = (", " + _compile_2);
+            str = (_str_2 + _plus_4);
+          }
+          String _str_3 = str;
+          str = (_str_3 + ")");
+        }
+        String _str_4 = str;
+        str = (_str_4 + ")");
+        PrologExpression _conditions = msg.getConditions();
+        boolean _tripleNotEquals_1 = (_conditions != null);
+        if (_tripleNotEquals_1) {
+          String _str_5 = str;
+          String _compile_3 = this.compile(msg.getConditions());
+          String _plus_5 = (" :- \n\t" + _compile_3);
+          String _plus_6 = (_plus_5 + ".");
+          str = (_str_5 + _plus_6);
+        } else {
+          String _str_6 = str;
+          str = (_str_6 + ".");
+        }
+        String _str_7 = str;
+        String _compile_4 = this.compile(msg);
+        String _plus_7 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_4);
+        String _plus_8 = (_plus_7 + ").\n");
+        str = (_str_7 + _plus_8);
+      }
+    }
+    Channel _channel = eventType.getChannel();
+    boolean _tripleNotEquals = (_channel != null);
+    if (_tripleNotEquals) {
+      String _str = str;
+      String _name = eventType.getName();
+      String _plus = ((("reliable(" + this.tExpCurrentName) + ", ") + _name);
+      String _plus_1 = (_plus + ", ");
+      String _reliability = eventType.getChannel().getReliability();
+      String _plus_2 = (_plus_1 + _reliability);
+      String _plus_3 = (_plus_2 + ").\n");
+      str = (_str + _plus_3);
+    } else {
+      String _str_1 = str;
+      String _name_1 = eventType.getName();
+      String _plus_4 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_1);
+      String _plus_5 = (_plus_4 + ", 1).\n");
+      str = (_str_1 + _plus_5);
+    }
+    return str;
   }
   
   public String compile(final Msg msg) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field async_sender is undefined for the type Msg"
-      + "\nThe method or field async_sender is undefined for the type Msg"
-      + "\nThe method or field receiver is undefined for the type Msg"
-      + "\nThe method or field async_receiver is undefined for the type Msg"
-      + "\nThe method or field sender is undefined for the type Msg"
-      + "\nThe method or field async_receiver is undefined for the type Msg"
-      + "\nThe method or field sender is undefined for the type Msg"
-      + "\nThe method or field receiver is undefined for the type Msg"
-      + "\n!== cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved");
+    String performative = "inform";
+    String _performative = msg.getPerformative();
+    boolean _tripleNotEquals = (_performative != null);
+    if (_tripleNotEquals) {
+      performative = msg.getPerformative();
+    }
+    Role _async_sender = msg.getAsync_sender();
+    boolean _tripleNotEquals_1 = (_async_sender != null);
+    if (_tripleNotEquals_1) {
+      String _name = msg.getAsync_sender().getName();
+      String _plus = ((("msg(performative(" + performative) + "), sender(") + _name);
+      String _plus_1 = (_plus + "), receiver(");
+      String _name_1 = msg.getReceiver().getName();
+      String _plus_2 = (_plus_1 + _name_1);
+      String _plus_3 = (_plus_2 + "), content(");
+      String _compile = this.compile(msg.getContent());
+      String _plus_4 = (_plus_3 + _compile);
+      String _plus_5 = (_plus_4 + "), s");
+      return (_plus_5 + ")");
+    } else {
+      Role _async_receiver = msg.getAsync_receiver();
+      boolean _tripleNotEquals_2 = (_async_receiver != null);
+      if (_tripleNotEquals_2) {
+        String _name_2 = msg.getSender().getName();
+        String _plus_6 = ((("msg(performtive(" + performative) + "), sender(") + _name_2);
+        String _plus_7 = (_plus_6 + "), receiver(");
+        String _name_3 = msg.getAsync_receiver().getName();
+        String _plus_8 = (_plus_7 + _name_3);
+        String _plus_9 = (_plus_8 + "), content(");
+        String _compile_1 = this.compile(msg.getContent());
+        String _plus_10 = (_plus_9 + _compile_1);
+        String _plus_11 = (_plus_10 + "), r");
+        return (_plus_11 + ")");
+      } else {
+        String _name_4 = msg.getSender().getName();
+        String _plus_12 = ((("msg(performative(" + performative) + "), sender(") + _name_4);
+        String _plus_13 = (_plus_12 + "), receiver(");
+        String _name_5 = msg.getReceiver().getName();
+        String _plus_14 = (_plus_13 + _name_5);
+        String _plus_15 = (_plus_14 + "), content(");
+        String _compile_2 = this.compile(msg.getContent());
+        String _plus_16 = (_plus_15 + _compile_2);
+        String _plus_17 = (_plus_16 + "), _");
+        return (_plus_17 + ")");
+      }
+    }
   }
   
   public String compile(final PrologExpression expr) {
@@ -288,8 +999,7 @@ public class TExpGenerator extends AbstractGenerator {
       if (_tripleNotEquals) {
         String _atom = ((AtomExpression)expr).getAtom();
         String _plus = (_atom + "(");
-        PrologExpression _terms_1 = ((AtomExpression)expr).getTerms();
-        String _compile = this.compile(_terms_1);
+        String _compile = this.compile(((AtomExpression)expr).getTerms());
         String _plus_1 = (_plus + _compile);
         return (_plus_1 + ")");
       } else {
@@ -313,25 +1023,21 @@ public class TExpGenerator extends AbstractGenerator {
               PrologExpression _right = expr.getRight();
               boolean _tripleNotEquals_2 = (_right != null);
               if (_tripleNotEquals_2) {
-                PrologExpression _left_1 = expr.getLeft();
-                String _compile_1 = this.compile(_left_1);
+                String _compile_1 = this.compile(expr.getLeft());
                 String _plus_3 = (_compile_1 + " ");
                 String _op = expr.getOp();
                 String _plus_4 = (_plus_3 + _op);
                 String _plus_5 = (_plus_4 + " ");
-                PrologExpression _right_1 = expr.getRight();
-                String _compile_2 = this.compile(_right_1);
+                String _compile_2 = this.compile(expr.getRight());
                 return (_plus_5 + _compile_2);
               } else {
-                PrologExpression _left_2 = expr.getLeft();
-                return this.compile(_left_2);
+                return this.compile(expr.getLeft());
               }
             } else {
-              PrologExpression _right_2 = expr.getRight();
-              boolean _tripleNotEquals_3 = (_right_2 != null);
+              PrologExpression _right_1 = expr.getRight();
+              boolean _tripleNotEquals_3 = (_right_1 != null);
               if (_tripleNotEquals_3) {
-                PrologExpression _right_3 = expr.getRight();
-                return this.compile(_right_3);
+                return this.compile(expr.getRight());
               } else {
                 return "";
               }

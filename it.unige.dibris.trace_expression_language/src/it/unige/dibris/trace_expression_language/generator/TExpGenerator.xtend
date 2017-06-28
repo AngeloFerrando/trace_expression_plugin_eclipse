@@ -124,39 +124,39 @@ class TExpGenerator extends AbstractGenerator {
 				«FOR role2 : constraint.right»
 				«IF constraint.together !== null»
 				List<Condition<String>> constraints = new ArrayList<>();
-				constraints.add(ConditionFactory.createMustBeTogetherCondition("«role1.name»", "«role2.name»"));
+				constraints.add(ConditionsFactory.createMustBeTogetherCondition("«role1.name»","«role2.name»"));
 				«ELSE»
-				constraints.add(ConditionFactory.createMustBeSplitCondition("«role1.name»", "«role2.name»"));
+				constraints.add(ConditionsFactory.createMustBeSplitCondition("«role1.name»","«role2.name»"));
 				«ENDIF»
 				«ENDFOR»
 				«ENDFOR»
 				«IF constraint instanceof Singletons»
 				«IF constraint.parMin == '('»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberSingletonsCondition(«constraint.minSingletons - 1»,«constraint.maxSingletons - 1»));
+				constraints.add(ConditionsFactory.createNumberSingletonsCondition(«constraint.minSingletons - 1»,«constraint.maxSingletons - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberSingletonsCondition(«constraint.minSingletons - 1»,«constraint.maxSingletons»));
+				constraints.add(ConditionsFactory.createNumberSingletonsCondition(«constraint.minSingletons - 1»,«constraint.maxSingletons»));
 				«ENDIF»
 				«ELSE»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberSingletonsCondition(«constraint.minSingletons»,«constraint.maxSingletons - 1»));
+				constraints.add(ConditionsFactory.createNumberSingletonsCondition(«constraint.minSingletons»,«constraint.maxSingletons - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberSingletonsCondition(«constraint.minSingletons»,«constraint.maxSingletons»));				
+				constraints.add(ConditionsFactory.createNumberSingletonsCondition(«constraint.minSingletons»,«constraint.maxSingletons»));				
 				«ENDIF»
 				«ENDIF»
 				«ENDIF»
 				«IF constraint instanceof Size»
 				«IF constraint.parMin == '('»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberAgentsForConstraintCondition(«constraint.minSize - 1»,«constraint.maxSize - 1»));
+				constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(«constraint.minSize - 1»,«constraint.maxSize - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberAgentsForConstraintCondition(«constraint.minSize - 1»,«constraint.maxSize»));
+				constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(«constraint.minSize - 1»,«constraint.maxSize»));
 				«ENDIF»
 				«ELSE»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberAgentsForConstraintCondition(«constraint.minSize»,«constraint.maxSize - 1»));
+				constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(«constraint.minSize»,«constraint.maxSize - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberAgentsForConstraintCondition(«constraint.minSize»,«constraint.maxSize»));				
+				constraints.add(ConditionsFactory.createNumberAgentsForConstraintCondition(«constraint.minSize»,«constraint.maxSize»));				
 				«ENDIF»
 				«ENDIF»
 				«ENDIF»
@@ -192,7 +192,6 @@ class TExpGenerator extends AbstractGenerator {
 				/* Centralized monitor */
 				
 				SnifferMonitorFactory.createAndRunCentralizedMonitor(tExp, container, agents);
-				container.acceptNewAgent("centralizedMonitor", centralizedM);
 				«ENDIF»
 				
 				«IF tExp.gui == 'true'»
