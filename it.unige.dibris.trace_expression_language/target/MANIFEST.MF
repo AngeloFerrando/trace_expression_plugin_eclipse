@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: it.unige.dibris.trace_expression_language; single
+ ton:=true
+Export-Package: it.unige.dibris.trace_expression_language.validation,i
+ t.unige.dibris.trace_expression_language.tExp,it.unige.dibris.trace_e
+ xpression_language,it.unige.dibris.trace_expression_language.tExp.imp
+ l,it.unige.dibris.trace_expression_language.serializer,it.unige.dibri
+ s.trace_expression_language.generator,it.unige.dibris.trace_expressio
+ n_language.parser.antlr.internal,it.unige.dibris.trace_expression_lan
+ guage.scoping,it.unige.dibris.trace_expression_language.tExp.util,it.
+ unige.dibris.trace_expression_language.parser.antlr,it.unige.dibris.t
+ race_expression_language.services
+Bundle-Name: it.unige.dibris.trace_expression_language
+Bundle-Version: 1.0.0.201706231134
+Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.
+ equinox.common;bundle-version="3.7.0",org.eclipse.emf.ecore,org.eclip
+ se.xtext.xbase.lib,org.antlr.runtime,org.eclipse.xtext.util,org.eclip
+ se.xtend.lib,org.eclipse.emf.common
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: My Company
+Import-Package: org.apache.log4j
+

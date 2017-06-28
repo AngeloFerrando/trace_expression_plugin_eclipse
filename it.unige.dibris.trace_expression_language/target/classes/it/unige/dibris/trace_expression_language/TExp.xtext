@@ -1,0 +1,284 @@
+grammar it.unige.dibris.trace_expression_language.TExp hidden(WHITESPACE, SINGLE_LINE_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate tExp "http://www.unige.it/dibris/trace_expression_language/TExp"
+
+Domainmodel :
+    (elements+=TraceExpression)*;
+    
+//Prolog
+
+terminal OP1150FX:
+	'dynamic' | 'discontiguous' | 'initialization' | 'module_transparent' | 'multifile' | 'thread_local' | 'volatile';
+
+ID: ATOM;// (OPPARL (ATOM|VARIABLE) OPPARR)?;
+
+terminal WHITESPACE:
+	(' ' | '\t' | '\r' | '\n')+;
+
+terminal SINGLE_LINE_COMMENT:
+	'%' !('\n' | '\r')* ('\r'? '\n')?;
+
+	// http://www.cse.unsw.edu.au/~billw/cs9414/notes/prolog/op.html
+terminal OP1200XFX:
+	'-->' | ':-';
+
+terminal OP1200FX:
+	':-' | '?-';
+
+terminal OP1100XFY:
+	';' | '|';
+
+terminal OP1050XFY:
+	'->' | '*->';
+
+terminal OP1000XFY:
+	',';
+
+terminal OP954XFY:
+	'\\';
+
+terminal OP900FY:
+	'\\+';
+
+terminal OP900FX:
+	'~';
+
+terminal OP700XFXL:
+	'<'
+;
+
+terminal OP700XFXR:
+	'>'
+;
+
+terminal OP700XFX:
+	'=' | '=..' | '=@=' | '=:=' | '=<' | '==' | '=\\=' | '>=' | '@<' | '@=<' | '@>' | '@>=' | '\\=' | '\\=='
+	| 'is';
+
+terminal OP600XFY:
+	':';
+
+terminal OP500YFX:
+	'+' | '-' | '/\\' | '\\/' | 'xor';
+
+terminal OP500FX:
+	'+' | '-' | '?' | '\\';
+
+terminal OP400FX1:
+	'>>'
+;
+
+terminal OP400YFX:
+	'*' | '/' | '//' | 'rdiv' | '<<' | 'mod' | 'rem';
+
+terminal OP200XFX:
+	'**';
+
+terminal OP200XFY:
+	'^';
+
+terminal ATOM:
+	'a'..'z' ('A'..'Z' | 'a'..'z' | '0'..'9' | '_')*;
+
+ATOMS:
+	'.' | '!' | ID | OP1200XFX | OP1200FX | OP1150FX | OP1100XFY | OP1050XFY | OP1000XFY | OP954XFY | OP900FY | OP900FX
+	| OP700XFX | OP700XFXR | OP700XFXL | OP600XFY | OP500YFX | OP500FX | OP400YFX | OP200XFX | OP200XFY;
+
+terminal VARIABLE:
+	('A'..'Z' | '_') ('A'..'Z' | 'a'..'z' | '0'..'9' | '_')*;
+ 
+terminal STRING:
+	'\''->'\'';
+	
+terminal INT returns ecore::EInt: 
+	('0'..'9')+;
+
+terminal EXT_INT:
+	INT ('e' | 'E') ('-' | '+')? INT;
+
+NUMBER hidden():
+	'-'? INT ('.' (EXT_INT | INT))?;
+
+// http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/4.html
+// xfx infix nonassociative 
+// xfy infix right-associative 
+// yfx infix left-associative 
+// fx prefix nonassociative 
+// fy prefix right-associative 
+// xf postfix nonassociative 
+// yf postfix left-associative
+ExpressionInfinity returns PrologExpression:
+//	Expression1200xfx;
+Expression1000xfy;
+
+//Expression1200xfx returns PrologExpression:
+//	Expression1200fx ({PrologExpression.left=current} op=OP1200XFX right=Expression1200fx)?;
+
+//Expression1200fx returns UnaryExpression:
+//	(op=OP1200FX)? right=Expression1150fx;
+
+//Expression1150fx returns UnaryExpression:
+//	(op=OP1150FX)? right=Expression1100xfy;
+
+//Expression1100xfy returns PrologExpression:
+//	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
+
+//Expression1050xfy returns PrologExpression:
+//	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
+
+Expression1000xfy returns PrologExpression:
+	Expression954xfy ({PrologExpression.left=current} op=OP1000XFY right=Expression1000xfy)?;
+
+Expression954xfy returns PrologExpression:
+	Expression700xfx ({PrologExpression.left=current} op=OP954XFY right=Expression954xfy)?;
+
+//Expression900fy returns UnaryExpression:
+//	op=OP900FY right=Expression900fy | right=Expression900fx;
+
+//Expression900fx returns UnaryExpression:
+//	(op=OP900FX)? right=Expression700xfx;
+
+Expression700xfx returns PrologExpression:
+	Expression600xfy ({PrologExpression.left=current} op=(OP700XFX|OP700XFXR|OP700XFXL) right=Expression600xfy)?;
+
+Expression600xfy returns PrologExpression:
+	Expression500yfx ({PrologExpression.left=current} op=OP600XFY right=Expression600xfy)?;
+
+Expression500yfx returns PrologExpression:
+	Expression400yfx ({PrologExpression.left=current} op=OP500YFX right=Expression400yfx)*;
+
+//Expression500fx returns UnaryExpression:
+//	(op=OP500FX)? right=Expression400yfx;
+
+Expression400yfx returns PrologExpression:
+	Expression200xfx ({PrologExpression.left=current} op=OP400YFX right=Expression200xfx)*;
+
+Expression200xfx returns PrologExpression:
+	Expression200xfy ({PrologExpression.left=current} op=OP200XFX right=Expression200xfy)?;
+
+Expression200xfy returns PrologExpression:
+	Expression0 ({PrologExpression.left=current} op=OP200XFY right=Expression200xfy)?;
+
+Expression0 returns PrologExpression:
+	{AtomExpression} atom=ATOMS ('(' terms=ExpressionInfinity ')')?
+	| {VariableExpression} name=VARIABLE
+	| {StringExpression} value=STRING
+	| {NumberExpression} value=NUMBER
+	| {ListExpression} '[' (head=ExpressionInfinity ('|' tail=ExpressionInfinity)?)? ']'
+	| '(' ExpressionInfinity ')';
+
+// Trace expressions    
+  
+TraceExpression:
+	{TraceExpression} 
+	'trace_expression' '{'
+	 	'id:' name=ID
+	 	((bodyL+='body:' (terms+=Term)+) |
+	 	(rolesL+='roles:' (roles+=Role (OP1000XFY)?)*) |
+	 	(typesL+='types:' (types+=EventType)*) |
+	 	(modulesL+='modules:' (modules+=Module)*) |
+	 	(decentralizedL+='decentralized:' decentralized+=('true'|'false')) |
+	 	(partitionL+='partition:' partition+=Partition) |
+	 	(constraintsL+='constraints:' (constraints+=Constraint)*) |
+	 	(guiL+='gui:' gui+=('true'|'false')) |
+	 	(minimalL+='minimal:' minimal+=('true'|'false')) |
+	 	(thresholdL+='threshold:' threshold+=(NUMBER)) |
+	 	(channelsL+='channels:' channels+=Channel))+
+	'}';
+	
+Term:
+	name=ID '<-' expr=AndExpr
+;
+
+AndExpr returns Expression:
+	CatExpr ({AndExpr.left=current} =>operator='/\\' right=CatExpr)*
+;
+
+CatExpr returns Expression:
+	ShuffleExpr ({CatExpr.left=current} =>operator='*' right=ShuffleExpr)*
+;
+
+ShuffleExpr returns Expression:
+	UnionExpr ({ShuffleExpr.left=current} =>operator='|' right=UnionExpr)*
+;
+
+UnionExpr returns Expression:
+	Primary ({UnionExpr.left=current} =>operator='\\/' right=Primary)*
+;
+
+Primary returns Expression:
+	({SeqExpr} seqExpr=SeqExpr) |
+	({FilterExpr} filterExpr=FilterExpr) | 
+	({VarExpr} varExpr=VarExpr) | 
+	({TerminalExpr} terminalExpr=TerminalExpr)
+;
+
+VarExpr returns Expression:
+	(OP700XFXL variable=VARIABLE OP1000XFY bodyVar=Primary OP700XFXR)
+;
+
+FilterExpr returns Expression:
+	((typeFilter=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1 bodyFilter=(Primary)))
+;
+
+SeqExpr returns Expression:
+	(((typeSeq=[EventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=(Primary)))
+;
+
+TerminalExpr returns Expression: 
+	((eps='epsilon' | term=[Term] | '(' expr=AndExpr ')'))
+;
+
+EventType:
+	((name=ID) ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' (msgs+=Msg)* '}' ('[' channel=[Channel] ']')?)
+;
+
+Msg:
+	((('[' async_sender=[Role] '=>' ']' receiver=[Role])|(sender=[Role] '[' '=>' async_receiver=[Role] ']')|(sender=[Role] '=>' receiver=[Role])) OP600XFY ((performative=ATOM '(' content=Expression0 ')')|(content=Expression0)) ('[' conditions=ExpressionInfinity ']')?)
+;
+
+Channel:
+	name=ID '[' reliability=NUMBER ']'
+;
+
+Role:
+	name=ID ('$' class=(VARIABLE | ATOM) ('(' (args+=Argument (OP1000XFY)?)* ')')?'$')?
+;
+
+Argument:
+	 STRING
+;
+
+Partition:
+	{Partition} '[' (constraints+=(Together) (OP1000XFY)?)* ']'
+;
+
+Together:
+	{Together} '[' (roles+=[Role] (OP1000XFY)?)+ ']'
+;
+
+Constraint:
+	'[' (left+=[Role])+ ']' together='-><-' '[' (right+=[Role])+ ']' |
+	'[' (left+=[Role])+ ']' split='<-->' '[' (right+=[Role])+ ']' |
+	{Singletons} 'number_singletons' OP600XFY parMin=('('|'[') (minSingletons=INT) OP1000XFY (maxSingletons=INT) parMax=(')'|']') |
+	{Size} 'size_constraints' OP600XFY parMin=('('|'[') (minSize=INT) OP1000XFY (maxSize=INT) parMax=(')'|']') |
+	{Cardinality} 'number_constraints' OP600XFY parMin=('('|'[') (minCardinality=INT) OP1000XFY (maxCardinality=INT) parMax=(')'|']')
+;
+
+Module:
+	VARIABLE | ATOM
+;
+
+
+
+
+
+
+
+
+
+
+
+

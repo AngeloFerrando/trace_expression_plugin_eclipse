@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.emf.mwe2.launch.Mwe2LaunchConfigurationType">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/it.unige.dibris.trace_expression_language"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.parent&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.ide&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.target&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.feature&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/it.unige.dibris.trace_expression_language.repository&quot; type=&quot;4&quot;/&gt;&#10;;&lt;/resources&gt;}"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="it.unige.dibris.trace_expression_language.GenerateTExp"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="it.unige.dibris.trace_expression_language"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
+</launchConfiguration>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.unige.it/dibris/trace_expression_language/TExp"
+			class = "it.unige.dibris.trace_expression_language.tExp.TExpPackage"
+			genModel = "model/generated/TExp.genmodel" />
+	</extension>
+</plugin>

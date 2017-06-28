@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<feature id="it.unige.dibris.trace_expression_language.feature" version="0.0.0">
+		<category name="main"/>
+	</feature>
+	<feature id="it.unige.dibris.trace_expression_language.feature.source" version="0.0.0">
+		<category name="main.source"/>
+	</feature>
+	<category-def name="main" label="TExp"/>
+	<category-def name="main.source" label="TExp (Sources)"/>
+</site>

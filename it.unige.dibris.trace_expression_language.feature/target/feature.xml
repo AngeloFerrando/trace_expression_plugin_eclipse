@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="it.unige.dibris.trace_expression_language.feature"
+	label="TExp Feature "
+	version="1.0.0.201706231122">
+	<plugin
+			id="it.unige.dibris.trace_expression_language"
+			download-size="284"
+			install-size="706"
+			version="1.0.0.201706231122"
+			unpack="false"/>
+	<plugin
+			id="it.unige.dibris.trace_expression_language.ide"
+			download-size="120"
+			install-size="485"
+			version="1.0.0.201706231122"
+			unpack="false"/>
+	<plugin
+			id="it.unige.dibris.trace_expression_language.ui"
+			download-size="32"
+			install-size="71"
+			version="1.0.0.201706231122"
+			unpack="false"/>
+</feature>

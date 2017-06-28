@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: it.unige.dibris.trace_expression_language.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: it.unige.dibris.trace_expression_language,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: it.unige.dibris.trace_expression_language.ide.contentassist.antlr,
+ it.unige.dibris.trace_expression_language.ide.contentassist.antlr.internal
+
