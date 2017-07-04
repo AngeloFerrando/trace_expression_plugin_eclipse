@@ -124,6 +124,7 @@ public class TExpParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMsgAccess().getGroup_2_0(), "rule__Msg__Group_2_0__0");
 					put(grammarAccess.getMsgAccess().getGroup_3(), "rule__Msg__Group_3__0");
 					put(grammarAccess.getChannelAccess().getGroup(), "rule__Channel__Group__0");
+					put(grammarAccess.getChannelAccess().getGroup_1(), "rule__Channel__Group_1__0");
 					put(grammarAccess.getRoleAccess().getGroup(), "rule__Role__Group__0");
 					put(grammarAccess.getRoleAccess().getGroup_1(), "rule__Role__Group_1__0");
 					put(grammarAccess.getRoleAccess().getGroup_1_2(), "rule__Role__Group_1_2__0");
@@ -229,7 +230,7 @@ public class TExpParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMsgAccess().getContentAssignment_2_1(), "rule__Msg__ContentAssignment_2_1");
 					put(grammarAccess.getMsgAccess().getConditionsAssignment_3_1(), "rule__Msg__ConditionsAssignment_3_1");
 					put(grammarAccess.getChannelAccess().getNameAssignment_0(), "rule__Channel__NameAssignment_0");
-					put(grammarAccess.getChannelAccess().getReliabilityAssignment_2(), "rule__Channel__ReliabilityAssignment_2");
+					put(grammarAccess.getChannelAccess().getReliabilityAssignment_1_1(), "rule__Channel__ReliabilityAssignment_1_1");
 					put(grammarAccess.getRoleAccess().getNameAssignment_0(), "rule__Role__NameAssignment_0");
 					put(grammarAccess.getRoleAccess().getClassAssignment_1_1(), "rule__Role__ClassAssignment_1_1");
 					put(grammarAccess.getRoleAccess().getArgsAssignment_1_2_1_0(), "rule__Role__ArgsAssignment_1_2_1_0");

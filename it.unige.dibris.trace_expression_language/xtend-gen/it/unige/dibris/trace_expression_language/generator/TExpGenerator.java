@@ -935,20 +935,32 @@ public class TExpGenerator extends AbstractGenerator {
     Channel _channel = eventType.getChannel();
     boolean _tripleNotEquals = (_channel != null);
     if (_tripleNotEquals) {
-      String _str = str;
-      String _name = eventType.getName();
-      String _plus = ((("reliable(" + this.tExpCurrentName) + ", ") + _name);
-      String _plus_1 = (_plus + ", ");
       String _reliability = eventType.getChannel().getReliability();
-      String _plus_2 = (_plus_1 + _reliability);
-      String _plus_3 = (_plus_2 + ").\n");
-      str = (_str + _plus_3);
+      boolean _tripleNotEquals_1 = (_reliability != null);
+      if (_tripleNotEquals_1) {
+        String _str = str;
+        String _name = eventType.getName();
+        String _plus = ((("reliable(" + this.tExpCurrentName) + ", ") + _name);
+        String _plus_1 = (_plus + ", ");
+        String _reliability_1 = eventType.getChannel().getReliability();
+        String _plus_2 = (_plus_1 + _reliability_1);
+        String _plus_3 = (_plus_2 + ").\n");
+        str = (_str + _plus_3);
+      } else {
+        String _str_1 = str;
+        String _name_1 = eventType.getName();
+        String _plus_4 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_1);
+        String _plus_5 = (_plus_4 + ", ");
+        String _plus_6 = (_plus_5 + "1");
+        String _plus_7 = (_plus_6 + ").\n");
+        str = (_str_1 + _plus_7);
+      }
     } else {
-      String _str_1 = str;
-      String _name_1 = eventType.getName();
-      String _plus_4 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_1);
-      String _plus_5 = (_plus_4 + ", 1).\n");
-      str = (_str_1 + _plus_5);
+      String _str_2 = str;
+      String _name_2 = eventType.getName();
+      String _plus_8 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_2);
+      String _plus_9 = (_plus_8 + ", 1).\n");
+      str = (_str_2 + _plus_9);
     }
     return str;
   }

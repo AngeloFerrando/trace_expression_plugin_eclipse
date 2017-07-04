@@ -52,7 +52,7 @@ class ContractivenessCheck {
 		} else if(expr.typeFilter !== null && expr.bodyFilter !== null){
 			return isContractive(expr.bodyFilter, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
+			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
 				return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
 			} else{
 				return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)

@@ -210,7 +210,7 @@ class MonitoringSafePartitionCheck {
 			}
 			
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
+			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
 				var eventTypes = new ArrayList<EventType>()
 				eventTypes.add(expr.seqExpr.typeSeq)
 				return eventTypes
@@ -302,7 +302,7 @@ class MonitoringSafePartitionCheck {
 			return evTypes2
 		} else if(expr instanceof SeqExpr){		
 			if(mayHalt(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>())){
-				if (expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.typeSeq.channel.reliability) >= threshold){
+				if (expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.typeSeq.channel.reliability) >= threshold){
 					var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 					var evTypes1 = new ArrayList<EventType>()
 					evTypes1.add(expr.seqExpr.typeSeq)
@@ -413,7 +413,7 @@ class MonitoringSafePartitionCheck {
 				}
 			}
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
+			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
 				extractCriticalPoints(expr.seqExpr.bodySeq, criticalPoints, assocT, assoc, threshold)
 				var eventTypes1 = new ArrayList<EventType>()
 				eventTypes1.add(expr.seqExpr.typeSeq)

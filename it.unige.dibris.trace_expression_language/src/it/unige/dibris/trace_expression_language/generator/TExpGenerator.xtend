@@ -347,7 +347,11 @@ class TExpGenerator extends AbstractGenerator {
 			str += '\n' + 'event(' + tExpCurrentName + ', ' + msg.compile + ').\n'
 		}
 		if(eventType.channel !== null){
-			str += 'reliable(' + tExpCurrentName + ', ' + eventType.name + ', ' + eventType.channel.reliability + ').\n'
+			if(eventType.channel.reliability !== null){
+				str += 'reliable(' + tExpCurrentName + ', ' + eventType.name + ', ' + eventType.channel.reliability + ').\n'
+			} else{
+				str += 'reliable(' + tExpCurrentName + ', ' + eventType.name + ', ' + '1' + ').\n'
+			}
 		} else{
 			str += 'reliable(' + tExpCurrentName + ', ' + eventType.name + ', 1).\n'
 		}

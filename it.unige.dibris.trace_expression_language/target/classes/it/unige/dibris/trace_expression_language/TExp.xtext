@@ -240,7 +240,7 @@ Msg:
 ;
 
 Channel:
-	name=ID '[' reliability=NUMBER ']'
+	name=ID ('[' reliability=NUMBER ']')?
 ;
 
 Role:

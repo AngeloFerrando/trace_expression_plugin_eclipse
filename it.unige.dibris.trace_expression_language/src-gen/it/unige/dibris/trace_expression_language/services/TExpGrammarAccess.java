@@ -1826,16 +1826,17 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cReliabilityAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cReliabilityNUMBERParserRuleCall_2_0 = (RuleCall)cReliabilityAssignment_2.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cReliabilityAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cReliabilityNUMBERParserRuleCall_1_1_0 = (RuleCall)cReliabilityAssignment_1_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//Channel:
-		//	name=ID '[' reliability=NUMBER ']';
+		//	name=ID ('[' reliability=NUMBER ']')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '[' reliability=NUMBER ']'
+		//name=ID ('[' reliability=NUMBER ']')?
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -1844,17 +1845,20 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDParserRuleCall_0_0() { return cNameIDParserRuleCall_0_0; }
 		
+		//('[' reliability=NUMBER ']')?
+		public Group getGroup_1() { return cGroup_1; }
+		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+		public Keyword getLeftSquareBracketKeyword_1_0() { return cLeftSquareBracketKeyword_1_0; }
 		
 		//reliability=NUMBER
-		public Assignment getReliabilityAssignment_2() { return cReliabilityAssignment_2; }
+		public Assignment getReliabilityAssignment_1_1() { return cReliabilityAssignment_1_1; }
 		
 		//NUMBER
-		public RuleCall getReliabilityNUMBERParserRuleCall_2_0() { return cReliabilityNUMBERParserRuleCall_2_0; }
+		public RuleCall getReliabilityNUMBERParserRuleCall_1_1_0() { return cReliabilityNUMBERParserRuleCall_1_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+		public Keyword getRightSquareBracketKeyword_1_2() { return cRightSquareBracketKeyword_1_2; }
 	}
 	public class RoleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Role");
@@ -2996,7 +3000,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Channel:
-	//	name=ID '[' reliability=NUMBER ']';
+	//	name=ID ('[' reliability=NUMBER ']')?;
 	public ChannelElements getChannelAccess() {
 		return pChannel;
 	}

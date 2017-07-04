@@ -220,19 +220,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Channel returns Channel
 	 *
 	 * Constraint:
-	 *     (name=ID reliability=NUMBER)
+	 *     (name=ID reliability=NUMBER?)
 	 */
 	protected void sequence_Channel(ISerializationContext context, Channel semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TExpPackage.Literals.CHANNEL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TExpPackage.Literals.CHANNEL__NAME));
-			if (transientValues.isValueTransient(semanticObject, TExpPackage.Literals.CHANNEL__RELIABILITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TExpPackage.Literals.CHANNEL__RELIABILITY));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getChannelAccess().getNameIDParserRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_2_0(), semanticObject.getReliability());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -3216,33 +3216,35 @@ ruleChannel returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_1='['
-		{
-			newLeafNode(otherlv_1, grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1());
-		}
 		(
+			otherlv_1='['
+			{
+				newLeafNode(otherlv_1, grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1_0());
+			}
 			(
-				{
-					newCompositeNode(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_2_0());
-				}
-				lv_reliability_2_0=ruleNUMBER
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getChannelRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_1_1_0());
 					}
-					set(
-						$current,
-						"reliability",
-						lv_reliability_2_0,
-						"it.unige.dibris.trace_expression_language.TExp.NUMBER");
-					afterParserOrEnumRuleCall();
-				}
+					lv_reliability_2_0=ruleNUMBER
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getChannelRule());
+						}
+						set(
+							$current,
+							"reliability",
+							lv_reliability_2_0,
+							"it.unige.dibris.trace_expression_language.TExp.NUMBER");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)
-		otherlv_3=']'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getChannelAccess().getRightSquareBracketKeyword_3());
-		}
+			otherlv_3=']'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getChannelAccess().getRightSquareBracketKeyword_1_2());
+			}
+		)?
 	)
 ;
 

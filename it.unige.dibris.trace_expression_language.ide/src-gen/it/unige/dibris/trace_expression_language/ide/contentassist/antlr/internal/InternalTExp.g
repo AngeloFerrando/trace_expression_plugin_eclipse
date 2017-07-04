@@ -6989,7 +6989,6 @@ rule__Channel__Group__1
 	}
 :
 	rule__Channel__Group__1__Impl
-	rule__Channel__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -7001,62 +7000,90 @@ rule__Channel__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1()); }
+	{ before(grammarAccess.getChannelAccess().getGroup_1()); }
+	(rule__Channel__Group_1__0)?
+	{ after(grammarAccess.getChannelAccess().getGroup_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Channel__Group_1__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Channel__Group_1__0__Impl
+	rule__Channel__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Channel__Group_1__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1_0()); }
 	'['
-	{ after(grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1()); }
+	{ after(grammarAccess.getChannelAccess().getLeftSquareBracketKeyword_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Channel__Group__2
+rule__Channel__Group_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Channel__Group__2__Impl
-	rule__Channel__Group__3
+	rule__Channel__Group_1__1__Impl
+	rule__Channel__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Channel__Group__2__Impl
+rule__Channel__Group_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getChannelAccess().getReliabilityAssignment_2()); }
-	(rule__Channel__ReliabilityAssignment_2)
-	{ after(grammarAccess.getChannelAccess().getReliabilityAssignment_2()); }
+	{ before(grammarAccess.getChannelAccess().getReliabilityAssignment_1_1()); }
+	(rule__Channel__ReliabilityAssignment_1_1)
+	{ after(grammarAccess.getChannelAccess().getReliabilityAssignment_1_1()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Channel__Group__3
+rule__Channel__Group_1__2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Channel__Group__3__Impl
+	rule__Channel__Group_1__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Channel__Group__3__Impl
+rule__Channel__Group_1__2__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getChannelAccess().getRightSquareBracketKeyword_3()); }
+	{ before(grammarAccess.getChannelAccess().getRightSquareBracketKeyword_1_2()); }
 	']'
-	{ after(grammarAccess.getChannelAccess().getRightSquareBracketKeyword_3()); }
+	{ after(grammarAccess.getChannelAccess().getRightSquareBracketKeyword_1_2()); }
 )
 ;
 finally {
@@ -10230,15 +10257,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Channel__ReliabilityAssignment_2
+rule__Channel__ReliabilityAssignment_1_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_2_0()); }
+		{ before(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_1_1_0()); }
 		ruleNUMBER
-		{ after(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_2_0()); }
+		{ after(grammarAccess.getChannelAccess().getReliabilityNUMBERParserRuleCall_1_1_0()); }
 	)
 ;
 finally {

@@ -285,7 +285,7 @@ public class MonitoringSafePartitionCheck {
               }
             } else {
               if ((expr instanceof SeqExpr)) {
-                if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
+                if ((((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || (((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability() == null)) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
                   ArrayList<EventType> eventTypes = new ArrayList<EventType>();
                   eventTypes.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
                   return eventTypes;
@@ -422,7 +422,7 @@ public class MonitoringSafePartitionCheck {
                 HashMap<String, Expression> _hashMap = new HashMap<String, Expression>();
                 boolean _mayHalt = MonitoringSafePartitionCheck.mayHalt(_bodySeq, assocT, _hashMap);
                 if (_mayHalt) {
-                  if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
+                  if ((((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || (((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability() == null)) || ((Double.valueOf(((SeqExpr)expr).getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
                     List<EventType> evTypes2_4 = MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
                     ArrayList<EventType> evTypes1_3 = new ArrayList<EventType>();
                     evTypes1_3.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
@@ -584,7 +584,7 @@ public class MonitoringSafePartitionCheck {
             }
           } else {
             if ((expr instanceof SeqExpr)) {
-              if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() > 0))) {
+              if ((((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || (((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability() == null)) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() > 0))) {
                 MonitoringSafePartitionCheck.extractCriticalPoints(((SeqExpr)expr).getSeqExpr().getBodySeq(), criticalPoints, assocT, assoc, threshold);
                 ArrayList<EventType> eventTypes1_2 = new ArrayList<EventType>();
                 eventTypes1_2.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());

@@ -57,7 +57,7 @@ public class ContractivenessCheck {
                 return ContractivenessCheck.isContractive(expr.getBodyFilter(), (depth + 1), deepestseq, assocT, assocD, threshold);
               } else {
                 if ((expr instanceof SeqExpr)) {
-                  if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
+                  if ((((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || (((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability() == null)) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
                     return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), depth, assocT, assocD, threshold);
                   } else {
                     return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), deepestseq, assocT, assocD, threshold);
