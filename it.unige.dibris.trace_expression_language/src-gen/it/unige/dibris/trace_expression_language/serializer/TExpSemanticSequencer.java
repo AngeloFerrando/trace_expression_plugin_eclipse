@@ -769,7 +769,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *             (guiL+='gui:' (gui+='true' | gui+='false')) | 
 	 *             (minimalL+='minimal:' (minimal+='true' | minimal+='false')) | 
 	 *             (thresholdL+='threshold:' threshold+=NUMBER) | 
-	 *             (channelsL+='channels:' channels+=Channel)
+	 *             (channelsL+='channels:' channels+=Channel+)
 	 *         )+
 	 *     )
 	 */

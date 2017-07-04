@@ -728,7 +728,7 @@ public class TExpValidator extends AbstractTExpValidator {
         node_9.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getChannelsL() != null) && (tExp.getChannels().size() > 1))) {
+    if (((tExp.getChannelsL() != null) && (tExp.getChannelsL().size() > 1))) {
       final ICompositeNode node_10 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
         "only one \'channels:\' field is allowed", tExp, 

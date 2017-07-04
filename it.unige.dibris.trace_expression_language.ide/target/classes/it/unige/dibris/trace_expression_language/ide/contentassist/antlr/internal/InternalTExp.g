@@ -4266,9 +4266,16 @@ rule__TraceExpression__Group_5_10__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
-	(rule__TraceExpression__ChannelsAssignment_5_10_1)
-	{ after(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
+	(
+		{ before(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
+		(rule__TraceExpression__ChannelsAssignment_5_10_1)
+		{ after(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
+	)
+	(
+		{ before(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
+		(rule__TraceExpression__ChannelsAssignment_5_10_1)*
+		{ after(grammarAccess.getTraceExpressionAccess().getChannelsAssignment_5_10_1()); }
+	)
 )
 ;
 finally {

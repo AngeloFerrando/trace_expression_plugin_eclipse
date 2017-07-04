@@ -290,7 +290,26 @@ public class MonitoringSafePartitionCheck {
                   eventTypes.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
                   return eventTypes;
                 } else {
-                  return MonitoringSafePartitionCheck.firstEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
+                  Double _valueOf = Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability());
+                  boolean _greaterThan = ((_valueOf).doubleValue() > 0);
+                  if (_greaterThan) {
+                    List<EventType> evTypes2_4 = MonitoringSafePartitionCheck.firstEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
+                    boolean found = false;
+                    for (final EventType evType2_4 : evTypes2_4) {
+                      String _name = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
+                      String _name_1 = evType2_4.getName();
+                      boolean _equals = Objects.equal(_name, _name_1);
+                      if (_equals) {
+                        found = true;
+                      }
+                    }
+                    if ((!found)) {
+                      evTypes2_4.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
+                    }
+                    return evTypes2_4;
+                  } else {
+                    return MonitoringSafePartitionCheck.firstEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
+                  }
                 }
               } else {
                 if ((expr instanceof FilterExpr)) {
@@ -399,26 +418,49 @@ public class MonitoringSafePartitionCheck {
               return evTypes2_3;
             } else {
               if ((expr instanceof SeqExpr)) {
-                if ((MonitoringSafePartitionCheck.mayHalt(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, new HashMap<String, Expression>()) && ((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold)))) {
-                  List<EventType> evTypes2_4 = MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
-                  ArrayList<EventType> evTypes1_3 = new ArrayList<EventType>();
-                  evTypes1_3.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
-                  boolean found = false;
-                  for (final EventType evType2_3 : evTypes2_4) {
-                    String _name = evTypes1_3.get(0).getName();
-                    String _name_1 = evType2_3.getName();
-                    boolean _equals = Objects.equal(_name, _name_1);
-                    if (_equals) {
-                      found = true;
+                Expression _bodySeq = ((SeqExpr)expr).getSeqExpr().getBodySeq();
+                HashMap<String, Expression> _hashMap = new HashMap<String, Expression>();
+                boolean _mayHalt = MonitoringSafePartitionCheck.mayHalt(_bodySeq, assocT, _hashMap);
+                if (_mayHalt) {
+                  if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
+                    List<EventType> evTypes2_4 = MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
+                    ArrayList<EventType> evTypes1_3 = new ArrayList<EventType>();
+                    evTypes1_3.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
+                    boolean found = false;
+                    for (final EventType evType2_3 : evTypes2_4) {
+                      String _name = evTypes1_3.get(0).getName();
+                      String _name_1 = evType2_3.getName();
+                      boolean _equals = Objects.equal(_name, _name_1);
+                      if (_equals) {
+                        found = true;
+                      }
+                    }
+                    if ((!found)) {
+                      evTypes2_4.add(evTypes1_3.get(0));
+                    }
+                    return evTypes2_4;
+                  } else {
+                    Double _valueOf = Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability());
+                    boolean _greaterThan = ((_valueOf).doubleValue() > 0);
+                    if (_greaterThan) {
+                      List<EventType> evTypes2_5 = MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
+                      boolean found_1 = false;
+                      for (final EventType evType2_4 : evTypes2_5) {
+                        String _name_2 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
+                        String _name_3 = evType2_4.getName();
+                        boolean _equals_1 = Objects.equal(_name_2, _name_3);
+                        if (_equals_1) {
+                          found_1 = true;
+                        }
+                      }
+                      if ((!found_1)) {
+                        evTypes2_5.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
+                      }
+                      return evTypes2_5;
                     }
                   }
-                  if ((!found)) {
-                    evTypes2_4.add(evTypes1_3.get(0));
-                  }
-                  return evTypes2_4;
-                } else {
-                  return MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
                 }
+                return MonitoringSafePartitionCheck.lastEventTypes(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc, threshold);
               } else {
                 if ((expr instanceof FilterExpr)) {
                   return MonitoringSafePartitionCheck.lastEventTypes(((FilterExpr)expr).getFilterExpr().getBodyFilter(), assocT, assoc, threshold);
@@ -542,7 +584,7 @@ public class MonitoringSafePartitionCheck {
             }
           } else {
             if ((expr instanceof SeqExpr)) {
-              if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() >= threshold))) {
+              if (((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() > 0))) {
                 MonitoringSafePartitionCheck.extractCriticalPoints(((SeqExpr)expr).getSeqExpr().getBodySeq(), criticalPoints, assocT, assoc, threshold);
                 ArrayList<EventType> eventTypes1_2 = new ArrayList<EventType>();
                 eventTypes1_2.add(((SeqExpr)expr).getSeqExpr().getTypeSeq());
@@ -550,24 +592,22 @@ public class MonitoringSafePartitionCheck {
                 HashMap<String, Expression> _hashMap_4 = new HashMap<String, Expression>();
                 List<EventType> eventTypes2_2 = MonitoringSafePartitionCheck.firstEventTypes(_bodySeq, assocT, _hashMap_4, threshold);
                 for (final EventType eventType1_2 : eventTypes1_2) {
-                  {
-                    boolean found = false;
-                    for (final EventType eventType2 : eventTypes2_2) {
-                      {
-                        TreeSet<String> _rolesFromEventType = MonitoringSafePartitionCheck.getRolesFromEventType(eventType1_2);
-                        for (final String r1 : _rolesFromEventType) {
-                          TreeSet<String> _rolesFromEventType_1 = MonitoringSafePartitionCheck.getRolesFromEventType(eventType2);
-                          for (final String r2 : _rolesFromEventType_1) {
-                            boolean _equals = Objects.equal(r1, r2);
-                            if (_equals) {
-                              found = true;
-                            }
+                  for (final EventType eventType2 : eventTypes2_2) {
+                    {
+                      boolean found = false;
+                      TreeSet<String> _rolesFromEventType = MonitoringSafePartitionCheck.getRolesFromEventType(eventType1_2);
+                      for (final String r1 : _rolesFromEventType) {
+                        TreeSet<String> _rolesFromEventType_1 = MonitoringSafePartitionCheck.getRolesFromEventType(eventType2);
+                        for (final String r2 : _rolesFromEventType_1) {
+                          boolean _equals = Objects.equal(r1, r2);
+                          if (_equals) {
+                            found = true;
                           }
                         }
-                        if ((!found)) {
-                          MonitoringSafePartitionCheck.CriticalPoint _criticalPoint = new MonitoringSafePartitionCheck.CriticalPoint(eventType1_2, eventType2, expr);
-                          criticalPoints.add(_criticalPoint);
-                        }
+                      }
+                      if ((!found)) {
+                        MonitoringSafePartitionCheck.CriticalPoint _criticalPoint = new MonitoringSafePartitionCheck.CriticalPoint(eventType1_2, eventType2, expr);
+                        criticalPoints.add(_criticalPoint);
                       }
                     }
                   }

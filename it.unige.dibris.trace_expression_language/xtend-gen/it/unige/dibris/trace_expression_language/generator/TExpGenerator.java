@@ -629,24 +629,34 @@ public class TExpGenerator extends AbstractGenerator {
         String _compile = this.compile(type);
         str = (_str_6 + _compile);
       }
-      String _str_7 = str;
+      if (((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0))) {
+        String _str_7 = str;
+        String _get = tExp.getThreshold().get(0);
+        String _plus_2 = (("\n\n" + "threshold(") + _get);
+        String _plus_3 = (_plus_2 + ").\n\n");
+        str = (_str_7 + _plus_3);
+      } else {
+        String _str_8 = str;
+        str = (_str_8 + ((("\n\n" + "threshold(") + "1") + ").\n\n"));
+      }
+      String _str_9 = str;
       String _name_1 = tExp.getName();
-      String _plus_2 = (("\n\n" + "trace_expression(") + _name_1);
-      String _plus_3 = (_plus_2 + ", Main) :- \n");
-      str = (_str_7 + _plus_3);
+      String _plus_4 = (("\n\n" + "trace_expression(") + _name_1);
+      String _plus_5 = (_plus_4 + ", Main) :- \n");
+      str = (_str_9 + _plus_5);
       EList<Term> _terms = tExp.getTerms();
       for (final Term term : _terms) {
-        String _str_8 = str;
+        String _str_10 = str;
         String _compile_1 = this.compile(term);
-        String _plus_4 = ("\t" + _compile_1);
-        String _plus_5 = (_plus_4 + ",\n");
-        str = (_str_8 + _plus_5);
+        String _plus_6 = ("\t" + _compile_1);
+        String _plus_7 = (_plus_6 + ",\n");
+        str = (_str_10 + _plus_7);
       }
       int _length_1 = str.length();
       int _minus_1 = (_length_1 - 2);
       String _substring_1 = str.substring(0, _minus_1);
-      String _plus_6 = (_substring_1 + ", numbervars(Main, 0, _).\n");
-      _xblockexpression = str = _plus_6;
+      String _plus_8 = (_substring_1 + ", numbervars(Main, 0, _).\n");
+      _xblockexpression = str = _plus_8;
     }
     return _xblockexpression;
   }

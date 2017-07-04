@@ -790,7 +790,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//	types+=EventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' |
 		//	'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
 		//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
-		//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel)+
+		//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -798,7 +798,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//OP1000XFY?)* | typesL+='types:' types+=EventType* | modulesL+='modules:' modules+=Module* |
 		//decentralizedL+='decentralized:' decentralized+=('true' | 'false') | partitionL+='partition:' partition+=Partition |
 		//constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:'
-		//minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel)+
+		//minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -824,7 +824,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' | 'false') |
 		//partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:'
 		//gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER
-		//| channelsL+='channels:' channels+=Channel)+
+		//| channelsL+='channels:' channels+=Channel+)+
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
 		//bodyL+='body:' terms+=Term+
@@ -1001,7 +1001,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//NUMBER
 		public RuleCall getThresholdNUMBERParserRuleCall_5_9_1_0() { return cThresholdNUMBERParserRuleCall_5_9_1_0; }
 		
-		//channelsL+='channels:' channels+=Channel
+		//channelsL+='channels:' channels+=Channel+
 		public Group getGroup_5_10() { return cGroup_5_10; }
 		
 		//channelsL+='channels:'
@@ -1010,7 +1010,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//'channels:'
 		public Keyword getChannelsLChannelsKeyword_5_10_0_0() { return cChannelsLChannelsKeyword_5_10_0_0; }
 		
-		//channels+=Channel
+		//channels+=Channel+
 		public Assignment getChannelsAssignment_5_10_1() { return cChannelsAssignment_5_10_1; }
 		
 		//Channel
@@ -2860,7 +2860,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	//	types+=EventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' |
 	//	'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
 	//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
-	//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel)+
+	//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 	//	'}';
 	public TraceExpressionElements getTraceExpressionAccess() {
 		return pTraceExpression;

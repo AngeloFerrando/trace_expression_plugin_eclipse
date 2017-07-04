@@ -1814,7 +1814,7 @@ ruleTraceExpression returns [EObject current=null]
 							afterParserOrEnumRuleCall();
 						}
 					)
-				)
+				)+
 			)
 		)+
 		otherlv_28='}'

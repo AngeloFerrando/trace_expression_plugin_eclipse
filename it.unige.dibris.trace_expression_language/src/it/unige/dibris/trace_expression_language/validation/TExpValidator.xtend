@@ -599,7 +599,7 @@ class TExpValidator extends AbstractTExpValidator {
 			                OnlyOne
 			            )
 		}
-		if(tExp.channelsL !== null && tExp.channels.size > 1){
+		if(tExp.channelsL !== null && tExp.channelsL.size > 1){
 			val node = NodeModelUtils.findActualNodeFor(tExp)
 				messageAcceptor.acceptError(
 			                'only one \'channels:\' field is allowed',

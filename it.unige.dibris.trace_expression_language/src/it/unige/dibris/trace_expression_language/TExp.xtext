@@ -185,7 +185,7 @@ TraceExpression:
 	 	(guiL+='gui:' gui+=('true'|'false')) |
 	 	(minimalL+='minimal:' minimal+=('true'|'false')) |
 	 	(thresholdL+='threshold:' threshold+=(NUMBER)) |
-	 	(channelsL+='channels:' channels+=Channel))+
+	 	(channelsL+='channels:' (channels+=Channel)+))+
 	'}';
 	
 Term:

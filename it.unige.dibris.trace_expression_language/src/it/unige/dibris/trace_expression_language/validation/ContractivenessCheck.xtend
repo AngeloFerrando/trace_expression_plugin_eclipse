@@ -25,37 +25,45 @@ class ContractivenessCheck {
 		for(term : terms){
 			if(term.name.equals("Main") || term.name.equals("main")){
 				assocD.put(term.name, 0);
-				return isContractive(term.expr, 0, -1, assocT, assocD)
+				var threshold = 1.0
+				if(tExp.threshold !== null && tExp.threshold.size > 0){
+					threshold = Double.valueOf(tExp.threshold.get(0))
+				}
+				return isContractive(term.expr, 0, -1, assocT, assocD, threshold)
 			}
 		}
 	}
 	
-	def static boolean isContractive(Expression expr, int depth, int deepestseq, HashMap<String, Expression> assocT, HashMap<String, Integer> assocD){
+	def static boolean isContractive(Expression expr, int depth, int deepestseq, HashMap<String, Expression> assocT, HashMap<String, Integer> assocD, double threshold){
 		if(expr instanceof UnionExpr){
-			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD) 
-					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
+					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof ShuffleExpr){
-			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD) 
-					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
+					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof AndExpr){
-			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD) 
-					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
+					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof CatExpr){
-			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD) 
-					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
+					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof FilterExpr){
-			return isContractive(expr.filterExpr.bodyFilter, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.filterExpr.bodyFilter, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr.typeFilter !== null && expr.bodyFilter !== null){
-			return isContractive(expr.bodyFilter, depth + 1, deepestseq, assocT, assocD)
+			return isContractive(expr.bodyFilter, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof SeqExpr){
-			return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD)
+			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
+				return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
+			} else{
+				return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)
+			}
 		} else if(expr.typeSeq !== null && expr.bodySeq !== null){
-			return isContractive(expr.bodySeq, depth + 1, depth, assocT, assocD)
+			return isContractive(expr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
 		} else if(expr instanceof VarExpr){
-			return isContractive(expr.varExpr.bodyVar, depth + 1, depth, assocT, assocD)
+			return isContractive(expr.varExpr.bodyVar, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof TerminalExpr){
 			if(expr.terminalExpr.expr !== null){
-				return isContractive(expr.terminalExpr.expr, depth, deepestseq, assocT, assocD)
+				return isContractive(expr.terminalExpr.expr, depth, deepestseq, assocT, assocD, threshold)
 				/*var e = expr as Expression
 				var previous = e
 				while(e instanceof TerminalExpr && (e as TerminalExpr).terminalExpr !== null){
@@ -83,7 +91,7 @@ class ContractivenessCheck {
 						return assocD.get(expr.terminalExpr.term.name) <= deepestseq
 					}
 					assocD.put(expr.terminalExpr.term.name, depth)
-					return isContractive(assocT.get(expr.terminalExpr.term.name), depth, deepestseq, assocT, assocD)
+					return isContractive(assocT.get(expr.terminalExpr.term.name), depth, deepestseq, assocT, assocD, threshold)
 				} else if(expr.terminalExpr.eps !== null){
 					return true;
 				} else{
@@ -95,7 +103,7 @@ class ContractivenessCheck {
 					return assocD.get(expr.term.name) <= deepestseq
 				}
 				assocD.put(expr.term.name, depth)
-				return isContractive(assocT.get(expr.term.name), depth, deepestseq, assocT, assocD)
+				return isContractive(assocT.get(expr.term.name), depth, deepestseq, assocT, assocD, threshold)
 		} else if(expr.eps !== null){
 			return true;
 		} else{

@@ -11,7 +11,6 @@ import it.unige.dibris.trace_expression_language.TExpStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class TExpStandaloneSetup extends TExpStandaloneSetupGenerated {
   public static void doSetup() {
-    TExpStandaloneSetup _tExpStandaloneSetup = new TExpStandaloneSetup();
-    _tExpStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new TExpStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }

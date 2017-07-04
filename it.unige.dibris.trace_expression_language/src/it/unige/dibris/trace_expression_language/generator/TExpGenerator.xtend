@@ -235,6 +235,12 @@ class TExpGenerator extends AbstractGenerator {
 			str += type.compile
 		}
 		
+		if(tExp.threshold !== null && tExp.threshold.size > 0){
+			str += '\n\n' + 'threshold(' + tExp.threshold.get(0) + ').\n\n'
+		} else{
+			str += '\n\n' + 'threshold(' + '1' + ').\n\n'
+		}
+		
 		str += '\n\n' + 'trace_expression(' + tExp.name + ', Main) :- \n'
 		for(term : tExp.terms){
 			str += '\t' + term.compile + ',\n'

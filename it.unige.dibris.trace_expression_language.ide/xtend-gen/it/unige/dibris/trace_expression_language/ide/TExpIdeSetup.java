@@ -5,7 +5,6 @@ package it.unige.dibris.trace_expression_language.ide;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import it.unige.dibris.trace_expression_language.TExpRuntimeModule;
 import it.unige.dibris.trace_expression_language.TExpStandaloneSetup;
 import it.unige.dibris.trace_expression_language.ide.TExpIdeModule;
@@ -20,7 +19,6 @@ public class TExpIdeSetup extends TExpStandaloneSetup {
   public Injector createInjector() {
     TExpRuntimeModule _tExpRuntimeModule = new TExpRuntimeModule();
     TExpIdeModule _tExpIdeModule = new TExpIdeModule();
-    Module _mixin = Modules2.mixin(_tExpRuntimeModule, _tExpIdeModule);
-    return Guice.createInjector(_mixin);
+    return Guice.createInjector(Modules2.mixin(_tExpRuntimeModule, _tExpIdeModule));
   }
 }

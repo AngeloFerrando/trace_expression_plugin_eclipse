@@ -214,6 +214,18 @@ class MonitoringSafePartitionCheck {
 				var eventTypes = new ArrayList<EventType>()
 				eventTypes.add(expr.seqExpr.typeSeq)
 				return eventTypes
+			} else if(Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
+				var evTypes2 = firstEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+				var found = false
+				for(evType2 : evTypes2){
+					if(expr.seqExpr.typeSeq.name == evType2.name){
+						found = true
+					}
+				}
+				if(!found){
+					evTypes2.add(expr.seqExpr.typeSeq)
+				}
+				return evTypes2
 			} else{
 				return firstEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 			}
@@ -289,24 +301,36 @@ class MonitoringSafePartitionCheck {
 			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
 			return evTypes2
 		} else if(expr instanceof SeqExpr){		
-			if(mayHalt(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>()) 
-				&& (expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.typeSeq.channel.reliability) >= threshold)){
-				var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
-				var evTypes1 = new ArrayList<EventType>()
-				evTypes1.add(expr.seqExpr.typeSeq)
-				var found = false
-				for(evType2 : evTypes2){
-					if(evTypes1.get(0).name == evType2.name){
-						found = true
+			if(mayHalt(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>())){
+				if (expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.typeSeq.channel.reliability) >= threshold){
+					var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+					var evTypes1 = new ArrayList<EventType>()
+					evTypes1.add(expr.seqExpr.typeSeq)
+					var found = false
+					for(evType2 : evTypes2){
+						if(evTypes1.get(0).name == evType2.name){
+							found = true
+						}
 					}
+					if(!found){
+						evTypes2.add(evTypes1.get(0))
+					}
+					return evTypes2
+				} else if(Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
+					var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+					var found = false
+					for(evType2 : evTypes2){
+						if(expr.seqExpr.typeSeq.name == evType2.name){
+							found = true
+						}
+					}
+					if(!found){
+						evTypes2.add(expr.seqExpr.typeSeq)
+					}
+					return evTypes2
 				}
-				if(!found){
-					evTypes2.add(evTypes1.get(0))
-				}
-				return evTypes2
-			} else{
-				return lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 			}
+			return lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 		} else if(expr instanceof FilterExpr){
 			return lastEventTypes(expr.filterExpr.bodyFilter, assocT, assoc, threshold)
 		} else if(expr instanceof VarExpr){
@@ -389,14 +413,14 @@ class MonitoringSafePartitionCheck {
 				}
 			}
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
+			if(expr.seqExpr.typeSeq.channel === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
 				extractCriticalPoints(expr.seqExpr.bodySeq, criticalPoints, assocT, assoc, threshold)
 				var eventTypes1 = new ArrayList<EventType>()
 				eventTypes1.add(expr.seqExpr.typeSeq)
 				var eventTypes2 = firstEventTypes(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>(), threshold)
 				for(eventType1 : eventTypes1){
-					var found = false
 					for(eventType2 : eventTypes2){
+						var found = false
 						for(r1 : getRolesFromEventType(eventType1)){
 							for(r2 : getRolesFromEventType(eventType2)){
 								if(r1 == r2){
