@@ -200,6 +200,15 @@ class TExpGenerator extends AbstractGenerator {
 				Monitor.setErrorMessageGUIVisible(false);
 				«ENDIF»
 				
+				/* Channels creation */
+				«FOR channel : tExp.channels»
+				«IF channel.reliability !== null»
+				SimulatedChannel «channel.name» = new SimulatedChannel("«channel.name»", «channel.reliability»);
+				«ELSE»
+				SimulatedChannel «channel.name» = new SimulatedChannel("«channel.name»", 1);
+				«ENDIF»
+				«ENDFOR»
+				
 				/* Run the agents */
 				«FOR role : tExp.roles»
 				«role.name»C.start();
@@ -330,7 +339,11 @@ class TExpGenerator extends AbstractGenerator {
 	def compile(EventType eventType){
 		var str = ''
 		for(msg : eventType.msgs){
-			str += 'match(' + tExpCurrentName + ', ' + msg.compile + ', ' + eventType.name
+			if(eventType.channel !== null){
+				str += 'match(' + tExpCurrentName + ', ' + msg.compile + ', ' + eventType.channel.name + '), ' + eventType.name
+			} else{
+				str += 'match(' + tExpCurrentName + ', ' + msg.compile + ', ' + 'default), ' + eventType.name
+			}
 			if(eventType.expr !== null){
 				str += '(' + eventType.expr.compile
 				for(e : eventType.exprs){
@@ -344,7 +357,11 @@ class TExpGenerator extends AbstractGenerator {
 			} else{
 				str += '.'
 			}
-			str += '\n' + 'event(' + tExpCurrentName + ', ' + msg.compile + ').\n'
+			if(eventType.channel !== null){
+				str += '\n' + 'event(' + tExpCurrentName + ', ' + msg.compile + ', ' + eventType.channel.name + ')).\n'
+			} else{
+				str += '\n' + 'event(' + tExpCurrentName + ', ' + msg.compile + ', default)).\n'
+			}
 		}
 		if(eventType.channel !== null){
 			if(eventType.channel.reliability !== null){
@@ -364,11 +381,11 @@ class TExpGenerator extends AbstractGenerator {
 			performative = msg.performative
 		}
 		if(msg.async_sender !== null){
-			return 'msg(performative(' + performative + '), sender(' + msg.async_sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), s' + ')'
+			return 'msg(performative(' + performative + '), sender(' + msg.async_sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), s'
 		} else if(msg.async_receiver !== null){
-			return 'msg(performtive(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.async_receiver.name + '), content(' + msg.content.compile + '), r' + ')'
+			return 'msg(performtive(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.async_receiver.name + '), content(' + msg.content.compile + '), r'
 		} else{
-			return 'msg(performative(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), _' + ')'
+			return 'msg(performative(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), _'
 		}
 	}
 	

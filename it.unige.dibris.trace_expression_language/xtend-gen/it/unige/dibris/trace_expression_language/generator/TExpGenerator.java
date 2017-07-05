@@ -573,14 +573,52 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("/* Channels creation */");
+    _builder.newLine();
+    {
+      EList<Channel> _channels = tExp.getChannels();
+      for(final Channel channel : _channels) {
+        {
+          String _reliability = channel.getReliability();
+          boolean _tripleNotEquals_2 = (_reliability != null);
+          if (_tripleNotEquals_2) {
+            _builder.append("\t\t");
+            _builder.append("SimulatedChannel ");
+            String _name_13 = channel.getName();
+            _builder.append(_name_13, "\t\t");
+            _builder.append(" = new SimulatedChannel(\"");
+            String _name_14 = channel.getName();
+            _builder.append(_name_14, "\t\t");
+            _builder.append("\", ");
+            String _reliability_1 = channel.getReliability();
+            _builder.append(_reliability_1, "\t\t");
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            _builder.append("SimulatedChannel ");
+            String _name_15 = channel.getName();
+            _builder.append(_name_15, "\t\t");
+            _builder.append(" = new SimulatedChannel(\"");
+            String _name_16 = channel.getName();
+            _builder.append(_name_16, "\t\t");
+            _builder.append("\", 1);");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("/* Run the agents */");
     _builder.newLine();
     {
       EList<Role> _roles_2 = tExp.getRoles();
       for(final Role role_2 : _roles_2) {
         _builder.append("\t\t");
-        String _name_13 = role_2.getName();
-        _builder.append(_name_13, "\t\t");
+        String _name_17 = role_2.getName();
+        _builder.append(_name_17, "\t\t");
         _builder.append("C.start();");
         _builder.newLineIfNotEmpty();
       }
@@ -887,49 +925,78 @@ public class TExpGenerator extends AbstractGenerator {
     EList<Msg> _msgs = eventType.getMsgs();
     for (final Msg msg : _msgs) {
       {
-        String _str = str;
-        String _compile = this.compile(msg);
-        String _plus = ((("match(" + this.tExpCurrentName) + ", ") + _compile);
-        String _plus_1 = (_plus + ", ");
-        String _name = eventType.getName();
-        String _plus_2 = (_plus_1 + _name);
-        str = (_str + _plus_2);
-        PrologExpression _expr = eventType.getExpr();
-        boolean _tripleNotEquals = (_expr != null);
+        Channel _channel = eventType.getChannel();
+        boolean _tripleNotEquals = (_channel != null);
         if (_tripleNotEquals) {
+          String _str = str;
+          String _compile = this.compile(msg);
+          String _plus = ((("match(" + this.tExpCurrentName) + ", ") + _compile);
+          String _plus_1 = (_plus + ", ");
+          String _name = eventType.getChannel().getName();
+          String _plus_2 = (_plus_1 + _name);
+          String _plus_3 = (_plus_2 + "), ");
+          String _name_1 = eventType.getName();
+          String _plus_4 = (_plus_3 + _name_1);
+          str = (_str + _plus_4);
+        } else {
           String _str_1 = str;
-          String _compile_1 = this.compile(eventType.getExpr());
-          String _plus_3 = ("(" + _compile_1);
-          str = (_str_1 + _plus_3);
+          String _compile_1 = this.compile(msg);
+          String _plus_5 = ((("match(" + this.tExpCurrentName) + ", ") + _compile_1);
+          String _plus_6 = (_plus_5 + ", ");
+          String _plus_7 = (_plus_6 + "default), ");
+          String _name_2 = eventType.getName();
+          String _plus_8 = (_plus_7 + _name_2);
+          str = (_str_1 + _plus_8);
+        }
+        PrologExpression _expr = eventType.getExpr();
+        boolean _tripleNotEquals_1 = (_expr != null);
+        if (_tripleNotEquals_1) {
+          String _str_2 = str;
+          String _compile_2 = this.compile(eventType.getExpr());
+          String _plus_9 = ("(" + _compile_2);
+          str = (_str_2 + _plus_9);
           EList<PrologExpression> _exprs = eventType.getExprs();
           for (final PrologExpression e : _exprs) {
-            String _str_2 = str;
-            String _compile_2 = this.compile(e);
-            String _plus_4 = (", " + _compile_2);
-            str = (_str_2 + _plus_4);
+            String _str_3 = str;
+            String _compile_3 = this.compile(e);
+            String _plus_10 = (", " + _compile_3);
+            str = (_str_3 + _plus_10);
           }
-          String _str_3 = str;
-          str = (_str_3 + ")");
+          String _str_4 = str;
+          str = (_str_4 + ")");
         }
-        String _str_4 = str;
-        str = (_str_4 + ")");
+        String _str_5 = str;
+        str = (_str_5 + ")");
         PrologExpression _conditions = msg.getConditions();
-        boolean _tripleNotEquals_1 = (_conditions != null);
-        if (_tripleNotEquals_1) {
-          String _str_5 = str;
-          String _compile_3 = this.compile(msg.getConditions());
-          String _plus_5 = (" :- \n\t" + _compile_3);
-          String _plus_6 = (_plus_5 + ".");
-          str = (_str_5 + _plus_6);
-        } else {
+        boolean _tripleNotEquals_2 = (_conditions != null);
+        if (_tripleNotEquals_2) {
           String _str_6 = str;
-          str = (_str_6 + ".");
+          String _compile_4 = this.compile(msg.getConditions());
+          String _plus_11 = (" :- \n\t" + _compile_4);
+          String _plus_12 = (_plus_11 + ".");
+          str = (_str_6 + _plus_12);
+        } else {
+          String _str_7 = str;
+          str = (_str_7 + ".");
         }
-        String _str_7 = str;
-        String _compile_4 = this.compile(msg);
-        String _plus_7 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_4);
-        String _plus_8 = (_plus_7 + ").\n");
-        str = (_str_7 + _plus_8);
+        Channel _channel_1 = eventType.getChannel();
+        boolean _tripleNotEquals_3 = (_channel_1 != null);
+        if (_tripleNotEquals_3) {
+          String _str_8 = str;
+          String _compile_5 = this.compile(msg);
+          String _plus_13 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_5);
+          String _plus_14 = (_plus_13 + ", ");
+          String _name_3 = eventType.getChannel().getName();
+          String _plus_15 = (_plus_14 + _name_3);
+          String _plus_16 = (_plus_15 + ")).\n");
+          str = (_str_8 + _plus_16);
+        } else {
+          String _str_9 = str;
+          String _compile_6 = this.compile(msg);
+          String _plus_17 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_6);
+          String _plus_18 = (_plus_17 + ", default)).\n");
+          str = (_str_9 + _plus_18);
+        }
       }
     }
     Channel _channel = eventType.getChannel();
@@ -983,33 +1050,30 @@ public class TExpGenerator extends AbstractGenerator {
       String _plus_3 = (_plus_2 + "), content(");
       String _compile = this.compile(msg.getContent());
       String _plus_4 = (_plus_3 + _compile);
-      String _plus_5 = (_plus_4 + "), s");
-      return (_plus_5 + ")");
+      return (_plus_4 + "), s");
     } else {
       Role _async_receiver = msg.getAsync_receiver();
       boolean _tripleNotEquals_2 = (_async_receiver != null);
       if (_tripleNotEquals_2) {
         String _name_2 = msg.getSender().getName();
-        String _plus_6 = ((("msg(performtive(" + performative) + "), sender(") + _name_2);
-        String _plus_7 = (_plus_6 + "), receiver(");
+        String _plus_5 = ((("msg(performtive(" + performative) + "), sender(") + _name_2);
+        String _plus_6 = (_plus_5 + "), receiver(");
         String _name_3 = msg.getAsync_receiver().getName();
-        String _plus_8 = (_plus_7 + _name_3);
-        String _plus_9 = (_plus_8 + "), content(");
+        String _plus_7 = (_plus_6 + _name_3);
+        String _plus_8 = (_plus_7 + "), content(");
         String _compile_1 = this.compile(msg.getContent());
-        String _plus_10 = (_plus_9 + _compile_1);
-        String _plus_11 = (_plus_10 + "), r");
-        return (_plus_11 + ")");
+        String _plus_9 = (_plus_8 + _compile_1);
+        return (_plus_9 + "), r");
       } else {
         String _name_4 = msg.getSender().getName();
-        String _plus_12 = ((("msg(performative(" + performative) + "), sender(") + _name_4);
-        String _plus_13 = (_plus_12 + "), receiver(");
+        String _plus_10 = ((("msg(performative(" + performative) + "), sender(") + _name_4);
+        String _plus_11 = (_plus_10 + "), receiver(");
         String _name_5 = msg.getReceiver().getName();
-        String _plus_14 = (_plus_13 + _name_5);
-        String _plus_15 = (_plus_14 + "), content(");
+        String _plus_12 = (_plus_11 + _name_5);
+        String _plus_13 = (_plus_12 + "), content(");
         String _compile_2 = this.compile(msg.getContent());
-        String _plus_16 = (_plus_15 + _compile_2);
-        String _plus_17 = (_plus_16 + "), _");
-        return (_plus_17 + ")");
+        String _plus_14 = (_plus_13 + _compile_2);
+        return (_plus_14 + "), _");
       }
     }
   }
