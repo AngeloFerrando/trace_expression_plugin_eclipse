@@ -61,6 +61,8 @@ class TExpGenerator extends AbstractGenerator {
 		import it.unige.dibris.TExpRVMAS.core.SnifferMonitorFactory;
 		import it.unige.dibris.TExpRVMAS.core.decentralized.Condition;
 		import it.unige.dibris.TExpRVMAS.core.decentralized.ConditionsFactory;
+		import it.unige.dibris.TExpRVMAS.core.SimulatedChannel;
+		import it.unige.dibris.TExpRVMAS.core.Channel;
 		import it.unige.dibris.TExpRVMAS.core.decentralized.Partition;
 		import it.unige.dibris.TExpRVMAS.core.protocol.TraceExpression;
 		import it.unige.dibris.TExpRVMAS.exception.DecentralizedPartitionNotFoundException;
@@ -203,9 +205,9 @@ class TExpGenerator extends AbstractGenerator {
 				/* Channels creation */
 				«FOR channel : tExp.channels»
 				«IF channel.reliability !== null»
-				SimulatedChannel «channel.name» = new SimulatedChannel("«channel.name»", «channel.reliability»);
+				Channel.addChannel(new SimulatedChannel("«channel.name»", «channel.reliability»));
 				«ELSE»
-				SimulatedChannel «channel.name» = new SimulatedChannel("«channel.name»", 1);
+				Channel.addChannel(new SimulatedChannel("«channel.name»", 1));
 				«ENDIF»
 				«ENDFOR»
 				

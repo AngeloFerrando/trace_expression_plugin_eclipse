@@ -11,6 +11,7 @@ import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
 import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
+import it.unige.dibris.trace_expression_language.validation.MonitoringSafePartitionCheck;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import org.eclipse.emf.common.util.EList;
@@ -48,7 +49,15 @@ public class ContractivenessCheck {
           return (ContractivenessCheck.isContractive(((AndExpr)expr).getLeft(), (depth + 1), deepestseq, assocT, assocD, threshold) && ContractivenessCheck.isContractive(((AndExpr)expr).getRight(), (depth + 1), deepestseq, assocT, assocD, threshold));
         } else {
           if ((expr instanceof CatExpr)) {
-            return (ContractivenessCheck.isContractive(((CatExpr)expr).getLeft(), (depth + 1), deepestseq, assocT, assocD, threshold) && ContractivenessCheck.isContractive(((CatExpr)expr).getRight(), (depth + 1), deepestseq, assocT, assocD, threshold));
+            boolean b = ContractivenessCheck.isContractive(((CatExpr)expr).getLeft(), (depth + 1), deepestseq, assocT, assocD, threshold);
+            Expression _left = ((CatExpr)expr).getLeft();
+            HashMap<String, Expression> _hashMap = new HashMap<String, Expression>();
+            boolean _mayHalt = MonitoringSafePartitionCheck.mayHalt(_left, assocT, _hashMap);
+            if (_mayHalt) {
+              return (b && ContractivenessCheck.isContractive(((CatExpr)expr).getRight(), (depth + 1), deepestseq, assocT, assocD, threshold));
+            } else {
+              return (b && ContractivenessCheck.isContractive(((CatExpr)expr).getRight(), (depth + 1), depth, assocT, assocD, threshold));
+            }
           } else {
             if ((expr instanceof FilterExpr)) {
               return ContractivenessCheck.isContractive(((FilterExpr)expr).getFilterExpr().getBodyFilter(), (depth + 1), deepestseq, assocT, assocD, threshold);

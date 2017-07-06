@@ -86,6 +86,10 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("import it.unige.dibris.TExpRVMAS.core.decentralized.ConditionsFactory;");
     _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.SimulatedChannel;");
+    _builder.newLine();
+    _builder.append("import it.unige.dibris.TExpRVMAS.core.Channel;");
+    _builder.newLine();
     _builder.append("import it.unige.dibris.TExpRVMAS.core.decentralized.Partition;");
     _builder.newLine();
     _builder.append("import it.unige.dibris.TExpRVMAS.core.protocol.TraceExpression;");
@@ -583,26 +587,20 @@ public class TExpGenerator extends AbstractGenerator {
           boolean _tripleNotEquals_2 = (_reliability != null);
           if (_tripleNotEquals_2) {
             _builder.append("\t\t");
-            _builder.append("SimulatedChannel ");
+            _builder.append("Channel.addChannel(new SimulatedChannel(\"");
             String _name_13 = channel.getName();
             _builder.append(_name_13, "\t\t");
-            _builder.append(" = new SimulatedChannel(\"");
-            String _name_14 = channel.getName();
-            _builder.append(_name_14, "\t\t");
             _builder.append("\", ");
             String _reliability_1 = channel.getReliability();
             _builder.append(_reliability_1, "\t\t");
-            _builder.append(");");
+            _builder.append("));");
             _builder.newLineIfNotEmpty();
           } else {
             _builder.append("\t\t");
-            _builder.append("SimulatedChannel ");
-            String _name_15 = channel.getName();
-            _builder.append(_name_15, "\t\t");
-            _builder.append(" = new SimulatedChannel(\"");
-            String _name_16 = channel.getName();
-            _builder.append(_name_16, "\t\t");
-            _builder.append("\", 1);");
+            _builder.append("Channel.addChannel(new SimulatedChannel(\"");
+            String _name_14 = channel.getName();
+            _builder.append(_name_14, "\t\t");
+            _builder.append("\", 1));");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -617,8 +615,8 @@ public class TExpGenerator extends AbstractGenerator {
       EList<Role> _roles_2 = tExp.getRoles();
       for(final Role role_2 : _roles_2) {
         _builder.append("\t\t");
-        String _name_17 = role_2.getName();
-        _builder.append(_name_17, "\t\t");
+        String _name_15 = role_2.getName();
+        _builder.append(_name_15, "\t\t");
         _builder.append("C.start();");
         _builder.newLineIfNotEmpty();
       }

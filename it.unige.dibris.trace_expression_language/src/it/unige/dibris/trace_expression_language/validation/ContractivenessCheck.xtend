@@ -45,8 +45,12 @@ class ContractivenessCheck {
 			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
 					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof CatExpr){
-			return isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold) 
-					&& isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
+			var b = isContractive(expr.left, depth + 1, deepestseq, assocT, assocD, threshold)
+			if(MonitoringSafePartitionCheck.mayHalt(expr.left, assocT, new HashMap<String, Expression>())){
+				return b && isContractive(expr.right, depth + 1, deepestseq, assocT, assocD, threshold)
+			} else{
+				return b && isContractive(expr.right, depth + 1, depth, assocT, assocD, threshold) 
+			} 
 		} else if(expr instanceof FilterExpr){
 			return isContractive(expr.filterExpr.bodyFilter, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr.typeFilter !== null && expr.bodyFilter !== null){

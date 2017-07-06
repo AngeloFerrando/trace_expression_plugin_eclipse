@@ -157,7 +157,11 @@ public class MonitoringSafePartitionCheck {
               return (MonitoringSafePartitionCheck.mayHalt(((CatExpr)expr).getLeft(), assocT, assoc) && MonitoringSafePartitionCheck.mayHalt(((CatExpr)expr).getRight(), assocT, assoc));
             } else {
               if ((expr instanceof SeqExpr)) {
-                return false;
+                if ((((((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel() == null) || (((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability() == null)) || ((Double.valueOf(((SeqExpr)expr).getSeqExpr().getTypeSeq().getChannel().getReliability())).doubleValue() == 1))) {
+                  return false;
+                } else {
+                  return MonitoringSafePartitionCheck.mayHalt(((SeqExpr)expr).getSeqExpr().getBodySeq(), assocT, assoc);
+                }
               } else {
                 if ((expr instanceof FilterExpr)) {
                   return MonitoringSafePartitionCheck.mayHalt(((FilterExpr)expr).getBodyFilter(), assocT, assoc);

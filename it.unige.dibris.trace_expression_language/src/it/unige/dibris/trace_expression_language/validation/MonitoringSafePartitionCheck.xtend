@@ -121,7 +121,11 @@ class MonitoringSafePartitionCheck {
 		} else if(expr instanceof CatExpr){
 			return mayHalt(expr.left, assocT, assoc) && mayHalt(expr.right, assocT, assoc)
 		} else if(expr instanceof SeqExpr){
-			return false
+			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) == 1){
+				return false
+			} else{
+				return mayHalt(expr.seqExpr.bodySeq, assocT, assoc)
+			}
 		} else if(expr instanceof FilterExpr){
 			return mayHalt(expr.bodyFilter, assocT, assoc)
 		} else{
