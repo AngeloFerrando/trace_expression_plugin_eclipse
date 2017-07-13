@@ -57,16 +57,14 @@ class TExpGenerator extends AbstractGenerator {
 		import java.util.ArrayList;
 		import java.util.List;
 		
-		import it.unige.dibris.TExpRVMAS.core.Monitor;
-		import it.unige.dibris.TExpRVMAS.core.SnifferMonitorFactory;
-		import it.unige.dibris.TExpRVMAS.core.decentralized.Condition;
-		import it.unige.dibris.TExpRVMAS.core.decentralized.ConditionsFactory;
-		import it.unige.dibris.TExpRVMAS.core.SimulatedChannel;
-		import it.unige.dibris.TExpRVMAS.core.Channel;
-		import it.unige.dibris.TExpRVMAS.core.decentralized.Partition;
-		import it.unige.dibris.TExpRVMAS.core.protocol.TraceExpression;
-		import it.unige.dibris.TExpRVMAS.exception.DecentralizedPartitionNotFoundException;
-		import it.unige.dibris.TExpRVMAS.utils.JPL.JPLInitializer;
+		import it.dibris.unige.TExpSWIPrologConnector.exceptions.DecentralizedPartitionNotFoundException;
+		import it.dibris.unige.TExpSWIPrologConnector.JPL.JPLInitializer;
+		import it.dibris.unige.TExpSWIPrologConnector.texp.TraceExpression;
+		import it.dibris.unige.TExpSWIPrologConnector.decentralized.Partition;
+		import it.unige.dibris.TExpRVJade.Channel;
+		import it.unige.dibris.TExpRVJade.Monitor;
+		import it.unige.dibris.TExpRVJade.SimulatedChannel;
+		import it.unige.dibris.TExpRVJade.SnifferMonitorFactory;
 		import jade.core.Agent;
 		import jade.core.Profile;
 		import jade.core.ProfileImpl;
