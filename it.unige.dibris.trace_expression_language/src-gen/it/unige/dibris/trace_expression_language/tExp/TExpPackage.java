@@ -1173,296 +1173,6 @@ public interface TExpPackage extends EPackage
   int LIST_EXPRESSION_FEATURE_COUNT = PROLOG_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl <em>And Expr</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAndExpr()
-   * @generated
-   */
-  int AND_EXPR = 17;
-
-  /**
-   * The feature id for the '<em><b>Variable</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__VARIABLE = EXPRESSION__VARIABLE;
-
-  /**
-   * The feature id for the '<em><b>Body Var</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__BODY_VAR = EXPRESSION__BODY_VAR;
-
-  /**
-   * The feature id for the '<em><b>Type Filter</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__TYPE_FILTER = EXPRESSION__TYPE_FILTER;
-
-  /**
-   * The feature id for the '<em><b>First</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__FIRST = EXPRESSION__FIRST;
-
-  /**
-   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__EXPRS = EXPRESSION__EXPRS;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__OPERATOR = EXPRESSION__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Body Filter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__BODY_FILTER = EXPRESSION__BODY_FILTER;
-
-  /**
-   * The feature id for the '<em><b>Type Seq</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__TYPE_SEQ = EXPRESSION__TYPE_SEQ;
-
-  /**
-   * The feature id for the '<em><b>Body Seq</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__BODY_SEQ = EXPRESSION__BODY_SEQ;
-
-  /**
-   * The feature id for the '<em><b>Eps</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__EPS = EXPRESSION__EPS;
-
-  /**
-   * The feature id for the '<em><b>Term</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__TERM = EXPRESSION__TERM;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>And Expr</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl <em>Cat Expr</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCatExpr()
-   * @generated
-   */
-  int CAT_EXPR = 18;
-
-  /**
-   * The feature id for the '<em><b>Variable</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__VARIABLE = EXPRESSION__VARIABLE;
-
-  /**
-   * The feature id for the '<em><b>Body Var</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__BODY_VAR = EXPRESSION__BODY_VAR;
-
-  /**
-   * The feature id for the '<em><b>Type Filter</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__TYPE_FILTER = EXPRESSION__TYPE_FILTER;
-
-  /**
-   * The feature id for the '<em><b>First</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__FIRST = EXPRESSION__FIRST;
-
-  /**
-   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__EXPRS = EXPRESSION__EXPRS;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__OPERATOR = EXPRESSION__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Body Filter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__BODY_FILTER = EXPRESSION__BODY_FILTER;
-
-  /**
-   * The feature id for the '<em><b>Type Seq</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__TYPE_SEQ = EXPRESSION__TYPE_SEQ;
-
-  /**
-   * The feature id for the '<em><b>Body Seq</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__BODY_SEQ = EXPRESSION__BODY_SEQ;
-
-  /**
-   * The feature id for the '<em><b>Eps</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__EPS = EXPRESSION__EPS;
-
-  /**
-   * The feature id for the '<em><b>Term</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__TERM = EXPRESSION__TERM;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Cat Expr</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CAT_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.ShuffleExprImpl <em>Shuffle Expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1470,7 +1180,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getShuffleExpr()
    * @generated
    */
-  int SHUFFLE_EXPR = 19;
+  int SHUFFLE_EXPR = 17;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1615,7 +1325,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getUnionExpr()
    * @generated
    */
-  int UNION_EXPR = 20;
+  int UNION_EXPR = 18;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1751,6 +1461,296 @@ public interface TExpPackage extends EPackage
    * @ordered
    */
   int UNION_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl <em>And Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAndExpr()
+   * @generated
+   */
+  int AND_EXPR = 19;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__VARIABLE = EXPRESSION__VARIABLE;
+
+  /**
+   * The feature id for the '<em><b>Body Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__BODY_VAR = EXPRESSION__BODY_VAR;
+
+  /**
+   * The feature id for the '<em><b>Type Filter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__TYPE_FILTER = EXPRESSION__TYPE_FILTER;
+
+  /**
+   * The feature id for the '<em><b>First</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__FIRST = EXPRESSION__FIRST;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__EXPRS = EXPRESSION__EXPRS;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__OPERATOR = EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Body Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__BODY_FILTER = EXPRESSION__BODY_FILTER;
+
+  /**
+   * The feature id for the '<em><b>Type Seq</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__TYPE_SEQ = EXPRESSION__TYPE_SEQ;
+
+  /**
+   * The feature id for the '<em><b>Body Seq</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__BODY_SEQ = EXPRESSION__BODY_SEQ;
+
+  /**
+   * The feature id for the '<em><b>Eps</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__EPS = EXPRESSION__EPS;
+
+  /**
+   * The feature id for the '<em><b>Term</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__TERM = EXPRESSION__TERM;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>And Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl <em>Cat Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCatExpr()
+   * @generated
+   */
+  int CAT_EXPR = 20;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__VARIABLE = EXPRESSION__VARIABLE;
+
+  /**
+   * The feature id for the '<em><b>Body Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__BODY_VAR = EXPRESSION__BODY_VAR;
+
+  /**
+   * The feature id for the '<em><b>Type Filter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__TYPE_FILTER = EXPRESSION__TYPE_FILTER;
+
+  /**
+   * The feature id for the '<em><b>First</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__FIRST = EXPRESSION__FIRST;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__EXPRS = EXPRESSION__EXPRS;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__OPERATOR = EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Body Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__BODY_FILTER = EXPRESSION__BODY_FILTER;
+
+  /**
+   * The feature id for the '<em><b>Type Seq</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__TYPE_SEQ = EXPRESSION__TYPE_SEQ;
+
+  /**
+   * The feature id for the '<em><b>Body Seq</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__BODY_SEQ = EXPRESSION__BODY_SEQ;
+
+  /**
+   * The feature id for the '<em><b>Eps</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__EPS = EXPRESSION__EPS;
+
+  /**
+   * The feature id for the '<em><b>Term</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__TERM = EXPRESSION__TERM;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Cat Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CAT_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.SeqExprImpl <em>Seq Expr</em>}' class.
@@ -3544,70 +3544,6 @@ public interface TExpPackage extends EPackage
   EReference getListExpression_Tail();
 
   /**
-   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr <em>And Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>And Expr</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr
-   * @generated
-   */
-  EClass getAndExpr();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr#getLeft()
-   * @see #getAndExpr()
-   * @generated
-   */
-  EReference getAndExpr_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr#getRight()
-   * @see #getAndExpr()
-   * @generated
-   */
-  EReference getAndExpr_Right();
-
-  /**
-   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr <em>Cat Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Cat Expr</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr
-   * @generated
-   */
-  EClass getCatExpr();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr#getLeft()
-   * @see #getCatExpr()
-   * @generated
-   */
-  EReference getCatExpr_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr#getRight()
-   * @see #getCatExpr()
-   * @generated
-   */
-  EReference getCatExpr_Right();
-
-  /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.ShuffleExpr <em>Shuffle Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3670,6 +3606,70 @@ public interface TExpPackage extends EPackage
    * @generated
    */
   EReference getUnionExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr <em>And Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And Expr</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr
+   * @generated
+   */
+  EClass getAndExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr#getLeft()
+   * @see #getAndExpr()
+   * @generated
+   */
+  EReference getAndExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr#getRight()
+   * @see #getAndExpr()
+   * @generated
+   */
+  EReference getAndExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr <em>Cat Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cat Expr</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr
+   * @generated
+   */
+  EClass getCatExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr#getLeft()
+   * @see #getCatExpr()
+   * @generated
+   */
+  EReference getCatExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr#getRight()
+   * @see #getCatExpr()
+   * @generated
+   */
+  EReference getCatExpr_Right();
 
   /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.SeqExpr <em>Seq Expr</em>}'.
@@ -4629,58 +4629,6 @@ public interface TExpPackage extends EPackage
     EReference LIST_EXPRESSION__TAIL = eINSTANCE.getListExpression_Tail();
 
     /**
-     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl <em>And Expr</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAndExpr()
-     * @generated
-     */
-    EClass AND_EXPR = eINSTANCE.getAndExpr();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference AND_EXPR__LEFT = eINSTANCE.getAndExpr_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference AND_EXPR__RIGHT = eINSTANCE.getAndExpr_Right();
-
-    /**
-     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl <em>Cat Expr</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCatExpr()
-     * @generated
-     */
-    EClass CAT_EXPR = eINSTANCE.getCatExpr();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CAT_EXPR__LEFT = eINSTANCE.getCatExpr_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CAT_EXPR__RIGHT = eINSTANCE.getCatExpr_Right();
-
-    /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.ShuffleExprImpl <em>Shuffle Expr</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4731,6 +4679,58 @@ public interface TExpPackage extends EPackage
      * @generated
      */
     EReference UNION_EXPR__RIGHT = eINSTANCE.getUnionExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl <em>And Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.AndExprImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAndExpr()
+     * @generated
+     */
+    EClass AND_EXPR = eINSTANCE.getAndExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND_EXPR__LEFT = eINSTANCE.getAndExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND_EXPR__RIGHT = eINSTANCE.getAndExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl <em>Cat Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.CatExprImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCatExpr()
+     * @generated
+     */
+    EClass CAT_EXPR = eINSTANCE.getCatExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CAT_EXPR__LEFT = eINSTANCE.getCatExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CAT_EXPR__RIGHT = eINSTANCE.getCatExpr_Right();
 
     /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.SeqExprImpl <em>Seq Expr</em>}' class.

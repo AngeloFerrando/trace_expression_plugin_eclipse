@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalTExpParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATOM", "RULE_STRING", "RULE_OP1200XFX", "RULE_OP1200FX", "RULE_OP1150FX", "RULE_OP1100XFY", "RULE_OP1050XFY", "RULE_OP1000XFY", "RULE_OP954XFY", "RULE_OP900FY", "RULE_OP900FX", "RULE_OP700XFX", "RULE_OP700XFXR", "RULE_OP700XFXL", "RULE_OP600XFY", "RULE_OP500YFX", "RULE_OP500FX", "RULE_OP400YFX", "RULE_OP200XFX", "RULE_OP200XFY", "RULE_EXT_INT", "RULE_INT", "RULE_VARIABLE", "RULE_OP400FX1", "RULE_WHITESPACE", "RULE_SINGLE_LINE_COMMENT", "'.'", "'!'", "'true'", "'false'", "'('", "'['", "')'", "']'", "'-'", "'|'", "'trace_expression'", "'{'", "'id:'", "'}'", "'<-'", "'=>'", "'$'", "'number_singletons'", "'size_constraints'", "'number_constraints'", "'body:'", "'roles:'", "'types:'", "'modules:'", "'decentralized:'", "'partition:'", "'constraints:'", "'gui:'", "'minimal:'", "'threshold:'", "'channels:'", "'/\\\\'", "'*'", "'\\\\/'", "'epsilon'", "'-><-'", "'<-->'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATOM", "RULE_STRING", "RULE_OP1200XFX", "RULE_OP1200FX", "RULE_OP1150FX", "RULE_OP1100XFY", "RULE_OP1050XFY", "RULE_OP1000XFY", "RULE_OP954XFY", "RULE_OP900FY", "RULE_OP900FX", "RULE_OP700XFX", "RULE_OP700XFXR", "RULE_OP700XFXL", "RULE_OP600XFY", "RULE_OP500YFX", "RULE_OP500FX", "RULE_OP400YFX", "RULE_OP200XFX", "RULE_OP200XFY", "RULE_EXT_INT", "RULE_INT", "RULE_VARIABLE", "RULE_OP400FX1", "RULE_WHITESPACE", "RULE_SINGLE_LINE_COMMENT", "'.'", "'!'", "'true'", "'false'", "'('", "'['", "')'", "']'", "'-'", "'|'", "'trace_expression'", "'{'", "'id:'", "'}'", "'<-'", "'=>'", "'$'", "'number_singletons'", "'size_constraints'", "'number_constraints'", "'body:'", "'roles:'", "'types:'", "'modules:'", "'decentralized:'", "'partition:'", "'constraints:'", "'gui:'", "'minimal:'", "'threshold:'", "'channels:'", "'\\\\/'", "'/\\\\'", "'*'", "'epsilon'", "'-><-'", "'<-->'"
     };
     public static final int RULE_OP700XFXL=17;
     public static final int T__50=50;
@@ -1495,182 +1495,12 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleTerm"
 
 
-    // $ANTLR start "entryRuleAndExpr"
-    // InternalTExp.g:462:1: entryRuleAndExpr : ruleAndExpr EOF ;
-    public final void entryRuleAndExpr() throws RecognitionException {
-        try {
-            // InternalTExp.g:463:1: ( ruleAndExpr EOF )
-            // InternalTExp.g:464:1: ruleAndExpr EOF
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            ruleAndExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprRule()); 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleAndExpr"
-
-
-    // $ANTLR start "ruleAndExpr"
-    // InternalTExp.g:471:1: ruleAndExpr : ( ( rule__AndExpr__Group__0 ) ) ;
-    public final void ruleAndExpr() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:475:2: ( ( ( rule__AndExpr__Group__0 ) ) )
-            // InternalTExp.g:476:2: ( ( rule__AndExpr__Group__0 ) )
-            {
-            // InternalTExp.g:476:2: ( ( rule__AndExpr__Group__0 ) )
-            // InternalTExp.g:477:3: ( rule__AndExpr__Group__0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getGroup()); 
-            }
-            // InternalTExp.g:478:3: ( rule__AndExpr__Group__0 )
-            // InternalTExp.g:478:4: rule__AndExpr__Group__0
-            {
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group__0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getGroup()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleAndExpr"
-
-
-    // $ANTLR start "entryRuleCatExpr"
-    // InternalTExp.g:487:1: entryRuleCatExpr : ruleCatExpr EOF ;
-    public final void entryRuleCatExpr() throws RecognitionException {
-        try {
-            // InternalTExp.g:488:1: ( ruleCatExpr EOF )
-            // InternalTExp.g:489:1: ruleCatExpr EOF
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            ruleCatExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprRule()); 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleCatExpr"
-
-
-    // $ANTLR start "ruleCatExpr"
-    // InternalTExp.g:496:1: ruleCatExpr : ( ( rule__CatExpr__Group__0 ) ) ;
-    public final void ruleCatExpr() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:500:2: ( ( ( rule__CatExpr__Group__0 ) ) )
-            // InternalTExp.g:501:2: ( ( rule__CatExpr__Group__0 ) )
-            {
-            // InternalTExp.g:501:2: ( ( rule__CatExpr__Group__0 ) )
-            // InternalTExp.g:502:3: ( rule__CatExpr__Group__0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getGroup()); 
-            }
-            // InternalTExp.g:503:3: ( rule__CatExpr__Group__0 )
-            // InternalTExp.g:503:4: rule__CatExpr__Group__0
-            {
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group__0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getGroup()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleCatExpr"
-
-
     // $ANTLR start "entryRuleShuffleExpr"
-    // InternalTExp.g:512:1: entryRuleShuffleExpr : ruleShuffleExpr EOF ;
+    // InternalTExp.g:462:1: entryRuleShuffleExpr : ruleShuffleExpr EOF ;
     public final void entryRuleShuffleExpr() throws RecognitionException {
         try {
-            // InternalTExp.g:513:1: ( ruleShuffleExpr EOF )
-            // InternalTExp.g:514:1: ruleShuffleExpr EOF
+            // InternalTExp.g:463:1: ( ruleShuffleExpr EOF )
+            // InternalTExp.g:464:1: ruleShuffleExpr EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprRule()); 
@@ -1700,23 +1530,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleShuffleExpr"
-    // InternalTExp.g:521:1: ruleShuffleExpr : ( ( rule__ShuffleExpr__Group__0 ) ) ;
+    // InternalTExp.g:471:1: ruleShuffleExpr : ( ( rule__ShuffleExpr__Group__0 ) ) ;
     public final void ruleShuffleExpr() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:525:2: ( ( ( rule__ShuffleExpr__Group__0 ) ) )
-            // InternalTExp.g:526:2: ( ( rule__ShuffleExpr__Group__0 ) )
+            // InternalTExp.g:475:2: ( ( ( rule__ShuffleExpr__Group__0 ) ) )
+            // InternalTExp.g:476:2: ( ( rule__ShuffleExpr__Group__0 ) )
             {
-            // InternalTExp.g:526:2: ( ( rule__ShuffleExpr__Group__0 ) )
-            // InternalTExp.g:527:3: ( rule__ShuffleExpr__Group__0 )
+            // InternalTExp.g:476:2: ( ( rule__ShuffleExpr__Group__0 ) )
+            // InternalTExp.g:477:3: ( rule__ShuffleExpr__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getGroup()); 
             }
-            // InternalTExp.g:528:3: ( rule__ShuffleExpr__Group__0 )
-            // InternalTExp.g:528:4: rule__ShuffleExpr__Group__0
+            // InternalTExp.g:478:3: ( rule__ShuffleExpr__Group__0 )
+            // InternalTExp.g:478:4: rule__ShuffleExpr__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__ShuffleExpr__Group__0();
@@ -1751,11 +1581,11 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleUnionExpr"
-    // InternalTExp.g:537:1: entryRuleUnionExpr : ruleUnionExpr EOF ;
+    // InternalTExp.g:487:1: entryRuleUnionExpr : ruleUnionExpr EOF ;
     public final void entryRuleUnionExpr() throws RecognitionException {
         try {
-            // InternalTExp.g:538:1: ( ruleUnionExpr EOF )
-            // InternalTExp.g:539:1: ruleUnionExpr EOF
+            // InternalTExp.g:488:1: ( ruleUnionExpr EOF )
+            // InternalTExp.g:489:1: ruleUnionExpr EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprRule()); 
@@ -1785,23 +1615,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleUnionExpr"
-    // InternalTExp.g:546:1: ruleUnionExpr : ( ( rule__UnionExpr__Group__0 ) ) ;
+    // InternalTExp.g:496:1: ruleUnionExpr : ( ( rule__UnionExpr__Group__0 ) ) ;
     public final void ruleUnionExpr() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:550:2: ( ( ( rule__UnionExpr__Group__0 ) ) )
-            // InternalTExp.g:551:2: ( ( rule__UnionExpr__Group__0 ) )
+            // InternalTExp.g:500:2: ( ( ( rule__UnionExpr__Group__0 ) ) )
+            // InternalTExp.g:501:2: ( ( rule__UnionExpr__Group__0 ) )
             {
-            // InternalTExp.g:551:2: ( ( rule__UnionExpr__Group__0 ) )
-            // InternalTExp.g:552:3: ( rule__UnionExpr__Group__0 )
+            // InternalTExp.g:501:2: ( ( rule__UnionExpr__Group__0 ) )
+            // InternalTExp.g:502:3: ( rule__UnionExpr__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getGroup()); 
             }
-            // InternalTExp.g:553:3: ( rule__UnionExpr__Group__0 )
-            // InternalTExp.g:553:4: rule__UnionExpr__Group__0
+            // InternalTExp.g:503:3: ( rule__UnionExpr__Group__0 )
+            // InternalTExp.g:503:4: rule__UnionExpr__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__UnionExpr__Group__0();
@@ -1833,6 +1663,176 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "ruleUnionExpr"
+
+
+    // $ANTLR start "entryRuleAndExpr"
+    // InternalTExp.g:512:1: entryRuleAndExpr : ruleAndExpr EOF ;
+    public final void entryRuleAndExpr() throws RecognitionException {
+        try {
+            // InternalTExp.g:513:1: ( ruleAndExpr EOF )
+            // InternalTExp.g:514:1: ruleAndExpr EOF
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprRule()); 
+            }
+            pushFollow(FOLLOW_1);
+            ruleAndExpr();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprRule()); 
+            }
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleAndExpr"
+
+
+    // $ANTLR start "ruleAndExpr"
+    // InternalTExp.g:521:1: ruleAndExpr : ( ( rule__AndExpr__Group__0 ) ) ;
+    public final void ruleAndExpr() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:525:2: ( ( ( rule__AndExpr__Group__0 ) ) )
+            // InternalTExp.g:526:2: ( ( rule__AndExpr__Group__0 ) )
+            {
+            // InternalTExp.g:526:2: ( ( rule__AndExpr__Group__0 ) )
+            // InternalTExp.g:527:3: ( rule__AndExpr__Group__0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getGroup()); 
+            }
+            // InternalTExp.g:528:3: ( rule__AndExpr__Group__0 )
+            // InternalTExp.g:528:4: rule__AndExpr__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group__0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getGroup()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleAndExpr"
+
+
+    // $ANTLR start "entryRuleCatExpr"
+    // InternalTExp.g:537:1: entryRuleCatExpr : ruleCatExpr EOF ;
+    public final void entryRuleCatExpr() throws RecognitionException {
+        try {
+            // InternalTExp.g:538:1: ( ruleCatExpr EOF )
+            // InternalTExp.g:539:1: ruleCatExpr EOF
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprRule()); 
+            }
+            pushFollow(FOLLOW_1);
+            ruleCatExpr();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprRule()); 
+            }
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleCatExpr"
+
+
+    // $ANTLR start "ruleCatExpr"
+    // InternalTExp.g:546:1: ruleCatExpr : ( ( rule__CatExpr__Group__0 ) ) ;
+    public final void ruleCatExpr() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:550:2: ( ( ( rule__CatExpr__Group__0 ) ) )
+            // InternalTExp.g:551:2: ( ( rule__CatExpr__Group__0 ) )
+            {
+            // InternalTExp.g:551:2: ( ( rule__CatExpr__Group__0 ) )
+            // InternalTExp.g:552:3: ( rule__CatExpr__Group__0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getGroup()); 
+            }
+            // InternalTExp.g:553:3: ( rule__CatExpr__Group__0 )
+            // InternalTExp.g:553:4: rule__CatExpr__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group__0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getGroup()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleCatExpr"
 
 
     // $ANTLR start "entryRulePrimary"
@@ -14935,889 +14935,15 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Term__Group__2__Impl"
 
 
-    // $ANTLR start "rule__AndExpr__Group__0"
-    // InternalTExp.g:4367:1: rule__AndExpr__Group__0 : rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1 ;
-    public final void rule__AndExpr__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4371:1: ( rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1 )
-            // InternalTExp.g:4372:2: rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1
-            {
-            pushFollow(FOLLOW_42);
-            rule__AndExpr__Group__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group__0"
-
-
-    // $ANTLR start "rule__AndExpr__Group__0__Impl"
-    // InternalTExp.g:4379:1: rule__AndExpr__Group__0__Impl : ( ruleCatExpr ) ;
-    public final void rule__AndExpr__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4383:1: ( ( ruleCatExpr ) )
-            // InternalTExp.g:4384:1: ( ruleCatExpr )
-            {
-            // InternalTExp.g:4384:1: ( ruleCatExpr )
-            // InternalTExp.g:4385:2: ruleCatExpr
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0()); 
-            }
-            pushFollow(FOLLOW_2);
-            ruleCatExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group__0__Impl"
-
-
-    // $ANTLR start "rule__AndExpr__Group__1"
-    // InternalTExp.g:4394:1: rule__AndExpr__Group__1 : rule__AndExpr__Group__1__Impl ;
-    public final void rule__AndExpr__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4398:1: ( rule__AndExpr__Group__1__Impl )
-            // InternalTExp.g:4399:2: rule__AndExpr__Group__1__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group__1"
-
-
-    // $ANTLR start "rule__AndExpr__Group__1__Impl"
-    // InternalTExp.g:4405:1: rule__AndExpr__Group__1__Impl : ( ( rule__AndExpr__Group_1__0 )* ) ;
-    public final void rule__AndExpr__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4409:1: ( ( ( rule__AndExpr__Group_1__0 )* ) )
-            // InternalTExp.g:4410:1: ( ( rule__AndExpr__Group_1__0 )* )
-            {
-            // InternalTExp.g:4410:1: ( ( rule__AndExpr__Group_1__0 )* )
-            // InternalTExp.g:4411:2: ( rule__AndExpr__Group_1__0 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getGroup_1()); 
-            }
-            // InternalTExp.g:4412:2: ( rule__AndExpr__Group_1__0 )*
-            loop44:
-            do {
-                int alt44=2;
-                int LA44_0 = input.LA(1);
-
-                if ( (LA44_0==61) ) {
-                    alt44=1;
-                }
-
-
-                switch (alt44) {
-            	case 1 :
-            	    // InternalTExp.g:4412:3: rule__AndExpr__Group_1__0
-            	    {
-            	    pushFollow(FOLLOW_43);
-            	    rule__AndExpr__Group_1__0();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop44;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getGroup_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group__1__Impl"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__0"
-    // InternalTExp.g:4421:1: rule__AndExpr__Group_1__0 : rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1 ;
-    public final void rule__AndExpr__Group_1__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4425:1: ( rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1 )
-            // InternalTExp.g:4426:2: rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1
-            {
-            pushFollow(FOLLOW_42);
-            rule__AndExpr__Group_1__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group_1__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__0"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__0__Impl"
-    // InternalTExp.g:4433:1: rule__AndExpr__Group_1__0__Impl : ( () ) ;
-    public final void rule__AndExpr__Group_1__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4437:1: ( ( () ) )
-            // InternalTExp.g:4438:1: ( () )
-            {
-            // InternalTExp.g:4438:1: ( () )
-            // InternalTExp.g:4439:2: ()
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0()); 
-            }
-            // InternalTExp.g:4440:2: ()
-            // InternalTExp.g:4440:3: 
-            {
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__0__Impl"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__1"
-    // InternalTExp.g:4448:1: rule__AndExpr__Group_1__1 : rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2 ;
-    public final void rule__AndExpr__Group_1__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4452:1: ( rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2 )
-            // InternalTExp.g:4453:2: rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2
-            {
-            pushFollow(FOLLOW_41);
-            rule__AndExpr__Group_1__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group_1__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__1"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__1__Impl"
-    // InternalTExp.g:4460:1: rule__AndExpr__Group_1__1__Impl : ( ( rule__AndExpr__OperatorAssignment_1_1 ) ) ;
-    public final void rule__AndExpr__Group_1__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4464:1: ( ( ( rule__AndExpr__OperatorAssignment_1_1 ) ) )
-            // InternalTExp.g:4465:1: ( ( rule__AndExpr__OperatorAssignment_1_1 ) )
-            {
-            // InternalTExp.g:4465:1: ( ( rule__AndExpr__OperatorAssignment_1_1 ) )
-            // InternalTExp.g:4466:2: ( rule__AndExpr__OperatorAssignment_1_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getOperatorAssignment_1_1()); 
-            }
-            // InternalTExp.g:4467:2: ( rule__AndExpr__OperatorAssignment_1_1 )
-            // InternalTExp.g:4467:3: rule__AndExpr__OperatorAssignment_1_1
-            {
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__OperatorAssignment_1_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getOperatorAssignment_1_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__1__Impl"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__2"
-    // InternalTExp.g:4475:1: rule__AndExpr__Group_1__2 : rule__AndExpr__Group_1__2__Impl ;
-    public final void rule__AndExpr__Group_1__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4479:1: ( rule__AndExpr__Group_1__2__Impl )
-            // InternalTExp.g:4480:2: rule__AndExpr__Group_1__2__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__Group_1__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__2"
-
-
-    // $ANTLR start "rule__AndExpr__Group_1__2__Impl"
-    // InternalTExp.g:4486:1: rule__AndExpr__Group_1__2__Impl : ( ( rule__AndExpr__RightAssignment_1_2 ) ) ;
-    public final void rule__AndExpr__Group_1__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4490:1: ( ( ( rule__AndExpr__RightAssignment_1_2 ) ) )
-            // InternalTExp.g:4491:1: ( ( rule__AndExpr__RightAssignment_1_2 ) )
-            {
-            // InternalTExp.g:4491:1: ( ( rule__AndExpr__RightAssignment_1_2 ) )
-            // InternalTExp.g:4492:2: ( rule__AndExpr__RightAssignment_1_2 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getRightAssignment_1_2()); 
-            }
-            // InternalTExp.g:4493:2: ( rule__AndExpr__RightAssignment_1_2 )
-            // InternalTExp.g:4493:3: rule__AndExpr__RightAssignment_1_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__AndExpr__RightAssignment_1_2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getRightAssignment_1_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__Group_1__2__Impl"
-
-
-    // $ANTLR start "rule__CatExpr__Group__0"
-    // InternalTExp.g:4502:1: rule__CatExpr__Group__0 : rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1 ;
-    public final void rule__CatExpr__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4506:1: ( rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1 )
-            // InternalTExp.g:4507:2: rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1
-            {
-            pushFollow(FOLLOW_44);
-            rule__CatExpr__Group__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group__0"
-
-
-    // $ANTLR start "rule__CatExpr__Group__0__Impl"
-    // InternalTExp.g:4514:1: rule__CatExpr__Group__0__Impl : ( ruleShuffleExpr ) ;
-    public final void rule__CatExpr__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4518:1: ( ( ruleShuffleExpr ) )
-            // InternalTExp.g:4519:1: ( ruleShuffleExpr )
-            {
-            // InternalTExp.g:4519:1: ( ruleShuffleExpr )
-            // InternalTExp.g:4520:2: ruleShuffleExpr
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getShuffleExprParserRuleCall_0()); 
-            }
-            pushFollow(FOLLOW_2);
-            ruleShuffleExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getShuffleExprParserRuleCall_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group__0__Impl"
-
-
-    // $ANTLR start "rule__CatExpr__Group__1"
-    // InternalTExp.g:4529:1: rule__CatExpr__Group__1 : rule__CatExpr__Group__1__Impl ;
-    public final void rule__CatExpr__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4533:1: ( rule__CatExpr__Group__1__Impl )
-            // InternalTExp.g:4534:2: rule__CatExpr__Group__1__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group__1"
-
-
-    // $ANTLR start "rule__CatExpr__Group__1__Impl"
-    // InternalTExp.g:4540:1: rule__CatExpr__Group__1__Impl : ( ( rule__CatExpr__Group_1__0 )* ) ;
-    public final void rule__CatExpr__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4544:1: ( ( ( rule__CatExpr__Group_1__0 )* ) )
-            // InternalTExp.g:4545:1: ( ( rule__CatExpr__Group_1__0 )* )
-            {
-            // InternalTExp.g:4545:1: ( ( rule__CatExpr__Group_1__0 )* )
-            // InternalTExp.g:4546:2: ( rule__CatExpr__Group_1__0 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getGroup_1()); 
-            }
-            // InternalTExp.g:4547:2: ( rule__CatExpr__Group_1__0 )*
-            loop45:
-            do {
-                int alt45=2;
-                int LA45_0 = input.LA(1);
-
-                if ( (LA45_0==62) ) {
-                    alt45=1;
-                }
-
-
-                switch (alt45) {
-            	case 1 :
-            	    // InternalTExp.g:4547:3: rule__CatExpr__Group_1__0
-            	    {
-            	    pushFollow(FOLLOW_45);
-            	    rule__CatExpr__Group_1__0();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop45;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getGroup_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group__1__Impl"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__0"
-    // InternalTExp.g:4556:1: rule__CatExpr__Group_1__0 : rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1 ;
-    public final void rule__CatExpr__Group_1__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4560:1: ( rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1 )
-            // InternalTExp.g:4561:2: rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1
-            {
-            pushFollow(FOLLOW_44);
-            rule__CatExpr__Group_1__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group_1__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__0"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__0__Impl"
-    // InternalTExp.g:4568:1: rule__CatExpr__Group_1__0__Impl : ( () ) ;
-    public final void rule__CatExpr__Group_1__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4572:1: ( ( () ) )
-            // InternalTExp.g:4573:1: ( () )
-            {
-            // InternalTExp.g:4573:1: ( () )
-            // InternalTExp.g:4574:2: ()
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0()); 
-            }
-            // InternalTExp.g:4575:2: ()
-            // InternalTExp.g:4575:3: 
-            {
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__0__Impl"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__1"
-    // InternalTExp.g:4583:1: rule__CatExpr__Group_1__1 : rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2 ;
-    public final void rule__CatExpr__Group_1__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4587:1: ( rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2 )
-            // InternalTExp.g:4588:2: rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2
-            {
-            pushFollow(FOLLOW_41);
-            rule__CatExpr__Group_1__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group_1__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__1"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__1__Impl"
-    // InternalTExp.g:4595:1: rule__CatExpr__Group_1__1__Impl : ( ( rule__CatExpr__OperatorAssignment_1_1 ) ) ;
-    public final void rule__CatExpr__Group_1__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4599:1: ( ( ( rule__CatExpr__OperatorAssignment_1_1 ) ) )
-            // InternalTExp.g:4600:1: ( ( rule__CatExpr__OperatorAssignment_1_1 ) )
-            {
-            // InternalTExp.g:4600:1: ( ( rule__CatExpr__OperatorAssignment_1_1 ) )
-            // InternalTExp.g:4601:2: ( rule__CatExpr__OperatorAssignment_1_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getOperatorAssignment_1_1()); 
-            }
-            // InternalTExp.g:4602:2: ( rule__CatExpr__OperatorAssignment_1_1 )
-            // InternalTExp.g:4602:3: rule__CatExpr__OperatorAssignment_1_1
-            {
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__OperatorAssignment_1_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getOperatorAssignment_1_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__1__Impl"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__2"
-    // InternalTExp.g:4610:1: rule__CatExpr__Group_1__2 : rule__CatExpr__Group_1__2__Impl ;
-    public final void rule__CatExpr__Group_1__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4614:1: ( rule__CatExpr__Group_1__2__Impl )
-            // InternalTExp.g:4615:2: rule__CatExpr__Group_1__2__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__Group_1__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__2"
-
-
-    // $ANTLR start "rule__CatExpr__Group_1__2__Impl"
-    // InternalTExp.g:4621:1: rule__CatExpr__Group_1__2__Impl : ( ( rule__CatExpr__RightAssignment_1_2 ) ) ;
-    public final void rule__CatExpr__Group_1__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:4625:1: ( ( ( rule__CatExpr__RightAssignment_1_2 ) ) )
-            // InternalTExp.g:4626:1: ( ( rule__CatExpr__RightAssignment_1_2 ) )
-            {
-            // InternalTExp.g:4626:1: ( ( rule__CatExpr__RightAssignment_1_2 ) )
-            // InternalTExp.g:4627:2: ( rule__CatExpr__RightAssignment_1_2 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getRightAssignment_1_2()); 
-            }
-            // InternalTExp.g:4628:2: ( rule__CatExpr__RightAssignment_1_2 )
-            // InternalTExp.g:4628:3: rule__CatExpr__RightAssignment_1_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__CatExpr__RightAssignment_1_2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getRightAssignment_1_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__Group_1__2__Impl"
-
-
     // $ANTLR start "rule__ShuffleExpr__Group__0"
-    // InternalTExp.g:4637:1: rule__ShuffleExpr__Group__0 : rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1 ;
+    // InternalTExp.g:4367:1: rule__ShuffleExpr__Group__0 : rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1 ;
     public final void rule__ShuffleExpr__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4641:1: ( rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1 )
-            // InternalTExp.g:4642:2: rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1
+            // InternalTExp.g:4371:1: ( rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1 )
+            // InternalTExp.g:4372:2: rule__ShuffleExpr__Group__0__Impl rule__ShuffleExpr__Group__1
             {
             pushFollow(FOLLOW_26);
             rule__ShuffleExpr__Group__0__Impl();
@@ -15848,17 +14974,17 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group__0__Impl"
-    // InternalTExp.g:4649:1: rule__ShuffleExpr__Group__0__Impl : ( ruleUnionExpr ) ;
+    // InternalTExp.g:4379:1: rule__ShuffleExpr__Group__0__Impl : ( ruleUnionExpr ) ;
     public final void rule__ShuffleExpr__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4653:1: ( ( ruleUnionExpr ) )
-            // InternalTExp.g:4654:1: ( ruleUnionExpr )
+            // InternalTExp.g:4383:1: ( ( ruleUnionExpr ) )
+            // InternalTExp.g:4384:1: ( ruleUnionExpr )
             {
-            // InternalTExp.g:4654:1: ( ruleUnionExpr )
-            // InternalTExp.g:4655:2: ruleUnionExpr
+            // InternalTExp.g:4384:1: ( ruleUnionExpr )
+            // InternalTExp.g:4385:2: ruleUnionExpr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getUnionExprParserRuleCall_0()); 
@@ -15893,14 +15019,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group__1"
-    // InternalTExp.g:4664:1: rule__ShuffleExpr__Group__1 : rule__ShuffleExpr__Group__1__Impl ;
+    // InternalTExp.g:4394:1: rule__ShuffleExpr__Group__1 : rule__ShuffleExpr__Group__1__Impl ;
     public final void rule__ShuffleExpr__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4668:1: ( rule__ShuffleExpr__Group__1__Impl )
-            // InternalTExp.g:4669:2: rule__ShuffleExpr__Group__1__Impl
+            // InternalTExp.g:4398:1: ( rule__ShuffleExpr__Group__1__Impl )
+            // InternalTExp.g:4399:2: rule__ShuffleExpr__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ShuffleExpr__Group__1__Impl();
@@ -15926,37 +15052,37 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group__1__Impl"
-    // InternalTExp.g:4675:1: rule__ShuffleExpr__Group__1__Impl : ( ( rule__ShuffleExpr__Group_1__0 )* ) ;
+    // InternalTExp.g:4405:1: rule__ShuffleExpr__Group__1__Impl : ( ( rule__ShuffleExpr__Group_1__0 )* ) ;
     public final void rule__ShuffleExpr__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4679:1: ( ( ( rule__ShuffleExpr__Group_1__0 )* ) )
-            // InternalTExp.g:4680:1: ( ( rule__ShuffleExpr__Group_1__0 )* )
+            // InternalTExp.g:4409:1: ( ( ( rule__ShuffleExpr__Group_1__0 )* ) )
+            // InternalTExp.g:4410:1: ( ( rule__ShuffleExpr__Group_1__0 )* )
             {
-            // InternalTExp.g:4680:1: ( ( rule__ShuffleExpr__Group_1__0 )* )
-            // InternalTExp.g:4681:2: ( rule__ShuffleExpr__Group_1__0 )*
+            // InternalTExp.g:4410:1: ( ( rule__ShuffleExpr__Group_1__0 )* )
+            // InternalTExp.g:4411:2: ( rule__ShuffleExpr__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getGroup_1()); 
             }
-            // InternalTExp.g:4682:2: ( rule__ShuffleExpr__Group_1__0 )*
-            loop46:
+            // InternalTExp.g:4412:2: ( rule__ShuffleExpr__Group_1__0 )*
+            loop44:
             do {
-                int alt46=2;
-                int LA46_0 = input.LA(1);
+                int alt44=2;
+                int LA44_0 = input.LA(1);
 
-                if ( (LA46_0==39) ) {
-                    alt46=1;
+                if ( (LA44_0==39) ) {
+                    alt44=1;
                 }
 
 
-                switch (alt46) {
+                switch (alt44) {
             	case 1 :
-            	    // InternalTExp.g:4682:3: rule__ShuffleExpr__Group_1__0
+            	    // InternalTExp.g:4412:3: rule__ShuffleExpr__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_46);
+            	    pushFollow(FOLLOW_42);
             	    rule__ShuffleExpr__Group_1__0();
 
             	    state._fsp--;
@@ -15966,7 +15092,7 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop46;
+            	    break loop44;
                 }
             } while (true);
 
@@ -15995,14 +15121,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__0"
-    // InternalTExp.g:4691:1: rule__ShuffleExpr__Group_1__0 : rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1 ;
+    // InternalTExp.g:4421:1: rule__ShuffleExpr__Group_1__0 : rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1 ;
     public final void rule__ShuffleExpr__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4695:1: ( rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1 )
-            // InternalTExp.g:4696:2: rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1
+            // InternalTExp.g:4425:1: ( rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1 )
+            // InternalTExp.g:4426:2: rule__ShuffleExpr__Group_1__0__Impl rule__ShuffleExpr__Group_1__1
             {
             pushFollow(FOLLOW_26);
             rule__ShuffleExpr__Group_1__0__Impl();
@@ -16033,23 +15159,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__0__Impl"
-    // InternalTExp.g:4703:1: rule__ShuffleExpr__Group_1__0__Impl : ( () ) ;
+    // InternalTExp.g:4433:1: rule__ShuffleExpr__Group_1__0__Impl : ( () ) ;
     public final void rule__ShuffleExpr__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4707:1: ( ( () ) )
-            // InternalTExp.g:4708:1: ( () )
+            // InternalTExp.g:4437:1: ( ( () ) )
+            // InternalTExp.g:4438:1: ( () )
             {
-            // InternalTExp.g:4708:1: ( () )
-            // InternalTExp.g:4709:2: ()
+            // InternalTExp.g:4438:1: ( () )
+            // InternalTExp.g:4439:2: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getShuffleExprLeftAction_1_0()); 
             }
-            // InternalTExp.g:4710:2: ()
-            // InternalTExp.g:4710:3: 
+            // InternalTExp.g:4440:2: ()
+            // InternalTExp.g:4440:3: 
             {
             }
 
@@ -16074,14 +15200,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__1"
-    // InternalTExp.g:4718:1: rule__ShuffleExpr__Group_1__1 : rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2 ;
+    // InternalTExp.g:4448:1: rule__ShuffleExpr__Group_1__1 : rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2 ;
     public final void rule__ShuffleExpr__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4722:1: ( rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2 )
-            // InternalTExp.g:4723:2: rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2
+            // InternalTExp.g:4452:1: ( rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2 )
+            // InternalTExp.g:4453:2: rule__ShuffleExpr__Group_1__1__Impl rule__ShuffleExpr__Group_1__2
             {
             pushFollow(FOLLOW_41);
             rule__ShuffleExpr__Group_1__1__Impl();
@@ -16112,23 +15238,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__1__Impl"
-    // InternalTExp.g:4730:1: rule__ShuffleExpr__Group_1__1__Impl : ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) ) ;
+    // InternalTExp.g:4460:1: rule__ShuffleExpr__Group_1__1__Impl : ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) ) ;
     public final void rule__ShuffleExpr__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4734:1: ( ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) ) )
-            // InternalTExp.g:4735:1: ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4464:1: ( ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) ) )
+            // InternalTExp.g:4465:1: ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) )
             {
-            // InternalTExp.g:4735:1: ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) )
-            // InternalTExp.g:4736:2: ( rule__ShuffleExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4465:1: ( ( rule__ShuffleExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4466:2: ( rule__ShuffleExpr__OperatorAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getOperatorAssignment_1_1()); 
             }
-            // InternalTExp.g:4737:2: ( rule__ShuffleExpr__OperatorAssignment_1_1 )
-            // InternalTExp.g:4737:3: rule__ShuffleExpr__OperatorAssignment_1_1
+            // InternalTExp.g:4467:2: ( rule__ShuffleExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4467:3: rule__ShuffleExpr__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__ShuffleExpr__OperatorAssignment_1_1();
@@ -16163,14 +15289,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__2"
-    // InternalTExp.g:4745:1: rule__ShuffleExpr__Group_1__2 : rule__ShuffleExpr__Group_1__2__Impl ;
+    // InternalTExp.g:4475:1: rule__ShuffleExpr__Group_1__2 : rule__ShuffleExpr__Group_1__2__Impl ;
     public final void rule__ShuffleExpr__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4749:1: ( rule__ShuffleExpr__Group_1__2__Impl )
-            // InternalTExp.g:4750:2: rule__ShuffleExpr__Group_1__2__Impl
+            // InternalTExp.g:4479:1: ( rule__ShuffleExpr__Group_1__2__Impl )
+            // InternalTExp.g:4480:2: rule__ShuffleExpr__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ShuffleExpr__Group_1__2__Impl();
@@ -16196,23 +15322,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__Group_1__2__Impl"
-    // InternalTExp.g:4756:1: rule__ShuffleExpr__Group_1__2__Impl : ( ( rule__ShuffleExpr__RightAssignment_1_2 ) ) ;
+    // InternalTExp.g:4486:1: rule__ShuffleExpr__Group_1__2__Impl : ( ( rule__ShuffleExpr__RightAssignment_1_2 ) ) ;
     public final void rule__ShuffleExpr__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4760:1: ( ( ( rule__ShuffleExpr__RightAssignment_1_2 ) ) )
-            // InternalTExp.g:4761:1: ( ( rule__ShuffleExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4490:1: ( ( ( rule__ShuffleExpr__RightAssignment_1_2 ) ) )
+            // InternalTExp.g:4491:1: ( ( rule__ShuffleExpr__RightAssignment_1_2 ) )
             {
-            // InternalTExp.g:4761:1: ( ( rule__ShuffleExpr__RightAssignment_1_2 ) )
-            // InternalTExp.g:4762:2: ( rule__ShuffleExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4491:1: ( ( rule__ShuffleExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4492:2: ( rule__ShuffleExpr__RightAssignment_1_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getRightAssignment_1_2()); 
             }
-            // InternalTExp.g:4763:2: ( rule__ShuffleExpr__RightAssignment_1_2 )
-            // InternalTExp.g:4763:3: rule__ShuffleExpr__RightAssignment_1_2
+            // InternalTExp.g:4493:2: ( rule__ShuffleExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4493:3: rule__ShuffleExpr__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__ShuffleExpr__RightAssignment_1_2();
@@ -16247,16 +15373,16 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group__0"
-    // InternalTExp.g:4772:1: rule__UnionExpr__Group__0 : rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1 ;
+    // InternalTExp.g:4502:1: rule__UnionExpr__Group__0 : rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1 ;
     public final void rule__UnionExpr__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4776:1: ( rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1 )
-            // InternalTExp.g:4777:2: rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1
+            // InternalTExp.g:4506:1: ( rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1 )
+            // InternalTExp.g:4507:2: rule__UnionExpr__Group__0__Impl rule__UnionExpr__Group__1
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_43);
             rule__UnionExpr__Group__0__Impl();
 
             state._fsp--;
@@ -16285,28 +15411,28 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group__0__Impl"
-    // InternalTExp.g:4784:1: rule__UnionExpr__Group__0__Impl : ( rulePrimary ) ;
+    // InternalTExp.g:4514:1: rule__UnionExpr__Group__0__Impl : ( ruleAndExpr ) ;
     public final void rule__UnionExpr__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4788:1: ( ( rulePrimary ) )
-            // InternalTExp.g:4789:1: ( rulePrimary )
+            // InternalTExp.g:4518:1: ( ( ruleAndExpr ) )
+            // InternalTExp.g:4519:1: ( ruleAndExpr )
             {
-            // InternalTExp.g:4789:1: ( rulePrimary )
-            // InternalTExp.g:4790:2: rulePrimary
+            // InternalTExp.g:4519:1: ( ruleAndExpr )
+            // InternalTExp.g:4520:2: ruleAndExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUnionExprAccess().getPrimaryParserRuleCall_0()); 
+               before(grammarAccess.getUnionExprAccess().getAndExprParserRuleCall_0()); 
             }
             pushFollow(FOLLOW_2);
-            rulePrimary();
+            ruleAndExpr();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUnionExprAccess().getPrimaryParserRuleCall_0()); 
+               after(grammarAccess.getUnionExprAccess().getAndExprParserRuleCall_0()); 
             }
 
             }
@@ -16330,14 +15456,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group__1"
-    // InternalTExp.g:4799:1: rule__UnionExpr__Group__1 : rule__UnionExpr__Group__1__Impl ;
+    // InternalTExp.g:4529:1: rule__UnionExpr__Group__1 : rule__UnionExpr__Group__1__Impl ;
     public final void rule__UnionExpr__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4803:1: ( rule__UnionExpr__Group__1__Impl )
-            // InternalTExp.g:4804:2: rule__UnionExpr__Group__1__Impl
+            // InternalTExp.g:4533:1: ( rule__UnionExpr__Group__1__Impl )
+            // InternalTExp.g:4534:2: rule__UnionExpr__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UnionExpr__Group__1__Impl();
@@ -16363,37 +15489,37 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group__1__Impl"
-    // InternalTExp.g:4810:1: rule__UnionExpr__Group__1__Impl : ( ( rule__UnionExpr__Group_1__0 )* ) ;
+    // InternalTExp.g:4540:1: rule__UnionExpr__Group__1__Impl : ( ( rule__UnionExpr__Group_1__0 )* ) ;
     public final void rule__UnionExpr__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4814:1: ( ( ( rule__UnionExpr__Group_1__0 )* ) )
-            // InternalTExp.g:4815:1: ( ( rule__UnionExpr__Group_1__0 )* )
+            // InternalTExp.g:4544:1: ( ( ( rule__UnionExpr__Group_1__0 )* ) )
+            // InternalTExp.g:4545:1: ( ( rule__UnionExpr__Group_1__0 )* )
             {
-            // InternalTExp.g:4815:1: ( ( rule__UnionExpr__Group_1__0 )* )
-            // InternalTExp.g:4816:2: ( rule__UnionExpr__Group_1__0 )*
+            // InternalTExp.g:4545:1: ( ( rule__UnionExpr__Group_1__0 )* )
+            // InternalTExp.g:4546:2: ( rule__UnionExpr__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getGroup_1()); 
             }
-            // InternalTExp.g:4817:2: ( rule__UnionExpr__Group_1__0 )*
-            loop47:
+            // InternalTExp.g:4547:2: ( rule__UnionExpr__Group_1__0 )*
+            loop45:
             do {
-                int alt47=2;
-                int LA47_0 = input.LA(1);
+                int alt45=2;
+                int LA45_0 = input.LA(1);
 
-                if ( (LA47_0==63) ) {
-                    alt47=1;
+                if ( (LA45_0==61) ) {
+                    alt45=1;
                 }
 
 
-                switch (alt47) {
+                switch (alt45) {
             	case 1 :
-            	    // InternalTExp.g:4817:3: rule__UnionExpr__Group_1__0
+            	    // InternalTExp.g:4547:3: rule__UnionExpr__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_48);
+            	    pushFollow(FOLLOW_44);
             	    rule__UnionExpr__Group_1__0();
 
             	    state._fsp--;
@@ -16403,7 +15529,7 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop47;
+            	    break loop45;
                 }
             } while (true);
 
@@ -16432,16 +15558,16 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__0"
-    // InternalTExp.g:4826:1: rule__UnionExpr__Group_1__0 : rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1 ;
+    // InternalTExp.g:4556:1: rule__UnionExpr__Group_1__0 : rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1 ;
     public final void rule__UnionExpr__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4830:1: ( rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1 )
-            // InternalTExp.g:4831:2: rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1
+            // InternalTExp.g:4560:1: ( rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1 )
+            // InternalTExp.g:4561:2: rule__UnionExpr__Group_1__0__Impl rule__UnionExpr__Group_1__1
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_43);
             rule__UnionExpr__Group_1__0__Impl();
 
             state._fsp--;
@@ -16470,23 +15596,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__0__Impl"
-    // InternalTExp.g:4838:1: rule__UnionExpr__Group_1__0__Impl : ( () ) ;
+    // InternalTExp.g:4568:1: rule__UnionExpr__Group_1__0__Impl : ( () ) ;
     public final void rule__UnionExpr__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4842:1: ( ( () ) )
-            // InternalTExp.g:4843:1: ( () )
+            // InternalTExp.g:4572:1: ( ( () ) )
+            // InternalTExp.g:4573:1: ( () )
             {
-            // InternalTExp.g:4843:1: ( () )
-            // InternalTExp.g:4844:2: ()
+            // InternalTExp.g:4573:1: ( () )
+            // InternalTExp.g:4574:2: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getUnionExprLeftAction_1_0()); 
             }
-            // InternalTExp.g:4845:2: ()
-            // InternalTExp.g:4845:3: 
+            // InternalTExp.g:4575:2: ()
+            // InternalTExp.g:4575:3: 
             {
             }
 
@@ -16511,14 +15637,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__1"
-    // InternalTExp.g:4853:1: rule__UnionExpr__Group_1__1 : rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2 ;
+    // InternalTExp.g:4583:1: rule__UnionExpr__Group_1__1 : rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2 ;
     public final void rule__UnionExpr__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4857:1: ( rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2 )
-            // InternalTExp.g:4858:2: rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2
+            // InternalTExp.g:4587:1: ( rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2 )
+            // InternalTExp.g:4588:2: rule__UnionExpr__Group_1__1__Impl rule__UnionExpr__Group_1__2
             {
             pushFollow(FOLLOW_41);
             rule__UnionExpr__Group_1__1__Impl();
@@ -16549,23 +15675,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__1__Impl"
-    // InternalTExp.g:4865:1: rule__UnionExpr__Group_1__1__Impl : ( ( rule__UnionExpr__OperatorAssignment_1_1 ) ) ;
+    // InternalTExp.g:4595:1: rule__UnionExpr__Group_1__1__Impl : ( ( rule__UnionExpr__OperatorAssignment_1_1 ) ) ;
     public final void rule__UnionExpr__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4869:1: ( ( ( rule__UnionExpr__OperatorAssignment_1_1 ) ) )
-            // InternalTExp.g:4870:1: ( ( rule__UnionExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4599:1: ( ( ( rule__UnionExpr__OperatorAssignment_1_1 ) ) )
+            // InternalTExp.g:4600:1: ( ( rule__UnionExpr__OperatorAssignment_1_1 ) )
             {
-            // InternalTExp.g:4870:1: ( ( rule__UnionExpr__OperatorAssignment_1_1 ) )
-            // InternalTExp.g:4871:2: ( rule__UnionExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4600:1: ( ( rule__UnionExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4601:2: ( rule__UnionExpr__OperatorAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getOperatorAssignment_1_1()); 
             }
-            // InternalTExp.g:4872:2: ( rule__UnionExpr__OperatorAssignment_1_1 )
-            // InternalTExp.g:4872:3: rule__UnionExpr__OperatorAssignment_1_1
+            // InternalTExp.g:4602:2: ( rule__UnionExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4602:3: rule__UnionExpr__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__UnionExpr__OperatorAssignment_1_1();
@@ -16600,14 +15726,14 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__2"
-    // InternalTExp.g:4880:1: rule__UnionExpr__Group_1__2 : rule__UnionExpr__Group_1__2__Impl ;
+    // InternalTExp.g:4610:1: rule__UnionExpr__Group_1__2 : rule__UnionExpr__Group_1__2__Impl ;
     public final void rule__UnionExpr__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4884:1: ( rule__UnionExpr__Group_1__2__Impl )
-            // InternalTExp.g:4885:2: rule__UnionExpr__Group_1__2__Impl
+            // InternalTExp.g:4614:1: ( rule__UnionExpr__Group_1__2__Impl )
+            // InternalTExp.g:4615:2: rule__UnionExpr__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UnionExpr__Group_1__2__Impl();
@@ -16633,23 +15759,23 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__Group_1__2__Impl"
-    // InternalTExp.g:4891:1: rule__UnionExpr__Group_1__2__Impl : ( ( rule__UnionExpr__RightAssignment_1_2 ) ) ;
+    // InternalTExp.g:4621:1: rule__UnionExpr__Group_1__2__Impl : ( ( rule__UnionExpr__RightAssignment_1_2 ) ) ;
     public final void rule__UnionExpr__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:4895:1: ( ( ( rule__UnionExpr__RightAssignment_1_2 ) ) )
-            // InternalTExp.g:4896:1: ( ( rule__UnionExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4625:1: ( ( ( rule__UnionExpr__RightAssignment_1_2 ) ) )
+            // InternalTExp.g:4626:1: ( ( rule__UnionExpr__RightAssignment_1_2 ) )
             {
-            // InternalTExp.g:4896:1: ( ( rule__UnionExpr__RightAssignment_1_2 ) )
-            // InternalTExp.g:4897:2: ( rule__UnionExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4626:1: ( ( rule__UnionExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4627:2: ( rule__UnionExpr__RightAssignment_1_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getRightAssignment_1_2()); 
             }
-            // InternalTExp.g:4898:2: ( rule__UnionExpr__RightAssignment_1_2 )
-            // InternalTExp.g:4898:3: rule__UnionExpr__RightAssignment_1_2
+            // InternalTExp.g:4628:2: ( rule__UnionExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4628:3: rule__UnionExpr__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__UnionExpr__RightAssignment_1_2();
@@ -16681,6 +15807,880 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "rule__UnionExpr__Group_1__2__Impl"
+
+
+    // $ANTLR start "rule__AndExpr__Group__0"
+    // InternalTExp.g:4637:1: rule__AndExpr__Group__0 : rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1 ;
+    public final void rule__AndExpr__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4641:1: ( rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1 )
+            // InternalTExp.g:4642:2: rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1
+            {
+            pushFollow(FOLLOW_45);
+            rule__AndExpr__Group__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group__0"
+
+
+    // $ANTLR start "rule__AndExpr__Group__0__Impl"
+    // InternalTExp.g:4649:1: rule__AndExpr__Group__0__Impl : ( ruleCatExpr ) ;
+    public final void rule__AndExpr__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4653:1: ( ( ruleCatExpr ) )
+            // InternalTExp.g:4654:1: ( ruleCatExpr )
+            {
+            // InternalTExp.g:4654:1: ( ruleCatExpr )
+            // InternalTExp.g:4655:2: ruleCatExpr
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            ruleCatExpr();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group__0__Impl"
+
+
+    // $ANTLR start "rule__AndExpr__Group__1"
+    // InternalTExp.g:4664:1: rule__AndExpr__Group__1 : rule__AndExpr__Group__1__Impl ;
+    public final void rule__AndExpr__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4668:1: ( rule__AndExpr__Group__1__Impl )
+            // InternalTExp.g:4669:2: rule__AndExpr__Group__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group__1"
+
+
+    // $ANTLR start "rule__AndExpr__Group__1__Impl"
+    // InternalTExp.g:4675:1: rule__AndExpr__Group__1__Impl : ( ( rule__AndExpr__Group_1__0 )* ) ;
+    public final void rule__AndExpr__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4679:1: ( ( ( rule__AndExpr__Group_1__0 )* ) )
+            // InternalTExp.g:4680:1: ( ( rule__AndExpr__Group_1__0 )* )
+            {
+            // InternalTExp.g:4680:1: ( ( rule__AndExpr__Group_1__0 )* )
+            // InternalTExp.g:4681:2: ( rule__AndExpr__Group_1__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getGroup_1()); 
+            }
+            // InternalTExp.g:4682:2: ( rule__AndExpr__Group_1__0 )*
+            loop46:
+            do {
+                int alt46=2;
+                int LA46_0 = input.LA(1);
+
+                if ( (LA46_0==62) ) {
+                    alt46=1;
+                }
+
+
+                switch (alt46) {
+            	case 1 :
+            	    // InternalTExp.g:4682:3: rule__AndExpr__Group_1__0
+            	    {
+            	    pushFollow(FOLLOW_46);
+            	    rule__AndExpr__Group_1__0();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop46;
+                }
+            } while (true);
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getGroup_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group__1__Impl"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__0"
+    // InternalTExp.g:4691:1: rule__AndExpr__Group_1__0 : rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1 ;
+    public final void rule__AndExpr__Group_1__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4695:1: ( rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1 )
+            // InternalTExp.g:4696:2: rule__AndExpr__Group_1__0__Impl rule__AndExpr__Group_1__1
+            {
+            pushFollow(FOLLOW_45);
+            rule__AndExpr__Group_1__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group_1__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__0"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__0__Impl"
+    // InternalTExp.g:4703:1: rule__AndExpr__Group_1__0__Impl : ( () ) ;
+    public final void rule__AndExpr__Group_1__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4707:1: ( ( () ) )
+            // InternalTExp.g:4708:1: ( () )
+            {
+            // InternalTExp.g:4708:1: ( () )
+            // InternalTExp.g:4709:2: ()
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0()); 
+            }
+            // InternalTExp.g:4710:2: ()
+            // InternalTExp.g:4710:3: 
+            {
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__0__Impl"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__1"
+    // InternalTExp.g:4718:1: rule__AndExpr__Group_1__1 : rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2 ;
+    public final void rule__AndExpr__Group_1__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4722:1: ( rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2 )
+            // InternalTExp.g:4723:2: rule__AndExpr__Group_1__1__Impl rule__AndExpr__Group_1__2
+            {
+            pushFollow(FOLLOW_41);
+            rule__AndExpr__Group_1__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group_1__2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__1"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__1__Impl"
+    // InternalTExp.g:4730:1: rule__AndExpr__Group_1__1__Impl : ( ( rule__AndExpr__OperatorAssignment_1_1 ) ) ;
+    public final void rule__AndExpr__Group_1__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4734:1: ( ( ( rule__AndExpr__OperatorAssignment_1_1 ) ) )
+            // InternalTExp.g:4735:1: ( ( rule__AndExpr__OperatorAssignment_1_1 ) )
+            {
+            // InternalTExp.g:4735:1: ( ( rule__AndExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4736:2: ( rule__AndExpr__OperatorAssignment_1_1 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getOperatorAssignment_1_1()); 
+            }
+            // InternalTExp.g:4737:2: ( rule__AndExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4737:3: rule__AndExpr__OperatorAssignment_1_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__OperatorAssignment_1_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getOperatorAssignment_1_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__1__Impl"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__2"
+    // InternalTExp.g:4745:1: rule__AndExpr__Group_1__2 : rule__AndExpr__Group_1__2__Impl ;
+    public final void rule__AndExpr__Group_1__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4749:1: ( rule__AndExpr__Group_1__2__Impl )
+            // InternalTExp.g:4750:2: rule__AndExpr__Group_1__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__Group_1__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__2"
+
+
+    // $ANTLR start "rule__AndExpr__Group_1__2__Impl"
+    // InternalTExp.g:4756:1: rule__AndExpr__Group_1__2__Impl : ( ( rule__AndExpr__RightAssignment_1_2 ) ) ;
+    public final void rule__AndExpr__Group_1__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4760:1: ( ( ( rule__AndExpr__RightAssignment_1_2 ) ) )
+            // InternalTExp.g:4761:1: ( ( rule__AndExpr__RightAssignment_1_2 ) )
+            {
+            // InternalTExp.g:4761:1: ( ( rule__AndExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4762:2: ( rule__AndExpr__RightAssignment_1_2 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getRightAssignment_1_2()); 
+            }
+            // InternalTExp.g:4763:2: ( rule__AndExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4763:3: rule__AndExpr__RightAssignment_1_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__AndExpr__RightAssignment_1_2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getRightAssignment_1_2()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__Group_1__2__Impl"
+
+
+    // $ANTLR start "rule__CatExpr__Group__0"
+    // InternalTExp.g:4772:1: rule__CatExpr__Group__0 : rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1 ;
+    public final void rule__CatExpr__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4776:1: ( rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1 )
+            // InternalTExp.g:4777:2: rule__CatExpr__Group__0__Impl rule__CatExpr__Group__1
+            {
+            pushFollow(FOLLOW_47);
+            rule__CatExpr__Group__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group__0"
+
+
+    // $ANTLR start "rule__CatExpr__Group__0__Impl"
+    // InternalTExp.g:4784:1: rule__CatExpr__Group__0__Impl : ( rulePrimary ) ;
+    public final void rule__CatExpr__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4788:1: ( ( rulePrimary ) )
+            // InternalTExp.g:4789:1: ( rulePrimary )
+            {
+            // InternalTExp.g:4789:1: ( rulePrimary )
+            // InternalTExp.g:4790:2: rulePrimary
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getPrimaryParserRuleCall_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            rulePrimary();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getPrimaryParserRuleCall_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group__0__Impl"
+
+
+    // $ANTLR start "rule__CatExpr__Group__1"
+    // InternalTExp.g:4799:1: rule__CatExpr__Group__1 : rule__CatExpr__Group__1__Impl ;
+    public final void rule__CatExpr__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4803:1: ( rule__CatExpr__Group__1__Impl )
+            // InternalTExp.g:4804:2: rule__CatExpr__Group__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group__1"
+
+
+    // $ANTLR start "rule__CatExpr__Group__1__Impl"
+    // InternalTExp.g:4810:1: rule__CatExpr__Group__1__Impl : ( ( rule__CatExpr__Group_1__0 )* ) ;
+    public final void rule__CatExpr__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4814:1: ( ( ( rule__CatExpr__Group_1__0 )* ) )
+            // InternalTExp.g:4815:1: ( ( rule__CatExpr__Group_1__0 )* )
+            {
+            // InternalTExp.g:4815:1: ( ( rule__CatExpr__Group_1__0 )* )
+            // InternalTExp.g:4816:2: ( rule__CatExpr__Group_1__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getGroup_1()); 
+            }
+            // InternalTExp.g:4817:2: ( rule__CatExpr__Group_1__0 )*
+            loop47:
+            do {
+                int alt47=2;
+                int LA47_0 = input.LA(1);
+
+                if ( (LA47_0==63) ) {
+                    alt47=1;
+                }
+
+
+                switch (alt47) {
+            	case 1 :
+            	    // InternalTExp.g:4817:3: rule__CatExpr__Group_1__0
+            	    {
+            	    pushFollow(FOLLOW_48);
+            	    rule__CatExpr__Group_1__0();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop47;
+                }
+            } while (true);
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getGroup_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group__1__Impl"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__0"
+    // InternalTExp.g:4826:1: rule__CatExpr__Group_1__0 : rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1 ;
+    public final void rule__CatExpr__Group_1__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4830:1: ( rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1 )
+            // InternalTExp.g:4831:2: rule__CatExpr__Group_1__0__Impl rule__CatExpr__Group_1__1
+            {
+            pushFollow(FOLLOW_47);
+            rule__CatExpr__Group_1__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group_1__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__0"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__0__Impl"
+    // InternalTExp.g:4838:1: rule__CatExpr__Group_1__0__Impl : ( () ) ;
+    public final void rule__CatExpr__Group_1__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4842:1: ( ( () ) )
+            // InternalTExp.g:4843:1: ( () )
+            {
+            // InternalTExp.g:4843:1: ( () )
+            // InternalTExp.g:4844:2: ()
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0()); 
+            }
+            // InternalTExp.g:4845:2: ()
+            // InternalTExp.g:4845:3: 
+            {
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__0__Impl"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__1"
+    // InternalTExp.g:4853:1: rule__CatExpr__Group_1__1 : rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2 ;
+    public final void rule__CatExpr__Group_1__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4857:1: ( rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2 )
+            // InternalTExp.g:4858:2: rule__CatExpr__Group_1__1__Impl rule__CatExpr__Group_1__2
+            {
+            pushFollow(FOLLOW_41);
+            rule__CatExpr__Group_1__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group_1__2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__1"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__1__Impl"
+    // InternalTExp.g:4865:1: rule__CatExpr__Group_1__1__Impl : ( ( rule__CatExpr__OperatorAssignment_1_1 ) ) ;
+    public final void rule__CatExpr__Group_1__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4869:1: ( ( ( rule__CatExpr__OperatorAssignment_1_1 ) ) )
+            // InternalTExp.g:4870:1: ( ( rule__CatExpr__OperatorAssignment_1_1 ) )
+            {
+            // InternalTExp.g:4870:1: ( ( rule__CatExpr__OperatorAssignment_1_1 ) )
+            // InternalTExp.g:4871:2: ( rule__CatExpr__OperatorAssignment_1_1 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getOperatorAssignment_1_1()); 
+            }
+            // InternalTExp.g:4872:2: ( rule__CatExpr__OperatorAssignment_1_1 )
+            // InternalTExp.g:4872:3: rule__CatExpr__OperatorAssignment_1_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__OperatorAssignment_1_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getOperatorAssignment_1_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__1__Impl"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__2"
+    // InternalTExp.g:4880:1: rule__CatExpr__Group_1__2 : rule__CatExpr__Group_1__2__Impl ;
+    public final void rule__CatExpr__Group_1__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4884:1: ( rule__CatExpr__Group_1__2__Impl )
+            // InternalTExp.g:4885:2: rule__CatExpr__Group_1__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__Group_1__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__2"
+
+
+    // $ANTLR start "rule__CatExpr__Group_1__2__Impl"
+    // InternalTExp.g:4891:1: rule__CatExpr__Group_1__2__Impl : ( ( rule__CatExpr__RightAssignment_1_2 ) ) ;
+    public final void rule__CatExpr__Group_1__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:4895:1: ( ( ( rule__CatExpr__RightAssignment_1_2 ) ) )
+            // InternalTExp.g:4896:1: ( ( rule__CatExpr__RightAssignment_1_2 ) )
+            {
+            // InternalTExp.g:4896:1: ( ( rule__CatExpr__RightAssignment_1_2 ) )
+            // InternalTExp.g:4897:2: ( rule__CatExpr__RightAssignment_1_2 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getRightAssignment_1_2()); 
+            }
+            // InternalTExp.g:4898:2: ( rule__CatExpr__RightAssignment_1_2 )
+            // InternalTExp.g:4898:3: rule__CatExpr__RightAssignment_1_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__CatExpr__RightAssignment_1_2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getRightAssignment_1_2()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__Group_1__2__Impl"
 
 
     // $ANTLR start "rule__Primary__Group_0__0"
@@ -31166,28 +31166,28 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Term__ExprAssignment_2"
-    // InternalTExp.g:9540:1: rule__Term__ExprAssignment_2 : ( ruleAndExpr ) ;
+    // InternalTExp.g:9540:1: rule__Term__ExprAssignment_2 : ( ruleShuffleExpr ) ;
     public final void rule__Term__ExprAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9544:1: ( ( ruleAndExpr ) )
-            // InternalTExp.g:9545:2: ( ruleAndExpr )
+            // InternalTExp.g:9544:1: ( ( ruleShuffleExpr ) )
+            // InternalTExp.g:9545:2: ( ruleShuffleExpr )
             {
-            // InternalTExp.g:9545:2: ( ruleAndExpr )
-            // InternalTExp.g:9546:3: ruleAndExpr
+            // InternalTExp.g:9545:2: ( ruleShuffleExpr )
+            // InternalTExp.g:9546:3: ruleShuffleExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTermAccess().getExprAndExprParserRuleCall_2_0()); 
+               before(grammarAccess.getTermAccess().getExprShuffleExprParserRuleCall_2_0()); 
             }
             pushFollow(FOLLOW_2);
-            ruleAndExpr();
+            ruleShuffleExpr();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTermAccess().getExprAndExprParserRuleCall_2_0()); 
+               after(grammarAccess.getTermAccess().getExprShuffleExprParserRuleCall_2_0()); 
             }
 
             }
@@ -31210,220 +31210,24 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Term__ExprAssignment_2"
 
 
-    // $ANTLR start "rule__AndExpr__OperatorAssignment_1_1"
-    // InternalTExp.g:9555:1: rule__AndExpr__OperatorAssignment_1_1 : ( ( '/\\\\' ) ) ;
-    public final void rule__AndExpr__OperatorAssignment_1_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:9559:1: ( ( ( '/\\\\' ) ) )
-            // InternalTExp.g:9560:2: ( ( '/\\\\' ) )
-            {
-            // InternalTExp.g:9560:2: ( ( '/\\\\' ) )
-            // InternalTExp.g:9561:3: ( '/\\\\' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
-            }
-            // InternalTExp.g:9562:3: ( '/\\\\' )
-            // InternalTExp.g:9563:4: '/\\\\'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
-            }
-            match(input,61,FOLLOW_2); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
-            }
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__OperatorAssignment_1_1"
-
-
-    // $ANTLR start "rule__AndExpr__RightAssignment_1_2"
-    // InternalTExp.g:9574:1: rule__AndExpr__RightAssignment_1_2 : ( ruleCatExpr ) ;
-    public final void rule__AndExpr__RightAssignment_1_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:9578:1: ( ( ruleCatExpr ) )
-            // InternalTExp.g:9579:2: ( ruleCatExpr )
-            {
-            // InternalTExp.g:9579:2: ( ruleCatExpr )
-            // InternalTExp.g:9580:3: ruleCatExpr
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0()); 
-            }
-            pushFollow(FOLLOW_2);
-            ruleCatExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__AndExpr__RightAssignment_1_2"
-
-
-    // $ANTLR start "rule__CatExpr__OperatorAssignment_1_1"
-    // InternalTExp.g:9589:1: rule__CatExpr__OperatorAssignment_1_1 : ( ( '*' ) ) ;
-    public final void rule__CatExpr__OperatorAssignment_1_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:9593:1: ( ( ( '*' ) ) )
-            // InternalTExp.g:9594:2: ( ( '*' ) )
-            {
-            // InternalTExp.g:9594:2: ( ( '*' ) )
-            // InternalTExp.g:9595:3: ( '*' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
-            }
-            // InternalTExp.g:9596:3: ( '*' )
-            // InternalTExp.g:9597:4: '*'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
-            }
-            match(input,62,FOLLOW_2); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
-            }
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__OperatorAssignment_1_1"
-
-
-    // $ANTLR start "rule__CatExpr__RightAssignment_1_2"
-    // InternalTExp.g:9608:1: rule__CatExpr__RightAssignment_1_2 : ( ruleShuffleExpr ) ;
-    public final void rule__CatExpr__RightAssignment_1_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalTExp.g:9612:1: ( ( ruleShuffleExpr ) )
-            // InternalTExp.g:9613:2: ( ruleShuffleExpr )
-            {
-            // InternalTExp.g:9613:2: ( ruleShuffleExpr )
-            // InternalTExp.g:9614:3: ruleShuffleExpr
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCatExprAccess().getRightShuffleExprParserRuleCall_1_2_0()); 
-            }
-            pushFollow(FOLLOW_2);
-            ruleShuffleExpr();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCatExprAccess().getRightShuffleExprParserRuleCall_1_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__CatExpr__RightAssignment_1_2"
-
-
     // $ANTLR start "rule__ShuffleExpr__OperatorAssignment_1_1"
-    // InternalTExp.g:9623:1: rule__ShuffleExpr__OperatorAssignment_1_1 : ( ( '|' ) ) ;
+    // InternalTExp.g:9555:1: rule__ShuffleExpr__OperatorAssignment_1_1 : ( ( '|' ) ) ;
     public final void rule__ShuffleExpr__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9627:1: ( ( ( '|' ) ) )
-            // InternalTExp.g:9628:2: ( ( '|' ) )
+            // InternalTExp.g:9559:1: ( ( ( '|' ) ) )
+            // InternalTExp.g:9560:2: ( ( '|' ) )
             {
-            // InternalTExp.g:9628:2: ( ( '|' ) )
-            // InternalTExp.g:9629:3: ( '|' )
+            // InternalTExp.g:9560:2: ( ( '|' ) )
+            // InternalTExp.g:9561:3: ( '|' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getOperatorVerticalLineKeyword_1_1_0()); 
             }
-            // InternalTExp.g:9630:3: ( '|' )
-            // InternalTExp.g:9631:4: '|'
+            // InternalTExp.g:9562:3: ( '|' )
+            // InternalTExp.g:9563:4: '|'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getOperatorVerticalLineKeyword_1_1_0()); 
@@ -31460,17 +31264,17 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ShuffleExpr__RightAssignment_1_2"
-    // InternalTExp.g:9642:1: rule__ShuffleExpr__RightAssignment_1_2 : ( ruleUnionExpr ) ;
+    // InternalTExp.g:9574:1: rule__ShuffleExpr__RightAssignment_1_2 : ( ruleUnionExpr ) ;
     public final void rule__ShuffleExpr__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9646:1: ( ( ruleUnionExpr ) )
-            // InternalTExp.g:9647:2: ( ruleUnionExpr )
+            // InternalTExp.g:9578:1: ( ( ruleUnionExpr ) )
+            // InternalTExp.g:9579:2: ( ruleUnionExpr )
             {
-            // InternalTExp.g:9647:2: ( ruleUnionExpr )
-            // InternalTExp.g:9648:3: ruleUnionExpr
+            // InternalTExp.g:9579:2: ( ruleUnionExpr )
+            // InternalTExp.g:9580:3: ruleUnionExpr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getShuffleExprAccess().getRightUnionExprParserRuleCall_1_2_0()); 
@@ -31505,28 +31309,28 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__OperatorAssignment_1_1"
-    // InternalTExp.g:9657:1: rule__UnionExpr__OperatorAssignment_1_1 : ( ( '\\\\/' ) ) ;
+    // InternalTExp.g:9589:1: rule__UnionExpr__OperatorAssignment_1_1 : ( ( '\\\\/' ) ) ;
     public final void rule__UnionExpr__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9661:1: ( ( ( '\\\\/' ) ) )
-            // InternalTExp.g:9662:2: ( ( '\\\\/' ) )
+            // InternalTExp.g:9593:1: ( ( ( '\\\\/' ) ) )
+            // InternalTExp.g:9594:2: ( ( '\\\\/' ) )
             {
-            // InternalTExp.g:9662:2: ( ( '\\\\/' ) )
-            // InternalTExp.g:9663:3: ( '\\\\/' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getUnionExprAccess().getOperatorReverseSolidusSolidusKeyword_1_1_0()); 
-            }
-            // InternalTExp.g:9664:3: ( '\\\\/' )
-            // InternalTExp.g:9665:4: '\\\\/'
+            // InternalTExp.g:9594:2: ( ( '\\\\/' ) )
+            // InternalTExp.g:9595:3: ( '\\\\/' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnionExprAccess().getOperatorReverseSolidusSolidusKeyword_1_1_0()); 
             }
-            match(input,63,FOLLOW_2); if (state.failed) return ;
+            // InternalTExp.g:9596:3: ( '\\\\/' )
+            // InternalTExp.g:9597:4: '\\\\/'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getUnionExprAccess().getOperatorReverseSolidusSolidusKeyword_1_1_0()); 
+            }
+            match(input,61,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getUnionExprAccess().getOperatorReverseSolidusSolidusKeyword_1_1_0()); 
             }
@@ -31558,28 +31362,28 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnionExpr__RightAssignment_1_2"
-    // InternalTExp.g:9676:1: rule__UnionExpr__RightAssignment_1_2 : ( rulePrimary ) ;
+    // InternalTExp.g:9608:1: rule__UnionExpr__RightAssignment_1_2 : ( ruleAndExpr ) ;
     public final void rule__UnionExpr__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9680:1: ( ( rulePrimary ) )
-            // InternalTExp.g:9681:2: ( rulePrimary )
+            // InternalTExp.g:9612:1: ( ( ruleAndExpr ) )
+            // InternalTExp.g:9613:2: ( ruleAndExpr )
             {
-            // InternalTExp.g:9681:2: ( rulePrimary )
-            // InternalTExp.g:9682:3: rulePrimary
+            // InternalTExp.g:9613:2: ( ruleAndExpr )
+            // InternalTExp.g:9614:3: ruleAndExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUnionExprAccess().getRightPrimaryParserRuleCall_1_2_0()); 
+               before(grammarAccess.getUnionExprAccess().getRightAndExprParserRuleCall_1_2_0()); 
             }
             pushFollow(FOLLOW_2);
-            rulePrimary();
+            ruleAndExpr();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUnionExprAccess().getRightPrimaryParserRuleCall_1_2_0()); 
+               after(grammarAccess.getUnionExprAccess().getRightAndExprParserRuleCall_1_2_0()); 
             }
 
             }
@@ -31600,6 +31404,202 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "rule__UnionExpr__RightAssignment_1_2"
+
+
+    // $ANTLR start "rule__AndExpr__OperatorAssignment_1_1"
+    // InternalTExp.g:9623:1: rule__AndExpr__OperatorAssignment_1_1 : ( ( '/\\\\' ) ) ;
+    public final void rule__AndExpr__OperatorAssignment_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:9627:1: ( ( ( '/\\\\' ) ) )
+            // InternalTExp.g:9628:2: ( ( '/\\\\' ) )
+            {
+            // InternalTExp.g:9628:2: ( ( '/\\\\' ) )
+            // InternalTExp.g:9629:3: ( '/\\\\' )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
+            }
+            // InternalTExp.g:9630:3: ( '/\\\\' )
+            // InternalTExp.g:9631:4: '/\\\\'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
+            }
+            match(input,62,FOLLOW_2); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__OperatorAssignment_1_1"
+
+
+    // $ANTLR start "rule__AndExpr__RightAssignment_1_2"
+    // InternalTExp.g:9642:1: rule__AndExpr__RightAssignment_1_2 : ( ruleCatExpr ) ;
+    public final void rule__AndExpr__RightAssignment_1_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:9646:1: ( ( ruleCatExpr ) )
+            // InternalTExp.g:9647:2: ( ruleCatExpr )
+            {
+            // InternalTExp.g:9647:2: ( ruleCatExpr )
+            // InternalTExp.g:9648:3: ruleCatExpr
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            ruleCatExpr();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AndExpr__RightAssignment_1_2"
+
+
+    // $ANTLR start "rule__CatExpr__OperatorAssignment_1_1"
+    // InternalTExp.g:9657:1: rule__CatExpr__OperatorAssignment_1_1 : ( ( '*' ) ) ;
+    public final void rule__CatExpr__OperatorAssignment_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:9661:1: ( ( ( '*' ) ) )
+            // InternalTExp.g:9662:2: ( ( '*' ) )
+            {
+            // InternalTExp.g:9662:2: ( ( '*' ) )
+            // InternalTExp.g:9663:3: ( '*' )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
+            }
+            // InternalTExp.g:9664:3: ( '*' )
+            // InternalTExp.g:9665:4: '*'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
+            }
+            match(input,63,FOLLOW_2); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__OperatorAssignment_1_1"
+
+
+    // $ANTLR start "rule__CatExpr__RightAssignment_1_2"
+    // InternalTExp.g:9676:1: rule__CatExpr__RightAssignment_1_2 : ( rulePrimary ) ;
+    public final void rule__CatExpr__RightAssignment_1_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalTExp.g:9680:1: ( ( rulePrimary ) )
+            // InternalTExp.g:9681:2: ( rulePrimary )
+            {
+            // InternalTExp.g:9681:2: ( rulePrimary )
+            // InternalTExp.g:9682:3: rulePrimary
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCatExprAccess().getRightPrimaryParserRuleCall_1_2_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            rulePrimary();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getCatExprAccess().getRightPrimaryParserRuleCall_1_2_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CatExpr__RightAssignment_1_2"
 
 
     // $ANTLR start "rule__Primary__SeqExprAssignment_0_1"
@@ -32445,28 +32445,28 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpr__ExprAssignment_2_1"
-    // InternalTExp.g:9977:1: rule__TerminalExpr__ExprAssignment_2_1 : ( ruleAndExpr ) ;
+    // InternalTExp.g:9977:1: rule__TerminalExpr__ExprAssignment_2_1 : ( ruleShuffleExpr ) ;
     public final void rule__TerminalExpr__ExprAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalTExp.g:9981:1: ( ( ruleAndExpr ) )
-            // InternalTExp.g:9982:2: ( ruleAndExpr )
+            // InternalTExp.g:9981:1: ( ( ruleShuffleExpr ) )
+            // InternalTExp.g:9982:2: ( ruleShuffleExpr )
             {
-            // InternalTExp.g:9982:2: ( ruleAndExpr )
-            // InternalTExp.g:9983:3: ruleAndExpr
+            // InternalTExp.g:9982:2: ( ruleShuffleExpr )
+            // InternalTExp.g:9983:3: ruleShuffleExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTerminalExprAccess().getExprAndExprParserRuleCall_2_1_0()); 
+               before(grammarAccess.getTerminalExprAccess().getExprShuffleExprParserRuleCall_2_1_0()); 
             }
             pushFollow(FOLLOW_2);
-            ruleAndExpr();
+            ruleShuffleExpr();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTerminalExprAccess().getExprAndExprParserRuleCall_2_1_0()); 
+               after(grammarAccess.getTerminalExprAccess().getExprShuffleExprParserRuleCall_2_1_0()); 
             }
 
             }
@@ -34772,11 +34772,11 @@ public class InternalTExpParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0003800800000002L});
     public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000400020010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x2000000000000002L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x2000000000000002L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x4000000000000002L});
     public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x8000000000000000L});
     public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x8000000000000002L});
     public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000020000L});

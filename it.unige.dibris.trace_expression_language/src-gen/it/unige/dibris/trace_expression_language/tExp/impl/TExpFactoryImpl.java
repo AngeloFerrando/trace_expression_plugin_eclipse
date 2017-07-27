@@ -82,10 +82,10 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
       case TExpPackage.STRING_EXPRESSION: return createStringExpression();
       case TExpPackage.NUMBER_EXPRESSION: return createNumberExpression();
       case TExpPackage.LIST_EXPRESSION: return createListExpression();
-      case TExpPackage.AND_EXPR: return createAndExpr();
-      case TExpPackage.CAT_EXPR: return createCatExpr();
       case TExpPackage.SHUFFLE_EXPR: return createShuffleExpr();
       case TExpPackage.UNION_EXPR: return createUnionExpr();
+      case TExpPackage.AND_EXPR: return createAndExpr();
+      case TExpPackage.CAT_EXPR: return createCatExpr();
       case TExpPackage.SEQ_EXPR: return createSeqExpr();
       case TExpPackage.FILTER_EXPR: return createFilterExpr();
       case TExpPackage.VAR_EXPR: return createVarExpr();
@@ -290,28 +290,6 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AndExpr createAndExpr()
-  {
-    AndExprImpl andExpr = new AndExprImpl();
-    return andExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CatExpr createCatExpr()
-  {
-    CatExprImpl catExpr = new CatExprImpl();
-    return catExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ShuffleExpr createShuffleExpr()
   {
     ShuffleExprImpl shuffleExpr = new ShuffleExprImpl();
@@ -327,6 +305,28 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
   {
     UnionExprImpl unionExpr = new UnionExprImpl();
     return unionExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AndExpr createAndExpr()
+  {
+    AndExprImpl andExpr = new AndExprImpl();
+    return andExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CatExpr createCatExpr()
+  {
+    CatExprImpl catExpr = new CatExprImpl();
+    return catExpr;
   }
 
   /**

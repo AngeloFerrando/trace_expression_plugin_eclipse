@@ -165,6 +165,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ShuffleExpr returns AndExpr
+	 *     ShuffleExpr.ShuffleExpr_1_0 returns AndExpr
+	 *     UnionExpr returns AndExpr
+	 *     UnionExpr.UnionExpr_1_0 returns AndExpr
 	 *     AndExpr returns AndExpr
 	 *     AndExpr.AndExpr_1_0 returns AndExpr
 	 *
@@ -190,13 +194,17 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ShuffleExpr returns CatExpr
+	 *     ShuffleExpr.ShuffleExpr_1_0 returns CatExpr
+	 *     UnionExpr returns CatExpr
+	 *     UnionExpr.UnionExpr_1_0 returns CatExpr
 	 *     AndExpr returns CatExpr
 	 *     AndExpr.AndExpr_1_0 returns CatExpr
 	 *     CatExpr returns CatExpr
 	 *     CatExpr.CatExpr_1_0 returns CatExpr
 	 *
 	 * Constraint:
-	 *     (left=CatExpr_CatExpr_1_0 operator='*' right=ShuffleExpr)
+	 *     (left=CatExpr_CatExpr_1_0 operator='*' right=Primary)
 	 */
 	protected void sequence_CatExpr(ISerializationContext context, CatExpr semanticObject) {
 		if (errorAcceptor != null) {
@@ -210,7 +218,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getCatExprAccess().getRightShuffleExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getCatExprAccess().getRightPrimaryParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -542,14 +550,14 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns FilterExpr
-	 *     AndExpr.AndExpr_1_0 returns FilterExpr
-	 *     CatExpr returns FilterExpr
-	 *     CatExpr.CatExpr_1_0 returns FilterExpr
 	 *     ShuffleExpr returns FilterExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns FilterExpr
 	 *     UnionExpr returns FilterExpr
 	 *     UnionExpr.UnionExpr_1_0 returns FilterExpr
+	 *     AndExpr returns FilterExpr
+	 *     AndExpr.AndExpr_1_0 returns FilterExpr
+	 *     CatExpr returns FilterExpr
+	 *     CatExpr.CatExpr_1_0 returns FilterExpr
 	 *     Primary returns FilterExpr
 	 *
 	 * Constraint:
@@ -568,14 +576,14 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns SeqExpr
-	 *     AndExpr.AndExpr_1_0 returns SeqExpr
-	 *     CatExpr returns SeqExpr
-	 *     CatExpr.CatExpr_1_0 returns SeqExpr
 	 *     ShuffleExpr returns SeqExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns SeqExpr
 	 *     UnionExpr returns SeqExpr
 	 *     UnionExpr.UnionExpr_1_0 returns SeqExpr
+	 *     AndExpr returns SeqExpr
+	 *     AndExpr.AndExpr_1_0 returns SeqExpr
+	 *     CatExpr returns SeqExpr
+	 *     CatExpr.CatExpr_1_0 returns SeqExpr
 	 *     Primary returns SeqExpr
 	 *
 	 * Constraint:
@@ -594,14 +602,14 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns TerminalExpr
-	 *     AndExpr.AndExpr_1_0 returns TerminalExpr
-	 *     CatExpr returns TerminalExpr
-	 *     CatExpr.CatExpr_1_0 returns TerminalExpr
 	 *     ShuffleExpr returns TerminalExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns TerminalExpr
 	 *     UnionExpr returns TerminalExpr
 	 *     UnionExpr.UnionExpr_1_0 returns TerminalExpr
+	 *     AndExpr returns TerminalExpr
+	 *     AndExpr.AndExpr_1_0 returns TerminalExpr
+	 *     CatExpr returns TerminalExpr
+	 *     CatExpr.CatExpr_1_0 returns TerminalExpr
 	 *     Primary returns TerminalExpr
 	 *
 	 * Constraint:
@@ -620,14 +628,14 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns VarExpr
-	 *     AndExpr.AndExpr_1_0 returns VarExpr
-	 *     CatExpr returns VarExpr
-	 *     CatExpr.CatExpr_1_0 returns VarExpr
 	 *     ShuffleExpr returns VarExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns VarExpr
 	 *     UnionExpr returns VarExpr
 	 *     UnionExpr.UnionExpr_1_0 returns VarExpr
+	 *     AndExpr returns VarExpr
+	 *     AndExpr.AndExpr_1_0 returns VarExpr
+	 *     CatExpr returns VarExpr
+	 *     CatExpr.CatExpr_1_0 returns VarExpr
 	 *     Primary returns VarExpr
 	 *
 	 * Constraint:
@@ -670,10 +678,6 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns ShuffleExpr
-	 *     AndExpr.AndExpr_1_0 returns ShuffleExpr
-	 *     CatExpr returns ShuffleExpr
-	 *     CatExpr.CatExpr_1_0 returns ShuffleExpr
 	 *     ShuffleExpr returns ShuffleExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns ShuffleExpr
 	 *
@@ -702,7 +706,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Term returns Term
 	 *
 	 * Constraint:
-	 *     (name=ID expr=AndExpr)
+	 *     (name=ID expr=ShuffleExpr)
 	 */
 	protected void sequence_Term(ISerializationContext context, Term semanticObject) {
 		if (errorAcceptor != null) {
@@ -713,7 +717,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTermAccess().getNameIDParserRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getTermAccess().getExprAndExprParserRuleCall_2_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getTermAccess().getExprShuffleExprParserRuleCall_2_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
@@ -723,7 +727,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TerminalExpr returns Expression
 	 *
 	 * Constraint:
-	 *     (eps='epsilon' | term=[Term|ID] | expr=AndExpr)
+	 *     (eps='epsilon' | term=[Term|ID] | expr=ShuffleExpr)
 	 */
 	protected void sequence_TerminalExpr(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -771,17 +775,13 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AndExpr returns UnionExpr
-	 *     AndExpr.AndExpr_1_0 returns UnionExpr
-	 *     CatExpr returns UnionExpr
-	 *     CatExpr.CatExpr_1_0 returns UnionExpr
 	 *     ShuffleExpr returns UnionExpr
 	 *     ShuffleExpr.ShuffleExpr_1_0 returns UnionExpr
 	 *     UnionExpr returns UnionExpr
 	 *     UnionExpr.UnionExpr_1_0 returns UnionExpr
 	 *
 	 * Constraint:
-	 *     (left=UnionExpr_UnionExpr_1_0 operator='\/' right=Primary)
+	 *     (left=UnionExpr_UnionExpr_1_0 operator='\/' right=AndExpr)
 	 */
 	protected void sequence_UnionExpr(ISerializationContext context, UnionExpr semanticObject) {
 		if (errorAcceptor != null) {
@@ -795,7 +795,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getUnionExprAccess().getUnionExprLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getUnionExprAccess().getOperatorReverseSolidusSolidusKeyword_1_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getUnionExprAccess().getRightPrimaryParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getUnionExprAccess().getRightAndExprParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	

@@ -161,16 +161,6 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
         return createListExpressionAdapter();
       }
       @Override
-      public Adapter caseAndExpr(AndExpr object)
-      {
-        return createAndExprAdapter();
-      }
-      @Override
-      public Adapter caseCatExpr(CatExpr object)
-      {
-        return createCatExprAdapter();
-      }
-      @Override
       public Adapter caseShuffleExpr(ShuffleExpr object)
       {
         return createShuffleExprAdapter();
@@ -179,6 +169,16 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
       public Adapter caseUnionExpr(UnionExpr object)
       {
         return createUnionExprAdapter();
+      }
+      @Override
+      public Adapter caseAndExpr(AndExpr object)
+      {
+        return createAndExprAdapter();
+      }
+      @Override
+      public Adapter caseCatExpr(CatExpr object)
+      {
+        return createCatExprAdapter();
       }
       @Override
       public Adapter caseSeqExpr(SeqExpr object)
@@ -493,36 +493,6 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr <em>And Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr
-   * @generated
-   */
-  public Adapter createAndExprAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr <em>Cat Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr
-   * @generated
-   */
-  public Adapter createCatExprAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.ShuffleExpr <em>Shuffle Expr</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -548,6 +518,36 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUnionExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.AndExpr <em>And Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.AndExpr
+   * @generated
+   */
+  public Adapter createAndExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.CatExpr <em>Cat Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.CatExpr
+   * @generated
+   */
+  public Adapter createCatExprAdapter()
   {
     return null;
   }

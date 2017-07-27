@@ -1026,13 +1026,13 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Keyword cLessThanSignHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cExprAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExprAndExprParserRuleCall_2_0 = (RuleCall)cExprAssignment_2.eContents().get(0);
+		private final RuleCall cExprShuffleExprParserRuleCall_2_0 = (RuleCall)cExprAssignment_2.eContents().get(0);
 		
 		//Term:
-		//	name=ID '<-' expr=AndExpr;
+		//	name=ID '<-' expr=ShuffleExpr;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '<-' expr=AndExpr
+		//name=ID '<-' expr=ShuffleExpr
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -1044,89 +1044,11 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//'<-'
 		public Keyword getLessThanSignHyphenMinusKeyword_1() { return cLessThanSignHyphenMinusKeyword_1; }
 		
-		//expr=AndExpr
+		//expr=ShuffleExpr
 		public Assignment getExprAssignment_2() { return cExprAssignment_2; }
 		
-		//AndExpr
-		public RuleCall getExprAndExprParserRuleCall_2_0() { return cExprAndExprParserRuleCall_2_0; }
-	}
-	public class AndExprElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.AndExpr");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCatExprParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cAndExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final Keyword cOperatorSolidusReverseSolidusKeyword_1_1_0 = (Keyword)cOperatorAssignment_1_1.eContents().get(0);
-		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightCatExprParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
-		
-		//AndExpr Expression:
-		//	CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*
-		public Group getGroup() { return cGroup; }
-		
-		//CatExpr
-		public RuleCall getCatExprParserRuleCall_0() { return cCatExprParserRuleCall_0; }
-		
-		//({AndExpr.left=current} => operator='/\\' right=CatExpr)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{AndExpr.left=current}
-		public Action getAndExprLeftAction_1_0() { return cAndExprLeftAction_1_0; }
-		
-		//=> operator='/\\'
-		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
-		
-		//'/\\'
-		public Keyword getOperatorSolidusReverseSolidusKeyword_1_1_0() { return cOperatorSolidusReverseSolidusKeyword_1_1_0; }
-		
-		//right=CatExpr
-		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
-		
-		//CatExpr
-		public RuleCall getRightCatExprParserRuleCall_1_2_0() { return cRightCatExprParserRuleCall_1_2_0; }
-	}
-	public class CatExprElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.CatExpr");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cShuffleExprParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cCatExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final Keyword cOperatorAsteriskKeyword_1_1_0 = (Keyword)cOperatorAssignment_1_1.eContents().get(0);
-		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightShuffleExprParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
-		
-		//CatExpr Expression:
-		//	ShuffleExpr ({CatExpr.left=current} => operator='*' right=ShuffleExpr)*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//ShuffleExpr ({CatExpr.left=current} => operator='*' right=ShuffleExpr)*
-		public Group getGroup() { return cGroup; }
-		
 		//ShuffleExpr
-		public RuleCall getShuffleExprParserRuleCall_0() { return cShuffleExprParserRuleCall_0; }
-		
-		//({CatExpr.left=current} => operator='*' right=ShuffleExpr)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{CatExpr.left=current}
-		public Action getCatExprLeftAction_1_0() { return cCatExprLeftAction_1_0; }
-		
-		//=> operator='*'
-		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
-		
-		//'*'
-		public Keyword getOperatorAsteriskKeyword_1_1_0() { return cOperatorAsteriskKeyword_1_1_0; }
-		
-		//right=ShuffleExpr
-		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
-		
-		//ShuffleExpr
-		public RuleCall getRightShuffleExprParserRuleCall_1_2_0() { return cRightShuffleExprParserRuleCall_1_2_0; }
+		public RuleCall getExprShuffleExprParserRuleCall_2_0() { return cExprShuffleExprParserRuleCall_2_0; }
 	}
 	public class ShuffleExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.ShuffleExpr");
@@ -1170,25 +1092,25 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	public class UnionExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.UnionExpr");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cAndExprParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cUnionExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Keyword cOperatorReverseSolidusSolidusKeyword_1_1_0 = (Keyword)cOperatorAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightAndExprParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//UnionExpr Expression:
-		//	Primary ({UnionExpr.left=current} => operator='\\/' right=Primary)*;
+		//	AndExpr ({UnionExpr.left=current} => operator='\\/' right=AndExpr)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Primary ({UnionExpr.left=current} => operator='\\/' right=Primary)*
+		//AndExpr ({UnionExpr.left=current} => operator='\\/' right=AndExpr)*
 		public Group getGroup() { return cGroup; }
 		
-		//Primary
-		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
+		//AndExpr
+		public RuleCall getAndExprParserRuleCall_0() { return cAndExprParserRuleCall_0; }
 		
-		//({UnionExpr.left=current} => operator='\\/' right=Primary)*
+		//({UnionExpr.left=current} => operator='\\/' right=AndExpr)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{UnionExpr.left=current}
@@ -1199,6 +1121,84 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'\\/'
 		public Keyword getOperatorReverseSolidusSolidusKeyword_1_1_0() { return cOperatorReverseSolidusSolidusKeyword_1_1_0; }
+		
+		//right=AndExpr
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//AndExpr
+		public RuleCall getRightAndExprParserRuleCall_1_2_0() { return cRightAndExprParserRuleCall_1_2_0; }
+	}
+	public class AndExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.AndExpr");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cCatExprParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cAndExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cOperatorSolidusReverseSolidusKeyword_1_1_0 = (Keyword)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightCatExprParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//AndExpr Expression:
+		//	CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*
+		public Group getGroup() { return cGroup; }
+		
+		//CatExpr
+		public RuleCall getCatExprParserRuleCall_0() { return cCatExprParserRuleCall_0; }
+		
+		//({AndExpr.left=current} => operator='/\\' right=CatExpr)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{AndExpr.left=current}
+		public Action getAndExprLeftAction_1_0() { return cAndExprLeftAction_1_0; }
+		
+		//=> operator='/\\'
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//'/\\'
+		public Keyword getOperatorSolidusReverseSolidusKeyword_1_1_0() { return cOperatorSolidusReverseSolidusKeyword_1_1_0; }
+		
+		//right=CatExpr
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//CatExpr
+		public RuleCall getRightCatExprParserRuleCall_1_2_0() { return cRightCatExprParserRuleCall_1_2_0; }
+	}
+	public class CatExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.CatExpr");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cCatExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cOperatorAsteriskKeyword_1_1_0 = (Keyword)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//CatExpr Expression:
+		//	Primary ({CatExpr.left=current} => operator='*' right=Primary)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Primary ({CatExpr.left=current} => operator='*' right=Primary)*
+		public Group getGroup() { return cGroup; }
+		
+		//Primary
+		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
+		
+		//({CatExpr.left=current} => operator='*' right=Primary)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{CatExpr.left=current}
+		public Action getCatExprLeftAction_1_0() { return cCatExprLeftAction_1_0; }
+		
+		//=> operator='*'
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//'*'
+		public Keyword getOperatorAsteriskKeyword_1_1_0() { return cOperatorAsteriskKeyword_1_1_0; }
 		
 		//right=Primary
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -1484,14 +1484,14 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cExprAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cExprAndExprParserRuleCall_2_1_0 = (RuleCall)cExprAssignment_2_1.eContents().get(0);
+		private final RuleCall cExprShuffleExprParserRuleCall_2_1_0 = (RuleCall)cExprAssignment_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//TerminalExpr Expression:
-		//	eps='epsilon' | term=[Term] | '(' expr=AndExpr ')';
+		//	eps='epsilon' | term=[Term] | '(' expr=ShuffleExpr ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//eps='epsilon' | term=[Term] | '(' expr=AndExpr ')'
+		//eps='epsilon' | term=[Term] | '(' expr=ShuffleExpr ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//eps='epsilon'
@@ -1509,17 +1509,17 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTermTermIDParserRuleCall_1_0_1() { return cTermTermIDParserRuleCall_1_0_1; }
 		
-		//'(' expr=AndExpr ')'
+		//'(' expr=ShuffleExpr ')'
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
-		//expr=AndExpr
+		//expr=ShuffleExpr
 		public Assignment getExprAssignment_2_1() { return cExprAssignment_2_1; }
 		
-		//AndExpr
-		public RuleCall getExprAndExprParserRuleCall_2_1_0() { return cExprAndExprParserRuleCall_2_1_0; }
+		//ShuffleExpr
+		public RuleCall getExprShuffleExprParserRuleCall_2_1_0() { return cExprShuffleExprParserRuleCall_2_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
@@ -2420,10 +2420,10 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	private final Expression0Elements pExpression0;
 	private final TraceExpressionElements pTraceExpression;
 	private final TermElements pTerm;
-	private final AndExprElements pAndExpr;
-	private final CatExprElements pCatExpr;
 	private final ShuffleExprElements pShuffleExpr;
 	private final UnionExprElements pUnionExpr;
+	private final AndExprElements pAndExpr;
+	private final CatExprElements pCatExpr;
 	private final PrimaryElements pPrimary;
 	private final VarExprElements pVarExpr;
 	private final FilterExprElements pFilterExpr;
@@ -2486,10 +2486,10 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		this.pExpression0 = new Expression0Elements();
 		this.pTraceExpression = new TraceExpressionElements();
 		this.pTerm = new TermElements();
-		this.pAndExpr = new AndExprElements();
-		this.pCatExpr = new CatExprElements();
 		this.pShuffleExpr = new ShuffleExprElements();
 		this.pUnionExpr = new UnionExprElements();
+		this.pAndExpr = new AndExprElements();
+		this.pCatExpr = new CatExprElements();
 		this.pPrimary = new PrimaryElements();
 		this.pVarExpr = new VarExprElements();
 		this.pFilterExpr = new FilterExprElements();
@@ -2875,33 +2875,13 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Term:
-	//	name=ID '<-' expr=AndExpr;
+	//	name=ID '<-' expr=ShuffleExpr;
 	public TermElements getTermAccess() {
 		return pTerm;
 	}
 	
 	public ParserRule getTermRule() {
 		return getTermAccess().getRule();
-	}
-	
-	//AndExpr Expression:
-	//	CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*;
-	public AndExprElements getAndExprAccess() {
-		return pAndExpr;
-	}
-	
-	public ParserRule getAndExprRule() {
-		return getAndExprAccess().getRule();
-	}
-	
-	//CatExpr Expression:
-	//	ShuffleExpr ({CatExpr.left=current} => operator='*' right=ShuffleExpr)*;
-	public CatExprElements getCatExprAccess() {
-		return pCatExpr;
-	}
-	
-	public ParserRule getCatExprRule() {
-		return getCatExprAccess().getRule();
 	}
 	
 	//ShuffleExpr Expression:
@@ -2915,13 +2895,33 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//UnionExpr Expression:
-	//	Primary ({UnionExpr.left=current} => operator='\\/' right=Primary)*;
+	//	AndExpr ({UnionExpr.left=current} => operator='\\/' right=AndExpr)*;
 	public UnionExprElements getUnionExprAccess() {
 		return pUnionExpr;
 	}
 	
 	public ParserRule getUnionExprRule() {
 		return getUnionExprAccess().getRule();
+	}
+	
+	//AndExpr Expression:
+	//	CatExpr ({AndExpr.left=current} => operator='/\\' right=CatExpr)*;
+	public AndExprElements getAndExprAccess() {
+		return pAndExpr;
+	}
+	
+	public ParserRule getAndExprRule() {
+		return getAndExprAccess().getRule();
+	}
+	
+	//CatExpr Expression:
+	//	Primary ({CatExpr.left=current} => operator='*' right=Primary)*;
+	public CatExprElements getCatExprAccess() {
+		return pCatExpr;
+	}
+	
+	public ParserRule getCatExprRule() {
+		return getCatExprAccess().getRule();
 	}
 	
 	//Primary Expression:
@@ -2967,7 +2967,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TerminalExpr Expression:
-	//	eps='epsilon' | term=[Term] | '(' expr=AndExpr ')';
+	//	eps='epsilon' | term=[Term] | '(' expr=ShuffleExpr ')';
 	public TerminalExprElements getTerminalExprAccess() {
 		return pTerminalExpr;
 	}

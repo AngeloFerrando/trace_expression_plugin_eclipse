@@ -1866,9 +1866,9 @@ ruleTerm returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTermAccess().getExprAndExprParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getTermAccess().getExprShuffleExprParserRuleCall_2_0());
 				}
-				lv_expr_2_0=ruleAndExpr
+				lv_expr_2_0=ruleShuffleExpr
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTermRule());
@@ -1877,169 +1877,11 @@ ruleTerm returns [EObject current=null]
 						$current,
 						"expr",
 						lv_expr_2_0,
-						"it.unige.dibris.trace_expression_language.TExp.AndExpr");
+						"it.unige.dibris.trace_expression_language.TExp.ShuffleExpr");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-	)
-;
-
-// Entry rule entryRuleAndExpr
-entryRuleAndExpr returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getAndExprRule()); }
-	iv_ruleAndExpr=ruleAndExpr
-	{ $current=$iv_ruleAndExpr.current; }
-	EOF;
-
-// Rule AndExpr
-ruleAndExpr returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0());
-		}
-		this_CatExpr_0=ruleCatExpr
-		{
-			$current = $this_CatExpr_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		(
-			(
-				{
-					/* */
-				}
-				{
-					$current = forceCreateModelElementAndSet(
-						grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0(),
-						$current);
-				}
-			)
-			(
-				((
-					'/\\'
-				)
-				)=>
-				(
-					lv_operator_2_0='/\\'
-					{
-						newLeafNode(lv_operator_2_0, grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAndExprRule());
-						}
-						setWithLastConsumed($current, "operator", lv_operator_2_0, "/\\");
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0());
-					}
-					lv_right_3_0=ruleCatExpr
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getAndExprRule());
-						}
-						set(
-							$current,
-							"right",
-							lv_right_3_0,
-							"it.unige.dibris.trace_expression_language.TExp.CatExpr");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-	)
-;
-
-// Entry rule entryRuleCatExpr
-entryRuleCatExpr returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCatExprRule()); }
-	iv_ruleCatExpr=ruleCatExpr
-	{ $current=$iv_ruleCatExpr.current; }
-	EOF;
-
-// Rule CatExpr
-ruleCatExpr returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getCatExprAccess().getShuffleExprParserRuleCall_0());
-		}
-		this_ShuffleExpr_0=ruleShuffleExpr
-		{
-			$current = $this_ShuffleExpr_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		(
-			(
-				{
-					/* */
-				}
-				{
-					$current = forceCreateModelElementAndSet(
-						grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0(),
-						$current);
-				}
-			)
-			(
-				((
-					'*'
-				)
-				)=>
-				(
-					lv_operator_2_0='*'
-					{
-						newLeafNode(lv_operator_2_0, grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getCatExprRule());
-						}
-						setWithLastConsumed($current, "operator", lv_operator_2_0, "*");
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getCatExprAccess().getRightShuffleExprParserRuleCall_1_2_0());
-					}
-					lv_right_3_0=ruleShuffleExpr
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getCatExprRule());
-						}
-						set(
-							$current,
-							"right",
-							lv_right_3_0,
-							"it.unige.dibris.trace_expression_language.TExp.ShuffleExpr");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
 	)
 ;
 
@@ -2142,11 +1984,11 @@ ruleUnionExpr returns [EObject current=null]
 			/* */
 		}
 		{
-			newCompositeNode(grammarAccess.getUnionExprAccess().getPrimaryParserRuleCall_0());
+			newCompositeNode(grammarAccess.getUnionExprAccess().getAndExprParserRuleCall_0());
 		}
-		this_Primary_0=rulePrimary
+		this_AndExpr_0=ruleAndExpr
 		{
-			$current = $this_Primary_0.current;
+			$current = $this_AndExpr_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		(
@@ -2181,12 +2023,170 @@ ruleUnionExpr returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getUnionExprAccess().getRightPrimaryParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getUnionExprAccess().getRightAndExprParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleAndExpr
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getUnionExprRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"it.unige.dibris.trace_expression_language.TExp.AndExpr");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleAndExpr
+entryRuleAndExpr returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAndExprRule()); }
+	iv_ruleAndExpr=ruleAndExpr
+	{ $current=$iv_ruleAndExpr.current; }
+	EOF;
+
+// Rule AndExpr
+ruleAndExpr returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			/* */
+		}
+		{
+			newCompositeNode(grammarAccess.getAndExprAccess().getCatExprParserRuleCall_0());
+		}
+		this_CatExpr_0=ruleCatExpr
+		{
+			$current = $this_CatExpr_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				((
+					'/\\'
+				)
+				)=>
+				(
+					lv_operator_2_0='/\\'
+					{
+						newLeafNode(lv_operator_2_0, grammarAccess.getAndExprAccess().getOperatorSolidusReverseSolidusKeyword_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAndExprRule());
+						}
+						setWithLastConsumed($current, "operator", lv_operator_2_0, "/\\");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAndExprAccess().getRightCatExprParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleCatExpr
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAndExprRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"it.unige.dibris.trace_expression_language.TExp.CatExpr");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleCatExpr
+entryRuleCatExpr returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCatExprRule()); }
+	iv_ruleCatExpr=ruleCatExpr
+	{ $current=$iv_ruleCatExpr.current; }
+	EOF;
+
+// Rule CatExpr
+ruleCatExpr returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			/* */
+		}
+		{
+			newCompositeNode(grammarAccess.getCatExprAccess().getPrimaryParserRuleCall_0());
+		}
+		this_Primary_0=rulePrimary
+		{
+			$current = $this_Primary_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getCatExprAccess().getCatExprLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				((
+					'*'
+				)
+				)=>
+				(
+					lv_operator_2_0='*'
+					{
+						newLeafNode(lv_operator_2_0, grammarAccess.getCatExprAccess().getOperatorAsteriskKeyword_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getCatExprRule());
+						}
+						setWithLastConsumed($current, "operator", lv_operator_2_0, "*");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getCatExprAccess().getRightPrimaryParserRuleCall_1_2_0());
 					}
 					lv_right_3_0=rulePrimary
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getUnionExprRule());
+							$current = createModelElementForParent(grammarAccess.getCatExprRule());
 						}
 						set(
 							$current,
@@ -2732,9 +2732,9 @@ ruleTerminalExpr returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminalExprAccess().getExprAndExprParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getTerminalExprAccess().getExprShuffleExprParserRuleCall_2_1_0());
 					}
-					lv_expr_3_0=ruleAndExpr
+					lv_expr_3_0=ruleShuffleExpr
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminalExprRule());
@@ -2743,7 +2743,7 @@ ruleTerminalExpr returns [EObject current=null]
 							$current,
 							"expr",
 							lv_expr_3_0,
-							"it.unige.dibris.trace_expression_language.TExp.AndExpr");
+							"it.unige.dibris.trace_expression_language.TExp.ShuffleExpr");
 						afterParserOrEnumRuleCall();
 					}
 				)

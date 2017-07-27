@@ -177,24 +177,6 @@ public interface TExpFactory extends EFactory
   ListExpression createListExpression();
 
   /**
-   * Returns a new object of class '<em>And Expr</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>And Expr</em>'.
-   * @generated
-   */
-  AndExpr createAndExpr();
-
-  /**
-   * Returns a new object of class '<em>Cat Expr</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cat Expr</em>'.
-   * @generated
-   */
-  CatExpr createCatExpr();
-
-  /**
    * Returns a new object of class '<em>Shuffle Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -211,6 +193,24 @@ public interface TExpFactory extends EFactory
    * @generated
    */
   UnionExpr createUnionExpr();
+
+  /**
+   * Returns a new object of class '<em>And Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And Expr</em>'.
+   * @generated
+   */
+  AndExpr createAndExpr();
+
+  /**
+   * Returns a new object of class '<em>Cat Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cat Expr</em>'.
+   * @generated
+   */
+  CatExpr createCatExpr();
 
   /**
    * Returns a new object of class '<em>Seq Expr</em>'.

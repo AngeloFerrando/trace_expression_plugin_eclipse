@@ -113,14 +113,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ListExpression/head"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ListExpression/tail"/>
     </genClasses>
-    <genClasses ecoreClass="TExp.ecore#//AndExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AndExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AndExpr/right"/>
-    </genClasses>
-    <genClasses ecoreClass="TExp.ecore#//CatExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//CatExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//CatExpr/right"/>
-    </genClasses>
     <genClasses ecoreClass="TExp.ecore#//ShuffleExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ShuffleExpr/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ShuffleExpr/right"/>
@@ -128,6 +120,14 @@
     <genClasses ecoreClass="TExp.ecore#//UnionExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//UnionExpr/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//UnionExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//AndExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AndExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AndExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//CatExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//CatExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//CatExpr/right"/>
     </genClasses>
     <genClasses ecoreClass="TExp.ecore#//SeqExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//SeqExpr/seqExpr"/>

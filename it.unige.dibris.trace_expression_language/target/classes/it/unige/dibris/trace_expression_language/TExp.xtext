@@ -189,15 +189,7 @@ TraceExpression:
 	'}';
 	
 Term:
-	name=ID '<-' expr=AndExpr
-;
-
-AndExpr returns Expression:
-	CatExpr ({AndExpr.left=current} =>operator='/\\' right=CatExpr)*
-;
-
-CatExpr returns Expression:
-	ShuffleExpr ({CatExpr.left=current} =>operator='*' right=ShuffleExpr)*
+	name=ID '<-' expr=ShuffleExpr
 ;
 
 ShuffleExpr returns Expression:
@@ -205,7 +197,15 @@ ShuffleExpr returns Expression:
 ;
 
 UnionExpr returns Expression:
-	Primary ({UnionExpr.left=current} =>operator='\\/' right=Primary)*
+	AndExpr ({UnionExpr.left=current} =>operator='\\/' right=AndExpr)*
+;
+
+AndExpr returns Expression:
+	CatExpr ({AndExpr.left=current} =>operator='/\\' right=CatExpr)*
+;
+
+CatExpr returns Expression:
+	Primary ({CatExpr.left=current} =>operator='*' right=Primary)*
 ;
 
 Primary returns Expression:
@@ -228,7 +228,7 @@ SeqExpr returns Expression:
 ;
 
 TerminalExpr returns Expression: 
-	((eps='epsilon' | term=[Term] | '(' expr=AndExpr ')'))
+	((eps='epsilon' | term=[Term] | '(' expr=ShuffleExpr ')'))
 ;
 
 EventType:

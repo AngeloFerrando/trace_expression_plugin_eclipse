@@ -197,22 +197,6 @@ public class TExpSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TExpPackage.AND_EXPR:
-      {
-        AndExpr andExpr = (AndExpr)theEObject;
-        T result = caseAndExpr(andExpr);
-        if (result == null) result = caseExpression(andExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TExpPackage.CAT_EXPR:
-      {
-        CatExpr catExpr = (CatExpr)theEObject;
-        T result = caseCatExpr(catExpr);
-        if (result == null) result = caseExpression(catExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case TExpPackage.SHUFFLE_EXPR:
       {
         ShuffleExpr shuffleExpr = (ShuffleExpr)theEObject;
@@ -226,6 +210,22 @@ public class TExpSwitch<T> extends Switch<T>
         UnionExpr unionExpr = (UnionExpr)theEObject;
         T result = caseUnionExpr(unionExpr);
         if (result == null) result = caseExpression(unionExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.AND_EXPR:
+      {
+        AndExpr andExpr = (AndExpr)theEObject;
+        T result = caseAndExpr(andExpr);
+        if (result == null) result = caseExpression(andExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.CAT_EXPR:
+      {
+        CatExpr catExpr = (CatExpr)theEObject;
+        T result = caseCatExpr(catExpr);
+        if (result == null) result = caseExpression(catExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -562,38 +562,6 @@ public class TExpSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>And Expr</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>And Expr</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAndExpr(AndExpr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Cat Expr</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cat Expr</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCatExpr(CatExpr object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Shuffle Expr</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -621,6 +589,38 @@ public class TExpSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUnionExpr(UnionExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>And Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>And Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAndExpr(AndExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cat Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cat Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCatExpr(CatExpr object)
   {
     return null;
   }

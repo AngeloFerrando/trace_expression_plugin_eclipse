@@ -173,20 +173,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass andExprEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass catExprEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass shuffleExprEClass = null;
 
   /**
@@ -195,6 +181,20 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * @generated
    */
   private EClass unionExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass catExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1213,66 +1213,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAndExpr()
-  {
-    return andExprEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAndExpr_Left()
-  {
-    return (EReference)andExprEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAndExpr_Right()
-  {
-    return (EReference)andExprEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCatExpr()
-  {
-    return catExprEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCatExpr_Left()
-  {
-    return (EReference)catExprEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCatExpr_Right()
-  {
-    return (EReference)catExprEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getShuffleExpr()
   {
     return shuffleExprEClass;
@@ -1326,6 +1266,66 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
   public EReference getUnionExpr_Right()
   {
     return (EReference)unionExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAndExpr()
+  {
+    return andExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAndExpr_Left()
+  {
+    return (EReference)andExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAndExpr_Right()
+  {
+    return (EReference)andExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCatExpr()
+  {
+    return catExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCatExpr_Left()
+  {
+    return (EReference)catExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCatExpr_Right()
+  {
+    return (EReference)catExprEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1635,14 +1635,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     createEReference(listExpressionEClass, LIST_EXPRESSION__HEAD);
     createEReference(listExpressionEClass, LIST_EXPRESSION__TAIL);
 
-    andExprEClass = createEClass(AND_EXPR);
-    createEReference(andExprEClass, AND_EXPR__LEFT);
-    createEReference(andExprEClass, AND_EXPR__RIGHT);
-
-    catExprEClass = createEClass(CAT_EXPR);
-    createEReference(catExprEClass, CAT_EXPR__LEFT);
-    createEReference(catExprEClass, CAT_EXPR__RIGHT);
-
     shuffleExprEClass = createEClass(SHUFFLE_EXPR);
     createEReference(shuffleExprEClass, SHUFFLE_EXPR__LEFT);
     createEReference(shuffleExprEClass, SHUFFLE_EXPR__RIGHT);
@@ -1650,6 +1642,14 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     unionExprEClass = createEClass(UNION_EXPR);
     createEReference(unionExprEClass, UNION_EXPR__LEFT);
     createEReference(unionExprEClass, UNION_EXPR__RIGHT);
+
+    andExprEClass = createEClass(AND_EXPR);
+    createEReference(andExprEClass, AND_EXPR__LEFT);
+    createEReference(andExprEClass, AND_EXPR__RIGHT);
+
+    catExprEClass = createEClass(CAT_EXPR);
+    createEReference(catExprEClass, CAT_EXPR__LEFT);
+    createEReference(catExprEClass, CAT_EXPR__RIGHT);
 
     seqExprEClass = createEClass(SEQ_EXPR);
     createEReference(seqExprEClass, SEQ_EXPR__SEQ_EXPR);
@@ -1710,10 +1710,10 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     stringExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     numberExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     listExpressionEClass.getESuperTypes().add(this.getPrologExpression());
-    andExprEClass.getESuperTypes().add(this.getExpression());
-    catExprEClass.getESuperTypes().add(this.getExpression());
     shuffleExprEClass.getESuperTypes().add(this.getExpression());
     unionExprEClass.getESuperTypes().add(this.getExpression());
+    andExprEClass.getESuperTypes().add(this.getExpression());
+    catExprEClass.getESuperTypes().add(this.getExpression());
     seqExprEClass.getESuperTypes().add(this.getExpression());
     filterExprEClass.getESuperTypes().add(this.getExpression());
     varExprEClass.getESuperTypes().add(this.getExpression());
@@ -1830,14 +1830,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEReference(getListExpression_Head(), this.getPrologExpression(), null, "head", null, 0, 1, ListExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getListExpression_Tail(), this.getPrologExpression(), null, "tail", null, 0, 1, ListExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(andExprEClass, AndExpr.class, "AndExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAndExpr_Left(), this.getExpression(), null, "left", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAndExpr_Right(), this.getExpression(), null, "right", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(catExprEClass, CatExpr.class, "CatExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCatExpr_Left(), this.getExpression(), null, "left", null, 0, 1, CatExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCatExpr_Right(), this.getExpression(), null, "right", null, 0, 1, CatExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(shuffleExprEClass, ShuffleExpr.class, "ShuffleExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getShuffleExpr_Left(), this.getExpression(), null, "left", null, 0, 1, ShuffleExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getShuffleExpr_Right(), this.getExpression(), null, "right", null, 0, 1, ShuffleExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1845,6 +1837,14 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEClass(unionExprEClass, UnionExpr.class, "UnionExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUnionExpr_Left(), this.getExpression(), null, "left", null, 0, 1, UnionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUnionExpr_Right(), this.getExpression(), null, "right", null, 0, 1, UnionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(andExprEClass, AndExpr.class, "AndExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAndExpr_Left(), this.getExpression(), null, "left", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAndExpr_Right(), this.getExpression(), null, "right", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(catExprEClass, CatExpr.class, "CatExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCatExpr_Left(), this.getExpression(), null, "left", null, 0, 1, CatExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCatExpr_Right(), this.getExpression(), null, "right", null, 0, 1, CatExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(seqExprEClass, SeqExpr.class, "SeqExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSeqExpr_SeqExpr(), this.getExpression(), null, "seqExpr", null, 0, 1, SeqExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
