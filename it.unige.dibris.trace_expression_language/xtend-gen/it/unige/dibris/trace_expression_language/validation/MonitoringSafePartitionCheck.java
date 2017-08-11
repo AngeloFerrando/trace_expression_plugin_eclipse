@@ -418,6 +418,11 @@ public class MonitoringSafePartitionCheck {
             return evTypes1_2;
           } else {
             if ((expr instanceof CatExpr)) {
+              int _size = MonitoringSafePartitionCheck.lastEventTypes(((CatExpr)expr).getLeft(), assocT, assoc, threshold).size();
+              boolean _equals = (_size == 0);
+              if (_equals) {
+                return new ArrayList<EventType>();
+              }
               List<EventType> evTypes2_3 = MonitoringSafePartitionCheck.lastEventTypes(((CatExpr)expr).getRight(), assocT, assoc, threshold);
               return evTypes2_3;
             } else {
@@ -434,8 +439,8 @@ public class MonitoringSafePartitionCheck {
                     for (final EventType evType2_3 : evTypes2_4) {
                       String _name = evTypes1_3.get(0).getName();
                       String _name_1 = evType2_3.getName();
-                      boolean _equals = Objects.equal(_name, _name_1);
-                      if (_equals) {
+                      boolean _equals_1 = Objects.equal(_name, _name_1);
+                      if (_equals_1) {
                         found = true;
                       }
                     }
@@ -452,8 +457,8 @@ public class MonitoringSafePartitionCheck {
                       for (final EventType evType2_4 : evTypes2_5) {
                         String _name_2 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
                         String _name_3 = evType2_4.getName();
-                        boolean _equals_1 = Objects.equal(_name_2, _name_3);
-                        if (_equals_1) {
+                        boolean _equals_2 = Objects.equal(_name_2, _name_3);
+                        if (_equals_2) {
                           found_1 = true;
                         }
                       }

@@ -301,7 +301,10 @@ class MonitoringSafePartitionCheck {
 				}
 			}
 			return evTypes1
-		} else if(expr instanceof CatExpr){			
+		} else if(expr instanceof CatExpr){		
+			if(lastEventTypes(expr.left, assocT, assoc, threshold).size == 0){
+				return new ArrayList<EventType>()
+			}	
 			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
 			return evTypes2
 		} else if(expr instanceof SeqExpr){		
