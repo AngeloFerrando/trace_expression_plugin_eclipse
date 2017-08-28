@@ -117,7 +117,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Partition(context, (Partition) semanticObject); 
 				return; 
 			case TExpPackage.PROLOG_EXPRESSION:
-				sequence_Expression1000xfy_Expression200xfx_Expression200xfy_Expression400yfx_Expression500yfx_Expression600xfy_Expression700xfx_Expression954xfy(context, (PrologExpression) semanticObject); 
+				sequence_Expression1000xfy_Expression1050xfy_Expression1100xfy_Expression200xfx_Expression200xfy_Expression400yfx_Expression500yfx_Expression600xfy_Expression700xfx_Expression954xfy(context, (PrologExpression) semanticObject); 
 				return; 
 			case TExpPackage.ROLE:
 				sequence_Role(context, (Role) semanticObject); 
@@ -310,6 +310,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns AtomExpression
+	 *     Expression1100xfy returns AtomExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns AtomExpression
+	 *     Expression1050xfy returns AtomExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns AtomExpression
 	 *     Expression1000xfy returns AtomExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns AtomExpression
 	 *     Expression954xfy returns AtomExpression
@@ -339,6 +343,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns ListExpression
+	 *     Expression1100xfy returns ListExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns ListExpression
+	 *     Expression1050xfy returns ListExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns ListExpression
 	 *     Expression1000xfy returns ListExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns ListExpression
 	 *     Expression954xfy returns ListExpression
@@ -368,6 +376,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns NumberExpression
+	 *     Expression1100xfy returns NumberExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns NumberExpression
+	 *     Expression1050xfy returns NumberExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns NumberExpression
 	 *     Expression1000xfy returns NumberExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns NumberExpression
 	 *     Expression954xfy returns NumberExpression
@@ -403,6 +415,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns StringExpression
+	 *     Expression1100xfy returns StringExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns StringExpression
+	 *     Expression1050xfy returns StringExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns StringExpression
 	 *     Expression1000xfy returns StringExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns StringExpression
 	 *     Expression954xfy returns StringExpression
@@ -438,6 +454,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns VariableExpression
+	 *     Expression1100xfy returns VariableExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns VariableExpression
+	 *     Expression1050xfy returns VariableExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns VariableExpression
 	 *     Expression1000xfy returns VariableExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns VariableExpression
 	 *     Expression954xfy returns VariableExpression
@@ -473,6 +493,10 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     ExpressionInfinity returns PrologExpression
+	 *     Expression1100xfy returns PrologExpression
+	 *     Expression1100xfy.PrologExpression_1_0 returns PrologExpression
+	 *     Expression1050xfy returns PrologExpression
+	 *     Expression1050xfy.PrologExpression_1_0 returns PrologExpression
 	 *     Expression1000xfy returns PrologExpression
 	 *     Expression1000xfy.PrologExpression_1_0 returns PrologExpression
 	 *     Expression954xfy returns PrologExpression
@@ -493,6 +517,8 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         (left=Expression1100xfy_PrologExpression_1_0 op=OP1100XFY right=Expression1100xfy) | 
+	 *         (left=Expression1050xfy_PrologExpression_1_0 op=OP1050XFY right=Expression1050xfy) | 
 	 *         (left=Expression1000xfy_PrologExpression_1_0 op=OP1000XFY right=Expression1000xfy) | 
 	 *         (left=Expression954xfy_PrologExpression_1_0 op=OP954XFY right=Expression954xfy) | 
 	 *         (left=Expression700xfx_PrologExpression_1_0 (op=OP700XFX | op=OP700XFXR | op=OP700XFXL) right=Expression600xfy) | 
@@ -503,7 +529,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         (left=Expression200xfy_PrologExpression_1_0 op=OP200XFY right=Expression200xfy)
 	 *     )
 	 */
-	protected void sequence_Expression1000xfy_Expression200xfx_Expression200xfy_Expression400yfx_Expression500yfx_Expression600xfy_Expression700xfx_Expression954xfy(ISerializationContext context, PrologExpression semanticObject) {
+	protected void sequence_Expression1000xfy_Expression1050xfy_Expression1100xfy_Expression200xfx_Expression200xfy_Expression400yfx_Expression500yfx_Expression600xfy_Expression700xfx_Expression954xfy(ISerializationContext context, PrologExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

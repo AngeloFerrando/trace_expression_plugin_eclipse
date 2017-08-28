@@ -489,6 +489,9 @@ public class TExpValidator extends AbstractTExpValidator {
   
   @Check
   public void checkMsgsConsistency(final TraceExpression tExp) {
+    if (((tExp.getTypes() == null) || (tExp.getTypes().size() == 0))) {
+      return;
+    }
     final boolean b1 = this.areAllAsyncMsgs(tExp);
     final boolean b2 = this.areAllSyncMsgs(tExp);
     if (((b1 && b2) || ((!b1) && (!b2)))) {

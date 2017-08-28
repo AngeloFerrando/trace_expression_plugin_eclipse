@@ -359,6 +359,9 @@ class TExpValidator extends AbstractTExpValidator {
 	
 	@Check
 	def checkMsgsConsistency(TraceExpression tExp){
+		if(tExp.types === null || tExp.types.size == 0){
+			return
+		}
 		val b1 = areAllAsyncMsgs(tExp) 
 		val b2 = areAllSyncMsgs(tExp)
 		if(b1 && b2 || !b1 && !b2){

@@ -187,7 +187,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class ExpressionInfinityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.ExpressionInfinity");
-		private final RuleCall cExpression1000xfyParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final RuleCall cExpression1100xfyParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//// http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/4.html
 		//// xfx infix nonassociative 
@@ -198,12 +198,96 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//// xf postfix nonassociative 
 		//// yf postfix left-associative
 		//ExpressionInfinity PrologExpression:
-		//	Expression1000xfy;
+		//	Expression1100xfy;
 		@Override public ParserRule getRule() { return rule; }
 		
 		////	Expression1200xfx;
+		//Expression1100xfy
+		public RuleCall getExpression1100xfyParserRuleCall() { return cExpression1100xfyParserRuleCall; }
+	}
+	public class Expression1100xfyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Expression1100xfy");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cExpression1050xfyParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cPrologExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOpOP1100XFYTerminalRuleCall_1_1_0 = (RuleCall)cOpAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpression1100xfyParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		////Expression1200xfx returns PrologExpression:
+		////	Expression1200fx ({PrologExpression.left=current} op=OP1200XFX right=Expression1200fx)?;
+		////Expression1200fx returns UnaryExpression:
+		////	(op=OP1200FX)? right=Expression1150fx;
+		////Expression1150fx returns UnaryExpression:
+		////	(op=OP1150FX)? right=Expression1100xfy;
+		//Expression1100xfy PrologExpression:
+		//	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?
+		public Group getGroup() { return cGroup; }
+		
+		//Expression1050xfy
+		public RuleCall getExpression1050xfyParserRuleCall_0() { return cExpression1050xfyParserRuleCall_0; }
+		
+		//({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{PrologExpression.left=current}
+		public Action getPrologExpressionLeftAction_1_0() { return cPrologExpressionLeftAction_1_0; }
+		
+		//op=OP1100XFY
+		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
+		
+		//OP1100XFY
+		public RuleCall getOpOP1100XFYTerminalRuleCall_1_1_0() { return cOpOP1100XFYTerminalRuleCall_1_1_0; }
+		
+		//right=Expression1100xfy
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//Expression1100xfy
+		public RuleCall getRightExpression1100xfyParserRuleCall_1_2_0() { return cRightExpression1100xfyParserRuleCall_1_2_0; }
+	}
+	public class Expression1050xfyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Expression1050xfy");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cExpression1000xfyParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cPrologExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOpOP1050XFYTerminalRuleCall_1_1_0 = (RuleCall)cOpAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpression1050xfyParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Expression1050xfy PrologExpression:
+		//	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?
+		public Group getGroup() { return cGroup; }
+		
 		//Expression1000xfy
-		public RuleCall getExpression1000xfyParserRuleCall() { return cExpression1000xfyParserRuleCall; }
+		public RuleCall getExpression1000xfyParserRuleCall_0() { return cExpression1000xfyParserRuleCall_0; }
+		
+		//({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{PrologExpression.left=current}
+		public Action getPrologExpressionLeftAction_1_0() { return cPrologExpressionLeftAction_1_0; }
+		
+		//op=OP1050XFY
+		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
+		
+		//OP1050XFY
+		public RuleCall getOpOP1050XFYTerminalRuleCall_1_1_0() { return cOpOP1050XFYTerminalRuleCall_1_1_0; }
+		
+		//right=Expression1050xfy
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//Expression1050xfy
+		public RuleCall getRightExpression1050xfyParserRuleCall_1_2_0() { return cRightExpression1050xfyParserRuleCall_1_2_0; }
 	}
 	public class Expression1000xfyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Expression1000xfy");
@@ -216,16 +300,6 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightExpression1000xfyParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		////Expression1200xfx returns PrologExpression:
-		////	Expression1200fx ({PrologExpression.left=current} op=OP1200XFX right=Expression1200fx)?;
-		////Expression1200fx returns UnaryExpression:
-		////	(op=OP1200FX)? right=Expression1150fx;
-		////Expression1150fx returns UnaryExpression:
-		////	(op=OP1150FX)? right=Expression1100xfy;
-		////Expression1100xfy returns PrologExpression:
-		////	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
-		////Expression1050xfy returns PrologExpression:
-		////	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
 		//Expression1000xfy PrologExpression:
 		//	Expression954xfy ({PrologExpression.left=current} op=OP1000XFY right=Expression1000xfy)?;
 		@Override public ParserRule getRule() { return rule; }
@@ -2409,6 +2483,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tEXT_INT;
 	private final NUMBERElements pNUMBER;
 	private final ExpressionInfinityElements pExpressionInfinity;
+	private final Expression1100xfyElements pExpression1100xfy;
+	private final Expression1050xfyElements pExpression1050xfy;
 	private final Expression1000xfyElements pExpression1000xfy;
 	private final Expression954xfyElements pExpression954xfy;
 	private final Expression700xfxElements pExpression700xfx;
@@ -2475,6 +2551,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		this.tEXT_INT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.EXT_INT");
 		this.pNUMBER = new NUMBERElements();
 		this.pExpressionInfinity = new ExpressionInfinityElements();
+		this.pExpression1100xfy = new Expression1100xfyElements();
+		this.pExpression1050xfy = new Expression1050xfyElements();
 		this.pExpression1000xfy = new Expression1000xfyElements();
 		this.pExpression954xfy = new Expression954xfyElements();
 		this.pExpression700xfx = new Expression700xfxElements();
@@ -2736,7 +2814,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	//// xf postfix nonassociative 
 	//// yf postfix left-associative
 	//ExpressionInfinity PrologExpression:
-	//	Expression1000xfy;
+	//	Expression1100xfy;
 	public ExpressionInfinityElements getExpressionInfinityAccess() {
 		return pExpressionInfinity;
 	}
@@ -2751,10 +2829,26 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	////	(op=OP1200FX)? right=Expression1150fx;
 	////Expression1150fx returns UnaryExpression:
 	////	(op=OP1150FX)? right=Expression1100xfy;
-	////Expression1100xfy returns PrologExpression:
-	////	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
-	////Expression1050xfy returns PrologExpression:
-	////	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
+	//Expression1100xfy PrologExpression:
+	//	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
+	public Expression1100xfyElements getExpression1100xfyAccess() {
+		return pExpression1100xfy;
+	}
+	
+	public ParserRule getExpression1100xfyRule() {
+		return getExpression1100xfyAccess().getRule();
+	}
+	
+	//Expression1050xfy PrologExpression:
+	//	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
+	public Expression1050xfyElements getExpression1050xfyAccess() {
+		return pExpression1050xfy;
+	}
+	
+	public ParserRule getExpression1050xfyRule() {
+		return getExpression1050xfyAccess().getRule();
+	}
+	
 	//Expression1000xfy PrologExpression:
 	//	Expression954xfy ({PrologExpression.left=current} op=OP1000XFY right=Expression1000xfy)?;
 	public Expression1000xfyElements getExpression1000xfyAccess() {

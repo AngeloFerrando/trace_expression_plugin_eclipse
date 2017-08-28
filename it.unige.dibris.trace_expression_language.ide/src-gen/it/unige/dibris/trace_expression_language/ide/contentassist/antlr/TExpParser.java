@@ -54,6 +54,10 @@ public class TExpParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModuleAccess().getAlternatives(), "rule__Module__Alternatives");
 					put(grammarAccess.getNUMBERAccess().getGroup(), "rule__NUMBER__Group__0");
 					put(grammarAccess.getNUMBERAccess().getGroup_2(), "rule__NUMBER__Group_2__0");
+					put(grammarAccess.getExpression1100xfyAccess().getGroup(), "rule__Expression1100xfy__Group__0");
+					put(grammarAccess.getExpression1100xfyAccess().getGroup_1(), "rule__Expression1100xfy__Group_1__0");
+					put(grammarAccess.getExpression1050xfyAccess().getGroup(), "rule__Expression1050xfy__Group__0");
+					put(grammarAccess.getExpression1050xfyAccess().getGroup_1(), "rule__Expression1050xfy__Group_1__0");
 					put(grammarAccess.getExpression1000xfyAccess().getGroup(), "rule__Expression1000xfy__Group__0");
 					put(grammarAccess.getExpression1000xfyAccess().getGroup_1(), "rule__Expression1000xfy__Group_1__0");
 					put(grammarAccess.getExpression954xfyAccess().getGroup(), "rule__Expression954xfy__Group__0");
@@ -139,6 +143,10 @@ public class TExpParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintAccess().getGroup_3(), "rule__Constraint__Group_3__0");
 					put(grammarAccess.getConstraintAccess().getGroup_4(), "rule__Constraint__Group_4__0");
 					put(grammarAccess.getDomainmodelAccess().getElementsAssignment(), "rule__Domainmodel__ElementsAssignment");
+					put(grammarAccess.getExpression1100xfyAccess().getOpAssignment_1_1(), "rule__Expression1100xfy__OpAssignment_1_1");
+					put(grammarAccess.getExpression1100xfyAccess().getRightAssignment_1_2(), "rule__Expression1100xfy__RightAssignment_1_2");
+					put(grammarAccess.getExpression1050xfyAccess().getOpAssignment_1_1(), "rule__Expression1050xfy__OpAssignment_1_1");
+					put(grammarAccess.getExpression1050xfyAccess().getRightAssignment_1_2(), "rule__Expression1050xfy__RightAssignment_1_2");
 					put(grammarAccess.getExpression1000xfyAccess().getOpAssignment_1_1(), "rule__Expression1000xfy__OpAssignment_1_1");
 					put(grammarAccess.getExpression1000xfyAccess().getRightAssignment_1_2(), "rule__Expression1000xfy__RightAssignment_1_2");
 					put(grammarAccess.getExpression954xfyAccess().getOpAssignment_1_1(), "rule__Expression954xfy__OpAssignment_1_1");

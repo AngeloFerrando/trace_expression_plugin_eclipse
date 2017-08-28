@@ -396,13 +396,171 @@ ruleExpressionInfinity returns [EObject current=null]
 		/* */
 	}
 	{
-		newCompositeNode(grammarAccess.getExpressionInfinityAccess().getExpression1000xfyParserRuleCall());
+		newCompositeNode(grammarAccess.getExpressionInfinityAccess().getExpression1100xfyParserRuleCall());
 	}
-	this_Expression1000xfy_0=ruleExpression1000xfy
+	this_Expression1100xfy_0=ruleExpression1100xfy
 	{
-		$current = $this_Expression1000xfy_0.current;
+		$current = $this_Expression1100xfy_0.current;
 		afterParserOrEnumRuleCall();
 	}
+;
+
+// Entry rule entryRuleExpression1100xfy
+entryRuleExpression1100xfy returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExpression1100xfyRule()); }
+	iv_ruleExpression1100xfy=ruleExpression1100xfy
+	{ $current=$iv_ruleExpression1100xfy.current; }
+	EOF;
+
+// Rule Expression1100xfy
+ruleExpression1100xfy returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			/* */
+		}
+		{
+			newCompositeNode(grammarAccess.getExpression1100xfyAccess().getExpression1050xfyParserRuleCall_0());
+		}
+		this_Expression1050xfy_0=ruleExpression1050xfy
+		{
+			$current = $this_Expression1050xfy_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpression1100xfyAccess().getPrologExpressionLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_op_2_0=RULE_OP1100XFY
+					{
+						newLeafNode(lv_op_2_0, grammarAccess.getExpression1100xfyAccess().getOpOP1100XFYTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getExpression1100xfyRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"op",
+							lv_op_2_0,
+							"it.unige.dibris.trace_expression_language.TExp.OP1100XFY");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpression1100xfyAccess().getRightExpression1100xfyParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleExpression1100xfy
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpression1100xfyRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"it.unige.dibris.trace_expression_language.TExp.Expression1100xfy");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleExpression1050xfy
+entryRuleExpression1050xfy returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExpression1050xfyRule()); }
+	iv_ruleExpression1050xfy=ruleExpression1050xfy
+	{ $current=$iv_ruleExpression1050xfy.current; }
+	EOF;
+
+// Rule Expression1050xfy
+ruleExpression1050xfy returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			/* */
+		}
+		{
+			newCompositeNode(grammarAccess.getExpression1050xfyAccess().getExpression1000xfyParserRuleCall_0());
+		}
+		this_Expression1000xfy_0=ruleExpression1000xfy
+		{
+			$current = $this_Expression1000xfy_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpression1050xfyAccess().getPrologExpressionLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_op_2_0=RULE_OP1050XFY
+					{
+						newLeafNode(lv_op_2_0, grammarAccess.getExpression1050xfyAccess().getOpOP1050XFYTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getExpression1050xfyRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"op",
+							lv_op_2_0,
+							"it.unige.dibris.trace_expression_language.TExp.OP1050XFY");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpression1050xfyAccess().getRightExpression1050xfyParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleExpression1050xfy
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpression1050xfyRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"it.unige.dibris.trace_expression_language.TExp.Expression1050xfy");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+	)
 ;
 
 // Entry rule entryRuleExpression1000xfy

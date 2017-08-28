@@ -111,7 +111,7 @@ NUMBER hidden():
 // yf postfix left-associative
 ExpressionInfinity returns PrologExpression:
 //	Expression1200xfx;
-Expression1000xfy;
+Expression1100xfy;
 
 //Expression1200xfx returns PrologExpression:
 //	Expression1200fx ({PrologExpression.left=current} op=OP1200XFX right=Expression1200fx)?;
@@ -122,11 +122,11 @@ Expression1000xfy;
 //Expression1150fx returns UnaryExpression:
 //	(op=OP1150FX)? right=Expression1100xfy;
 
-//Expression1100xfy returns PrologExpression:
-//	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
+Expression1100xfy returns PrologExpression:
+	Expression1050xfy ({PrologExpression.left=current} op=OP1100XFY right=Expression1100xfy)?;
 
-//Expression1050xfy returns PrologExpression:
-//	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
+Expression1050xfy returns PrologExpression:
+	Expression1000xfy ({PrologExpression.left=current} op=OP1050XFY right=Expression1050xfy)?;
 
 Expression1000xfy returns PrologExpression:
 	Expression954xfy ({PrologExpression.left=current} op=OP1000XFY right=Expression1000xfy)?;

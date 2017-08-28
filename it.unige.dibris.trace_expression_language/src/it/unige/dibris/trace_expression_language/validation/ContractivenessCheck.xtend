@@ -61,9 +61,11 @@ class ContractivenessCheck {
 			} else{
 				return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)
 			}
-		} else if(expr.typeSeq !== null && expr.bodySeq !== null){
-			return isContractive(expr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
-		} else if(expr instanceof VarExpr){
+		} 
+		//else if(expr.typeSeq !== null && expr.bodySeq !== null){
+		//	return isContractive(expr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
+		//}
+		else if(expr instanceof VarExpr){
 			return isContractive(expr.varExpr.bodyVar, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof TerminalExpr){
 			if(expr.terminalExpr.expr !== null){
@@ -94,8 +96,9 @@ class ContractivenessCheck {
 					if(assocD.get(expr.terminalExpr.term.name) !== null){
 						return assocD.get(expr.terminalExpr.term.name) <= deepestseq
 					}
-					assocD.put(expr.terminalExpr.term.name, depth)
-					return isContractive(assocT.get(expr.terminalExpr.term.name), depth, deepestseq, assocT, assocD, threshold)
+					var assocDcopy = new HashMap<String, Integer>(assocD)
+					assocDcopy.put(expr.terminalExpr.term.name, depth)
+					return isContractive(assocT.get(expr.terminalExpr.term.name), depth, deepestseq, assocT, assocDcopy, threshold)
 				} else if(expr.terminalExpr.eps !== null){
 					return true;
 				} else{
@@ -106,8 +109,9 @@ class ContractivenessCheck {
 			if(assocD.get(expr.term.name) !== null){
 					return assocD.get(expr.term.name) <= deepestseq
 				}
-				assocD.put(expr.term.name, depth)
-				return isContractive(assocT.get(expr.term.name), depth, deepestseq, assocT, assocD, threshold)
+				var assocDcopy = new HashMap<String, Integer>(assocD)
+				assocDcopy.put(expr.term.name, depth)
+				return isContractive(assocT.get(expr.term.name), depth, deepestseq, assocT, assocDcopy, threshold)
 		} else if(expr.eps !== null){
 			return true;
 		} else{
