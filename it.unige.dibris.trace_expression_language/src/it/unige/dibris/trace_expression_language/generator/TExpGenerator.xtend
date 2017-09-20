@@ -3,6 +3,8 @@
  */
 package it.unige.dibris.trace_expression_language.generator
 
+import java.util.StringJoiner;
+
 import it.unige.dibris.trace_expression_language.tExp.AndExpr
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression
 import it.unige.dibris.trace_expression_language.tExp.CatExpr
@@ -232,13 +234,15 @@ class TExpGenerator extends AbstractGenerator {
 		}
 		
 		str += '\n'
-		str += 'roles(['
+		str += 'roles('
+		
+		var rolesJoiner = new StringJoiner(", ", "[", "]");
 		
 		for(role : tExp.roles){
-			str += role.name + ',' 
+			rolesJoiner.add(role.name)
 		}
 		
-		str = str.substring(0, str.length-1) + ']).\n\n'
+		str += rolesJoiner.toString() + ').\n\n'
 		
 		for(type : tExp.types){
 			str += type.compile
