@@ -170,14 +170,28 @@ Expression0 returns PrologExpression:
 	| '(' ExpressionInfinity ')';
 
 // Trace expressions    
-  
+
 TraceExpression:
-	{TraceExpression} 
+	GenericTraceExpression |
+	AgentTraceExpression
+;
+
+GenericTraceExpression:
+	{GenericTraceExpression}
 	'trace_expression' '{'
 	 	'id:' name=ID
 	 	((bodyL+='body:' (terms+=Term)+) |
+	 	(typesL+='types:' (types+=EventType)*))+
+	'}'
+;
+
+AgentTraceExpression:
+	{AgentTraceExpression} 
+	'agent_trace_expression' '{'
+	 	'id:' name=ID
+	 	((bodyL+='body:' (terms+=Term)+) |
 	 	(rolesL+='roles:' (roles+=Role (OP1000XFY)?)*) |
-	 	(typesL+='types:' (types+=EventType)*) |
+	 	(typesL+='types:' (types+=MsgEventType)*) |
 	 	(modulesL+='modules:' (modules+=Module)*) |
 	 	(decentralizedL+='decentralized:' decentralized+=('true'|'false')) |
 	 	(partitionL+='partition:' partition+=Partition) |
@@ -187,7 +201,24 @@ TraceExpression:
 	 	(thresholdL+='threshold:' threshold+=(NUMBER)) |
 	 	(channelsL+='channels:' (channels+=Channel)+))+
 	'}';
-	
+
+EventType:
+	name=ID ('(' expr=GroundTerm (OP1000XFY exprs+=GroundTerm)* ')')? OP600XFY '{' (events+=Event)* '}'
+;
+
+MsgEventType:
+	((name=ID) ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' (msgs+=Msg)* '}' ('[' channel=[Channel] ']')?)
+;
+
+GroundTerm:
+	variable=VARIABLE |
+	symbol=ID '(' arg=GroundTerm (OP1000XFY args+=GroundTerm)* ')'
+;
+
+Event:
+	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? ('[' constraints=ExpressionInfinity ']')?
+;
+
 Term:
 	name=ID '<-' expr=ShuffleExpr
 ;
@@ -220,23 +251,19 @@ VarExpr returns Expression:
 ;
 
 FilterExpr returns Expression:
-	((typeFilter=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1 bodyFilter=(Primary)))
+	(((typeFilter=[EventType]|typeFilter=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1 bodyFilter=(Primary)))
 ;
 
 SeqExpr returns Expression:
-	(((typeSeq=[EventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=(Primary)))
+	(((typeSeq=[EventType]|typeSeq=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=(Primary)))
 ;
 
 TerminalExpr returns Expression: 
 	((eps='epsilon' | term=[Term] | '(' expr=ShuffleExpr ')'))
 ;
 
-EventType:
-	((name=ID) ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' (msgs+=Msg)* '}' ('[' channel=[Channel] ']')?)
-;
-
 Msg:
-	((('[' async_sender=[Role] '=>' ']' receiver=[Role])|(sender=[Role] '[' '=>' async_receiver=[Role] ']')|(sender=[Role] '=>' receiver=[Role])) OP600XFY ((performative=ATOM '(' content=Expression0 ')')|(content=Expression0)) ('[' conditions=ExpressionInfinity ']')?)
+	((performative=ATOM OP600XFY)? (('[' async_sender=[Role] '=>' ']' receiver=[Role])|(sender=[Role] '[' '=>' async_receiver=[Role] ']')|(sender=[Role] '=>' receiver=[Role])) OP600XFY (content=Expression0) ('[' conditions=ExpressionInfinity ']')?)
 ;
 
 Channel:

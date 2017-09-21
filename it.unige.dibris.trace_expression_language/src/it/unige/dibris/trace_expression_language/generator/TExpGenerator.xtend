@@ -8,7 +8,7 @@ import java.util.StringJoiner;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression
 import it.unige.dibris.trace_expression_language.tExp.CatExpr
-import it.unige.dibris.trace_expression_language.tExp.EventType
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 import it.unige.dibris.trace_expression_language.tExp.Expression
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr
 import it.unige.dibris.trace_expression_language.tExp.Msg
@@ -19,7 +19,7 @@ import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr
 import it.unige.dibris.trace_expression_language.tExp.StringExpression
 import it.unige.dibris.trace_expression_language.tExp.Term
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr
 import it.unige.dibris.trace_expression_language.tExp.VarExpr
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression
@@ -30,6 +30,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import it.unige.dibris.trace_expression_language.tExp.Singletons
 import it.unige.dibris.trace_expression_language.tExp.Size
 import it.unige.dibris.trace_expression_language.tExp.Cardinality
+import it.unige.dibris.trace_expression_language.tExp.EventType
+import it.unige.dibris.trace_expression_language.tExp.Event
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm
+import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
 
 /**
  * Generates code from your model files on save.
@@ -46,13 +50,16 @@ class TExpGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
-		for (TraceExpression tExp : resource.allContents.toIterable.filter(TraceExpression)) {
-            fsa.generateFile(tExp.name + '.pl', tExp.compile);
+		for (AgentTraceExpression tExp : resource.allContents.toIterable.filter(AgentTraceExpression)) {
+            fsa.generateFile(tExp.name + '.pl', tExp.compile)
             fsa.generateFile(tExp.name.substring(0, 1).toUpperCase + tExp.name.substring(1) + '.java', tExp.javaCompile)
         }
+        
+        for (GenericTraceExpression te : resource.allContents.toIterable.filter(GenericTraceExpression))
+        	fsa.generateFile(te.name + '.pl', te.compile)
 	}
 	
-	def javaCompile(TraceExpression tExp)
+	def javaCompile(AgentTraceExpression tExp)
 	''' 
 		«var name = tExp.name.substring(0, 1).toUpperCase + tExp.name.substring(1)»
 		import java.io.IOException;
@@ -61,7 +68,7 @@ class TExpGenerator extends AbstractGenerator {
 		
 		import it.dibris.unige.TExpSWIPrologConnector.exceptions.DecentralizedPartitionNotFoundException;
 		import it.dibris.unige.TExpSWIPrologConnector.JPL.JPLInitializer;
-		import it.dibris.unige.TExpSWIPrologConnector.texp.TraceExpression;
+		import it.dibris.unige.TExpSWIPrologConnector.texp.AgentTraceExpression;
 		import it.dibris.unige.TExpSWIPrologConnector.decentralized.Partition;
 		import it.unige.dibris.TExpRVJade.Channel;
 		import it.unige.dibris.TExpRVJade.Monitor;
@@ -79,7 +86,7 @@ class TExpGenerator extends AbstractGenerator {
 			public static void main(String[] args) throws StaleProxyException, DecentralizedPartitionNotFoundException, IOException {
 				JPLInitializer.init();
 				
-				TraceExpression tExp = new TraceExpression("«tExp.name».pl");
+				AgentTraceExpression tExp = new AgentTraceExpression("«tExp.name».pl");
 				
 				/* Initialize JADE environment */
 				jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -219,8 +226,8 @@ class TExpGenerator extends AbstractGenerator {
 		}
 	''' 
 	
-	def compile(TraceExpression tExp){
-		/*for(EventType type : tExp.types){
+	def compile(AgentTraceExpression tExp){
+		/*for(MsgEventType type : tExp.types){
 			return "match(event(" + type.event.name + ", " + type.event.content + "), " + type.name + ")";
 		} */
 		var str = ':- discontiguous match/3.\n'
@@ -260,7 +267,24 @@ class TExpGenerator extends AbstractGenerator {
 		}
 		str = str.substring(0, str.length-2) + ', numbervars(Main, 0, _).\n'
 		
-	} 
+	}
+	
+	def compile(GenericTraceExpression t) 
+	'''
+	:- discontiguous match/3.
+	:- discontiguous event/2.
+	
+	«FOR et : t.types»
+	«et.compile»
+	«ENDFOR»
+	
+	trace_expression('«t.name»', Main) :-
+	«FOR term : t.terms»
+	«term.compile»,
+	«ENDFOR»
+	numbervars(Main, 0, _).
+	'''
+	
 	
 	def compile(Term term){
 		return term.name.substring(0, 1).toUpperCase + term.name.substring(1) + ' = ' + term.expr.compile
@@ -276,50 +300,66 @@ class TExpGenerator extends AbstractGenerator {
 		} else if(expr instanceof AndExpr){
 			return '(' +  expr.left.compile + ' /\\ ' + expr.right.compile + ')'
 		} else if(expr instanceof FilterExpr){
+			var name = null as String
+			if (expr.filterExpr.typeFilter instanceof EventType)
+				name = (expr.filterExpr.typeFilter as EventType).name
+			else
+				name = (expr.filterExpr.typeFilter as MsgEventType).name
+			
 			if(expr.filterExpr.first !== null){
-				var str = '(' + expr.filterExpr.typeFilter.name + '(' + expr.filterExpr.first.compile
+				var str = '(' + name + '(' + expr.filterExpr.first.compile
 				for(arg : expr.filterExpr.exprs){
 					str += ', ' + arg.compile
 				}
 				str += ') >> ' + expr.filterExpr.bodyFilter.compile + ')'
 				return str
 			} else{
-				return '(' +  expr.filterExpr.typeFilter.name  + ' >> ' + expr.filterExpr.bodyFilter.compile + ')'
+				return '(' +  name  + ' >> ' + expr.filterExpr.bodyFilter.compile + ')'
 			}
-		} else if(expr.typeFilter !== null && expr.bodyFilter !== null){
-			if(expr.first !== null){
-				var str = '(' + expr.typeFilter.name + '(' + expr.first.compile
-				for(arg : expr.exprs){
-					str += ', ' + arg.compile
-				}
-				str += ') >> ' + expr.bodyFilter.compile + ')'
-				return str
-			} else{
-				return '(' +  expr.typeFilter.name  + ' >> ' + expr.bodyFilter.compile + ')'
-			}
-		} else if(expr instanceof SeqExpr){
+		}
+//		else if(expr.typeFilter !== null && expr.bodyFilter !== null){
+//			if(expr.first !== null){
+//				var str = '(' + expr.typeFilter.name + '(' + expr.first.compile
+//				for(arg : expr.exprs){
+//					str += ', ' + arg.compile
+//				}
+//				str += ') >> ' + expr.bodyFilter.compile + ')'
+//				return str
+//			} else{
+//				return '(' +  expr.typeFilter.name  + ' >> ' + expr.bodyFilter.compile + ')'
+//			}
+//		}
+		else if(expr instanceof SeqExpr){
+			var name = null as String
+			if (expr.seqExpr.typeSeq instanceof EventType)
+				name = (expr.seqExpr.typeSeq as EventType).name
+			else
+				name = (expr.seqExpr.typeSeq as MsgEventType).name
+			
 			if(expr.seqExpr.first !== null){
-				var str = '(' + expr.seqExpr.typeSeq.name + '(' + expr.seqExpr.first.compile
+				var str = '(' + name + '(' + expr.seqExpr.first.compile
 				for(arg : expr.seqExpr.exprs){
 					str += ', ' + arg.compile
 				}
 				str += ') :' + expr.seqExpr.bodySeq.compile + ')'
 				return str
 			} else{
-				return '(' +  expr.seqExpr.typeSeq.name  + ' : ' + expr.seqExpr.bodySeq.compile + ')'
+				return '(' +  name  + ' : ' + expr.seqExpr.bodySeq.compile + ')'
 			}
-		} else if(expr.typeSeq !== null && expr.bodySeq !== null){
-			if(expr.first !== null){
-				var str = '(' + expr.typeSeq.name + '(' + expr.first.compile
-				for(arg : expr.exprs){
-					str += ', ' + arg.compile
-				}
-				str += ') : ' + expr.bodySeq.compile + ')'
-				return str
-			} else{
-				return '(' +  expr.typeSeq.name  + ' : ' + expr.bodySeq.compile + ')'
-			}
-		} else if(expr instanceof VarExpr){
+		}
+//		else if(expr.typeSeq !== null && expr.bodySeq !== null){
+//			if(expr.first !== null){
+//				var str = '(' + expr.typeSeq.name + '(' + expr.first.compile
+//				for(arg : expr.exprs){
+//					str += ', ' + arg.compile
+//				}
+//				str += ') : ' + expr.bodySeq.compile + ')'
+//				return str
+//			} else{
+//				return '(' +  expr.typeSeq.name  + ' : ' + expr.bodySeq.compile + ')'
+//			}
+//		}
+		else if(expr instanceof VarExpr){
 			return 'var( ' + expr.varExpr.variable + ', ' + expr.varExpr.bodyVar.compile + ')'
 		} else if(expr instanceof TerminalExpr){ 
 			if(expr.terminalExpr.term !== null){
@@ -341,6 +381,59 @@ class TExpGenerator extends AbstractGenerator {
 	}
 	
 	def compile(EventType eventType){
+		var str = ''
+		for(event : eventType.events){
+			str += 'match(' + tExpCurrentName + ', ' + event.compile + ', ' + eventType.name
+			if(eventType.expr !== null){
+				str += '(' + eventType.expr.compile
+				for(e : eventType.exprs){
+					str += ', ' + e.compile
+				}
+				str += ')'
+			}
+			str += ')'
+			if(event.constraints !== null){
+				str += ' :- \n\t' + event.constraints.compile + '.'
+			} else{
+				str += '.'
+			}
+			str += '\n' + 'event(' + tExpCurrentName + ', ' + event.compile + ').\n'
+		}
+		
+		return str
+	}
+	
+	def compile(Event event) {
+		var str = event.name
+		
+		if (event.expr !== null) {
+			str += '(' + event.expr.compile
+			
+			for (e : event.exprs)
+				str += ',' + e.compile
+			
+			str += ')'
+		}
+		
+		return str
+	}
+	
+	def String compile(GroundTerm gt) {
+		if (gt.variable !== null)
+			return gt.variable
+		
+		if (gt.arg === null)
+			return gt.symbol
+		
+		val joiner = new StringJoiner(',', '(', ')')
+		joiner.add(gt.arg.compile)
+		for (a : gt.args)
+			joiner.add(a.compile)
+		
+		return gt.symbol + joiner.toString()
+	}
+	
+	def compile(MsgEventType eventType){
 		var str = ''
 		for(msg : eventType.msgs){
 			if(eventType.channel !== null){

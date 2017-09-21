@@ -3,6 +3,7 @@
  */
 package it.unige.dibris.trace_expression_language.validation
 
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.AndExpr
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression
 import it.unige.dibris.trace_expression_language.tExp.Cardinality
@@ -12,22 +13,23 @@ import it.unige.dibris.trace_expression_language.tExp.Constraint
 import it.unige.dibris.trace_expression_language.tExp.EventType
 import it.unige.dibris.trace_expression_language.tExp.Expression
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression
 import it.unige.dibris.trace_expression_language.tExp.SeqExpr
 import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr
 import it.unige.dibris.trace_expression_language.tExp.Singletons
 import it.unige.dibris.trace_expression_language.tExp.Size
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression
+import it.unige.dibris.trace_expression_language.tExp.TerminalExpr
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr
 import it.unige.dibris.trace_expression_language.tExp.VarExpr
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression
 import java.util.ArrayList
+import java.util.HashMap
 import java.util.List
 import java.util.TreeSet
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.validation.Check
-import java.util.HashMap
-import it.unige.dibris.trace_expression_language.tExp.TerminalExpr
+import org.eclipse.emf.ecore.EObject
 
 /**
  * This class contains custom validation rules. 
@@ -55,7 +57,7 @@ class TExpValidator extends AbstractTExpValidator {
 	
 
 	@Check
-	def checkMainPresence(TraceExpression tExp) {
+	def checkMainPresence(AgentTraceExpression tExp) {
 		for(term : tExp.terms){
 			if(term.name.equals("Main") || term.name.equals("main")) return
 		}
@@ -72,7 +74,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkConcatenations(TraceExpression tExp){
+	def checkConcatenations(AgentTraceExpression tExp){
 		val assocT = new HashMap<String, Expression>();
 		for(term : tExp.terms){
 			assocT.put(term.name, term.expr);
@@ -124,7 +126,7 @@ class TExpValidator extends AbstractTExpValidator {
 		} else if(expr instanceof CatExpr){
 			if(expr.left !== null){
 				if(!MonitoringSafePartitionCheck.mayHalt(expr.left, assocT, new HashMap<String, Expression>()) && 
-					MonitoringSafePartitionCheck.lastEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold).size == 0
+					MonitoringSafePartitionCheck.lastMsgEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold).size == 0
 				){
 					val node = NodeModelUtils.findActualNodeFor(expr.left)
 					messageAcceptor.acceptWarning(
@@ -154,8 +156,6 @@ class TExpValidator extends AbstractTExpValidator {
 	
 	@Check
 	def checkSeqFilterExpr(Expression expr){
-		var count = 0
-		
 		var seqExpr = null as Expression
 		
 		if(expr instanceof SeqExpr){
@@ -175,56 +175,92 @@ class TExpValidator extends AbstractTExpValidator {
 		}
 		
 		if(seqExpr !== null){
-			if(seqExpr.typeSeq.expr !== null){
-				count++
-			}
-			for(e : seqExpr.typeSeq.exprs){
-				count++
-			}
-			if(seqExpr.first !== null){
-				count--
-			}
-			for(e : seqExpr.exprs){
-				count--
-			}
-			if(count != 0){
-				val node = NodeModelUtils.findActualNodeFor(seqExpr)
-				messageAcceptor.acceptError(
-			                'Wrong number of arguments in ' + seqExpr.typeSeq.name,
-			                seqExpr,
-			                node.offset,
-			                node.length,
-			                WrongNumberArguments
-			            )
-			}
+			checkSeqExpr(seqExpr)
 		} else if(filterExpr !== null){
-			if(filterExpr.typeFilter.expr !== null){
-				count++
-			}
-			for(e : filterExpr.typeFilter.exprs){
-				count++
-			}
-			if(filterExpr.first !== null){
-				count--
-			}
-			for(e : filterExpr.exprs){
-				count--
-			}
-			if(count != 0){
-				val node = NodeModelUtils.findActualNodeFor(filterExpr)
-				messageAcceptor.acceptError(
-			                'Wrong number of arguments in ' + filterExpr.typeFilter.name,
-			                filterExpr,
-			                node.offset,
-			                node.length,
-			                WrongNumberArguments
-			            )
-			}
+			checkFilterExpr(filterExpr as FilterExpr)
+		}
+	}
+	
+	private def void checkFilterExpr(FilterExpr filterExpr) {
+		var count = 0
+		var expr = null as EObject
+		var exprs = null as List<? extends EObject>
+		var name = null as String
+		
+		if (filterExpr.typeFilter instanceof EventType) {
+			var typeFilter = filterExpr.typeFilter as EventType
+			expr = typeFilter.expr
+			exprs = typeFilter.exprs
+			name = typeFilter.name
+		} else {
+			var typeFilter = filterExpr.typeFilter as MsgEventType
+			expr = typeFilter.expr
+			exprs = typeFilter.exprs
+			name = typeFilter.name
+		}
+		
+		if(expr !== null){
+			count++
+		}
+		
+		count += exprs.length()
+		
+		if(filterExpr.first !== null){
+			count--
+		}
+		count -= filterExpr.exprs.length()
+		if(count != 0){
+			val node = NodeModelUtils.findActualNodeFor(filterExpr)
+			messageAcceptor.acceptError(
+		                'Wrong number of arguments in ' + name,
+		                filterExpr,
+		                node.offset,
+		                node.length,
+		                WrongNumberArguments
+		            )
+		}
+	}
+	
+	private def void checkSeqExpr(Expression seqExpr) {
+		var count = 0
+		var expr = null as EObject
+		var exprs = null as List<? extends EObject>
+		var name = null as String
+		
+		if (seqExpr.typeSeq instanceof EventType) {
+			var typeSeq = seqExpr.typeSeq as EventType
+			expr = typeSeq.expr
+			exprs = typeSeq.exprs
+			name = typeSeq.name
+		} else {
+			var typeSeq = seqExpr.typeSeq as MsgEventType
+			expr = typeSeq.expr
+			exprs = typeSeq.exprs
+			name = typeSeq.name
+		}
+		
+		if(expr !== null){
+			count++
+		}
+		count += exprs.length()
+		if(seqExpr.first !== null){
+			count--
+		}
+		count -= seqExpr.exprs.length()
+		if(count != 0){
+			val node = NodeModelUtils.findActualNodeFor(seqExpr)
+			messageAcceptor.acceptError(
+		                'Wrong number of arguments in ' + name,
+		                seqExpr,
+		                node.offset,
+		                node.length,
+		                WrongNumberArguments
+		            )
 		}
 	}
 	
 	@Check
-	def checkVariablesInsideConditions(EventType eventType){
+	def checkVariablesInsideConditions(MsgEventType eventType){
 		var varsET = new ArrayList<String>
 		addVariables(eventType.expr, varsET)
 		for(expr : eventType.exprs){
@@ -335,7 +371,7 @@ class TExpValidator extends AbstractTExpValidator {
 		}
 	}
 	
-	def areAllAsyncMsgs(TraceExpression tExp){
+	def areAllAsyncMsgs(AgentTraceExpression tExp){
 		for(eventType : tExp.types){
 			for(msg : eventType.msgs){
 				if(msg.async_sender === null && msg.async_receiver === null){
@@ -346,7 +382,7 @@ class TExpValidator extends AbstractTExpValidator {
 		return true
 	}
 	
-	def areAllSyncMsgs(TraceExpression tExp){
+	def areAllSyncMsgs(AgentTraceExpression tExp){
 		for(eventType : tExp.types){
 			for(msg : eventType.msgs){
 				if(msg.async_sender !== null || msg.async_receiver !== null){
@@ -358,7 +394,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkMsgsConsistency(TraceExpression tExp){
+	def checkMsgsConsistency(AgentTraceExpression tExp){
 		if(tExp.types === null || tExp.types.size == 0){
 			return
 		}
@@ -377,8 +413,8 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkSequenceEventTypeConsistency(SeqExpr expr){
-		if(!isEventTypeConsistency(expr.seqExpr.typeSeq)){
+	def checkSequenceMsgEventTypeConsistency(SeqExpr expr){
+		if(expr.seqExpr.typeSeq instanceof MsgEventType && !isMsgEventTypeConsistency(expr.seqExpr.typeSeq as MsgEventType)){
 			val node = NodeModelUtils.findActualNodeFor(expr.seqExpr.typeSeq)
 			messageAcceptor.acceptError(
 		                'All messages inside the event type must involve the same set of roles',
@@ -390,7 +426,7 @@ class TExpValidator extends AbstractTExpValidator {
 		}
 	}
 	
-	def isEventTypeConsistency(EventType eventType){
+	def isMsgEventTypeConsistency(MsgEventType eventType){
 		var roles = new TreeSet<String>()
 		for(msg : eventType.msgs){
 			if(msg.async_sender !== null){
@@ -410,7 +446,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkFreeVariables(TraceExpression tExp){
+	def checkFreeVariables(AgentTraceExpression tExp){
 		var freeVars = new ArrayList<String>
 		
 		for(term : tExp.terms){
@@ -431,7 +467,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkPartitionCorrectlyEnabled(TraceExpression tExp){
+	def checkPartitionCorrectlyEnabled(AgentTraceExpression tExp){
 		if((tExp.decentralized === null || tExp.decentralized.size == 0 || tExp.decentralized.get(0) == 'false') && 
 			tExp.partition !== null && tExp.partition.size > 0
 		){
@@ -447,7 +483,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkContractiveness(TraceExpression tExp){
+	def checkContractiveness(AgentTraceExpression tExp){
 		if(!ContractivenessCheck.isContractive(tExp)){
 			for(term : tExp.terms){
 				val node = NodeModelUtils.findActualNodeFor(term)
@@ -501,7 +537,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkNoDuplications(TraceExpression tExp){
+	def checkNoDuplications(AgentTraceExpression tExp){
 		if(tExp.bodyL === null || tExp.bodyL.size != 1){
 			val node = NodeModelUtils.findActualNodeFor(tExp)
 				messageAcceptor.acceptError(
@@ -629,7 +665,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def thresholdMustBePositive(TraceExpression tExp){
+	def thresholdMustBePositive(AgentTraceExpression tExp){
 		if(tExp.threshold !== null && tExp.threshold.size > 0 && tExp.threshold.get(0).length > 0){
 			var d = Double.valueOf(tExp.threshold.get(0))
 			if(d < 0 || d > 1){
@@ -646,7 +682,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkConstraintsOnlyIfDecentralized(TraceExpression tExp){
+	def checkConstraintsOnlyIfDecentralized(AgentTraceExpression tExp){
 		if((tExp.decentralized === null || tExp.decentralized.size == 0 || tExp.decentralized.get(0) == 'false')
 			&& (tExp.constraints !== null && tExp.constraints.size > 0)
 		){
@@ -662,7 +698,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkMinimalOnlyIfDecentralized(TraceExpression tExp){
+	def checkMinimalOnlyIfDecentralized(AgentTraceExpression tExp){
 		if((tExp.decentralized === null || tExp.decentralized.size == 0 || tExp.decentralized.get(0) == 'false')
 			&& (tExp.minimal !== null && tExp.minimal.size > 0)
 		){
@@ -678,7 +714,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkConstraintsOrPartition(TraceExpression tExp){
+	def checkConstraintsOrPartition(AgentTraceExpression tExp){
 		if(tExp.constraints !== null && tExp.constraints.size > 0 &&
 			tExp.partition !== null && tExp.partition.size > 0){
 				var node = NodeModelUtils.findActualNodeFor(tExp.constraints.get(0))
@@ -701,7 +737,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkMinimalOrPartition(TraceExpression tExp){
+	def checkMinimalOrPartition(AgentTraceExpression tExp){
 		if(tExp.partition !== null && tExp.partition.size > 0 &&
 			tExp.minimal !== null && tExp.minimal.size > 0){
 				var node = NodeModelUtils.findActualNodeFor(tExp.partition.get(0))
@@ -716,7 +752,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def criticalPointsTest(TraceExpression tExp){
+	def criticalPointsTest(AgentTraceExpression tExp){
 		if(tExp.decentralized !== null && tExp.decentralized.size > 0 && 
 			tExp.decentralized.get(0) == 'true' && tExp.partition !== null && tExp.partition.size > 0
 		){
@@ -735,7 +771,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkAllRolesInPartition(TraceExpression tExp){
+	def checkAllRolesInPartition(AgentTraceExpression tExp){
 		if(tExp.partition !== null && tExp.partition.size > 0){
 			for(role1 : tExp.roles){
 				var found = false

@@ -1,10 +1,10 @@
 package it.unige.dibris.trace_expression_language.validation
 
 import it.unige.dibris.trace_expression_language.tExp.Expression
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
 import java.util.LinkedHashMap
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr
-import it.unige.dibris.trace_expression_language.tExp.EventType
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 import java.util.List
 import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr
 import it.unige.dibris.trace_expression_language.tExp.CatExpr
@@ -20,11 +20,11 @@ import java.util.ArrayList
 class MonitoringSafePartitionCheck {
 	
 	static class CriticalPoint{
-		EventType evType1
-		EventType evType2
+		MsgEventType evType1
+		MsgEventType evType2
 		Expression expr
 	
-		new(EventType type, EventType type2, Expression e) {
+		new(MsgEventType type, MsgEventType type2, Expression e) {
 			evType1 = type
 			evType2 = type2
 			expr = e
@@ -43,7 +43,7 @@ class MonitoringSafePartitionCheck {
 		}
 	}
 	
-	def static isMonitoringSafe(TraceExpression tExp){
+	def static isMonitoringSafe(AgentTraceExpression tExp){
 		val terms = tExp.terms
 		val assocT = new LinkedHashMap<String, Expression>();
 		val assocD = new LinkedHashMap<String, Expression>();
@@ -121,11 +121,12 @@ class MonitoringSafePartitionCheck {
 		} else if(expr instanceof CatExpr){
 			return mayHalt(expr.left, assocT, assoc) && mayHalt(expr.right, assocT, assoc)
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) == 1){
-				return false
-			} else{
-				return mayHalt(expr.seqExpr.bodySeq, assocT, assoc)
+			if(expr.seqExpr.typeSeq instanceof MsgEventType) {
+				var msgEv = expr.seqExpr.typeSeq as MsgEventType
+				if(msgEv.channel !== null && msgEv.channel.reliability !== null && Double.valueOf(msgEv.channel.reliability) < 1)
+					return mayHalt(expr.seqExpr.bodySeq, assocT, assoc)
 			}
+			return false
 		} else if(expr instanceof FilterExpr){
 			return mayHalt(expr.bodyFilter, assocT, assoc)
 		} else{
@@ -133,23 +134,23 @@ class MonitoringSafePartitionCheck {
 		}
 	}
 	
-	def static List<EventType> firstEventTypes(Expression expr, HashMap<String, Expression> assocT, HashMap<String, Expression> assoc, double threshold){
+	def static List<MsgEventType> firstMsgEventTypes(Expression expr, HashMap<String, Expression> assocT, HashMap<String, Expression> assoc, double threshold){
 		if(expr instanceof TerminalExpr){
 			if(expr.terminalExpr.expr !== null){
-				return firstEventTypes(expr.terminalExpr.expr, assocT, assoc, threshold)
+				return firstMsgEventTypes(expr.terminalExpr.expr, assocT, assoc, threshold)
 			}
 			if(expr.terminalExpr.term !== null){
 				if(assoc.get(expr.terminalExpr.term.name) !== null){
-					return new ArrayList<EventType>()
+					return new ArrayList<MsgEventType>()
 				}
 				assoc.put(expr.terminalExpr.term.name, expr)
-				return firstEventTypes(assocT.get(expr.terminalExpr.term.name), assocT, assoc, threshold)
+				return firstMsgEventTypes(assocT.get(expr.terminalExpr.term.name), assocT, assoc, threshold)
 			} else{
-				return new ArrayList<EventType>()
+				return new ArrayList<MsgEventType>()
 			}
 		} else if(expr instanceof ShuffleExpr){
-			var evTypes1 = firstEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = firstEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = firstMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = firstMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -163,8 +164,8 @@ class MonitoringSafePartitionCheck {
 			}
 			return evTypes1
 		} else if(expr instanceof AndExpr){
-			var evTypes1 = firstEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = firstEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = firstMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = firstMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -178,8 +179,8 @@ class MonitoringSafePartitionCheck {
 			}
 			return evTypes1
 		} else if(expr instanceof UnionExpr){
-			var evTypes1 = firstEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = firstEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = firstMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = firstMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -194,8 +195,8 @@ class MonitoringSafePartitionCheck {
 			return evTypes1
 		} else if(expr instanceof CatExpr){
 			if(mayHalt(expr, assocT, new HashMap<String, Expression>())){
-				var evTypes1 = firstEventTypes(expr.left, assocT, assoc, threshold)
-				var evTypes2 = firstEventTypes(expr.right, assocT, assoc, threshold)
+				var evTypes1 = firstMsgEventTypes(expr.left, assocT, assoc, threshold)
+				var evTypes2 = firstMsgEventTypes(expr.right, assocT, assoc, threshold)
 				for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -209,56 +210,61 @@ class MonitoringSafePartitionCheck {
 			}
 				return evTypes1
 			} else{
-				var evTypes1 = firstEventTypes(expr.left, assocT, assoc, threshold)
+				var evTypes1 = firstMsgEventTypes(expr.left, assocT, assoc, threshold)
 				return evTypes1
 			}
 			
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
-				var eventTypes = new ArrayList<EventType>()
-				eventTypes.add(expr.seqExpr.typeSeq)
+			if (!(expr.seqExpr.typeSeq instanceof MsgEventType))
+				throw new AssertionError("Event type should be a message event type")
+			
+			var msgEv = expr.seqExpr.typeSeq as MsgEventType
+			if(msgEv.channel === null || msgEv.channel.reliability === null || Double.valueOf(msgEv.channel.reliability) >= threshold){
+				var eventTypes = new ArrayList<MsgEventType>()
+				eventTypes.add(msgEv)
 				return eventTypes
-			} else if(Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
-				var evTypes2 = firstEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+			} else if(Double.valueOf(msgEv.channel.reliability) > 0){
+				var evTypes2 = firstMsgEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 				var found = false
 				for(evType2 : evTypes2){
-					if(expr.seqExpr.typeSeq.name == evType2.name){
+					if(msgEv.name == evType2.name){
 						found = true
 					}
 				}
 				if(!found){
-					evTypes2.add(expr.seqExpr.typeSeq)
+					evTypes2.add(msgEv)
 				}
 				return evTypes2
-			} else{
-				return firstEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+			}
+			else{
+				return firstMsgEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 			}
 		} else if(expr instanceof FilterExpr){
-			return firstEventTypes(expr.filterExpr.bodyFilter, assocT, assoc, threshold)
+			return firstMsgEventTypes(expr.filterExpr.bodyFilter, assocT, assoc, threshold)
 		} else if(expr instanceof VarExpr){
-			return firstEventTypes(expr.varExpr.bodyVar, assocT, assoc, threshold)
+			return firstMsgEventTypes(expr.varExpr.bodyVar, assocT, assoc, threshold)
 		} else{
-			return new ArrayList<EventType>()
+			return new ArrayList<MsgEventType>()
 		}
 	}
 	
-	def static List<EventType> lastEventTypes(Expression expr, HashMap<String, Expression> assocT, HashMap<String, Expression> assoc, double threshold){
+	def static List<MsgEventType> lastMsgEventTypes(Expression expr, HashMap<String, Expression> assocT, HashMap<String, Expression> assoc, double threshold){
 		if(expr instanceof TerminalExpr){
 			if(expr.terminalExpr.expr !== null){
-				return lastEventTypes(expr.terminalExpr.expr, assocT, assoc, threshold)
+				return lastMsgEventTypes(expr.terminalExpr.expr, assocT, assoc, threshold)
 			}
 			if(expr.terminalExpr.term !== null){
 				if(assoc.get(expr.terminalExpr.term.name) !== null){
-					return new ArrayList<EventType>()
+					return new ArrayList<MsgEventType>()
 				}
 				assoc.put(expr.terminalExpr.term.name, expr)
-				return lastEventTypes(assocT.get(expr.terminalExpr.term.name), assocT, assoc, threshold)
+				return lastMsgEventTypes(assocT.get(expr.terminalExpr.term.name), assocT, assoc, threshold)
 			} else{
-				return new ArrayList<EventType>()
+				return new ArrayList<MsgEventType>()
 			}
 		} else if(expr instanceof ShuffleExpr){
-			var evTypes1 = lastEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = lastMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = lastMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -272,8 +278,8 @@ class MonitoringSafePartitionCheck {
 			}
 			return evTypes1
 		} else if(expr instanceof AndExpr){
-			var evTypes1 = lastEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = lastMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = lastMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -287,8 +293,8 @@ class MonitoringSafePartitionCheck {
 			}
 			return evTypes1
 		} else if(expr instanceof UnionExpr){
-			var evTypes1 = lastEventTypes(expr.left, assocT, assoc, threshold)
-			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes1 = lastMsgEventTypes(expr.left, assocT, assoc, threshold)
+			var evTypes2 = lastMsgEventTypes(expr.right, assocT, assoc, threshold)
 			for(evType2 : evTypes2){
 				var found = false
 				for(evType1 : evTypes1){
@@ -302,17 +308,22 @@ class MonitoringSafePartitionCheck {
 			}
 			return evTypes1
 		} else if(expr instanceof CatExpr){		
-			if(lastEventTypes(expr.left, assocT, assoc, threshold).size == 0){
-				return new ArrayList<EventType>()
+			if(lastMsgEventTypes(expr.left, assocT, assoc, threshold).size == 0){
+				return new ArrayList<MsgEventType>()
 			}	
-			var evTypes2 = lastEventTypes(expr.right, assocT, assoc, threshold)
+			var evTypes2 = lastMsgEventTypes(expr.right, assocT, assoc, threshold)
 			return evTypes2
 		} else if(expr instanceof SeqExpr){		
 			if(mayHalt(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>())){
-				if (expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.typeSeq.channel.reliability) >= threshold){
-					var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
-					var evTypes1 = new ArrayList<EventType>()
-					evTypes1.add(expr.seqExpr.typeSeq)
+				if (!(expr.seqExpr.typeSeq instanceof MsgEventType))
+					throw new AssertionError("Event type should be a message event type")
+			
+				var msgEv = expr.seqExpr.typeSeq as MsgEventType
+			
+				if (msgEv.channel === null || msgEv.channel.reliability === null || Double.valueOf(msgEv.channel.reliability) >= threshold){
+					var evTypes2 = lastMsgEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+					var evTypes1 = new ArrayList<MsgEventType>()
+					evTypes1.add(msgEv)
 					var found = false
 					for(evType2 : evTypes2){
 						if(evTypes1.get(0).name == evType2.name){
@@ -323,31 +334,31 @@ class MonitoringSafePartitionCheck {
 						evTypes2.add(evTypes1.get(0))
 					}
 					return evTypes2
-				} else if(Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
-					var evTypes2 = lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+				} else if(Double.valueOf(msgEv.channel.reliability) > 0){
+					var evTypes2 = lastMsgEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 					var found = false
 					for(evType2 : evTypes2){
-						if(expr.seqExpr.typeSeq.name == evType2.name){
+						if(msgEv.name == evType2.name){
 							found = true
 						}
 					}
 					if(!found){
-						evTypes2.add(expr.seqExpr.typeSeq)
+						evTypes2.add(msgEv)
 					}
 					return evTypes2
 				}
 			}
-			return lastEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
+			return lastMsgEventTypes(expr.seqExpr.bodySeq, assocT, assoc, threshold)
 		} else if(expr instanceof FilterExpr){
-			return lastEventTypes(expr.filterExpr.bodyFilter, assocT, assoc, threshold)
+			return lastMsgEventTypes(expr.filterExpr.bodyFilter, assocT, assoc, threshold)
 		} else if(expr instanceof VarExpr){
-			return lastEventTypes(expr.varExpr.bodyVar, assocT, assoc, threshold)
+			return lastMsgEventTypes(expr.varExpr.bodyVar, assocT, assoc, threshold)
 		} else{
-			return new ArrayList<EventType>()
+			return new ArrayList<MsgEventType>()
 		}
 	}
 	
-	def static getRolesFromEventType(EventType eventType){
+	def static getRolesFromMsgEventType(MsgEventType eventType){
 		var roles = new TreeSet<String>();
 		for(msg : eventType.msgs){
 			if(msg.sender !== null && msg.receiver !== null){
@@ -374,13 +385,13 @@ class MonitoringSafePartitionCheck {
 		} else if(expr instanceof UnionExpr){
 			extractCriticalPoints(expr.left, criticalPoints, assocT, assoc, threshold)
 			extractCriticalPoints(expr.right, criticalPoints, assocT, assoc, threshold)
-			var eventTypes1 = firstEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold)
-			var eventTypes2 = firstEventTypes(expr.right, assocT, new HashMap<String, Expression>(), threshold)
+			var eventTypes1 = firstMsgEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold)
+			var eventTypes2 = firstMsgEventTypes(expr.right, assocT, new HashMap<String, Expression>(), threshold)
 			for(eventType1 : eventTypes1){
 				var found = false
 				for(eventType2 : eventTypes2){
-					for(r1 : getRolesFromEventType(eventType1)){
-						for(r2 : getRolesFromEventType(eventType2)){
+					for(r1 : getRolesFromMsgEventType(eventType1)){
+						for(r2 : getRolesFromMsgEventType(eventType2)){
 							if(r1 == r2){
 								found = true		
 							}	
@@ -402,13 +413,13 @@ class MonitoringSafePartitionCheck {
 		} else if(expr instanceof CatExpr){
 			extractCriticalPoints(expr.left, criticalPoints, assocT, assoc, threshold)
 			extractCriticalPoints(expr.right, criticalPoints, assocT, assoc, threshold)
-			var eventTypes1 = lastEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold)
-			var eventTypes2 = firstEventTypes(expr.right, assocT, new HashMap<String, Expression>(), threshold)
+			var eventTypes1 = lastMsgEventTypes(expr.left, assocT, new HashMap<String, Expression>(), threshold)
+			var eventTypes2 = firstMsgEventTypes(expr.right, assocT, new HashMap<String, Expression>(), threshold)
 			for(eventType1 : eventTypes1){
 				var found = false
 				for(eventType2 : eventTypes2){
-					for(r1 : getRolesFromEventType(eventType1)){
-						for(r2 : getRolesFromEventType(eventType2)){
+					for(r1 : getRolesFromMsgEventType(eventType1)){
+						for(r2 : getRolesFromMsgEventType(eventType2)){
 							if(r1 == r2){
 								found = true		
 							}	
@@ -420,16 +431,21 @@ class MonitoringSafePartitionCheck {
 				}
 			}
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) > 0){
+			if (!(expr.seqExpr.typeSeq instanceof MsgEventType))
+				throw new AssertionError("Event type should be a message event type")
+		
+			var msgEv = expr.seqExpr.typeSeq as MsgEventType
+			
+			if(msgEv.channel === null || msgEv.channel.reliability === null || Double.valueOf(msgEv.channel.reliability) > 0){
 				extractCriticalPoints(expr.seqExpr.bodySeq, criticalPoints, assocT, assoc, threshold)
-				var eventTypes1 = new ArrayList<EventType>()
-				eventTypes1.add(expr.seqExpr.typeSeq)
-				var eventTypes2 = firstEventTypes(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>(), threshold)
+				var eventTypes1 = new ArrayList<MsgEventType>()
+				eventTypes1.add(msgEv)
+				var eventTypes2 = firstMsgEventTypes(expr.seqExpr.bodySeq, assocT, new HashMap<String, Expression>(), threshold)
 				for(eventType1 : eventTypes1){
 					for(eventType2 : eventTypes2){
 						var found = false
-						for(r1 : getRolesFromEventType(eventType1)){
-							for(r2 : getRolesFromEventType(eventType2)){
+						for(r1 : getRolesFromMsgEventType(eventType1)){
+							for(r2 : getRolesFromMsgEventType(eventType2)){
 								if(r1 == r2){
 									found = true		
 								}	

@@ -2,7 +2,7 @@ package it.unige.dibris.trace_expression_language.validation
 
 import java.util.HashMap
 import java.util.LinkedHashMap
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr
 import it.unige.dibris.trace_expression_language.tExp.SeqExpr
 import it.unige.dibris.trace_expression_language.tExp.VarExpr
@@ -12,10 +12,11 @@ import it.unige.dibris.trace_expression_language.tExp.UnionExpr
 import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr
 import it.unige.dibris.trace_expression_language.tExp.CatExpr
 import it.unige.dibris.trace_expression_language.tExp.AndExpr
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 
 class ContractivenessCheck {
 	
-	def static isContractive(TraceExpression tExp){
+	def static isContractive(AgentTraceExpression tExp){
 		val terms = tExp.terms
 		val assocT = new LinkedHashMap<String, Expression>();
 		val assocD = new LinkedHashMap<String, Integer>();
@@ -56,11 +57,12 @@ class ContractivenessCheck {
 		} else if(expr.typeFilter !== null && expr.bodyFilter !== null){
 			return isContractive(expr.bodyFilter, depth + 1, deepestseq, assocT, assocD, threshold)
 		} else if(expr instanceof SeqExpr){
-			if(expr.seqExpr.typeSeq.channel === null || expr.seqExpr.typeSeq.channel.reliability === null || Double.valueOf(expr.seqExpr.typeSeq.channel.reliability) >= threshold){
-				return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
-			} else{
-				return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)
+			if(expr.seqExpr.typeSeq instanceof MsgEventType) {
+				var msgEv = expr.seqExpr.typeSeq as MsgEventType
+				if (msgEv.channel === null || msgEv.channel.reliability === null || Double.valueOf(msgEv.channel.reliability) >= threshold)
+					return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
 			}
+			return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)
 		} 
 		//else if(expr.typeSeq !== null && expr.bodySeq !== null){
 		//	return isContractive(expr.bodySeq, depth + 1, depth, assocT, assocD, threshold)
