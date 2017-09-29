@@ -34,6 +34,9 @@ import it.unige.dibris.trace_expression_language.tExp.EventType
 import it.unige.dibris.trace_expression_language.tExp.Event
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm
 import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent
+import org.eclipse.emf.common.util.EList
 
 /**
  * Generates code from your model files on save.
@@ -41,8 +44,6 @@ import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class TExpGenerator extends AbstractGenerator {
-
-	private String tExpCurrentName
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
@@ -234,8 +235,6 @@ class TExpGenerator extends AbstractGenerator {
 		str += ':- discontiguous event/2.\n'
 		str += ':- discontiguous reliable/3.\n\n'
 		
-		tExpCurrentName = tExp.name
-		
 		for(module : tExp.modules){
 			str += ':- ensure_loaded(' + module + ').\n'
 		}
@@ -252,7 +251,7 @@ class TExpGenerator extends AbstractGenerator {
 		str += rolesJoiner.toString() + ').\n\n'
 		
 		for(type : tExp.types){
-			str += type.compile
+			str += type.compile(tExp.name)
 		}
 		
 		if(tExp.threshold !== null && tExp.threshold.size > 0){
@@ -275,7 +274,7 @@ class TExpGenerator extends AbstractGenerator {
 	:- discontiguous event/2.
 	
 	«FOR et : t.types»
-	«et.compile»
+	«et.compile(t.name)»
 	«ENDFOR»
 	
 	trace_expression('«t.name»', Main) :-
@@ -380,9 +379,13 @@ class TExpGenerator extends AbstractGenerator {
 		return ''
 	}
 	
-	def compile(EventType eventType){
-		var str = ''
-		for(event : eventType.events){
+	def compile(EventType eventType, String tExpCurrentName)
+	'''
+	«FOR event : eventType.events»
+	«event.compile(eventType, tExpCurrentName)»
+	«ENDFOR»
+	'''
+	/* 	for(event : eventType.events){
 			str += 'match(' + tExpCurrentName + ', ' + event.compile + ', ' + eventType.name
 			if(eventType.expr !== null){
 				str += '(' + eventType.expr.compile
@@ -401,22 +404,40 @@ class TExpGenerator extends AbstractGenerator {
 		}
 		
 		return str
+	}*/
+	
+	def compileExprs(PrologExpression expr, EList<PrologExpression> exprs)
+	'''«IF expr !== null»(«expr.compile»«FOR e : exprs», «e.compile»«ENDFOR»)«ENDIF»'''
+	
+	def compileExprs(GroundTerm expr, EList<GroundTerm> exprs)
+	'''«IF expr !== null»(«expr.compile»«FOR e : exprs», «e.compile»«ENDFOR»)«ENDIF»'''
+	
+	def compile(BasicEvent event, EventType type, String tExpCurrentName)
+	'''
+	match(«tExpCurrentName»,«event.name»«compileExprs(event.expr, event.exprs)», «type.name»«compileExprs(type.expr, type.exprs)»)«
+	IF event.constraints !== null» :- «event.constraints.compile»«ENDIF».
+	event(«tExpCurrentName», «event.name»«compileExprs(event.expr, event.exprs)»).
+	
+	'''
+	
+	def compile(Event event, EventType eventType, String tExpCurrentName){
+		if(event instanceof BasicEvent){
+			(event as BasicEvent).compile(eventType, tExpCurrentName)
+		} else if(event instanceof DerivedEvent){
+			(event as DerivedEvent).compile(eventType, tExpCurrentName)
+		} else{
+			throw new AssertionError("This kind of event is not supported");
+		}
 	}
 	
-	def compile(Event event) {
-		var str = event.name
-		
-		if (event.expr !== null) {
-			str += '(' + event.expr.compile
-			
-			for (e : event.exprs)
-				str += ',' + e.compile
-			
-			str += ')'
-		}
-		
-		return str
-	}
+	def compile(DerivedEvent event, EventType type, String tExpCurrentName) 
+	'''
+	match(«tExpCurrentName», Event, «type.name»«compileExprs(type.expr, type.exprs)») :-
+	match(«tExpCurrentName», Event, «event.base.name»«compileExprs(event.expr, event.exprs)»)«
+	IF event.constraints !== null», «event.constraints.compile»«ENDIF».
+	
+	'''
+	
 	
 	def String compile(GroundTerm gt) {
 		if (gt.variable !== null)
@@ -433,7 +454,7 @@ class TExpGenerator extends AbstractGenerator {
 		return gt.symbol + joiner.toString()
 	}
 	
-	def compile(MsgEventType eventType){
+	def compile(MsgEventType eventType, String tExpCurrentName){
 		var str = ''
 		for(msg : eventType.msgs){
 			if(eventType.channel !== null){

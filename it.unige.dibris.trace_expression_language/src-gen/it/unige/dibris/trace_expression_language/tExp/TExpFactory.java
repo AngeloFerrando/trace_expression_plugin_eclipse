@@ -51,6 +51,60 @@ public interface TExpFactory extends EFactory
   TraceExpression createTraceExpression();
 
   /**
+   * Returns a new object of class '<em>Generic Trace Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generic Trace Expression</em>'.
+   * @generated
+   */
+  GenericTraceExpression createGenericTraceExpression();
+
+  /**
+   * Returns a new object of class '<em>Agent Trace Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Agent Trace Expression</em>'.
+   * @generated
+   */
+  AgentTraceExpression createAgentTraceExpression();
+
+  /**
+   * Returns a new object of class '<em>Event Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event Type</em>'.
+   * @generated
+   */
+  EventType createEventType();
+
+  /**
+   * Returns a new object of class '<em>Msg Event Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Msg Event Type</em>'.
+   * @generated
+   */
+  MsgEventType createMsgEventType();
+
+  /**
+   * Returns a new object of class '<em>Ground Term</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ground Term</em>'.
+   * @generated
+   */
+  GroundTerm createGroundTerm();
+
+  /**
+   * Returns a new object of class '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event</em>'.
+   * @generated
+   */
+  Event createEvent();
+
+  /**
    * Returns a new object of class '<em>Term</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,15 +121,6 @@ public interface TExpFactory extends EFactory
    * @generated
    */
   Expression createExpression();
-
-  /**
-   * Returns a new object of class '<em>Event Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Event Type</em>'.
-   * @generated
-   */
-  EventType createEventType();
 
   /**
    * Returns a new object of class '<em>Msg</em>'.
@@ -175,6 +220,24 @@ public interface TExpFactory extends EFactory
    * @generated
    */
   ListExpression createListExpression();
+
+  /**
+   * Returns a new object of class '<em>Basic Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Basic Event</em>'.
+   * @generated
+   */
+  BasicEvent createBasicEvent();
+
+  /**
+   * Returns a new object of class '<em>Derived Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Derived Event</em>'.
+   * @generated
+   */
+  DerivedEvent createDerivedEvent();
 
   /**
    * Returns a new object of class '<em>Shuffle Expr</em>'.

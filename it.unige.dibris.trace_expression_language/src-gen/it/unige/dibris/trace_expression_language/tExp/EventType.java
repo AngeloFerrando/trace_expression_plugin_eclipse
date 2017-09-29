@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getName <em>Name</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExpr <em>Expr</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExprs <em>Exprs</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getMsgs <em>Msgs</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getChannel <em>Channel</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.EventType#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getEventType()
@@ -64,12 +63,12 @@ public interface EventType extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expr</em>' containment reference.
-   * @see #setExpr(PrologExpression)
+   * @see #setExpr(GroundTerm)
    * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getEventType_Expr()
    * @model containment="true"
    * @generated
    */
-  PrologExpression getExpr();
+  GroundTerm getExpr();
 
   /**
    * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExpr <em>Expr</em>}' containment reference.
@@ -79,11 +78,11 @@ public interface EventType extends EObject
    * @see #getExpr()
    * @generated
    */
-  void setExpr(PrologExpression value);
+  void setExpr(GroundTerm value);
 
   /**
    * Returns the value of the '<em><b>Exprs</b></em>' containment reference list.
-   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.PrologExpression}.
+   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.GroundTerm}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Exprs</em>' containment reference list isn't clear,
@@ -95,48 +94,22 @@ public interface EventType extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<PrologExpression> getExprs();
+  EList<GroundTerm> getExprs();
 
   /**
-   * Returns the value of the '<em><b>Msgs</b></em>' containment reference list.
-   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.Msg}.
+   * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.Event}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Msgs</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Events</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Msgs</em>' containment reference list.
-   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getEventType_Msgs()
+   * @return the value of the '<em>Events</em>' containment reference list.
+   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getEventType_Events()
    * @model containment="true"
    * @generated
    */
-  EList<Msg> getMsgs();
-
-  /**
-   * Returns the value of the '<em><b>Channel</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Channel</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Channel</em>' reference.
-   * @see #setChannel(Channel)
-   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getEventType_Channel()
-   * @model
-   * @generated
-   */
-  Channel getChannel();
-
-  /**
-   * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getChannel <em>Channel</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Channel</em>' reference.
-   * @see #getChannel()
-   * @generated
-   */
-  void setChannel(Channel value);
+  EList<Event> getEvents();
 
 } // EventType

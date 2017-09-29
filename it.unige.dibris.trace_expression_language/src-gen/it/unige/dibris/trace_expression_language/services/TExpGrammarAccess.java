@@ -783,9 +783,116 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class TraceExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.TraceExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cGenericTraceExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAgentTraceExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// Trace expressions    
+		//TraceExpression:
+		//	GenericTraceExpression | AgentTraceExpression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//GenericTraceExpression | AgentTraceExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//GenericTraceExpression
+		public RuleCall getGenericTraceExpressionParserRuleCall_0() { return cGenericTraceExpressionParserRuleCall_0; }
+		
+		//AgentTraceExpression
+		public RuleCall getAgentTraceExpressionParserRuleCall_1() { return cAgentTraceExpressionParserRuleCall_1; }
+	}
+	public class GenericTraceExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.GenericTraceExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTraceExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cGenericTraceExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cTrace_expressionKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cIdKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameIDParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Group cGroup_5_0 = (Group)cAlternatives_5.eContents().get(0);
+		private final Assignment cBodyLAssignment_5_0_0 = (Assignment)cGroup_5_0.eContents().get(0);
+		private final Keyword cBodyLBodyKeyword_5_0_0_0 = (Keyword)cBodyLAssignment_5_0_0.eContents().get(0);
+		private final Assignment cTermsAssignment_5_0_1 = (Assignment)cGroup_5_0.eContents().get(1);
+		private final RuleCall cTermsTermParserRuleCall_5_0_1_0 = (RuleCall)cTermsAssignment_5_0_1.eContents().get(0);
+		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
+		private final Assignment cTypesLAssignment_5_1_0 = (Assignment)cGroup_5_1.eContents().get(0);
+		private final Keyword cTypesLTypesKeyword_5_1_0_0 = (Keyword)cTypesLAssignment_5_1_0.eContents().get(0);
+		private final Assignment cTypesAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cTypesEventTypeParserRuleCall_5_1_1_0 = (RuleCall)cTypesAssignment_5_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//GenericTraceExpression:
+		//	{GenericTraceExpression}
+		//	'trace_expression' '{'
+		//	'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{GenericTraceExpression} 'trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:'
+		//types+=EventType*)+ '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{GenericTraceExpression}
+		public Action getGenericTraceExpressionAction_0() { return cGenericTraceExpressionAction_0; }
+		
+		//'trace_expression'
+		public Keyword getTrace_expressionKeyword_1() { return cTrace_expressionKeyword_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'id:'
+		public Keyword getIdKeyword_3() { return cIdKeyword_3; }
+		
+		//name=ID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//ID
+		public RuleCall getNameIDParserRuleCall_4_0() { return cNameIDParserRuleCall_4_0; }
+		
+		//(bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		
+		//bodyL+='body:' terms+=Term+
+		public Group getGroup_5_0() { return cGroup_5_0; }
+		
+		//bodyL+='body:'
+		public Assignment getBodyLAssignment_5_0_0() { return cBodyLAssignment_5_0_0; }
+		
+		//'body:'
+		public Keyword getBodyLBodyKeyword_5_0_0_0() { return cBodyLBodyKeyword_5_0_0_0; }
+		
+		//terms+=Term+
+		public Assignment getTermsAssignment_5_0_1() { return cTermsAssignment_5_0_1; }
+		
+		//Term
+		public RuleCall getTermsTermParserRuleCall_5_0_1_0() { return cTermsTermParserRuleCall_5_0_1_0; }
+		
+		//typesL+='types:' types+=EventType*
+		public Group getGroup_5_1() { return cGroup_5_1; }
+		
+		//typesL+='types:'
+		public Assignment getTypesLAssignment_5_1_0() { return cTypesLAssignment_5_1_0; }
+		
+		//'types:'
+		public Keyword getTypesLTypesKeyword_5_1_0_0() { return cTypesLTypesKeyword_5_1_0_0; }
+		
+		//types+=EventType*
+		public Assignment getTypesAssignment_5_1_1() { return cTypesAssignment_5_1_1; }
+		
+		//EventType
+		public RuleCall getTypesEventTypeParserRuleCall_5_1_1_0() { return cTypesEventTypeParserRuleCall_5_1_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class AgentTraceExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.AgentTraceExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAgentTraceExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cAgent_trace_expressionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cIdKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -807,7 +914,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypesLAssignment_5_2_0 = (Assignment)cGroup_5_2.eContents().get(0);
 		private final Keyword cTypesLTypesKeyword_5_2_0_0 = (Keyword)cTypesLAssignment_5_2_0.eContents().get(0);
 		private final Assignment cTypesAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
-		private final RuleCall cTypesEventTypeParserRuleCall_5_2_1_0 = (RuleCall)cTypesAssignment_5_2_1.eContents().get(0);
+		private final RuleCall cTypesMsgEventTypeParserRuleCall_5_2_1_0 = (RuleCall)cTypesAssignment_5_2_1.eContents().get(0);
 		private final Group cGroup_5_3 = (Group)cAlternatives_5.eContents().get(3);
 		private final Assignment cModulesLAssignment_5_3_0 = (Assignment)cGroup_5_3.eContents().get(0);
 		private final Keyword cModulesLModulesKeyword_5_3_0_0 = (Keyword)cModulesLAssignment_5_3_0.eContents().get(0);
@@ -856,31 +963,30 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cChannelsChannelParserRuleCall_5_10_1_0 = (RuleCall)cChannelsAssignment_5_10_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//// Trace expressions    
-		//TraceExpression:
-		//	{TraceExpression}
-		//	'trace_expression' '{'
+		//AgentTraceExpression:
+		//	{AgentTraceExpression}
+		//	'agent_trace_expression' '{'
 		//	'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:'
-		//	types+=EventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' |
-		//	'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
+		//	types+=MsgEventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true'
+		//	| 'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
 		//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
 		//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{TraceExpression} 'trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role
-		//OP1000XFY?)* | typesL+='types:' types+=EventType* | modulesL+='modules:' modules+=Module* |
+		//{AgentTraceExpression} 'agent_trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:'
+		//(roles+=Role OP1000XFY?)* | typesL+='types:' types+=MsgEventType* | modulesL+='modules:' modules+=Module* |
 		//decentralizedL+='decentralized:' decentralized+=('true' | 'false') | partitionL+='partition:' partition+=Partition |
 		//constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:'
 		//minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//{TraceExpression}
-		public Action getTraceExpressionAction_0() { return cTraceExpressionAction_0; }
+		//{AgentTraceExpression}
+		public Action getAgentTraceExpressionAction_0() { return cAgentTraceExpressionAction_0; }
 		
-		//'trace_expression'
-		public Keyword getTrace_expressionKeyword_1() { return cTrace_expressionKeyword_1; }
+		//'agent_trace_expression'
+		public Keyword getAgent_trace_expressionKeyword_1() { return cAgent_trace_expressionKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -894,7 +1000,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDParserRuleCall_4_0() { return cNameIDParserRuleCall_4_0; }
 		
-		//(bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:' types+=EventType* |
+		//(bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:' types+=MsgEventType* |
 		//modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' | 'false') |
 		//partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:'
 		//gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER
@@ -937,7 +1043,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//OP1000XFY?
 		public RuleCall getOP1000XFYTerminalRuleCall_5_1_1_1() { return cOP1000XFYTerminalRuleCall_5_1_1_1; }
 		
-		//typesL+='types:' types+=EventType*
+		//typesL+='types:' types+=MsgEventType*
 		public Group getGroup_5_2() { return cGroup_5_2; }
 		
 		//typesL+='types:'
@@ -946,11 +1052,11 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//'types:'
 		public Keyword getTypesLTypesKeyword_5_2_0_0() { return cTypesLTypesKeyword_5_2_0_0; }
 		
-		//types+=EventType*
+		//types+=MsgEventType*
 		public Assignment getTypesAssignment_5_2_1() { return cTypesAssignment_5_2_1; }
 		
-		//EventType
-		public RuleCall getTypesEventTypeParserRuleCall_5_2_1_0() { return cTypesEventTypeParserRuleCall_5_2_1_0; }
+		//MsgEventType
+		public RuleCall getTypesMsgEventTypeParserRuleCall_5_2_1_0() { return cTypesMsgEventTypeParserRuleCall_5_2_1_0; }
 		
 		//modulesL+='modules:' modules+=Module*
 		public Group getGroup_5_3() { return cGroup_5_3; }
@@ -1092,6 +1198,396 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class EventTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.EventType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cExprAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cExprGroundTermParserRuleCall_1_1_0 = (RuleCall)cExprAssignment_1_1.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
+		private final RuleCall cOP1000XFYTerminalRuleCall_1_2_0 = (RuleCall)cGroup_1_2.eContents().get(0);
+		private final Assignment cExprsAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cExprsGroundTermParserRuleCall_1_2_1_0 = (RuleCall)cExprsAssignment_1_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final RuleCall cOP600XFYTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cEventsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cEventsEventParserRuleCall_4_0 = (RuleCall)cEventsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//EventType:
+		//	name=ID ('(' expr=GroundTerm (OP1000XFY exprs+=GroundTerm)* ')')? OP600XFY '{' events+=Event* '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ('(' expr=GroundTerm (OP1000XFY exprs+=GroundTerm)* ')')? OP600XFY '{' events+=Event* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDParserRuleCall_0_0() { return cNameIDParserRuleCall_0_0; }
+		
+		//('(' expr=GroundTerm (OP1000XFY exprs+=GroundTerm)* ')')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//expr=GroundTerm
+		public Assignment getExprAssignment_1_1() { return cExprAssignment_1_1; }
+		
+		//GroundTerm
+		public RuleCall getExprGroundTermParserRuleCall_1_1_0() { return cExprGroundTermParserRuleCall_1_1_0; }
+		
+		//(OP1000XFY exprs+=GroundTerm)*
+		public Group getGroup_1_2() { return cGroup_1_2; }
+		
+		//OP1000XFY
+		public RuleCall getOP1000XFYTerminalRuleCall_1_2_0() { return cOP1000XFYTerminalRuleCall_1_2_0; }
+		
+		//exprs+=GroundTerm
+		public Assignment getExprsAssignment_1_2_1() { return cExprsAssignment_1_2_1; }
+		
+		//GroundTerm
+		public RuleCall getExprsGroundTermParserRuleCall_1_2_1_0() { return cExprsGroundTermParserRuleCall_1_2_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
+		
+		//OP600XFY
+		public RuleCall getOP600XFYTerminalRuleCall_2() { return cOP600XFYTerminalRuleCall_2; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//events+=Event*
+		public Assignment getEventsAssignment_4() { return cEventsAssignment_4; }
+		
+		//Event
+		public RuleCall getEventsEventParserRuleCall_4_0() { return cEventsEventParserRuleCall_4_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class MsgEventTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.MsgEventType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cExprAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cExprExpression0ParserRuleCall_1_1_0 = (RuleCall)cExprAssignment_1_1.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
+		private final RuleCall cOP1000XFYTerminalRuleCall_1_2_0 = (RuleCall)cGroup_1_2.eContents().get(0);
+		private final Assignment cExprsAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cExprsExpression0ParserRuleCall_1_2_1_0 = (RuleCall)cExprsAssignment_1_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final RuleCall cOP600XFYTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cMsgsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cMsgsMsgParserRuleCall_4_0 = (RuleCall)cMsgsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cLeftSquareBracketKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cChannelAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cChannelChannelCrossReference_6_1_0 = (CrossReference)cChannelAssignment_6_1.eContents().get(0);
+		private final RuleCall cChannelChannelIDParserRuleCall_6_1_0_1 = (RuleCall)cChannelChannelCrossReference_6_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		
+		//MsgEventType:
+		//	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
+		//	']')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
+		//']')?
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDParserRuleCall_0_0() { return cNameIDParserRuleCall_0_0; }
+		
+		//('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//expr=Expression0
+		public Assignment getExprAssignment_1_1() { return cExprAssignment_1_1; }
+		
+		//Expression0
+		public RuleCall getExprExpression0ParserRuleCall_1_1_0() { return cExprExpression0ParserRuleCall_1_1_0; }
+		
+		//(OP1000XFY exprs+=Expression0)*
+		public Group getGroup_1_2() { return cGroup_1_2; }
+		
+		//OP1000XFY
+		public RuleCall getOP1000XFYTerminalRuleCall_1_2_0() { return cOP1000XFYTerminalRuleCall_1_2_0; }
+		
+		//exprs+=Expression0
+		public Assignment getExprsAssignment_1_2_1() { return cExprsAssignment_1_2_1; }
+		
+		//Expression0
+		public RuleCall getExprsExpression0ParserRuleCall_1_2_1_0() { return cExprsExpression0ParserRuleCall_1_2_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
+		
+		//OP600XFY
+		public RuleCall getOP600XFYTerminalRuleCall_2() { return cOP600XFYTerminalRuleCall_2; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//msgs+=Msg*
+		public Assignment getMsgsAssignment_4() { return cMsgsAssignment_4; }
+		
+		//Msg
+		public RuleCall getMsgsMsgParserRuleCall_4_0() { return cMsgsMsgParserRuleCall_4_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		
+		//('[' channel=[Channel] ']')?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_6_0() { return cLeftSquareBracketKeyword_6_0; }
+		
+		//channel=[Channel]
+		public Assignment getChannelAssignment_6_1() { return cChannelAssignment_6_1; }
+		
+		//[Channel]
+		public CrossReference getChannelChannelCrossReference_6_1_0() { return cChannelChannelCrossReference_6_1_0; }
+		
+		//ID
+		public RuleCall getChannelChannelIDParserRuleCall_6_1_0_1() { return cChannelChannelIDParserRuleCall_6_1_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_6_2() { return cRightSquareBracketKeyword_6_2; }
+	}
+	public class GroundTermElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.GroundTerm");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cVariableAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cVariableVARIABLETerminalRuleCall_0_0 = (RuleCall)cVariableAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cSymbolAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cSymbolIDParserRuleCall_1_0_0 = (RuleCall)cSymbolAssignment_1_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cArgAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cArgGroundTermParserRuleCall_1_2_0 = (RuleCall)cArgAssignment_1_2.eContents().get(0);
+		private final Group cGroup_1_3 = (Group)cGroup_1.eContents().get(3);
+		private final RuleCall cOP1000XFYTerminalRuleCall_1_3_0 = (RuleCall)cGroup_1_3.eContents().get(0);
+		private final Assignment cArgsAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
+		private final RuleCall cArgsGroundTermParserRuleCall_1_3_1_0 = (RuleCall)cArgsAssignment_1_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		
+		//GroundTerm:
+		//	variable=VARIABLE | symbol=ID '(' arg=GroundTerm (OP1000XFY args+=GroundTerm)* ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//variable=VARIABLE | symbol=ID '(' arg=GroundTerm (OP1000XFY args+=GroundTerm)* ')'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//variable=VARIABLE
+		public Assignment getVariableAssignment_0() { return cVariableAssignment_0; }
+		
+		//VARIABLE
+		public RuleCall getVariableVARIABLETerminalRuleCall_0_0() { return cVariableVARIABLETerminalRuleCall_0_0; }
+		
+		//symbol=ID '(' arg=GroundTerm (OP1000XFY args+=GroundTerm)* ')'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//symbol=ID
+		public Assignment getSymbolAssignment_1_0() { return cSymbolAssignment_1_0; }
+		
+		//ID
+		public RuleCall getSymbolIDParserRuleCall_1_0_0() { return cSymbolIDParserRuleCall_1_0_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
+		
+		//arg=GroundTerm
+		public Assignment getArgAssignment_1_2() { return cArgAssignment_1_2; }
+		
+		//GroundTerm
+		public RuleCall getArgGroundTermParserRuleCall_1_2_0() { return cArgGroundTermParserRuleCall_1_2_0; }
+		
+		//(OP1000XFY args+=GroundTerm)*
+		public Group getGroup_1_3() { return cGroup_1_3; }
+		
+		//OP1000XFY
+		public RuleCall getOP1000XFYTerminalRuleCall_1_3_0() { return cOP1000XFYTerminalRuleCall_1_3_0; }
+		
+		//args+=GroundTerm
+		public Assignment getArgsAssignment_1_3_1() { return cArgsAssignment_1_3_1; }
+		
+		//GroundTerm
+		public RuleCall getArgsGroundTermParserRuleCall_1_3_1_0() { return cArgsGroundTermParserRuleCall_1_3_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
+	}
+	public class EventElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Event");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
+		private final Action cBasicEventAction_0_0_0 = (Action)cGroup_0_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_0_1 = (Assignment)cGroup_0_0.eContents().get(1);
+		private final RuleCall cNameIDParserRuleCall_0_0_1_0 = (RuleCall)cNameAssignment_0_0_1.eContents().get(0);
+		private final Group cGroup_0_0_2 = (Group)cGroup_0_0.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_0_0_2_0 = (Keyword)cGroup_0_0_2.eContents().get(0);
+		private final Assignment cExprAssignment_0_0_2_1 = (Assignment)cGroup_0_0_2.eContents().get(1);
+		private final RuleCall cExprExpression0ParserRuleCall_0_0_2_1_0 = (RuleCall)cExprAssignment_0_0_2_1.eContents().get(0);
+		private final Group cGroup_0_0_2_2 = (Group)cGroup_0_0_2.eContents().get(2);
+		private final RuleCall cOP1000XFYTerminalRuleCall_0_0_2_2_0 = (RuleCall)cGroup_0_0_2_2.eContents().get(0);
+		private final Assignment cExprsAssignment_0_0_2_2_1 = (Assignment)cGroup_0_0_2_2.eContents().get(1);
+		private final RuleCall cExprsExpression0ParserRuleCall_0_0_2_2_1_0 = (RuleCall)cExprsAssignment_0_0_2_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_0_2_3 = (Keyword)cGroup_0_0_2.eContents().get(3);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Action cDerivedEventAction_0_1_0 = (Action)cGroup_0_1.eContents().get(0);
+		private final Keyword cDerivedKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Assignment cBaseAssignment_0_1_2 = (Assignment)cGroup_0_1.eContents().get(2);
+		private final CrossReference cBaseEventTypeCrossReference_0_1_2_0 = (CrossReference)cBaseAssignment_0_1_2.eContents().get(0);
+		private final RuleCall cBaseEventTypeIDParserRuleCall_0_1_2_0_1 = (RuleCall)cBaseEventTypeCrossReference_0_1_2_0.eContents().get(1);
+		private final Group cGroup_0_1_3 = (Group)cGroup_0_1.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_0_1_3_0 = (Keyword)cGroup_0_1_3.eContents().get(0);
+		private final Assignment cExprAssignment_0_1_3_1 = (Assignment)cGroup_0_1_3.eContents().get(1);
+		private final RuleCall cExprExpression0ParserRuleCall_0_1_3_1_0 = (RuleCall)cExprAssignment_0_1_3_1.eContents().get(0);
+		private final Group cGroup_0_1_3_2 = (Group)cGroup_0_1_3.eContents().get(2);
+		private final RuleCall cOP1000XFYTerminalRuleCall_0_1_3_2_0 = (RuleCall)cGroup_0_1_3_2.eContents().get(0);
+		private final Assignment cExprsAssignment_0_1_3_2_1 = (Assignment)cGroup_0_1_3_2.eContents().get(1);
+		private final RuleCall cExprsExpression0ParserRuleCall_0_1_3_2_1_0 = (RuleCall)cExprsAssignment_0_1_3_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_1_3_3 = (Keyword)cGroup_0_1_3.eContents().get(3);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cConstraintsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cConstraintsExpressionInfinityParserRuleCall_1_1_0 = (RuleCall)cConstraintsAssignment_1_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		
+		//Event:
+		//	({BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? | {DerivedEvent} 'derived'
+		//	base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?) ('[' constraints=ExpressionInfinity
+		//	']')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//({BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? | {DerivedEvent} 'derived'
+		//base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?) ('[' constraints=ExpressionInfinity ']')?
+		public Group getGroup() { return cGroup; }
+		
+		//{BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? | {DerivedEvent} 'derived'
+		//base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
+		//{BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Group getGroup_0_0() { return cGroup_0_0; }
+		
+		//{BasicEvent}
+		public Action getBasicEventAction_0_0_0() { return cBasicEventAction_0_0_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0_0_1() { return cNameAssignment_0_0_1; }
+		
+		//ID
+		public RuleCall getNameIDParserRuleCall_0_0_1_0() { return cNameIDParserRuleCall_0_0_1_0; }
+		
+		//('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Group getGroup_0_0_2() { return cGroup_0_0_2; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0_2_0() { return cLeftParenthesisKeyword_0_0_2_0; }
+		
+		//expr=Expression0
+		public Assignment getExprAssignment_0_0_2_1() { return cExprAssignment_0_0_2_1; }
+		
+		//Expression0
+		public RuleCall getExprExpression0ParserRuleCall_0_0_2_1_0() { return cExprExpression0ParserRuleCall_0_0_2_1_0; }
+		
+		//(OP1000XFY exprs+=Expression0)*
+		public Group getGroup_0_0_2_2() { return cGroup_0_0_2_2; }
+		
+		//OP1000XFY
+		public RuleCall getOP1000XFYTerminalRuleCall_0_0_2_2_0() { return cOP1000XFYTerminalRuleCall_0_0_2_2_0; }
+		
+		//exprs+=Expression0
+		public Assignment getExprsAssignment_0_0_2_2_1() { return cExprsAssignment_0_0_2_2_1; }
+		
+		//Expression0
+		public RuleCall getExprsExpression0ParserRuleCall_0_0_2_2_1_0() { return cExprsExpression0ParserRuleCall_0_0_2_2_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_0_2_3() { return cRightParenthesisKeyword_0_0_2_3; }
+		
+		//{DerivedEvent} 'derived' base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//{DerivedEvent}
+		public Action getDerivedEventAction_0_1_0() { return cDerivedEventAction_0_1_0; }
+		
+		//'derived'
+		public Keyword getDerivedKeyword_0_1_1() { return cDerivedKeyword_0_1_1; }
+		
+		//base=[EventType]
+		public Assignment getBaseAssignment_0_1_2() { return cBaseAssignment_0_1_2; }
+		
+		//[EventType]
+		public CrossReference getBaseEventTypeCrossReference_0_1_2_0() { return cBaseEventTypeCrossReference_0_1_2_0; }
+		
+		//ID
+		public RuleCall getBaseEventTypeIDParserRuleCall_0_1_2_0_1() { return cBaseEventTypeIDParserRuleCall_0_1_2_0_1; }
+		
+		//('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		public Group getGroup_0_1_3() { return cGroup_0_1_3; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_1_3_0() { return cLeftParenthesisKeyword_0_1_3_0; }
+		
+		//expr=Expression0
+		public Assignment getExprAssignment_0_1_3_1() { return cExprAssignment_0_1_3_1; }
+		
+		//Expression0
+		public RuleCall getExprExpression0ParserRuleCall_0_1_3_1_0() { return cExprExpression0ParserRuleCall_0_1_3_1_0; }
+		
+		//(OP1000XFY exprs+=Expression0)*
+		public Group getGroup_0_1_3_2() { return cGroup_0_1_3_2; }
+		
+		//OP1000XFY
+		public RuleCall getOP1000XFYTerminalRuleCall_0_1_3_2_0() { return cOP1000XFYTerminalRuleCall_0_1_3_2_0; }
+		
+		//exprs+=Expression0
+		public Assignment getExprsAssignment_0_1_3_2_1() { return cExprsAssignment_0_1_3_2_1; }
+		
+		//Expression0
+		public RuleCall getExprsExpression0ParserRuleCall_0_1_3_2_1_0() { return cExprsExpression0ParserRuleCall_0_1_3_2_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_1_3_3() { return cRightParenthesisKeyword_0_1_3_3; }
+		
+		//('[' constraints=ExpressionInfinity ']')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1_0() { return cLeftSquareBracketKeyword_1_0; }
+		
+		//constraints=ExpressionInfinity
+		public Assignment getConstraintsAssignment_1_1() { return cConstraintsAssignment_1_1; }
+		
+		//ExpressionInfinity
+		public RuleCall getConstraintsExpressionInfinityParserRuleCall_1_1_0() { return cConstraintsExpressionInfinityParserRuleCall_1_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_1_2() { return cRightSquareBracketKeyword_1_2; }
 	}
 	public class TermElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Term");
@@ -1399,9 +1895,13 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	public class FilterExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.FilterExpr");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeFilterAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cTypeFilterEventTypeCrossReference_0_0 = (CrossReference)cTypeFilterAssignment_0.eContents().get(0);
-		private final RuleCall cTypeFilterEventTypeIDParserRuleCall_0_0_1 = (RuleCall)cTypeFilterEventTypeCrossReference_0_0.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cTypeFilterAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final CrossReference cTypeFilterEventTypeCrossReference_0_0_0 = (CrossReference)cTypeFilterAssignment_0_0.eContents().get(0);
+		private final RuleCall cTypeFilterEventTypeIDParserRuleCall_0_0_0_1 = (RuleCall)cTypeFilterEventTypeCrossReference_0_0_0.eContents().get(1);
+		private final Assignment cTypeFilterAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final CrossReference cTypeFilterMsgEventTypeCrossReference_0_1_0 = (CrossReference)cTypeFilterAssignment_0_1.eContents().get(0);
+		private final RuleCall cTypeFilterMsgEventTypeIDParserRuleCall_0_1_0_1 = (RuleCall)cTypeFilterMsgEventTypeCrossReference_0_1_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cFirstAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -1417,21 +1917,34 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyFilterPrimaryParserRuleCall_3_0 = (RuleCall)cBodyFilterAssignment_3.eContents().get(0);
 		
 		//FilterExpr Expression:
-		//	typeFilter=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1
-		//	bodyFilter=Primary;
+		//	(typeFilter=[EventType] | typeFilter=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		//	operator=OP400FX1 bodyFilter=Primary;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//typeFilter=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1 bodyFilter=Primary
+		//(typeFilter=[EventType] | typeFilter=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		//operator=OP400FX1 bodyFilter=Primary
 		public Group getGroup() { return cGroup; }
 		
+		//typeFilter=[EventType] | typeFilter=[MsgEventType]
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//typeFilter=[EventType]
-		public Assignment getTypeFilterAssignment_0() { return cTypeFilterAssignment_0; }
+		public Assignment getTypeFilterAssignment_0_0() { return cTypeFilterAssignment_0_0; }
 		
 		//[EventType]
-		public CrossReference getTypeFilterEventTypeCrossReference_0_0() { return cTypeFilterEventTypeCrossReference_0_0; }
+		public CrossReference getTypeFilterEventTypeCrossReference_0_0_0() { return cTypeFilterEventTypeCrossReference_0_0_0; }
 		
 		//ID
-		public RuleCall getTypeFilterEventTypeIDParserRuleCall_0_0_1() { return cTypeFilterEventTypeIDParserRuleCall_0_0_1; }
+		public RuleCall getTypeFilterEventTypeIDParserRuleCall_0_0_0_1() { return cTypeFilterEventTypeIDParserRuleCall_0_0_0_1; }
+		
+		//typeFilter=[MsgEventType]
+		public Assignment getTypeFilterAssignment_0_1() { return cTypeFilterAssignment_0_1; }
+		
+		//[MsgEventType]
+		public CrossReference getTypeFilterMsgEventTypeCrossReference_0_1_0() { return cTypeFilterMsgEventTypeCrossReference_0_1_0; }
+		
+		//ID
+		public RuleCall getTypeFilterMsgEventTypeIDParserRuleCall_0_1_0_1() { return cTypeFilterMsgEventTypeIDParserRuleCall_0_1_0_1; }
 		
 		//('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
 		public Group getGroup_1() { return cGroup_1; }
@@ -1475,9 +1988,13 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	public class SeqExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.SeqExpr");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeSeqAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cTypeSeqEventTypeCrossReference_0_0 = (CrossReference)cTypeSeqAssignment_0.eContents().get(0);
-		private final RuleCall cTypeSeqEventTypeIDParserRuleCall_0_0_1 = (RuleCall)cTypeSeqEventTypeCrossReference_0_0.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cTypeSeqAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final CrossReference cTypeSeqEventTypeCrossReference_0_0_0 = (CrossReference)cTypeSeqAssignment_0_0.eContents().get(0);
+		private final RuleCall cTypeSeqEventTypeIDParserRuleCall_0_0_0_1 = (RuleCall)cTypeSeqEventTypeCrossReference_0_0_0.eContents().get(1);
+		private final Assignment cTypeSeqAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final CrossReference cTypeSeqMsgEventTypeCrossReference_0_1_0 = (CrossReference)cTypeSeqAssignment_0_1.eContents().get(0);
+		private final RuleCall cTypeSeqMsgEventTypeIDParserRuleCall_0_1_0_1 = (RuleCall)cTypeSeqMsgEventTypeCrossReference_0_1_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cFirstAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -1493,20 +2010,34 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodySeqPrimaryParserRuleCall_3_0 = (RuleCall)cBodySeqAssignment_3.eContents().get(0);
 		
 		//SeqExpr Expression:
-		//	typeSeq=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=Primary;
+		//	(typeSeq=[EventType] | typeSeq=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		//	operator=OP600XFY bodySeq=Primary;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//typeSeq=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=Primary
+		//(typeSeq=[EventType] | typeSeq=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+		//operator=OP600XFY bodySeq=Primary
 		public Group getGroup() { return cGroup; }
 		
+		//typeSeq=[EventType] | typeSeq=[MsgEventType]
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//typeSeq=[EventType]
-		public Assignment getTypeSeqAssignment_0() { return cTypeSeqAssignment_0; }
+		public Assignment getTypeSeqAssignment_0_0() { return cTypeSeqAssignment_0_0; }
 		
 		//[EventType]
-		public CrossReference getTypeSeqEventTypeCrossReference_0_0() { return cTypeSeqEventTypeCrossReference_0_0; }
+		public CrossReference getTypeSeqEventTypeCrossReference_0_0_0() { return cTypeSeqEventTypeCrossReference_0_0_0; }
 		
 		//ID
-		public RuleCall getTypeSeqEventTypeIDParserRuleCall_0_0_1() { return cTypeSeqEventTypeIDParserRuleCall_0_0_1; }
+		public RuleCall getTypeSeqEventTypeIDParserRuleCall_0_0_0_1() { return cTypeSeqEventTypeIDParserRuleCall_0_0_0_1; }
+		
+		//typeSeq=[MsgEventType]
+		public Assignment getTypeSeqAssignment_0_1() { return cTypeSeqAssignment_0_1; }
+		
+		//[MsgEventType]
+		public CrossReference getTypeSeqMsgEventTypeCrossReference_0_1_0() { return cTypeSeqMsgEventTypeCrossReference_0_1_0; }
+		
+		//ID
+		public RuleCall getTypeSeqMsgEventTypeIDParserRuleCall_0_1_0_1() { return cTypeSeqMsgEventTypeIDParserRuleCall_0_1_0_1; }
 		
 		//('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
 		public Group getGroup_1() { return cGroup_1; }
@@ -1598,302 +2129,185 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 	}
-	public class EventTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.EventType");
+	public class MsgElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Msg");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cExprAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cExprExpression0ParserRuleCall_1_1_0 = (RuleCall)cExprAssignment_1_1.eContents().get(0);
-		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
-		private final RuleCall cOP1000XFYTerminalRuleCall_1_2_0 = (RuleCall)cGroup_1_2.eContents().get(0);
-		private final Assignment cExprsAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
-		private final RuleCall cExprsExpression0ParserRuleCall_1_2_1_0 = (RuleCall)cExprsAssignment_1_2_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Assignment cPerformativeAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cPerformativeATOMTerminalRuleCall_0_0_0 = (RuleCall)cPerformativeAssignment_0_0.eContents().get(0);
+		private final RuleCall cOP600XFYTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cAsync_senderAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final CrossReference cAsync_senderRoleCrossReference_1_0_1_0 = (CrossReference)cAsync_senderAssignment_1_0_1.eContents().get(0);
+		private final RuleCall cAsync_senderRoleIDParserRuleCall_1_0_1_0_1 = (RuleCall)cAsync_senderRoleCrossReference_1_0_1_0.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0_2 = (Keyword)cGroup_1_0.eContents().get(2);
+		private final Keyword cRightSquareBracketKeyword_1_0_3 = (Keyword)cGroup_1_0.eContents().get(3);
+		private final Assignment cReceiverAssignment_1_0_4 = (Assignment)cGroup_1_0.eContents().get(4);
+		private final CrossReference cReceiverRoleCrossReference_1_0_4_0 = (CrossReference)cReceiverAssignment_1_0_4.eContents().get(0);
+		private final RuleCall cReceiverRoleIDParserRuleCall_1_0_4_0_1 = (RuleCall)cReceiverRoleCrossReference_1_0_4_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Assignment cSenderAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final CrossReference cSenderRoleCrossReference_1_1_0_0 = (CrossReference)cSenderAssignment_1_1_0.eContents().get(0);
+		private final RuleCall cSenderRoleIDParserRuleCall_1_1_0_0_1 = (RuleCall)cSenderRoleCrossReference_1_1_0_0.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
+		private final Assignment cAsync_receiverAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
+		private final CrossReference cAsync_receiverRoleCrossReference_1_1_3_0 = (CrossReference)cAsync_receiverAssignment_1_1_3.eContents().get(0);
+		private final RuleCall cAsync_receiverRoleIDParserRuleCall_1_1_3_0_1 = (RuleCall)cAsync_receiverRoleCrossReference_1_1_3_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_1_1_4 = (Keyword)cGroup_1_1.eContents().get(4);
+		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
+		private final Assignment cSenderAssignment_1_2_0 = (Assignment)cGroup_1_2.eContents().get(0);
+		private final CrossReference cSenderRoleCrossReference_1_2_0_0 = (CrossReference)cSenderAssignment_1_2_0.eContents().get(0);
+		private final RuleCall cSenderRoleIDParserRuleCall_1_2_0_0_1 = (RuleCall)cSenderRoleCrossReference_1_2_0_0.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final Assignment cReceiverAssignment_1_2_2 = (Assignment)cGroup_1_2.eContents().get(2);
+		private final CrossReference cReceiverRoleCrossReference_1_2_2_0 = (CrossReference)cReceiverAssignment_1_2_2.eContents().get(0);
+		private final RuleCall cReceiverRoleIDParserRuleCall_1_2_2_0_1 = (RuleCall)cReceiverRoleCrossReference_1_2_2_0.eContents().get(1);
 		private final RuleCall cOP600XFYTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMsgsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMsgsMsgParserRuleCall_4_0 = (RuleCall)cMsgsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cLeftSquareBracketKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cChannelAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final CrossReference cChannelChannelCrossReference_6_1_0 = (CrossReference)cChannelAssignment_6_1.eContents().get(0);
-		private final RuleCall cChannelChannelIDParserRuleCall_6_1_0_1 = (RuleCall)cChannelChannelCrossReference_6_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Assignment cContentAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cContentExpression0ParserRuleCall_3_0 = (RuleCall)cContentAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cLeftSquareBracketKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cConditionsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cConditionsExpressionInfinityParserRuleCall_4_1_0 = (RuleCall)cConditionsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		
-		//EventType:
-		//	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
-		//	']')?;
+		//Msg:
+		//	(performative=ATOM OP600XFY)? ('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>'
+		//	async_receiver=[Role] ']' | sender=[Role] '=>' receiver=[Role]) OP600XFY content=Expression0 ('['
+		//	conditions=ExpressionInfinity ']')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
-		//']')?
+		//(performative=ATOM OP600XFY)? ('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>'
+		//async_receiver=[Role] ']' | sender=[Role] '=>' receiver=[Role]) OP600XFY content=Expression0 ('['
+		//conditions=ExpressionInfinity ']')?
 		public Group getGroup() { return cGroup; }
 		
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//(performative=ATOM OP600XFY)?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//performative=ATOM
+		public Assignment getPerformativeAssignment_0_0() { return cPerformativeAssignment_0_0; }
+		
+		//ATOM
+		public RuleCall getPerformativeATOMTerminalRuleCall_0_0_0() { return cPerformativeATOMTerminalRuleCall_0_0_0; }
+		
+		//OP600XFY
+		public RuleCall getOP600XFYTerminalRuleCall_0_1() { return cOP600XFYTerminalRuleCall_0_1; }
+		
+		//'[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>' async_receiver=[Role] ']' | sender=[Role] '=>'
+		//receiver=[Role]
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//'[' async_sender=[Role] '=>' ']' receiver=[Role]
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1_0_0() { return cLeftSquareBracketKeyword_1_0_0; }
+		
+		//async_sender=[Role]
+		public Assignment getAsync_senderAssignment_1_0_1() { return cAsync_senderAssignment_1_0_1; }
+		
+		//[Role]
+		public CrossReference getAsync_senderRoleCrossReference_1_0_1_0() { return cAsync_senderRoleCrossReference_1_0_1_0; }
 		
 		//ID
-		public RuleCall getNameIDParserRuleCall_0_0() { return cNameIDParserRuleCall_0_0; }
+		public RuleCall getAsync_senderRoleIDParserRuleCall_1_0_1_0_1() { return cAsync_senderRoleIDParserRuleCall_1_0_1_0_1; }
 		
-		//('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
-		public Group getGroup_1() { return cGroup_1; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_0_2() { return cEqualsSignGreaterThanSignKeyword_1_0_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		//']'
+		public Keyword getRightSquareBracketKeyword_1_0_3() { return cRightSquareBracketKeyword_1_0_3; }
 		
-		//expr=Expression0
-		public Assignment getExprAssignment_1_1() { return cExprAssignment_1_1; }
+		//receiver=[Role]
+		public Assignment getReceiverAssignment_1_0_4() { return cReceiverAssignment_1_0_4; }
 		
-		//Expression0
-		public RuleCall getExprExpression0ParserRuleCall_1_1_0() { return cExprExpression0ParserRuleCall_1_1_0; }
+		//[Role]
+		public CrossReference getReceiverRoleCrossReference_1_0_4_0() { return cReceiverRoleCrossReference_1_0_4_0; }
 		
-		//(OP1000XFY exprs+=Expression0)*
+		//ID
+		public RuleCall getReceiverRoleIDParserRuleCall_1_0_4_0_1() { return cReceiverRoleIDParserRuleCall_1_0_4_0_1; }
+		
+		//sender=[Role] '[' '=>' async_receiver=[Role] ']'
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//sender=[Role]
+		public Assignment getSenderAssignment_1_1_0() { return cSenderAssignment_1_1_0; }
+		
+		//[Role]
+		public CrossReference getSenderRoleCrossReference_1_1_0_0() { return cSenderRoleCrossReference_1_1_0_0; }
+		
+		//ID
+		public RuleCall getSenderRoleIDParserRuleCall_1_1_0_0_1() { return cSenderRoleIDParserRuleCall_1_1_0_0_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1_1_1() { return cLeftSquareBracketKeyword_1_1_1; }
+		
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_1_2() { return cEqualsSignGreaterThanSignKeyword_1_1_2; }
+		
+		//async_receiver=[Role]
+		public Assignment getAsync_receiverAssignment_1_1_3() { return cAsync_receiverAssignment_1_1_3; }
+		
+		//[Role]
+		public CrossReference getAsync_receiverRoleCrossReference_1_1_3_0() { return cAsync_receiverRoleCrossReference_1_1_3_0; }
+		
+		//ID
+		public RuleCall getAsync_receiverRoleIDParserRuleCall_1_1_3_0_1() { return cAsync_receiverRoleIDParserRuleCall_1_1_3_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_1_1_4() { return cRightSquareBracketKeyword_1_1_4; }
+		
+		//sender=[Role] '=>' receiver=[Role]
 		public Group getGroup_1_2() { return cGroup_1_2; }
 		
-		//OP1000XFY
-		public RuleCall getOP1000XFYTerminalRuleCall_1_2_0() { return cOP1000XFYTerminalRuleCall_1_2_0; }
+		//sender=[Role]
+		public Assignment getSenderAssignment_1_2_0() { return cSenderAssignment_1_2_0; }
 		
-		//exprs+=Expression0
-		public Assignment getExprsAssignment_1_2_1() { return cExprsAssignment_1_2_1; }
+		//[Role]
+		public CrossReference getSenderRoleCrossReference_1_2_0_0() { return cSenderRoleCrossReference_1_2_0_0; }
 		
-		//Expression0
-		public RuleCall getExprsExpression0ParserRuleCall_1_2_1_0() { return cExprsExpression0ParserRuleCall_1_2_1_0; }
+		//ID
+		public RuleCall getSenderRoleIDParserRuleCall_1_2_0_0_1() { return cSenderRoleIDParserRuleCall_1_2_0_0_1; }
 		
-		//')'
-		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_2_1() { return cEqualsSignGreaterThanSignKeyword_1_2_1; }
+		
+		//receiver=[Role]
+		public Assignment getReceiverAssignment_1_2_2() { return cReceiverAssignment_1_2_2; }
+		
+		//[Role]
+		public CrossReference getReceiverRoleCrossReference_1_2_2_0() { return cReceiverRoleCrossReference_1_2_2_0; }
+		
+		//ID
+		public RuleCall getReceiverRoleIDParserRuleCall_1_2_2_0_1() { return cReceiverRoleIDParserRuleCall_1_2_2_0_1; }
 		
 		//OP600XFY
 		public RuleCall getOP600XFYTerminalRuleCall_2() { return cOP600XFYTerminalRuleCall_2; }
 		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//msgs+=Msg*
-		public Assignment getMsgsAssignment_4() { return cMsgsAssignment_4; }
-		
-		//Msg
-		public RuleCall getMsgsMsgParserRuleCall_4_0() { return cMsgsMsgParserRuleCall_4_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-		
-		//('[' channel=[Channel] ']')?
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_6_0() { return cLeftSquareBracketKeyword_6_0; }
-		
-		//channel=[Channel]
-		public Assignment getChannelAssignment_6_1() { return cChannelAssignment_6_1; }
-		
-		//[Channel]
-		public CrossReference getChannelChannelCrossReference_6_1_0() { return cChannelChannelCrossReference_6_1_0; }
-		
-		//ID
-		public RuleCall getChannelChannelIDParserRuleCall_6_1_0_1() { return cChannelChannelIDParserRuleCall_6_1_0_1; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_6_2() { return cRightSquareBracketKeyword_6_2; }
-	}
-	public class MsgElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Msg");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_0_0_0 = (Keyword)cGroup_0_0.eContents().get(0);
-		private final Assignment cAsync_senderAssignment_0_0_1 = (Assignment)cGroup_0_0.eContents().get(1);
-		private final CrossReference cAsync_senderRoleCrossReference_0_0_1_0 = (CrossReference)cAsync_senderAssignment_0_0_1.eContents().get(0);
-		private final RuleCall cAsync_senderRoleIDParserRuleCall_0_0_1_0_1 = (RuleCall)cAsync_senderRoleCrossReference_0_0_1_0.eContents().get(1);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_0_0_2 = (Keyword)cGroup_0_0.eContents().get(2);
-		private final Keyword cRightSquareBracketKeyword_0_0_3 = (Keyword)cGroup_0_0.eContents().get(3);
-		private final Assignment cReceiverAssignment_0_0_4 = (Assignment)cGroup_0_0.eContents().get(4);
-		private final CrossReference cReceiverRoleCrossReference_0_0_4_0 = (CrossReference)cReceiverAssignment_0_0_4.eContents().get(0);
-		private final RuleCall cReceiverRoleIDParserRuleCall_0_0_4_0_1 = (RuleCall)cReceiverRoleCrossReference_0_0_4_0.eContents().get(1);
-		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
-		private final Assignment cSenderAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
-		private final CrossReference cSenderRoleCrossReference_0_1_0_0 = (CrossReference)cSenderAssignment_0_1_0.eContents().get(0);
-		private final RuleCall cSenderRoleIDParserRuleCall_0_1_0_0_1 = (RuleCall)cSenderRoleCrossReference_0_1_0_0.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_0_1_2 = (Keyword)cGroup_0_1.eContents().get(2);
-		private final Assignment cAsync_receiverAssignment_0_1_3 = (Assignment)cGroup_0_1.eContents().get(3);
-		private final CrossReference cAsync_receiverRoleCrossReference_0_1_3_0 = (CrossReference)cAsync_receiverAssignment_0_1_3.eContents().get(0);
-		private final RuleCall cAsync_receiverRoleIDParserRuleCall_0_1_3_0_1 = (RuleCall)cAsync_receiverRoleCrossReference_0_1_3_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_0_1_4 = (Keyword)cGroup_0_1.eContents().get(4);
-		private final Group cGroup_0_2 = (Group)cAlternatives_0.eContents().get(2);
-		private final Assignment cSenderAssignment_0_2_0 = (Assignment)cGroup_0_2.eContents().get(0);
-		private final CrossReference cSenderRoleCrossReference_0_2_0_0 = (CrossReference)cSenderAssignment_0_2_0.eContents().get(0);
-		private final RuleCall cSenderRoleIDParserRuleCall_0_2_0_0_1 = (RuleCall)cSenderRoleCrossReference_0_2_0_0.eContents().get(1);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_0_2_1 = (Keyword)cGroup_0_2.eContents().get(1);
-		private final Assignment cReceiverAssignment_0_2_2 = (Assignment)cGroup_0_2.eContents().get(2);
-		private final CrossReference cReceiverRoleCrossReference_0_2_2_0 = (CrossReference)cReceiverAssignment_0_2_2.eContents().get(0);
-		private final RuleCall cReceiverRoleIDParserRuleCall_0_2_2_0_1 = (RuleCall)cReceiverRoleCrossReference_0_2_2_0.eContents().get(1);
-		private final RuleCall cOP600XFYTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
-		private final Assignment cPerformativeAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
-		private final RuleCall cPerformativeATOMTerminalRuleCall_2_0_0_0 = (RuleCall)cPerformativeAssignment_2_0_0.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
-		private final Assignment cContentAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
-		private final RuleCall cContentExpression0ParserRuleCall_2_0_2_0 = (RuleCall)cContentAssignment_2_0_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_0_3 = (Keyword)cGroup_2_0.eContents().get(3);
-		private final Assignment cContentAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cContentExpression0ParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cLeftSquareBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cConditionsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cConditionsExpressionInfinityParserRuleCall_3_1_0 = (RuleCall)cConditionsAssignment_3_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		
-		//Msg:
-		//	('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>' async_receiver=[Role] ']' | sender=[Role]
-		//	'=>' receiver=[Role]) OP600XFY (performative=ATOM '(' content=Expression0 ')' | content=Expression0) ('['
-		//	conditions=ExpressionInfinity ']')?;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>' async_receiver=[Role] ']' | sender=[Role]
-		//'=>' receiver=[Role]) OP600XFY (performative=ATOM '(' content=Expression0 ')' | content=Expression0) ('['
-		//conditions=ExpressionInfinity ']')?
-		public Group getGroup() { return cGroup; }
-		
-		//'[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>' async_receiver=[Role] ']' | sender=[Role] '=>'
-		//receiver=[Role]
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'[' async_sender=[Role] '=>' ']' receiver=[Role]
-		public Group getGroup_0_0() { return cGroup_0_0; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_0_0_0() { return cLeftSquareBracketKeyword_0_0_0; }
-		
-		//async_sender=[Role]
-		public Assignment getAsync_senderAssignment_0_0_1() { return cAsync_senderAssignment_0_0_1; }
-		
-		//[Role]
-		public CrossReference getAsync_senderRoleCrossReference_0_0_1_0() { return cAsync_senderRoleCrossReference_0_0_1_0; }
-		
-		//ID
-		public RuleCall getAsync_senderRoleIDParserRuleCall_0_0_1_0_1() { return cAsync_senderRoleIDParserRuleCall_0_0_1_0_1; }
-		
-		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_0_0_2() { return cEqualsSignGreaterThanSignKeyword_0_0_2; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_0_0_3() { return cRightSquareBracketKeyword_0_0_3; }
-		
-		//receiver=[Role]
-		public Assignment getReceiverAssignment_0_0_4() { return cReceiverAssignment_0_0_4; }
-		
-		//[Role]
-		public CrossReference getReceiverRoleCrossReference_0_0_4_0() { return cReceiverRoleCrossReference_0_0_4_0; }
-		
-		//ID
-		public RuleCall getReceiverRoleIDParserRuleCall_0_0_4_0_1() { return cReceiverRoleIDParserRuleCall_0_0_4_0_1; }
-		
-		//sender=[Role] '[' '=>' async_receiver=[Role] ']'
-		public Group getGroup_0_1() { return cGroup_0_1; }
-		
-		//sender=[Role]
-		public Assignment getSenderAssignment_0_1_0() { return cSenderAssignment_0_1_0; }
-		
-		//[Role]
-		public CrossReference getSenderRoleCrossReference_0_1_0_0() { return cSenderRoleCrossReference_0_1_0_0; }
-		
-		//ID
-		public RuleCall getSenderRoleIDParserRuleCall_0_1_0_0_1() { return cSenderRoleIDParserRuleCall_0_1_0_0_1; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_0_1_1() { return cLeftSquareBracketKeyword_0_1_1; }
-		
-		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_0_1_2() { return cEqualsSignGreaterThanSignKeyword_0_1_2; }
-		
-		//async_receiver=[Role]
-		public Assignment getAsync_receiverAssignment_0_1_3() { return cAsync_receiverAssignment_0_1_3; }
-		
-		//[Role]
-		public CrossReference getAsync_receiverRoleCrossReference_0_1_3_0() { return cAsync_receiverRoleCrossReference_0_1_3_0; }
-		
-		//ID
-		public RuleCall getAsync_receiverRoleIDParserRuleCall_0_1_3_0_1() { return cAsync_receiverRoleIDParserRuleCall_0_1_3_0_1; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_0_1_4() { return cRightSquareBracketKeyword_0_1_4; }
-		
-		//sender=[Role] '=>' receiver=[Role]
-		public Group getGroup_0_2() { return cGroup_0_2; }
-		
-		//sender=[Role]
-		public Assignment getSenderAssignment_0_2_0() { return cSenderAssignment_0_2_0; }
-		
-		//[Role]
-		public CrossReference getSenderRoleCrossReference_0_2_0_0() { return cSenderRoleCrossReference_0_2_0_0; }
-		
-		//ID
-		public RuleCall getSenderRoleIDParserRuleCall_0_2_0_0_1() { return cSenderRoleIDParserRuleCall_0_2_0_0_1; }
-		
-		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_0_2_1() { return cEqualsSignGreaterThanSignKeyword_0_2_1; }
-		
-		//receiver=[Role]
-		public Assignment getReceiverAssignment_0_2_2() { return cReceiverAssignment_0_2_2; }
-		
-		//[Role]
-		public CrossReference getReceiverRoleCrossReference_0_2_2_0() { return cReceiverRoleCrossReference_0_2_2_0; }
-		
-		//ID
-		public RuleCall getReceiverRoleIDParserRuleCall_0_2_2_0_1() { return cReceiverRoleIDParserRuleCall_0_2_2_0_1; }
-		
-		//OP600XFY
-		public RuleCall getOP600XFYTerminalRuleCall_1() { return cOP600XFYTerminalRuleCall_1; }
-		
-		//performative=ATOM '(' content=Expression0 ')' | content=Expression0
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//performative=ATOM '(' content=Expression0 ')'
-		public Group getGroup_2_0() { return cGroup_2_0; }
-		
-		//performative=ATOM
-		public Assignment getPerformativeAssignment_2_0_0() { return cPerformativeAssignment_2_0_0; }
-		
-		//ATOM
-		public RuleCall getPerformativeATOMTerminalRuleCall_2_0_0_0() { return cPerformativeATOMTerminalRuleCall_2_0_0_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2_0_1() { return cLeftParenthesisKeyword_2_0_1; }
-		
 		//content=Expression0
-		public Assignment getContentAssignment_2_0_2() { return cContentAssignment_2_0_2; }
+		public Assignment getContentAssignment_3() { return cContentAssignment_3; }
 		
 		//Expression0
-		public RuleCall getContentExpression0ParserRuleCall_2_0_2_0() { return cContentExpression0ParserRuleCall_2_0_2_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_2_0_3() { return cRightParenthesisKeyword_2_0_3; }
-		
-		//content=Expression0
-		public Assignment getContentAssignment_2_1() { return cContentAssignment_2_1; }
-		
-		//Expression0
-		public RuleCall getContentExpression0ParserRuleCall_2_1_0() { return cContentExpression0ParserRuleCall_2_1_0; }
+		public RuleCall getContentExpression0ParserRuleCall_3_0() { return cContentExpression0ParserRuleCall_3_0; }
 		
 		//('[' conditions=ExpressionInfinity ']')?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_3_0() { return cLeftSquareBracketKeyword_3_0; }
+		public Keyword getLeftSquareBracketKeyword_4_0() { return cLeftSquareBracketKeyword_4_0; }
 		
 		//conditions=ExpressionInfinity
-		public Assignment getConditionsAssignment_3_1() { return cConditionsAssignment_3_1; }
+		public Assignment getConditionsAssignment_4_1() { return cConditionsAssignment_4_1; }
 		
 		//ExpressionInfinity
-		public RuleCall getConditionsExpressionInfinityParserRuleCall_3_1_0() { return cConditionsExpressionInfinityParserRuleCall_3_1_0; }
+		public RuleCall getConditionsExpressionInfinityParserRuleCall_4_1_0() { return cConditionsExpressionInfinityParserRuleCall_4_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_3_2() { return cRightSquareBracketKeyword_3_2; }
+		public Keyword getRightSquareBracketKeyword_4_2() { return cRightSquareBracketKeyword_4_2; }
 	}
 	public class ChannelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Channel");
@@ -2495,6 +2909,12 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	private final Expression200xfyElements pExpression200xfy;
 	private final Expression0Elements pExpression0;
 	private final TraceExpressionElements pTraceExpression;
+	private final GenericTraceExpressionElements pGenericTraceExpression;
+	private final AgentTraceExpressionElements pAgentTraceExpression;
+	private final EventTypeElements pEventType;
+	private final MsgEventTypeElements pMsgEventType;
+	private final GroundTermElements pGroundTerm;
+	private final EventElements pEvent;
 	private final TermElements pTerm;
 	private final ShuffleExprElements pShuffleExpr;
 	private final UnionExprElements pUnionExpr;
@@ -2505,7 +2925,6 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	private final FilterExprElements pFilterExpr;
 	private final SeqExprElements pSeqExpr;
 	private final TerminalExprElements pTerminalExpr;
-	private final EventTypeElements pEventType;
 	private final MsgElements pMsg;
 	private final ChannelElements pChannel;
 	private final RoleElements pRole;
@@ -2563,6 +2982,12 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		this.pExpression200xfy = new Expression200xfyElements();
 		this.pExpression0 = new Expression0Elements();
 		this.pTraceExpression = new TraceExpressionElements();
+		this.pGenericTraceExpression = new GenericTraceExpressionElements();
+		this.pAgentTraceExpression = new AgentTraceExpressionElements();
+		this.pEventType = new EventTypeElements();
+		this.pMsgEventType = new MsgEventTypeElements();
+		this.pGroundTerm = new GroundTermElements();
+		this.pEvent = new EventElements();
 		this.pTerm = new TermElements();
 		this.pShuffleExpr = new ShuffleExprElements();
 		this.pUnionExpr = new UnionExprElements();
@@ -2573,7 +2998,6 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		this.pFilterExpr = new FilterExprElements();
 		this.pSeqExpr = new SeqExprElements();
 		this.pTerminalExpr = new TerminalExprElements();
-		this.pEventType = new EventTypeElements();
 		this.pMsg = new MsgElements();
 		this.pChannel = new ChannelElements();
 		this.pRole = new RoleElements();
@@ -2952,20 +3376,86 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//// Trace expressions    
 	//TraceExpression:
-	//	{TraceExpression}
-	//	'trace_expression' '{'
-	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:'
-	//	types+=EventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' |
-	//	'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
-	//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
-	//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
-	//	'}';
+	//	GenericTraceExpression | AgentTraceExpression;
 	public TraceExpressionElements getTraceExpressionAccess() {
 		return pTraceExpression;
 	}
 	
 	public ParserRule getTraceExpressionRule() {
 		return getTraceExpressionAccess().getRule();
+	}
+	
+	//GenericTraceExpression:
+	//	{GenericTraceExpression}
+	//	'trace_expression' '{'
+	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+	//	'}';
+	public GenericTraceExpressionElements getGenericTraceExpressionAccess() {
+		return pGenericTraceExpression;
+	}
+	
+	public ParserRule getGenericTraceExpressionRule() {
+		return getGenericTraceExpressionAccess().getRule();
+	}
+	
+	//AgentTraceExpression:
+	//	{AgentTraceExpression}
+	//	'agent_trace_expression' '{'
+	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:'
+	//	types+=MsgEventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true'
+	//	| 'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
+	//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
+	//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
+	//	'}';
+	public AgentTraceExpressionElements getAgentTraceExpressionAccess() {
+		return pAgentTraceExpression;
+	}
+	
+	public ParserRule getAgentTraceExpressionRule() {
+		return getAgentTraceExpressionAccess().getRule();
+	}
+	
+	//EventType:
+	//	name=ID ('(' expr=GroundTerm (OP1000XFY exprs+=GroundTerm)* ')')? OP600XFY '{' events+=Event* '}';
+	public EventTypeElements getEventTypeAccess() {
+		return pEventType;
+	}
+	
+	public ParserRule getEventTypeRule() {
+		return getEventTypeAccess().getRule();
+	}
+	
+	//MsgEventType:
+	//	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
+	//	']')?;
+	public MsgEventTypeElements getMsgEventTypeAccess() {
+		return pMsgEventType;
+	}
+	
+	public ParserRule getMsgEventTypeRule() {
+		return getMsgEventTypeAccess().getRule();
+	}
+	
+	//GroundTerm:
+	//	variable=VARIABLE | symbol=ID '(' arg=GroundTerm (OP1000XFY args+=GroundTerm)* ')';
+	public GroundTermElements getGroundTermAccess() {
+		return pGroundTerm;
+	}
+	
+	public ParserRule getGroundTermRule() {
+		return getGroundTermAccess().getRule();
+	}
+	
+	//Event:
+	//	({BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? | {DerivedEvent} 'derived'
+	//	base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?) ('[' constraints=ExpressionInfinity
+	//	']')?;
+	public EventElements getEventAccess() {
+		return pEvent;
+	}
+	
+	public ParserRule getEventRule() {
+		return getEventAccess().getRule();
 	}
 	
 	//Term:
@@ -3040,8 +3530,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FilterExpr Expression:
-	//	typeFilter=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP400FX1
-	//	bodyFilter=Primary;
+	//	(typeFilter=[EventType] | typeFilter=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+	//	operator=OP400FX1 bodyFilter=Primary;
 	public FilterExprElements getFilterExprAccess() {
 		return pFilterExpr;
 	}
@@ -3051,7 +3541,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SeqExpr Expression:
-	//	typeSeq=[EventType] ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')? operator=OP600XFY bodySeq=Primary;
+	//	(typeSeq=[EventType] | typeSeq=[MsgEventType]) ('(' first=Expression0 (OP1000XFY exprs+=Expression0)* ')')?
+	//	operator=OP600XFY bodySeq=Primary;
 	public SeqExprElements getSeqExprAccess() {
 		return pSeqExpr;
 	}
@@ -3070,20 +3561,9 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		return getTerminalExprAccess().getRule();
 	}
 	
-	//EventType:
-	//	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? OP600XFY '{' msgs+=Msg* '}' ('[' channel=[Channel]
-	//	']')?;
-	public EventTypeElements getEventTypeAccess() {
-		return pEventType;
-	}
-	
-	public ParserRule getEventTypeRule() {
-		return getEventTypeAccess().getRule();
-	}
-	
 	//Msg:
-	//	('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>' async_receiver=[Role] ']' | sender=[Role]
-	//	'=>' receiver=[Role]) OP600XFY (performative=ATOM '(' content=Expression0 ')' | content=Expression0) ('['
+	//	(performative=ATOM OP600XFY)? ('[' async_sender=[Role] '=>' ']' receiver=[Role] | sender=[Role] '[' '=>'
+	//	async_receiver=[Role] ']' | sender=[Role] '=>' receiver=[Role]) OP600XFY content=Expression0 ('['
 	//	conditions=ExpressionInfinity ']')?;
 	public MsgElements getMsgAccess() {
 		return pMsg;

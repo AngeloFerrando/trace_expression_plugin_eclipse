@@ -3,7 +3,6 @@
  */
 package it.unige.dibris.trace_expression_language.tExp.impl;
 
-import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
 import it.unige.dibris.trace_expression_language.tExp.TExpPackage;
@@ -17,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -89,7 +89,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    * @ordered
    */
-  protected EventType typeFilter;
+  protected EObject typeFilter;
 
   /**
    * The cached value of the '{@link #getFirst() <em>First</em>}' containment reference.
@@ -149,7 +149,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    * @ordered
    */
-  protected EventType typeSeq;
+  protected EObject typeSeq;
 
   /**
    * The cached value of the '{@link #getBodySeq() <em>Body Seq</em>}' containment reference.
@@ -298,12 +298,12 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EventType getTypeFilter()
+  public EObject getTypeFilter()
   {
     if (typeFilter != null && typeFilter.eIsProxy())
     {
       InternalEObject oldTypeFilter = (InternalEObject)typeFilter;
-      typeFilter = (EventType)eResolveProxy(oldTypeFilter);
+      typeFilter = eResolveProxy(oldTypeFilter);
       if (typeFilter != oldTypeFilter)
       {
         if (eNotificationRequired())
@@ -318,7 +318,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EventType basicGetTypeFilter()
+  public EObject basicGetTypeFilter()
   {
     return typeFilter;
   }
@@ -328,9 +328,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeFilter(EventType newTypeFilter)
+  public void setTypeFilter(EObject newTypeFilter)
   {
-    EventType oldTypeFilter = typeFilter;
+    EObject oldTypeFilter = typeFilter;
     typeFilter = newTypeFilter;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.EXPRESSION__TYPE_FILTER, oldTypeFilter, typeFilter));
@@ -474,12 +474,12 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EventType getTypeSeq()
+  public EObject getTypeSeq()
   {
     if (typeSeq != null && typeSeq.eIsProxy())
     {
       InternalEObject oldTypeSeq = (InternalEObject)typeSeq;
-      typeSeq = (EventType)eResolveProxy(oldTypeSeq);
+      typeSeq = eResolveProxy(oldTypeSeq);
       if (typeSeq != oldTypeSeq)
       {
         if (eNotificationRequired())
@@ -494,7 +494,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EventType basicGetTypeSeq()
+  public EObject basicGetTypeSeq()
   {
     return typeSeq;
   }
@@ -504,9 +504,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeSeq(EventType newTypeSeq)
+  public void setTypeSeq(EObject newTypeSeq)
   {
-    EventType oldTypeSeq = typeSeq;
+    EObject oldTypeSeq = typeSeq;
     typeSeq = newTypeSeq;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.EXPRESSION__TYPE_SEQ, oldTypeSeq, typeSeq));
@@ -759,7 +759,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setBodyVar((Expression)newValue);
         return;
       case TExpPackage.EXPRESSION__TYPE_FILTER:
-        setTypeFilter((EventType)newValue);
+        setTypeFilter((EObject)newValue);
         return;
       case TExpPackage.EXPRESSION__FIRST:
         setFirst((PrologExpression)newValue);
@@ -775,7 +775,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setBodyFilter((Expression)newValue);
         return;
       case TExpPackage.EXPRESSION__TYPE_SEQ:
-        setTypeSeq((EventType)newValue);
+        setTypeSeq((EObject)newValue);
         return;
       case TExpPackage.EXPRESSION__BODY_SEQ:
         setBodySeq((Expression)newValue);
@@ -810,7 +810,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setBodyVar((Expression)null);
         return;
       case TExpPackage.EXPRESSION__TYPE_FILTER:
-        setTypeFilter((EventType)null);
+        setTypeFilter((EObject)null);
         return;
       case TExpPackage.EXPRESSION__FIRST:
         setFirst((PrologExpression)null);
@@ -825,7 +825,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setBodyFilter((Expression)null);
         return;
       case TExpPackage.EXPRESSION__TYPE_SEQ:
-        setTypeSeq((EventType)null);
+        setTypeSeq((EObject)null);
         return;
       case TExpPackage.EXPRESSION__BODY_SEQ:
         setBodySeq((Expression)null);

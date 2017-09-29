@@ -3,18 +3,25 @@
  */
 package it.unige.dibris.trace_expression_language.tExp.impl;
 
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
 import it.unige.dibris.trace_expression_language.tExp.Cardinality;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Channel;
 import it.unige.dibris.trace_expression_language.tExp.Constraint;
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent;
 import it.unige.dibris.trace_expression_language.tExp.Domainmodel;
+import it.unige.dibris.trace_expression_language.tExp.Event;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.NumberExpression;
 import it.unige.dibris.trace_expression_language.tExp.Partition;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
@@ -75,6 +82,48 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass genericTraceExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass agentTraceExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass msgEventTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass groundTermEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass termEClass = null;
 
   /**
@@ -83,13 +132,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * @generated
    */
   private EClass expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass eventTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -167,6 +209,20 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * @generated
    */
   private EClass listExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass basicEventEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass derivedEventEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -413,7 +469,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_RolesL()
+  public EAttribute getTraceExpression_TypesL()
   {
     return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(3);
   }
@@ -423,9 +479,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTraceExpression_Roles()
+  public EClass getGenericTraceExpression()
   {
-    return (EReference)traceExpressionEClass.getEStructuralFeatures().get(4);
+    return genericTraceExpressionEClass;
   }
 
   /**
@@ -433,9 +489,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_TypesL()
+  public EReference getGenericTraceExpression_Types()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(5);
+    return (EReference)genericTraceExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -443,9 +499,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTraceExpression_Types()
+  public EClass getAgentTraceExpression()
   {
-    return (EReference)traceExpressionEClass.getEStructuralFeatures().get(6);
+    return agentTraceExpressionEClass;
   }
 
   /**
@@ -453,9 +509,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_ModulesL()
+  public EAttribute getAgentTraceExpression_RolesL()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -463,9 +519,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_Modules()
+  public EReference getAgentTraceExpression_Roles()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(8);
+    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -473,9 +529,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_DecentralizedL()
+  public EReference getAgentTraceExpression_Types()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(9);
+    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -483,9 +539,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_Decentralized()
+  public EAttribute getAgentTraceExpression_ModulesL()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(10);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -493,9 +549,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_PartitionL()
+  public EAttribute getAgentTraceExpression_Modules()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(11);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -503,9 +559,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTraceExpression_Partition()
+  public EAttribute getAgentTraceExpression_DecentralizedL()
   {
-    return (EReference)traceExpressionEClass.getEStructuralFeatures().get(12);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -513,9 +569,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_ConstraintsL()
+  public EAttribute getAgentTraceExpression_Decentralized()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(13);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -523,9 +579,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTraceExpression_Constraints()
+  public EAttribute getAgentTraceExpression_PartitionL()
   {
-    return (EReference)traceExpressionEClass.getEStructuralFeatures().get(14);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -533,9 +589,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_GuiL()
+  public EReference getAgentTraceExpression_Partition()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(15);
+    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -543,9 +599,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_Gui()
+  public EAttribute getAgentTraceExpression_ConstraintsL()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(16);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -553,9 +609,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_MinimalL()
+  public EReference getAgentTraceExpression_Constraints()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(17);
+    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -563,9 +619,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_Minimal()
+  public EAttribute getAgentTraceExpression_GuiL()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(18);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(11);
   }
 
   /**
@@ -573,9 +629,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_ThresholdL()
+  public EAttribute getAgentTraceExpression_Gui()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(19);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -583,9 +639,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_Threshold()
+  public EAttribute getAgentTraceExpression_MinimalL()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(20);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(13);
   }
 
   /**
@@ -593,9 +649,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTraceExpression_ChannelsL()
+  public EAttribute getAgentTraceExpression_Minimal()
   {
-    return (EAttribute)traceExpressionEClass.getEStructuralFeatures().get(21);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -603,9 +659,239 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTraceExpression_Channels()
+  public EAttribute getAgentTraceExpression_ThresholdL()
   {
-    return (EReference)traceExpressionEClass.getEStructuralFeatures().get(22);
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAgentTraceExpression_Threshold()
+  {
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAgentTraceExpression_ChannelsL()
+  {
+    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAgentTraceExpression_Channels()
+  {
+    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEventType()
+  {
+    return eventTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEventType_Name()
+  {
+    return (EAttribute)eventTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEventType_Expr()
+  {
+    return (EReference)eventTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEventType_Exprs()
+  {
+    return (EReference)eventTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEventType_Events()
+  {
+    return (EReference)eventTypeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMsgEventType()
+  {
+    return msgEventTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMsgEventType_Name()
+  {
+    return (EAttribute)msgEventTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMsgEventType_Expr()
+  {
+    return (EReference)msgEventTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMsgEventType_Exprs()
+  {
+    return (EReference)msgEventTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMsgEventType_Msgs()
+  {
+    return (EReference)msgEventTypeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMsgEventType_Channel()
+  {
+    return (EReference)msgEventTypeEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGroundTerm()
+  {
+    return groundTermEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGroundTerm_Variable()
+  {
+    return (EAttribute)groundTermEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGroundTerm_Symbol()
+  {
+    return (EAttribute)groundTermEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGroundTerm_Arg()
+  {
+    return (EReference)groundTermEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGroundTerm_Args()
+  {
+    return (EReference)groundTermEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEvent()
+  {
+    return eventEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvent_Expr()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvent_Exprs()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvent_Constraints()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -773,66 +1059,6 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEventType()
-  {
-    return eventTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getEventType_Name()
-  {
-    return (EAttribute)eventTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEventType_Expr()
-  {
-    return (EReference)eventTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEventType_Exprs()
-  {
-    return (EReference)eventTypeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEventType_Msgs()
-  {
-    return (EReference)eventTypeEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEventType_Channel()
-  {
-    return (EReference)eventTypeEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getMsg()
   {
     return msgEClass;
@@ -843,9 +1069,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMsg_Async_sender()
+  public EAttribute getMsg_Performative()
   {
-    return (EReference)msgEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)msgEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -853,7 +1079,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMsg_Receiver()
+  public EReference getMsg_Async_sender()
   {
     return (EReference)msgEClass.getEStructuralFeatures().get(1);
   }
@@ -863,7 +1089,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMsg_Sender()
+  public EReference getMsg_Receiver()
   {
     return (EReference)msgEClass.getEStructuralFeatures().get(2);
   }
@@ -873,7 +1099,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMsg_Async_receiver()
+  public EReference getMsg_Sender()
   {
     return (EReference)msgEClass.getEStructuralFeatures().get(3);
   }
@@ -883,9 +1109,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMsg_Performative()
+  public EReference getMsg_Async_receiver()
   {
-    return (EAttribute)msgEClass.getEStructuralFeatures().get(4);
+    return (EReference)msgEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1206,6 +1432,46 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
   public EReference getListExpression_Tail()
   {
     return (EReference)listExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBasicEvent()
+  {
+    return basicEventEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBasicEvent_Name()
+  {
+    return (EAttribute)basicEventEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDerivedEvent()
+  {
+    return derivedEventEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDerivedEvent_Base()
+  {
+    return (EReference)derivedEventEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1540,26 +1806,55 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__NAME);
     createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__BODY_L);
     createEReference(traceExpressionEClass, TRACE_EXPRESSION__TERMS);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__ROLES_L);
-    createEReference(traceExpressionEClass, TRACE_EXPRESSION__ROLES);
     createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__TYPES_L);
-    createEReference(traceExpressionEClass, TRACE_EXPRESSION__TYPES);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__MODULES_L);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__MODULES);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__DECENTRALIZED_L);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__DECENTRALIZED);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__PARTITION_L);
-    createEReference(traceExpressionEClass, TRACE_EXPRESSION__PARTITION);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__CONSTRAINTS_L);
-    createEReference(traceExpressionEClass, TRACE_EXPRESSION__CONSTRAINTS);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__GUI_L);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__GUI);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__MINIMAL_L);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__MINIMAL);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__THRESHOLD_L);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__THRESHOLD);
-    createEAttribute(traceExpressionEClass, TRACE_EXPRESSION__CHANNELS_L);
-    createEReference(traceExpressionEClass, TRACE_EXPRESSION__CHANNELS);
+
+    genericTraceExpressionEClass = createEClass(GENERIC_TRACE_EXPRESSION);
+    createEReference(genericTraceExpressionEClass, GENERIC_TRACE_EXPRESSION__TYPES);
+
+    agentTraceExpressionEClass = createEClass(AGENT_TRACE_EXPRESSION);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__ROLES_L);
+    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__ROLES);
+    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__TYPES);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MODULES_L);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MODULES);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__DECENTRALIZED_L);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__DECENTRALIZED);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__PARTITION_L);
+    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__PARTITION);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CONSTRAINTS_L);
+    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CONSTRAINTS);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__GUI_L);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__GUI);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MINIMAL_L);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MINIMAL);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__THRESHOLD_L);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__THRESHOLD);
+    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CHANNELS_L);
+    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CHANNELS);
+
+    eventTypeEClass = createEClass(EVENT_TYPE);
+    createEAttribute(eventTypeEClass, EVENT_TYPE__NAME);
+    createEReference(eventTypeEClass, EVENT_TYPE__EXPR);
+    createEReference(eventTypeEClass, EVENT_TYPE__EXPRS);
+    createEReference(eventTypeEClass, EVENT_TYPE__EVENTS);
+
+    msgEventTypeEClass = createEClass(MSG_EVENT_TYPE);
+    createEAttribute(msgEventTypeEClass, MSG_EVENT_TYPE__NAME);
+    createEReference(msgEventTypeEClass, MSG_EVENT_TYPE__EXPR);
+    createEReference(msgEventTypeEClass, MSG_EVENT_TYPE__EXPRS);
+    createEReference(msgEventTypeEClass, MSG_EVENT_TYPE__MSGS);
+    createEReference(msgEventTypeEClass, MSG_EVENT_TYPE__CHANNEL);
+
+    groundTermEClass = createEClass(GROUND_TERM);
+    createEAttribute(groundTermEClass, GROUND_TERM__VARIABLE);
+    createEAttribute(groundTermEClass, GROUND_TERM__SYMBOL);
+    createEReference(groundTermEClass, GROUND_TERM__ARG);
+    createEReference(groundTermEClass, GROUND_TERM__ARGS);
+
+    eventEClass = createEClass(EVENT);
+    createEReference(eventEClass, EVENT__EXPR);
+    createEReference(eventEClass, EVENT__EXPRS);
+    createEReference(eventEClass, EVENT__CONSTRAINTS);
 
     termEClass = createEClass(TERM);
     createEAttribute(termEClass, TERM__NAME);
@@ -1579,19 +1874,12 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     createEReference(expressionEClass, EXPRESSION__TERM);
     createEReference(expressionEClass, EXPRESSION__EXPR);
 
-    eventTypeEClass = createEClass(EVENT_TYPE);
-    createEAttribute(eventTypeEClass, EVENT_TYPE__NAME);
-    createEReference(eventTypeEClass, EVENT_TYPE__EXPR);
-    createEReference(eventTypeEClass, EVENT_TYPE__EXPRS);
-    createEReference(eventTypeEClass, EVENT_TYPE__MSGS);
-    createEReference(eventTypeEClass, EVENT_TYPE__CHANNEL);
-
     msgEClass = createEClass(MSG);
+    createEAttribute(msgEClass, MSG__PERFORMATIVE);
     createEReference(msgEClass, MSG__ASYNC_SENDER);
     createEReference(msgEClass, MSG__RECEIVER);
     createEReference(msgEClass, MSG__SENDER);
     createEReference(msgEClass, MSG__ASYNC_RECEIVER);
-    createEAttribute(msgEClass, MSG__PERFORMATIVE);
     createEReference(msgEClass, MSG__CONTENT);
     createEReference(msgEClass, MSG__CONDITIONS);
 
@@ -1634,6 +1922,12 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     listExpressionEClass = createEClass(LIST_EXPRESSION);
     createEReference(listExpressionEClass, LIST_EXPRESSION__HEAD);
     createEReference(listExpressionEClass, LIST_EXPRESSION__TAIL);
+
+    basicEventEClass = createEClass(BASIC_EVENT);
+    createEAttribute(basicEventEClass, BASIC_EVENT__NAME);
+
+    derivedEventEClass = createEClass(DERIVED_EVENT);
+    createEReference(derivedEventEClass, DERIVED_EVENT__BASE);
 
     shuffleExprEClass = createEClass(SHUFFLE_EXPR);
     createEReference(shuffleExprEClass, SHUFFLE_EXPR__LEFT);
@@ -1705,11 +1999,15 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    genericTraceExpressionEClass.getESuperTypes().add(this.getTraceExpression());
+    agentTraceExpressionEClass.getESuperTypes().add(this.getTraceExpression());
     atomExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     variableExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     stringExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     numberExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     listExpressionEClass.getESuperTypes().add(this.getPrologExpression());
+    basicEventEClass.getESuperTypes().add(this.getEvent());
+    derivedEventEClass.getESuperTypes().add(this.getEvent());
     shuffleExprEClass.getESuperTypes().add(this.getExpression());
     unionExprEClass.getESuperTypes().add(this.getExpression());
     andExprEClass.getESuperTypes().add(this.getExpression());
@@ -1735,26 +2033,55 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEAttribute(getTraceExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTraceExpression_BodyL(), ecorePackage.getEString(), "bodyL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTraceExpression_Terms(), this.getTerm(), null, "terms", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_RolesL(), ecorePackage.getEString(), "rolesL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTraceExpression_Roles(), this.getRole(), null, "roles", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTraceExpression_TypesL(), ecorePackage.getEString(), "typesL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTraceExpression_Types(), this.getEventType(), null, "types", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_ModulesL(), ecorePackage.getEString(), "modulesL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_Modules(), ecorePackage.getEString(), "modules", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_DecentralizedL(), ecorePackage.getEString(), "decentralizedL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_Decentralized(), ecorePackage.getEString(), "decentralized", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_PartitionL(), ecorePackage.getEString(), "partitionL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTraceExpression_Partition(), this.getPartition(), null, "partition", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_ConstraintsL(), ecorePackage.getEString(), "constraintsL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTraceExpression_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_GuiL(), ecorePackage.getEString(), "guiL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_Gui(), ecorePackage.getEString(), "gui", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_MinimalL(), ecorePackage.getEString(), "minimalL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_Minimal(), ecorePackage.getEString(), "minimal", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_ThresholdL(), ecorePackage.getEString(), "thresholdL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_Threshold(), ecorePackage.getEString(), "threshold", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTraceExpression_ChannelsL(), ecorePackage.getEString(), "channelsL", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTraceExpression_Channels(), this.getChannel(), null, "channels", null, 0, -1, TraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(genericTraceExpressionEClass, GenericTraceExpression.class, "GenericTraceExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGenericTraceExpression_Types(), this.getEventType(), null, "types", null, 0, -1, GenericTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(agentTraceExpressionEClass, AgentTraceExpression.class, "AgentTraceExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAgentTraceExpression_RolesL(), ecorePackage.getEString(), "rolesL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgentTraceExpression_Roles(), this.getRole(), null, "roles", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgentTraceExpression_Types(), this.getMsgEventType(), null, "types", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_ModulesL(), ecorePackage.getEString(), "modulesL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_Modules(), ecorePackage.getEString(), "modules", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_DecentralizedL(), ecorePackage.getEString(), "decentralizedL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_Decentralized(), ecorePackage.getEString(), "decentralized", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_PartitionL(), ecorePackage.getEString(), "partitionL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgentTraceExpression_Partition(), this.getPartition(), null, "partition", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_ConstraintsL(), ecorePackage.getEString(), "constraintsL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgentTraceExpression_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_GuiL(), ecorePackage.getEString(), "guiL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_Gui(), ecorePackage.getEString(), "gui", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_MinimalL(), ecorePackage.getEString(), "minimalL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_Minimal(), ecorePackage.getEString(), "minimal", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_ThresholdL(), ecorePackage.getEString(), "thresholdL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_Threshold(), ecorePackage.getEString(), "threshold", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAgentTraceExpression_ChannelsL(), ecorePackage.getEString(), "channelsL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgentTraceExpression_Channels(), this.getChannel(), null, "channels", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eventTypeEClass, EventType.class, "EventType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEventType_Name(), ecorePackage.getEString(), "name", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEventType_Expr(), this.getGroundTerm(), null, "expr", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEventType_Exprs(), this.getGroundTerm(), null, "exprs", null, 0, -1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEventType_Events(), this.getEvent(), null, "events", null, 0, -1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(msgEventTypeEClass, MsgEventType.class, "MsgEventType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMsgEventType_Name(), ecorePackage.getEString(), "name", null, 0, 1, MsgEventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMsgEventType_Expr(), this.getPrologExpression(), null, "expr", null, 0, 1, MsgEventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMsgEventType_Exprs(), this.getPrologExpression(), null, "exprs", null, 0, -1, MsgEventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMsgEventType_Msgs(), this.getMsg(), null, "msgs", null, 0, -1, MsgEventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMsgEventType_Channel(), this.getChannel(), null, "channel", null, 0, 1, MsgEventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(groundTermEClass, GroundTerm.class, "GroundTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGroundTerm_Variable(), ecorePackage.getEString(), "variable", null, 0, 1, GroundTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGroundTerm_Symbol(), ecorePackage.getEString(), "symbol", null, 0, 1, GroundTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGroundTerm_Arg(), this.getGroundTerm(), null, "arg", null, 0, 1, GroundTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGroundTerm_Args(), this.getGroundTerm(), null, "args", null, 0, -1, GroundTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEvent_Expr(), this.getPrologExpression(), null, "expr", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Exprs(), this.getPrologExpression(), null, "exprs", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Constraints(), this.getPrologExpression(), null, "constraints", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(termEClass, Term.class, "Term", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTerm_Name(), ecorePackage.getEString(), "name", null, 0, 1, Term.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1763,30 +2090,23 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExpression_Variable(), ecorePackage.getEString(), "variable", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_BodyVar(), this.getExpression(), null, "bodyVar", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_TypeFilter(), this.getEventType(), null, "typeFilter", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_TypeFilter(), ecorePackage.getEObject(), null, "typeFilter", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_First(), this.getPrologExpression(), null, "first", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Exprs(), this.getPrologExpression(), null, "exprs", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_BodyFilter(), this.getExpression(), null, "bodyFilter", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_TypeSeq(), this.getEventType(), null, "typeSeq", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_TypeSeq(), ecorePackage.getEObject(), null, "typeSeq", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_BodySeq(), this.getExpression(), null, "bodySeq", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_Eps(), ecorePackage.getEString(), "eps", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Term(), this.getTerm(), null, "term", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Expr(), this.getExpression(), null, "expr", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(eventTypeEClass, EventType.class, "EventType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEventType_Name(), ecorePackage.getEString(), "name", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEventType_Expr(), this.getPrologExpression(), null, "expr", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEventType_Exprs(), this.getPrologExpression(), null, "exprs", null, 0, -1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEventType_Msgs(), this.getMsg(), null, "msgs", null, 0, -1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEventType_Channel(), this.getChannel(), null, "channel", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(msgEClass, Msg.class, "Msg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMsg_Performative(), ecorePackage.getEString(), "performative", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Async_sender(), this.getRole(), null, "async_sender", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Receiver(), this.getRole(), null, "receiver", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Sender(), this.getRole(), null, "sender", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Async_receiver(), this.getRole(), null, "async_receiver", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMsg_Performative(), ecorePackage.getEString(), "performative", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Content(), this.getPrologExpression(), null, "content", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMsg_Conditions(), this.getPrologExpression(), null, "conditions", null, 0, 1, Msg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1829,6 +2149,12 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEClass(listExpressionEClass, ListExpression.class, "ListExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getListExpression_Head(), this.getPrologExpression(), null, "head", null, 0, 1, ListExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getListExpression_Tail(), this.getPrologExpression(), null, "tail", null, 0, 1, ListExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(basicEventEClass, BasicEvent.class, "BasicEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBasicEvent_Name(), ecorePackage.getEString(), "name", null, 0, 1, BasicEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(derivedEventEClass, DerivedEvent.class, "DerivedEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDerivedEvent_Base(), this.getEventType(), null, "base", null, 0, 1, DerivedEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(shuffleExprEClass, ShuffleExpr.class, "ShuffleExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getShuffleExpr_Left(), this.getExpression(), null, "left", null, 0, 1, ShuffleExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

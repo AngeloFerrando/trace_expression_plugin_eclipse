@@ -5,16 +5,23 @@ package it.unige.dibris.trace_expression_language.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
 import it.unige.dibris.trace_expression_language.tExp.Cardinality;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Channel;
 import it.unige.dibris.trace_expression_language.tExp.Constraint;
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent;
+import it.unige.dibris.trace_expression_language.tExp.Event;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.NumberExpression;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
 import it.unige.dibris.trace_expression_language.tExp.Role;
@@ -26,10 +33,10 @@ import it.unige.dibris.trace_expression_language.tExp.StringExpression;
 import it.unige.dibris.trace_expression_language.tExp.Term;
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
 import it.unige.dibris.trace_expression_language.tExp.Together;
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
+import java.util.StringJoiner;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -46,12 +53,10 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class TExpGenerator extends AbstractGenerator {
-  private String tExpCurrentName;
-  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<TraceExpression> _filter = Iterables.<TraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), TraceExpression.class);
-    for (final TraceExpression tExp : _filter) {
+    Iterable<AgentTraceExpression> _filter = Iterables.<AgentTraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), AgentTraceExpression.class);
+    for (final AgentTraceExpression tExp : _filter) {
       {
         String _name = tExp.getName();
         String _plus = (_name + ".pl");
@@ -63,9 +68,15 @@ public class TExpGenerator extends AbstractGenerator {
         fsa.generateFile(_plus_2, this.javaCompile(tExp));
       }
     }
+    Iterable<GenericTraceExpression> _filter_1 = Iterables.<GenericTraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), GenericTraceExpression.class);
+    for (final GenericTraceExpression te : _filter_1) {
+      String _name = te.getName();
+      String _plus = (_name + ".pl");
+      fsa.generateFile(_plus, this.compile(te));
+    }
   }
   
-  public CharSequence javaCompile(final TraceExpression tExp) {
+  public CharSequence javaCompile(final AgentTraceExpression tExp) {
     StringConcatenation _builder = new StringConcatenation();
     String _upperCase = tExp.getName().substring(0, 1).toUpperCase();
     String _substring = tExp.getName().substring(1);
@@ -82,7 +93,7 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("import it.dibris.unige.TExpSWIPrologConnector.JPL.JPLInitializer;");
     _builder.newLine();
-    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.texp.TraceExpression;");
+    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.texp.AgentTraceExpression;");
     _builder.newLine();
     _builder.append("import it.dibris.unige.TExpSWIPrologConnector.decentralized.Partition;");
     _builder.newLine();
@@ -122,7 +133,7 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("TraceExpression tExp = new TraceExpression(\"");
+    _builder.append("AgentTraceExpression tExp = new AgentTraceExpression(\"");
     String _name = tExp.getName();
     _builder.append(_name, "\t\t");
     _builder.append(".pl\");");
@@ -625,7 +636,7 @@ public class TExpGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public String compile(final TraceExpression tExp) {
+  public String compile(final AgentTraceExpression tExp) {
     String _xblockexpression = null;
     {
       String str = ":- discontiguous match/3.\n";
@@ -633,7 +644,6 @@ public class TExpGenerator extends AbstractGenerator {
       str = (_str + ":- discontiguous event/2.\n");
       String _str_1 = str;
       str = (_str_1 + ":- discontiguous reliable/3.\n\n");
-      this.tExpCurrentName = tExp.getName();
       EList<String> _modules = tExp.getModules();
       for (final String module : _modules) {
         String _str_2 = str;
@@ -642,55 +652,87 @@ public class TExpGenerator extends AbstractGenerator {
       String _str_3 = str;
       str = (_str_3 + "\n");
       String _str_4 = str;
-      str = (_str_4 + "roles([");
+      str = (_str_4 + "roles(");
+      StringJoiner rolesJoiner = new StringJoiner(", ", "[", "]");
       EList<Role> _roles = tExp.getRoles();
       for (final Role role : _roles) {
-        String _str_5 = str;
-        String _name = role.getName();
-        String _plus = (_name + ",");
-        str = (_str_5 + _plus);
+        rolesJoiner.add(role.getName());
       }
-      int _length = str.length();
-      int _minus = (_length - 1);
-      String _substring = str.substring(0, _minus);
-      String _plus_1 = (_substring + "]).\n\n");
-      str = _plus_1;
-      EList<EventType> _types = tExp.getTypes();
-      for (final EventType type : _types) {
+      String _str_5 = str;
+      String _string = rolesJoiner.toString();
+      String _plus = (_string + ").\n\n");
+      str = (_str_5 + _plus);
+      EList<MsgEventType> _types = tExp.getTypes();
+      for (final MsgEventType type : _types) {
         String _str_6 = str;
-        String _compile = this.compile(type);
+        String _compile = this.compile(type, tExp.getName());
         str = (_str_6 + _compile);
       }
       if (((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0))) {
         String _str_7 = str;
         String _get = tExp.getThreshold().get(0);
-        String _plus_2 = (("\n\n" + "threshold(") + _get);
-        String _plus_3 = (_plus_2 + ").\n\n");
-        str = (_str_7 + _plus_3);
+        String _plus_1 = (("\n\n" + "threshold(") + _get);
+        String _plus_2 = (_plus_1 + ").\n\n");
+        str = (_str_7 + _plus_2);
       } else {
         String _str_8 = str;
         str = (_str_8 + ((("\n\n" + "threshold(") + "1") + ").\n\n"));
       }
       String _str_9 = str;
-      String _name_1 = tExp.getName();
-      String _plus_4 = (("\n\n" + "trace_expression(") + _name_1);
-      String _plus_5 = (_plus_4 + ", Main) :- \n");
-      str = (_str_9 + _plus_5);
+      String _name = tExp.getName();
+      String _plus_3 = (("\n\n" + "trace_expression(") + _name);
+      String _plus_4 = (_plus_3 + ", Main) :- \n");
+      str = (_str_9 + _plus_4);
       EList<Term> _terms = tExp.getTerms();
       for (final Term term : _terms) {
         String _str_10 = str;
         String _compile_1 = this.compile(term);
-        String _plus_6 = ("\t" + _compile_1);
-        String _plus_7 = (_plus_6 + ",\n");
-        str = (_str_10 + _plus_7);
+        String _plus_5 = ("\t" + _compile_1);
+        String _plus_6 = (_plus_5 + ",\n");
+        str = (_str_10 + _plus_6);
       }
-      int _length_1 = str.length();
-      int _minus_1 = (_length_1 - 2);
-      String _substring_1 = str.substring(0, _minus_1);
-      String _plus_8 = (_substring_1 + ", numbervars(Main, 0, _).\n");
-      _xblockexpression = str = _plus_8;
+      int _length = str.length();
+      int _minus = (_length - 2);
+      String _substring = str.substring(0, _minus);
+      String _plus_7 = (_substring + ", numbervars(Main, 0, _).\n");
+      _xblockexpression = str = _plus_7;
     }
     return _xblockexpression;
+  }
+  
+  public CharSequence compile(final GenericTraceExpression t) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(":- discontiguous match/3.");
+    _builder.newLine();
+    _builder.append(":- discontiguous event/2.");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      EList<EventType> _types = t.getTypes();
+      for(final EventType et : _types) {
+        CharSequence _compile = this.compile(et, t.getName());
+        _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    _builder.append("trace_expression(\'");
+    String _name = t.getName();
+    _builder.append(_name);
+    _builder.append("\', Main) :-");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Term> _terms = t.getTerms();
+      for(final Term term : _terms) {
+        String _compile_1 = this.compile(term);
+        _builder.append(_compile_1);
+        _builder.append(",");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("numbervars(Main, 0, _).");
+    _builder.newLine();
+    return _builder;
   }
   
   public String compile(final Term term) {
@@ -736,171 +778,113 @@ public class TExpGenerator extends AbstractGenerator {
             return (_plus_11 + ")");
           } else {
             if ((expr instanceof FilterExpr)) {
+              String name = ((String) null);
+              EObject _typeFilter = ((FilterExpr)expr).getFilterExpr().getTypeFilter();
+              if ((_typeFilter instanceof EventType)) {
+                EObject _typeFilter_1 = ((FilterExpr)expr).getFilterExpr().getTypeFilter();
+                name = ((EventType) _typeFilter_1).getName();
+              } else {
+                EObject _typeFilter_2 = ((FilterExpr)expr).getFilterExpr().getTypeFilter();
+                name = ((MsgEventType) _typeFilter_2).getName();
+              }
               PrologExpression _first = ((FilterExpr)expr).getFilterExpr().getFirst();
               boolean _tripleNotEquals = (_first != null);
               if (_tripleNotEquals) {
-                String _name = ((FilterExpr)expr).getFilterExpr().getTypeFilter().getName();
-                String _plus_12 = ("(" + _name);
-                String _plus_13 = (_plus_12 + "(");
                 String _compile_8 = this.compile(((FilterExpr)expr).getFilterExpr().getFirst());
-                String str = (_plus_13 + _compile_8);
+                String str = ((("(" + name) + "(") + _compile_8);
                 EList<PrologExpression> _exprs = ((FilterExpr)expr).getFilterExpr().getExprs();
                 for (final PrologExpression arg : _exprs) {
                   String _str = str;
                   String _compile_9 = this.compile(arg);
-                  String _plus_14 = (", " + _compile_9);
-                  str = (_str + _plus_14);
+                  String _plus_12 = (", " + _compile_9);
+                  str = (_str + _plus_12);
                 }
                 String _str_1 = str;
                 String _compile_10 = this.compile(((FilterExpr)expr).getFilterExpr().getBodyFilter());
-                String _plus_15 = (") >> " + _compile_10);
-                String _plus_16 = (_plus_15 + ")");
-                str = (_str_1 + _plus_16);
+                String _plus_13 = (") >> " + _compile_10);
+                String _plus_14 = (_plus_13 + ")");
+                str = (_str_1 + _plus_14);
                 return str;
               } else {
-                String _name_1 = ((FilterExpr)expr).getFilterExpr().getTypeFilter().getName();
-                String _plus_17 = ("(" + _name_1);
-                String _plus_18 = (_plus_17 + " >> ");
                 String _compile_11 = this.compile(((FilterExpr)expr).getFilterExpr().getBodyFilter());
-                String _plus_19 = (_plus_18 + _compile_11);
-                return (_plus_19 + ")");
+                String _plus_15 = ((("(" + name) + " >> ") + _compile_11);
+                return (_plus_15 + ")");
               }
             } else {
-              if (((expr.getTypeFilter() != null) && (expr.getBodyFilter() != null))) {
-                PrologExpression _first_1 = expr.getFirst();
+              if ((expr instanceof SeqExpr)) {
+                String name_1 = ((String) null);
+                EObject _typeSeq = ((SeqExpr)expr).getSeqExpr().getTypeSeq();
+                if ((_typeSeq instanceof EventType)) {
+                  EObject _typeSeq_1 = ((SeqExpr)expr).getSeqExpr().getTypeSeq();
+                  name_1 = ((EventType) _typeSeq_1).getName();
+                } else {
+                  EObject _typeSeq_2 = ((SeqExpr)expr).getSeqExpr().getTypeSeq();
+                  name_1 = ((MsgEventType) _typeSeq_2).getName();
+                }
+                PrologExpression _first_1 = ((SeqExpr)expr).getSeqExpr().getFirst();
                 boolean _tripleNotEquals_1 = (_first_1 != null);
                 if (_tripleNotEquals_1) {
-                  String _name_2 = expr.getTypeFilter().getName();
-                  String _plus_20 = ("(" + _name_2);
-                  String _plus_21 = (_plus_20 + "(");
-                  String _compile_12 = this.compile(expr.getFirst());
-                  String str_1 = (_plus_21 + _compile_12);
-                  EList<PrologExpression> _exprs_1 = expr.getExprs();
+                  String _compile_12 = this.compile(((SeqExpr)expr).getSeqExpr().getFirst());
+                  String str_1 = ((("(" + name_1) + "(") + _compile_12);
+                  EList<PrologExpression> _exprs_1 = ((SeqExpr)expr).getSeqExpr().getExprs();
                   for (final PrologExpression arg_1 : _exprs_1) {
                     String _str_2 = str_1;
                     String _compile_13 = this.compile(arg_1);
-                    String _plus_22 = (", " + _compile_13);
-                    str_1 = (_str_2 + _plus_22);
+                    String _plus_16 = (", " + _compile_13);
+                    str_1 = (_str_2 + _plus_16);
                   }
                   String _str_3 = str_1;
-                  String _compile_14 = this.compile(expr.getBodyFilter());
-                  String _plus_23 = (") >> " + _compile_14);
-                  String _plus_24 = (_plus_23 + ")");
-                  str_1 = (_str_3 + _plus_24);
+                  String _compile_14 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
+                  String _plus_17 = (") :" + _compile_14);
+                  String _plus_18 = (_plus_17 + ")");
+                  str_1 = (_str_3 + _plus_18);
                   return str_1;
                 } else {
-                  String _name_3 = expr.getTypeFilter().getName();
-                  String _plus_25 = ("(" + _name_3);
-                  String _plus_26 = (_plus_25 + " >> ");
-                  String _compile_15 = this.compile(expr.getBodyFilter());
-                  String _plus_27 = (_plus_26 + _compile_15);
-                  return (_plus_27 + ")");
+                  String _compile_15 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
+                  String _plus_19 = ((("(" + name_1) + " : ") + _compile_15);
+                  return (_plus_19 + ")");
                 }
               } else {
-                if ((expr instanceof SeqExpr)) {
-                  PrologExpression _first_2 = ((SeqExpr)expr).getSeqExpr().getFirst();
-                  boolean _tripleNotEquals_2 = (_first_2 != null);
-                  if (_tripleNotEquals_2) {
-                    String _name_4 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
-                    String _plus_28 = ("(" + _name_4);
-                    String _plus_29 = (_plus_28 + "(");
-                    String _compile_16 = this.compile(((SeqExpr)expr).getSeqExpr().getFirst());
-                    String str_2 = (_plus_29 + _compile_16);
-                    EList<PrologExpression> _exprs_2 = ((SeqExpr)expr).getSeqExpr().getExprs();
-                    for (final PrologExpression arg_2 : _exprs_2) {
-                      String _str_4 = str_2;
-                      String _compile_17 = this.compile(arg_2);
-                      String _plus_30 = (", " + _compile_17);
-                      str_2 = (_str_4 + _plus_30);
-                    }
-                    String _str_5 = str_2;
-                    String _compile_18 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
-                    String _plus_31 = (") :" + _compile_18);
-                    String _plus_32 = (_plus_31 + ")");
-                    str_2 = (_str_5 + _plus_32);
-                    return str_2;
-                  } else {
-                    String _name_5 = ((SeqExpr)expr).getSeqExpr().getTypeSeq().getName();
-                    String _plus_33 = ("(" + _name_5);
-                    String _plus_34 = (_plus_33 + " : ");
-                    String _compile_19 = this.compile(((SeqExpr)expr).getSeqExpr().getBodySeq());
-                    String _plus_35 = (_plus_34 + _compile_19);
-                    return (_plus_35 + ")");
-                  }
+                if ((expr instanceof VarExpr)) {
+                  String _variable = ((VarExpr)expr).getVarExpr().getVariable();
+                  String _plus_20 = ("var( " + _variable);
+                  String _plus_21 = (_plus_20 + ", ");
+                  String _compile_16 = this.compile(((VarExpr)expr).getVarExpr().getBodyVar());
+                  String _plus_22 = (_plus_21 + _compile_16);
+                  return (_plus_22 + ")");
                 } else {
-                  if (((expr.getTypeSeq() != null) && (expr.getBodySeq() != null))) {
-                    PrologExpression _first_3 = expr.getFirst();
-                    boolean _tripleNotEquals_3 = (_first_3 != null);
+                  if ((expr instanceof TerminalExpr)) {
+                    Term _term = ((TerminalExpr)expr).getTerminalExpr().getTerm();
+                    boolean _tripleNotEquals_2 = (_term != null);
+                    if (_tripleNotEquals_2) {
+                      String _upperCase = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(0, 1).toUpperCase();
+                      String _substring = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(1);
+                      return (_upperCase + _substring);
+                    }
+                    String _eps = ((TerminalExpr)expr).getTerminalExpr().getEps();
+                    boolean _tripleNotEquals_3 = (_eps != null);
                     if (_tripleNotEquals_3) {
-                      String _name_6 = expr.getTypeSeq().getName();
-                      String _plus_36 = ("(" + _name_6);
-                      String _plus_37 = (_plus_36 + "(");
-                      String _compile_20 = this.compile(expr.getFirst());
-                      String str_3 = (_plus_37 + _compile_20);
-                      EList<PrologExpression> _exprs_3 = expr.getExprs();
-                      for (final PrologExpression arg_3 : _exprs_3) {
-                        String _str_6 = str_3;
-                        String _compile_21 = this.compile(arg_3);
-                        String _plus_38 = (", " + _compile_21);
-                        str_3 = (_str_6 + _plus_38);
-                      }
-                      String _str_7 = str_3;
-                      String _compile_22 = this.compile(expr.getBodySeq());
-                      String _plus_39 = (") : " + _compile_22);
-                      String _plus_40 = (_plus_39 + ")");
-                      str_3 = (_str_7 + _plus_40);
-                      return str_3;
-                    } else {
-                      String _name_7 = expr.getTypeSeq().getName();
-                      String _plus_41 = ("(" + _name_7);
-                      String _plus_42 = (_plus_41 + " : ");
-                      String _compile_23 = this.compile(expr.getBodySeq());
-                      String _plus_43 = (_plus_42 + _compile_23);
-                      return (_plus_43 + ")");
+                      return "epsilon";
+                    }
+                    Expression _expr = ((TerminalExpr)expr).getTerminalExpr().getExpr();
+                    boolean _tripleNotEquals_4 = (_expr != null);
+                    if (_tripleNotEquals_4) {
+                      String _compile_17 = this.compile(((TerminalExpr)expr).getTerminalExpr().getExpr());
+                      String _plus_23 = ("(" + _compile_17);
+                      return (_plus_23 + ")");
                     }
                   } else {
-                    if ((expr instanceof VarExpr)) {
-                      String _variable = ((VarExpr)expr).getVarExpr().getVariable();
-                      String _plus_44 = ("var( " + _variable);
-                      String _plus_45 = (_plus_44 + ", ");
-                      String _compile_24 = this.compile(((VarExpr)expr).getVarExpr().getBodyVar());
-                      String _plus_46 = (_plus_45 + _compile_24);
-                      return (_plus_46 + ")");
+                    Term _term_1 = expr.getTerm();
+                    boolean _tripleNotEquals_5 = (_term_1 != null);
+                    if (_tripleNotEquals_5) {
+                      String _upperCase_1 = expr.getTerm().getName().substring(0, 1).toUpperCase();
+                      String _substring_1 = expr.getTerm().getName().substring(1);
+                      return (_upperCase_1 + _substring_1);
                     } else {
-                      if ((expr instanceof TerminalExpr)) {
-                        Term _term = ((TerminalExpr)expr).getTerminalExpr().getTerm();
-                        boolean _tripleNotEquals_4 = (_term != null);
-                        if (_tripleNotEquals_4) {
-                          String _upperCase = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(0, 1).toUpperCase();
-                          String _substring = ((TerminalExpr)expr).getTerminalExpr().getTerm().getName().substring(1);
-                          return (_upperCase + _substring);
-                        }
-                        String _eps = ((TerminalExpr)expr).getTerminalExpr().getEps();
-                        boolean _tripleNotEquals_5 = (_eps != null);
-                        if (_tripleNotEquals_5) {
-                          return "epsilon";
-                        }
-                        Expression _expr = ((TerminalExpr)expr).getTerminalExpr().getExpr();
-                        boolean _tripleNotEquals_6 = (_expr != null);
-                        if (_tripleNotEquals_6) {
-                          String _compile_25 = this.compile(((TerminalExpr)expr).getTerminalExpr().getExpr());
-                          String _plus_47 = ("(" + _compile_25);
-                          return (_plus_47 + ")");
-                        }
-                      } else {
-                        Term _term_1 = expr.getTerm();
-                        boolean _tripleNotEquals_7 = (_term_1 != null);
-                        if (_tripleNotEquals_7) {
-                          String _upperCase_1 = expr.getTerm().getName().substring(0, 1).toUpperCase();
-                          String _substring_1 = expr.getTerm().getName().substring(1);
-                          return (_upperCase_1 + _substring_1);
-                        } else {
-                          String _eps_1 = expr.getEps();
-                          boolean _tripleNotEquals_8 = (_eps_1 != null);
-                          if (_tripleNotEquals_8) {
-                            return "epsilon";
-                          }
-                        }
+                      String _eps_1 = expr.getEps();
+                      boolean _tripleNotEquals_6 = (_eps_1 != null);
+                      if (_tripleNotEquals_6) {
+                        return "epsilon";
                       }
                     }
                   }
@@ -914,7 +898,193 @@ public class TExpGenerator extends AbstractGenerator {
     return "";
   }
   
-  public String compile(final EventType eventType) {
+  public CharSequence compile(final EventType eventType, final String tExpCurrentName) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Event> _events = eventType.getEvents();
+      for(final Event event : _events) {
+        CharSequence _compile = this.compile(event, eventType, tExpCurrentName);
+        _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  /**
+   * for(event : eventType.events){
+   * str += 'match(' + tExpCurrentName + ', ' + event.compile + ', ' + eventType.name
+   * if(eventType.expr !== null){
+   * str += '(' + eventType.expr.compile
+   * for(e : eventType.exprs){
+   * str += ', ' + e.compile
+   * }
+   * str += ')'
+   * }
+   * str += ')'
+   * if(event.constraints !== null){
+   * str += ' :- \n\t' + event.constraints.compile + '.'
+   * } else{
+   * str += '.'
+   * }
+   * str += '\n' + 'event(' + tExpCurrentName + ', ' + event.compile + ').\n'
+   * }
+   * 
+   * return str
+   * }
+   */
+  public CharSequence compileExprs(final PrologExpression expr, final EList<PrologExpression> exprs) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((expr != null)) {
+        _builder.append("(");
+        String _compile = this.compile(expr);
+        _builder.append(_compile);
+        {
+          for(final PrologExpression e : exprs) {
+            _builder.append(", ");
+            String _compile_1 = this.compile(e);
+            _builder.append(_compile_1);
+          }
+        }
+        _builder.append(")");
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compileExprs(final GroundTerm expr, final EList<GroundTerm> exprs) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((expr != null)) {
+        _builder.append("(");
+        String _compile = this.compile(expr);
+        _builder.append(_compile);
+        {
+          for(final GroundTerm e : exprs) {
+            _builder.append(", ");
+            String _compile_1 = this.compile(e);
+            _builder.append(_compile_1);
+          }
+        }
+        _builder.append(")");
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final BasicEvent event, final EventType type, final String tExpCurrentName) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("match(");
+    _builder.append(tExpCurrentName);
+    _builder.append(",");
+    String _name = event.getName();
+    _builder.append(_name);
+    CharSequence _compileExprs = this.compileExprs(event.getExpr(), event.getExprs());
+    _builder.append(_compileExprs);
+    _builder.append(", ");
+    String _name_1 = type.getName();
+    _builder.append(_name_1);
+    CharSequence _compileExprs_1 = this.compileExprs(type.getExpr(), type.getExprs());
+    _builder.append(_compileExprs_1);
+    _builder.append(")");
+    {
+      PrologExpression _constraints = event.getConstraints();
+      boolean _tripleNotEquals = (_constraints != null);
+      if (_tripleNotEquals) {
+        _builder.append(" :- ");
+        String _compile = this.compile(event.getConstraints());
+        _builder.append(_compile);
+      }
+    }
+    _builder.append(".");
+    _builder.newLineIfNotEmpty();
+    _builder.append("event(");
+    _builder.append(tExpCurrentName);
+    _builder.append(", ");
+    String _name_2 = event.getName();
+    _builder.append(_name_2);
+    CharSequence _compileExprs_2 = this.compileExprs(event.getExpr(), event.getExprs());
+    _builder.append(_compileExprs_2);
+    _builder.append(").");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final Event event, final EventType eventType, final String tExpCurrentName) {
+    CharSequence _xifexpression = null;
+    if ((event instanceof BasicEvent)) {
+      _xifexpression = this.compile(((BasicEvent) event), eventType, tExpCurrentName);
+    } else {
+      CharSequence _xifexpression_1 = null;
+      if ((event instanceof DerivedEvent)) {
+        _xifexpression_1 = this.compile(((DerivedEvent) event), eventType, tExpCurrentName);
+      } else {
+        throw new AssertionError("This kind of event is not supported");
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
+  
+  public CharSequence compile(final DerivedEvent event, final EventType type, final String tExpCurrentName) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("match(");
+    _builder.append(tExpCurrentName);
+    _builder.append(", Event, ");
+    String _name = type.getName();
+    _builder.append(_name);
+    CharSequence _compileExprs = this.compileExprs(type.getExpr(), type.getExprs());
+    _builder.append(_compileExprs);
+    _builder.append(") :-");
+    _builder.newLineIfNotEmpty();
+    _builder.append("match(");
+    _builder.append(tExpCurrentName);
+    _builder.append(", Event, ");
+    String _name_1 = event.getBase().getName();
+    _builder.append(_name_1);
+    CharSequence _compileExprs_1 = this.compileExprs(event.getExpr(), event.getExprs());
+    _builder.append(_compileExprs_1);
+    _builder.append(")");
+    {
+      PrologExpression _constraints = event.getConstraints();
+      boolean _tripleNotEquals = (_constraints != null);
+      if (_tripleNotEquals) {
+        _builder.append(", ");
+        String _compile = this.compile(event.getConstraints());
+        _builder.append(_compile);
+      }
+    }
+    _builder.append(".");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public String compile(final GroundTerm gt) {
+    String _variable = gt.getVariable();
+    boolean _tripleNotEquals = (_variable != null);
+    if (_tripleNotEquals) {
+      return gt.getVariable();
+    }
+    GroundTerm _arg = gt.getArg();
+    boolean _tripleEquals = (_arg == null);
+    if (_tripleEquals) {
+      return gt.getSymbol();
+    }
+    final StringJoiner joiner = new StringJoiner(",", "(", ")");
+    joiner.add(this.compile(gt.getArg()));
+    EList<GroundTerm> _args = gt.getArgs();
+    for (final GroundTerm a : _args) {
+      joiner.add(this.compile(a));
+    }
+    String _symbol = gt.getSymbol();
+    String _string = joiner.toString();
+    return (_symbol + _string);
+  }
+  
+  public String compile(final MsgEventType eventType, final String tExpCurrentName) {
     String str = "";
     EList<Msg> _msgs = eventType.getMsgs();
     for (final Msg msg : _msgs) {
@@ -924,7 +1094,7 @@ public class TExpGenerator extends AbstractGenerator {
         if (_tripleNotEquals) {
           String _str = str;
           String _compile = this.compile(msg);
-          String _plus = ((("match(" + this.tExpCurrentName) + ", ") + _compile);
+          String _plus = ((("match(" + tExpCurrentName) + ", ") + _compile);
           String _plus_1 = (_plus + ", ");
           String _name = eventType.getChannel().getName();
           String _plus_2 = (_plus_1 + _name);
@@ -935,7 +1105,7 @@ public class TExpGenerator extends AbstractGenerator {
         } else {
           String _str_1 = str;
           String _compile_1 = this.compile(msg);
-          String _plus_5 = ((("match(" + this.tExpCurrentName) + ", ") + _compile_1);
+          String _plus_5 = ((("match(" + tExpCurrentName) + ", ") + _compile_1);
           String _plus_6 = (_plus_5 + ", ");
           String _plus_7 = (_plus_6 + "default), ");
           String _name_2 = eventType.getName();
@@ -978,7 +1148,7 @@ public class TExpGenerator extends AbstractGenerator {
         if (_tripleNotEquals_3) {
           String _str_8 = str;
           String _compile_5 = this.compile(msg);
-          String _plus_13 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_5);
+          String _plus_13 = (((("\n" + "event(") + tExpCurrentName) + ", ") + _compile_5);
           String _plus_14 = (_plus_13 + ", ");
           String _name_3 = eventType.getChannel().getName();
           String _plus_15 = (_plus_14 + _name_3);
@@ -987,7 +1157,7 @@ public class TExpGenerator extends AbstractGenerator {
         } else {
           String _str_9 = str;
           String _compile_6 = this.compile(msg);
-          String _plus_17 = (((("\n" + "event(") + this.tExpCurrentName) + ", ") + _compile_6);
+          String _plus_17 = (((("\n" + "event(") + tExpCurrentName) + ", ") + _compile_6);
           String _plus_18 = (_plus_17 + ", default)).\n");
           str = (_str_9 + _plus_18);
         }
@@ -1001,7 +1171,7 @@ public class TExpGenerator extends AbstractGenerator {
       if (_tripleNotEquals_1) {
         String _str = str;
         String _name = eventType.getName();
-        String _plus = ((("reliable(" + this.tExpCurrentName) + ", ") + _name);
+        String _plus = ((("reliable(" + tExpCurrentName) + ", ") + _name);
         String _plus_1 = (_plus + ", ");
         String _reliability_1 = eventType.getChannel().getReliability();
         String _plus_2 = (_plus_1 + _reliability_1);
@@ -1010,7 +1180,7 @@ public class TExpGenerator extends AbstractGenerator {
       } else {
         String _str_1 = str;
         String _name_1 = eventType.getName();
-        String _plus_4 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_1);
+        String _plus_4 = ((("reliable(" + tExpCurrentName) + ", ") + _name_1);
         String _plus_5 = (_plus_4 + ", ");
         String _plus_6 = (_plus_5 + "1");
         String _plus_7 = (_plus_6 + ").\n");
@@ -1019,7 +1189,7 @@ public class TExpGenerator extends AbstractGenerator {
     } else {
       String _str_2 = str;
       String _name_2 = eventType.getName();
-      String _plus_8 = ((("reliable(" + this.tExpCurrentName) + ", ") + _name_2);
+      String _plus_8 = ((("reliable(" + tExpCurrentName) + ", ") + _name_2);
       String _plus_9 = (_plus_8 + ", 1).\n");
       str = (_str_2 + _plus_9);
     }

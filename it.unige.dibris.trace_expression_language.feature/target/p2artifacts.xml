@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='2'>
-  <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201706231122'>
+  <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201709281102'>
     <properties size='6'>
-      <property name='artifact.size' value='702'/>
-      <property name='download.size' value='702'/>
+      <property name='artifact.size' value='703'/>
+      <property name='download.size' value='703'/>
       <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
       <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
       <property name='download.contentType' value='application/zip'/>
     </properties>
   </artifact>
-  <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201706231122'>
+  <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201709281102'>
     <properties size='7'>
       <property name='artifact.size' value='2509'/>
       <property name='download.size' value='2509'/>

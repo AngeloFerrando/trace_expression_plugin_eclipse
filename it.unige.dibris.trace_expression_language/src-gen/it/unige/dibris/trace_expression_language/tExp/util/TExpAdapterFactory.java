@@ -91,6 +91,36 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
         return createTraceExpressionAdapter();
       }
       @Override
+      public Adapter caseGenericTraceExpression(GenericTraceExpression object)
+      {
+        return createGenericTraceExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAgentTraceExpression(AgentTraceExpression object)
+      {
+        return createAgentTraceExpressionAdapter();
+      }
+      @Override
+      public Adapter caseEventType(EventType object)
+      {
+        return createEventTypeAdapter();
+      }
+      @Override
+      public Adapter caseMsgEventType(MsgEventType object)
+      {
+        return createMsgEventTypeAdapter();
+      }
+      @Override
+      public Adapter caseGroundTerm(GroundTerm object)
+      {
+        return createGroundTermAdapter();
+      }
+      @Override
+      public Adapter caseEvent(Event object)
+      {
+        return createEventAdapter();
+      }
+      @Override
       public Adapter caseTerm(Term object)
       {
         return createTermAdapter();
@@ -99,11 +129,6 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
-      }
-      @Override
-      public Adapter caseEventType(EventType object)
-      {
-        return createEventTypeAdapter();
       }
       @Override
       public Adapter caseMsg(Msg object)
@@ -159,6 +184,16 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
       public Adapter caseListExpression(ListExpression object)
       {
         return createListExpressionAdapter();
+      }
+      @Override
+      public Adapter caseBasicEvent(BasicEvent object)
+      {
+        return createBasicEventAdapter();
+      }
+      @Override
+      public Adapter caseDerivedEvent(DerivedEvent object)
+      {
+        return createDerivedEventAdapter();
       }
       @Override
       public Adapter caseShuffleExpr(ShuffleExpr object)
@@ -283,6 +318,96 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression <em>Generic Trace Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
+   * @generated
+   */
+  public Adapter createGenericTraceExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression <em>Agent Trace Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+   * @generated
+   */
+  public Adapter createAgentTraceExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.EventType <em>Event Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType
+   * @generated
+   */
+  public Adapter createEventTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType <em>Msg Event Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType
+   * @generated
+   */
+  public Adapter createMsgEventTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm <em>Ground Term</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm
+   * @generated
+   */
+  public Adapter createGroundTermAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.Event <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.Event
+   * @generated
+   */
+  public Adapter createEventAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.Term <em>Term</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -308,21 +433,6 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.EventType <em>Event Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType
-   * @generated
-   */
-  public Adapter createEventTypeAdapter()
   {
     return null;
   }
@@ -488,6 +598,36 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createListExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.BasicEvent <em>Basic Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.BasicEvent
+   * @generated
+   */
+  public Adapter createBasicEventAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.DerivedEvent <em>Derived Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.unige.dibris.trace_expression_language.tExp.DerivedEvent
+   * @generated
+   */
+  public Adapter createDerivedEventAdapter()
   {
     return null;
   }

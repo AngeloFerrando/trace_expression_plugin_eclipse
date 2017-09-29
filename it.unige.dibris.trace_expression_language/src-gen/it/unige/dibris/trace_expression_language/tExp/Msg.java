@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getAsync_sender <em>Async sender</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getReceiver <em>Receiver</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getSender <em>Sender</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getAsync_receiver <em>Async receiver</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getContent <em>Content</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.Msg#getConditions <em>Conditions</em>}</li>
  * </ul>
@@ -29,6 +29,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Msg extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Performative</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Performative</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Performative</em>' attribute.
+   * @see #setPerformative(String)
+   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getMsg_Performative()
+   * @model
+   * @generated
+   */
+  String getPerformative();
+
+  /**
+   * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Performative</em>' attribute.
+   * @see #getPerformative()
+   * @generated
+   */
+  void setPerformative(String value);
+
   /**
    * Returns the value of the '<em><b>Async sender</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -132,32 +158,6 @@ public interface Msg extends EObject
    * @generated
    */
   void setAsync_receiver(Role value);
-
-  /**
-   * Returns the value of the '<em><b>Performative</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Performative</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Performative</em>' attribute.
-   * @see #setPerformative(String)
-   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getMsg_Performative()
-   * @model
-   * @generated
-   */
-  String getPerformative();
-
-  /**
-   * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Performative</em>' attribute.
-   * @see #getPerformative()
-   * @generated
-   */
-  void setPerformative(String value);
 
   /**
    * Returns the value of the '<em><b>Content</b></em>' containment reference.

@@ -68,9 +68,14 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
       case TExpPackage.DOMAINMODEL: return createDomainmodel();
       case TExpPackage.PROLOG_EXPRESSION: return createPrologExpression();
       case TExpPackage.TRACE_EXPRESSION: return createTraceExpression();
+      case TExpPackage.GENERIC_TRACE_EXPRESSION: return createGenericTraceExpression();
+      case TExpPackage.AGENT_TRACE_EXPRESSION: return createAgentTraceExpression();
+      case TExpPackage.EVENT_TYPE: return createEventType();
+      case TExpPackage.MSG_EVENT_TYPE: return createMsgEventType();
+      case TExpPackage.GROUND_TERM: return createGroundTerm();
+      case TExpPackage.EVENT: return createEvent();
       case TExpPackage.TERM: return createTerm();
       case TExpPackage.EXPRESSION: return createExpression();
-      case TExpPackage.EVENT_TYPE: return createEventType();
       case TExpPackage.MSG: return createMsg();
       case TExpPackage.CHANNEL: return createChannel();
       case TExpPackage.ROLE: return createRole();
@@ -82,6 +87,8 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
       case TExpPackage.STRING_EXPRESSION: return createStringExpression();
       case TExpPackage.NUMBER_EXPRESSION: return createNumberExpression();
       case TExpPackage.LIST_EXPRESSION: return createListExpression();
+      case TExpPackage.BASIC_EVENT: return createBasicEvent();
+      case TExpPackage.DERIVED_EVENT: return createDerivedEvent();
       case TExpPackage.SHUFFLE_EXPR: return createShuffleExpr();
       case TExpPackage.UNION_EXPR: return createUnionExpr();
       case TExpPackage.AND_EXPR: return createAndExpr();
@@ -136,6 +143,72 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public GenericTraceExpression createGenericTraceExpression()
+  {
+    GenericTraceExpressionImpl genericTraceExpression = new GenericTraceExpressionImpl();
+    return genericTraceExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AgentTraceExpression createAgentTraceExpression()
+  {
+    AgentTraceExpressionImpl agentTraceExpression = new AgentTraceExpressionImpl();
+    return agentTraceExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EventType createEventType()
+  {
+    EventTypeImpl eventType = new EventTypeImpl();
+    return eventType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MsgEventType createMsgEventType()
+  {
+    MsgEventTypeImpl msgEventType = new MsgEventTypeImpl();
+    return msgEventType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroundTerm createGroundTerm()
+  {
+    GroundTermImpl groundTerm = new GroundTermImpl();
+    return groundTerm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Event createEvent()
+  {
+    EventImpl event = new EventImpl();
+    return event;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Term createTerm()
   {
     TermImpl term = new TermImpl();
@@ -151,17 +224,6 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EventType createEventType()
-  {
-    EventTypeImpl eventType = new EventTypeImpl();
-    return eventType;
   }
 
   /**
@@ -283,6 +345,28 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
   {
     ListExpressionImpl listExpression = new ListExpressionImpl();
     return listExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicEvent createBasicEvent()
+  {
+    BasicEventImpl basicEvent = new BasicEventImpl();
+    return basicEvent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DerivedEvent createDerivedEvent()
+  {
+    DerivedEventImpl derivedEvent = new DerivedEventImpl();
+    return derivedEvent;
   }
 
   /**

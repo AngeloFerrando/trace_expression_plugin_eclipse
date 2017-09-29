@@ -18,26 +18,55 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/bodyL"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/terms"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/rolesL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/roles"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/typesL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/types"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/modulesL"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/modules"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/decentralizedL"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/decentralized"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/partitionL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/partition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/constraintsL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/constraints"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/guiL"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/gui"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/minimalL"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/minimal"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/thresholdL"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/threshold"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//TraceExpression/channelsL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//TraceExpression/channels"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//GenericTraceExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//GenericTraceExpression/types"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//AgentTraceExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/rolesL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AgentTraceExpression/roles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AgentTraceExpression/types"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/modulesL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/modules"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/decentralizedL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/decentralized"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/partitionL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AgentTraceExpression/partition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/constraintsL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AgentTraceExpression/constraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/guiL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/gui"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/minimalL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/minimal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/thresholdL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/threshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//AgentTraceExpression/channelsL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//AgentTraceExpression/channels"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//EventType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//EventType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/exprs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/events"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//MsgEventType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//MsgEventType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//MsgEventType/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//MsgEventType/exprs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//MsgEventType/msgs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//MsgEventType/channel"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//GroundTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//GroundTerm/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//GroundTerm/symbol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//GroundTerm/arg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//GroundTerm/args"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Event/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Event/exprs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Event/constraints"/>
     </genClasses>
     <genClasses ecoreClass="TExp.ecore#//Term">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//Term/name"/>
@@ -57,19 +86,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//Expression/term"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Expression/expr"/>
     </genClasses>
-    <genClasses ecoreClass="TExp.ecore#//EventType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//EventType/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/exprs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/msgs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//EventType/channel"/>
-    </genClasses>
     <genClasses ecoreClass="TExp.ecore#//Msg">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//Msg/performative"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/async_sender"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/receiver"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/sender"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/async_receiver"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//Msg/performative"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/content"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//Msg/conditions"/>
     </genClasses>
@@ -112,6 +134,12 @@
     <genClasses ecoreClass="TExp.ecore#//ListExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ListExpression/head"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ListExpression/tail"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//BasicEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TExp.ecore#//BasicEvent/name"/>
+    </genClasses>
+    <genClasses ecoreClass="TExp.ecore#//DerivedEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TExp.ecore#//DerivedEvent/base"/>
     </genClasses>
     <genClasses ecoreClass="TExp.ecore#//ShuffleExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TExp.ecore#//ShuffleExpr/left"/>

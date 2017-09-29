@@ -94,6 +94,50 @@ public class TExpSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TExpPackage.GENERIC_TRACE_EXPRESSION:
+      {
+        GenericTraceExpression genericTraceExpression = (GenericTraceExpression)theEObject;
+        T result = caseGenericTraceExpression(genericTraceExpression);
+        if (result == null) result = caseTraceExpression(genericTraceExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.AGENT_TRACE_EXPRESSION:
+      {
+        AgentTraceExpression agentTraceExpression = (AgentTraceExpression)theEObject;
+        T result = caseAgentTraceExpression(agentTraceExpression);
+        if (result == null) result = caseTraceExpression(agentTraceExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.EVENT_TYPE:
+      {
+        EventType eventType = (EventType)theEObject;
+        T result = caseEventType(eventType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.MSG_EVENT_TYPE:
+      {
+        MsgEventType msgEventType = (MsgEventType)theEObject;
+        T result = caseMsgEventType(msgEventType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.GROUND_TERM:
+      {
+        GroundTerm groundTerm = (GroundTerm)theEObject;
+        T result = caseGroundTerm(groundTerm);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.EVENT:
+      {
+        Event event = (Event)theEObject;
+        T result = caseEvent(event);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TExpPackage.TERM:
       {
         Term term = (Term)theEObject;
@@ -105,13 +149,6 @@ public class TExpSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TExpPackage.EVENT_TYPE:
-      {
-        EventType eventType = (EventType)theEObject;
-        T result = caseEventType(eventType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -194,6 +231,22 @@ public class TExpSwitch<T> extends Switch<T>
         ListExpression listExpression = (ListExpression)theEObject;
         T result = caseListExpression(listExpression);
         if (result == null) result = casePrologExpression(listExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.BASIC_EVENT:
+      {
+        BasicEvent basicEvent = (BasicEvent)theEObject;
+        T result = caseBasicEvent(basicEvent);
+        if (result == null) result = caseEvent(basicEvent);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TExpPackage.DERIVED_EVENT:
+      {
+        DerivedEvent derivedEvent = (DerivedEvent)theEObject;
+        T result = caseDerivedEvent(derivedEvent);
+        if (result == null) result = caseEvent(derivedEvent);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -338,6 +391,102 @@ public class TExpSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Generic Trace Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generic Trace Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenericTraceExpression(GenericTraceExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Agent Trace Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Agent Trace Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAgentTraceExpression(AgentTraceExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Event Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Event Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEventType(EventType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Msg Event Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Msg Event Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMsgEventType(MsgEventType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Ground Term</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ground Term</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroundTerm(GroundTerm object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvent(Event object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Term</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -365,22 +514,6 @@ public class TExpSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Event Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Event Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEventType(EventType object)
   {
     return null;
   }
@@ -557,6 +690,38 @@ public class TExpSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseListExpression(ListExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Basic Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Basic Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBasicEvent(BasicEvent object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Derived Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Derived Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDerivedEvent(DerivedEvent object)
   {
     return null;
   }

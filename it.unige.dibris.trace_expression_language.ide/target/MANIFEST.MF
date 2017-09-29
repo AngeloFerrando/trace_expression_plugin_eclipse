@@ -5,7 +5,7 @@ Export-Package: it.unige.dibris.trace_expression_language.ide.contenta
  ssist.antlr,it.unige.dibris.trace_expression_language.ide.contentassi
  st.antlr.internal
 Bundle-Name: it.unige.dibris.trace_expression_language.ide
-Bundle-Version: 1.0.0.201706231122
+Bundle-Version: 1.0.0.201709281102
 Require-Bundle: it.unige.dibris.trace_expression_language,org.eclipse.
  xtext.ide,org.eclipse.xtext.xbase.ide,org.antlr.runtime
 Bundle-ManifestVersion: 2

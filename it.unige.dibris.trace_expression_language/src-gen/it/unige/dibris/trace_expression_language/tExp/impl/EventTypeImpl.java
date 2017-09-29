@@ -3,10 +3,9 @@
  */
 package it.unige.dibris.trace_expression_language.tExp.impl;
 
-import it.unige.dibris.trace_expression_language.tExp.Channel;
+import it.unige.dibris.trace_expression_language.tExp.Event;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
-import it.unige.dibris.trace_expression_language.tExp.Msg;
-import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.TExpPackage;
 
 import java.util.Collection;
@@ -36,8 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getExpr <em>Expr</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getExprs <em>Exprs</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getMsgs <em>Msgs</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getChannel <em>Channel</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,7 +70,7 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    * @ordered
    */
-  protected PrologExpression expr;
+  protected GroundTerm expr;
 
   /**
    * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference list.
@@ -82,27 +80,17 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    * @ordered
    */
-  protected EList<PrologExpression> exprs;
+  protected EList<GroundTerm> exprs;
 
   /**
-   * The cached value of the '{@link #getMsgs() <em>Msgs</em>}' containment reference list.
+   * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMsgs()
+   * @see #getEvents()
    * @generated
    * @ordered
    */
-  protected EList<Msg> msgs;
-
-  /**
-   * The cached value of the '{@link #getChannel() <em>Channel</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getChannel()
-   * @generated
-   * @ordered
-   */
-  protected Channel channel;
+  protected EList<Event> events;
 
   /**
    * <!-- begin-user-doc -->
@@ -153,7 +141,7 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public PrologExpression getExpr()
+  public GroundTerm getExpr()
   {
     return expr;
   }
@@ -163,9 +151,9 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(PrologExpression newExpr, NotificationChain msgs)
+  public NotificationChain basicSetExpr(GroundTerm newExpr, NotificationChain msgs)
   {
-    PrologExpression oldExpr = expr;
+    GroundTerm oldExpr = expr;
     expr = newExpr;
     if (eNotificationRequired())
     {
@@ -180,7 +168,7 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpr(PrologExpression newExpr)
+  public void setExpr(GroundTerm newExpr)
   {
     if (newExpr != expr)
     {
@@ -201,11 +189,11 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PrologExpression> getExprs()
+  public EList<GroundTerm> getExprs()
   {
     if (exprs == null)
     {
-      exprs = new EObjectContainmentEList<PrologExpression>(PrologExpression.class, this, TExpPackage.EVENT_TYPE__EXPRS);
+      exprs = new EObjectContainmentEList<GroundTerm>(GroundTerm.class, this, TExpPackage.EVENT_TYPE__EXPRS);
     }
     return exprs;
   }
@@ -215,56 +203,13 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Msg> getMsgs()
+  public EList<Event> getEvents()
   {
-    if (msgs == null)
+    if (events == null)
     {
-      msgs = new EObjectContainmentEList<Msg>(Msg.class, this, TExpPackage.EVENT_TYPE__MSGS);
+      events = new EObjectContainmentEList<Event>(Event.class, this, TExpPackage.EVENT_TYPE__EVENTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Channel getChannel()
-  {
-    if (channel != null && channel.eIsProxy())
-    {
-      InternalEObject oldChannel = (InternalEObject)channel;
-      channel = (Channel)eResolveProxy(oldChannel);
-      if (channel != oldChannel)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TExpPackage.EVENT_TYPE__CHANNEL, oldChannel, channel));
-      }
-    }
-    return channel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Channel basicGetChannel()
-  {
-    return channel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setChannel(Channel newChannel)
-  {
-    Channel oldChannel = channel;
-    channel = newChannel;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.EVENT_TYPE__CHANNEL, oldChannel, channel));
+    return events;
   }
 
   /**
@@ -281,8 +226,8 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
         return basicSetExpr(null, msgs);
       case TExpPackage.EVENT_TYPE__EXPRS:
         return ((InternalEList<?>)getExprs()).basicRemove(otherEnd, msgs);
-      case TExpPackage.EVENT_TYPE__MSGS:
-        return ((InternalEList<?>)getMsgs()).basicRemove(otherEnd, msgs);
+      case TExpPackage.EVENT_TYPE__EVENTS:
+        return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -303,11 +248,8 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
         return getExpr();
       case TExpPackage.EVENT_TYPE__EXPRS:
         return getExprs();
-      case TExpPackage.EVENT_TYPE__MSGS:
-        return getMsgs();
-      case TExpPackage.EVENT_TYPE__CHANNEL:
-        if (resolve) return getChannel();
-        return basicGetChannel();
+      case TExpPackage.EVENT_TYPE__EVENTS:
+        return getEvents();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -327,18 +269,15 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
         setName((String)newValue);
         return;
       case TExpPackage.EVENT_TYPE__EXPR:
-        setExpr((PrologExpression)newValue);
+        setExpr((GroundTerm)newValue);
         return;
       case TExpPackage.EVENT_TYPE__EXPRS:
         getExprs().clear();
-        getExprs().addAll((Collection<? extends PrologExpression>)newValue);
+        getExprs().addAll((Collection<? extends GroundTerm>)newValue);
         return;
-      case TExpPackage.EVENT_TYPE__MSGS:
-        getMsgs().clear();
-        getMsgs().addAll((Collection<? extends Msg>)newValue);
-        return;
-      case TExpPackage.EVENT_TYPE__CHANNEL:
-        setChannel((Channel)newValue);
+      case TExpPackage.EVENT_TYPE__EVENTS:
+        getEvents().clear();
+        getEvents().addAll((Collection<? extends Event>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -358,16 +297,13 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
         setName(NAME_EDEFAULT);
         return;
       case TExpPackage.EVENT_TYPE__EXPR:
-        setExpr((PrologExpression)null);
+        setExpr((GroundTerm)null);
         return;
       case TExpPackage.EVENT_TYPE__EXPRS:
         getExprs().clear();
         return;
-      case TExpPackage.EVENT_TYPE__MSGS:
-        getMsgs().clear();
-        return;
-      case TExpPackage.EVENT_TYPE__CHANNEL:
-        setChannel((Channel)null);
+      case TExpPackage.EVENT_TYPE__EVENTS:
+        getEvents().clear();
         return;
     }
     super.eUnset(featureID);
@@ -389,10 +325,8 @@ public class EventTypeImpl extends MinimalEObjectImpl.Container implements Event
         return expr != null;
       case TExpPackage.EVENT_TYPE__EXPRS:
         return exprs != null && !exprs.isEmpty();
-      case TExpPackage.EVENT_TYPE__MSGS:
-        return msgs != null && !msgs.isEmpty();
-      case TExpPackage.EVENT_TYPE__CHANNEL:
-        return channel != null;
+      case TExpPackage.EVENT_TYPE__EVENTS:
+        return events != null && !events.isEmpty();
     }
     return super.eIsSet(featureID);
   }

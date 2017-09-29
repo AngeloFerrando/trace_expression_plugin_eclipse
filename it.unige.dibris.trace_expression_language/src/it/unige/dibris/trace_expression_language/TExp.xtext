@@ -216,7 +216,9 @@ GroundTerm:
 ;
 
 Event:
-	name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')? ('[' constraints=ExpressionInfinity ']')?
+	(({BasicEvent} name=ID ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?)|
+	({DerivedEvent} 'derived' base=[EventType] ('(' expr=Expression0 (OP1000XFY exprs+=Expression0)* ')')?)) 
+	('[' constraints=ExpressionInfinity ']')?
 ;
 
 Term:

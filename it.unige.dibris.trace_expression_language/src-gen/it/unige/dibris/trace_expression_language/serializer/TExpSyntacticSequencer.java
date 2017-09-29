@@ -21,24 +21,24 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class TExpSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected TExpGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_AgentTraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q;
 	protected AbstractElementAlias match_Expression0_LeftParenthesisKeyword_5_0_a;
 	protected AbstractElementAlias match_Expression0_LeftParenthesisKeyword_5_0_p;
 	protected AbstractElementAlias match_Partition_OP1000XFYTerminalRuleCall_2_1_q;
 	protected AbstractElementAlias match_Role_OP1000XFYTerminalRuleCall_1_2_1_1_q;
 	protected AbstractElementAlias match_Role___LeftParenthesisKeyword_1_2_0_RightParenthesisKeyword_1_2_2__q;
 	protected AbstractElementAlias match_Together_OP1000XFYTerminalRuleCall_2_1_q;
-	protected AbstractElementAlias match_TraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (TExpGrammarAccess) access;
+		match_AgentTraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q = new TokenAlias(false, true, grammarAccess.getAgentTraceExpressionAccess().getOP1000XFYTerminalRuleCall_5_1_1_1());
 		match_Expression0_LeftParenthesisKeyword_5_0_a = new TokenAlias(true, true, grammarAccess.getExpression0Access().getLeftParenthesisKeyword_5_0());
 		match_Expression0_LeftParenthesisKeyword_5_0_p = new TokenAlias(true, false, grammarAccess.getExpression0Access().getLeftParenthesisKeyword_5_0());
 		match_Partition_OP1000XFYTerminalRuleCall_2_1_q = new TokenAlias(false, true, grammarAccess.getPartitionAccess().getOP1000XFYTerminalRuleCall_2_1());
 		match_Role_OP1000XFYTerminalRuleCall_1_2_1_1_q = new TokenAlias(false, true, grammarAccess.getRoleAccess().getOP1000XFYTerminalRuleCall_1_2_1_1());
 		match_Role___LeftParenthesisKeyword_1_2_0_RightParenthesisKeyword_1_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getRoleAccess().getLeftParenthesisKeyword_1_2_0()), new TokenAlias(false, false, grammarAccess.getRoleAccess().getRightParenthesisKeyword_1_2_2()));
 		match_Together_OP1000XFYTerminalRuleCall_2_1_q = new TokenAlias(false, true, grammarAccess.getTogetherAccess().getOP1000XFYTerminalRuleCall_2_1());
-		match_TraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q = new TokenAlias(false, true, grammarAccess.getTraceExpressionAccess().getOP1000XFYTerminalRuleCall_5_1_1_1());
 	}
 	
 	@Override
@@ -102,7 +102,9 @@ public class TExpSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Expression0_LeftParenthesisKeyword_5_0_a.equals(syntax))
+			if (match_AgentTraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q.equals(syntax))
+				emit_AgentTraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Expression0_LeftParenthesisKeyword_5_0_a.equals(syntax))
 				emit_Expression0_LeftParenthesisKeyword_5_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Expression0_LeftParenthesisKeyword_5_0_p.equals(syntax))
 				emit_Expression0_LeftParenthesisKeyword_5_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -114,12 +116,33 @@ public class TExpSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Role___LeftParenthesisKeyword_1_2_0_RightParenthesisKeyword_1_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Together_OP1000XFYTerminalRuleCall_2_1_q.equals(syntax))
 				emit_Together_OP1000XFYTerminalRuleCall_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q.equals(syntax))
-				emit_TraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     OP1000XFY?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     roles+=Role (ambiguity) '}' (rule end)
+	 *     roles+=Role (ambiguity) bodyL+='body:'
+	 *     roles+=Role (ambiguity) channelsL+='channels:'
+	 *     roles+=Role (ambiguity) constraintsL+='constraints:'
+	 *     roles+=Role (ambiguity) decentralizedL+='decentralized:'
+	 *     roles+=Role (ambiguity) guiL+='gui:'
+	 *     roles+=Role (ambiguity) minimalL+='minimal:'
+	 *     roles+=Role (ambiguity) modulesL+='modules:'
+	 *     roles+=Role (ambiguity) partitionL+='partition:'
+	 *     roles+=Role (ambiguity) roles+=Role
+	 *     roles+=Role (ambiguity) rolesL+='roles:'
+	 *     roles+=Role (ambiguity) thresholdL+='threshold:'
+	 *     roles+=Role (ambiguity) typesL+='types:'
+	 */
+	protected void emit_AgentTraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     '('*
@@ -193,29 +216,6 @@ public class TExpSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     roles+=[Role|ID] (ambiguity) roles+=[Role|ID]
 	 */
 	protected void emit_Together_OP1000XFYTerminalRuleCall_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     OP1000XFY?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     roles+=Role (ambiguity) '}' (rule end)
-	 *     roles+=Role (ambiguity) bodyL+='body:'
-	 *     roles+=Role (ambiguity) channelsL+='channels:'
-	 *     roles+=Role (ambiguity) constraintsL+='constraints:'
-	 *     roles+=Role (ambiguity) decentralizedL+='decentralized:'
-	 *     roles+=Role (ambiguity) guiL+='gui:'
-	 *     roles+=Role (ambiguity) minimalL+='minimal:'
-	 *     roles+=Role (ambiguity) modulesL+='modules:'
-	 *     roles+=Role (ambiguity) partitionL+='partition:'
-	 *     roles+=Role (ambiguity) roles+=Role
-	 *     roles+=Role (ambiguity) rolesL+='roles:'
-	 *     roles+=Role (ambiguity) thresholdL+='threshold:'
-	 *     roles+=Role (ambiguity) typesL+='types:'
-	 */
-	protected void emit_TraceExpression_OP1000XFYTerminalRuleCall_5_1_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

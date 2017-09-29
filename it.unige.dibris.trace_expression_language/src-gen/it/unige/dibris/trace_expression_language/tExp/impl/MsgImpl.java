@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getPerformative <em>Performative</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getAsync_sender <em>Async sender</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getReceiver <em>Receiver</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getSender <em>Sender</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getAsync_receiver <em>Async receiver</em>}</li>
- *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getPerformative <em>Performative</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getContent <em>Content</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl#getConditions <em>Conditions</em>}</li>
  * </ul>
@@ -38,6 +38,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
 {
+  /**
+   * The default value of the '{@link #getPerformative() <em>Performative</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPerformative()
+   * @generated
+   * @ordered
+   */
+  protected static final String PERFORMATIVE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPerformative() <em>Performative</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPerformative()
+   * @generated
+   * @ordered
+   */
+  protected String performative = PERFORMATIVE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getAsync_sender() <em>Async sender</em>}' reference.
    * <!-- begin-user-doc -->
@@ -79,26 +99,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   protected Role async_receiver;
 
   /**
-   * The default value of the '{@link #getPerformative() <em>Performative</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPerformative()
-   * @generated
-   * @ordered
-   */
-  protected static final String PERFORMATIVE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPerformative() <em>Performative</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPerformative()
-   * @generated
-   * @ordered
-   */
-  protected String performative = PERFORMATIVE_EDEFAULT;
-
-  /**
    * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -137,6 +137,29 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   protected EClass eStaticClass()
   {
     return TExpPackage.Literals.MSG;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPerformative()
+  {
+    return performative;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPerformative(String newPerformative)
+  {
+    String oldPerformative = performative;
+    performative = newPerformative;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.MSG__PERFORMATIVE, oldPerformative, performative));
   }
 
   /**
@@ -316,29 +339,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPerformative()
-  {
-    return performative;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPerformative(String newPerformative)
-  {
-    String oldPerformative = performative;
-    performative = newPerformative;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.MSG__PERFORMATIVE, oldPerformative, performative));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public PrologExpression getContent()
   {
     return content;
@@ -458,6 +458,8 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   {
     switch (featureID)
     {
+      case TExpPackage.MSG__PERFORMATIVE:
+        return getPerformative();
       case TExpPackage.MSG__ASYNC_SENDER:
         if (resolve) return getAsync_sender();
         return basicGetAsync_sender();
@@ -470,8 +472,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
       case TExpPackage.MSG__ASYNC_RECEIVER:
         if (resolve) return getAsync_receiver();
         return basicGetAsync_receiver();
-      case TExpPackage.MSG__PERFORMATIVE:
-        return getPerformative();
       case TExpPackage.MSG__CONTENT:
         return getContent();
       case TExpPackage.MSG__CONDITIONS:
@@ -490,6 +490,9 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   {
     switch (featureID)
     {
+      case TExpPackage.MSG__PERFORMATIVE:
+        setPerformative((String)newValue);
+        return;
       case TExpPackage.MSG__ASYNC_SENDER:
         setAsync_sender((Role)newValue);
         return;
@@ -501,9 +504,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
         return;
       case TExpPackage.MSG__ASYNC_RECEIVER:
         setAsync_receiver((Role)newValue);
-        return;
-      case TExpPackage.MSG__PERFORMATIVE:
-        setPerformative((String)newValue);
         return;
       case TExpPackage.MSG__CONTENT:
         setContent((PrologExpression)newValue);
@@ -525,6 +525,9 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   {
     switch (featureID)
     {
+      case TExpPackage.MSG__PERFORMATIVE:
+        setPerformative(PERFORMATIVE_EDEFAULT);
+        return;
       case TExpPackage.MSG__ASYNC_SENDER:
         setAsync_sender((Role)null);
         return;
@@ -536,9 +539,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
         return;
       case TExpPackage.MSG__ASYNC_RECEIVER:
         setAsync_receiver((Role)null);
-        return;
-      case TExpPackage.MSG__PERFORMATIVE:
-        setPerformative(PERFORMATIVE_EDEFAULT);
         return;
       case TExpPackage.MSG__CONTENT:
         setContent((PrologExpression)null);
@@ -560,6 +560,8 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
   {
     switch (featureID)
     {
+      case TExpPackage.MSG__PERFORMATIVE:
+        return PERFORMATIVE_EDEFAULT == null ? performative != null : !PERFORMATIVE_EDEFAULT.equals(performative);
       case TExpPackage.MSG__ASYNC_SENDER:
         return async_sender != null;
       case TExpPackage.MSG__RECEIVER:
@@ -568,8 +570,6 @@ public class MsgImpl extends MinimalEObjectImpl.Container implements Msg
         return sender != null;
       case TExpPackage.MSG__ASYNC_RECEIVER:
         return async_receiver != null;
-      case TExpPackage.MSG__PERFORMATIVE:
-        return PERFORMATIVE_EDEFAULT == null ? performative != null : !PERFORMATIVE_EDEFAULT.equals(performative);
       case TExpPackage.MSG__CONTENT:
         return content != null;
       case TExpPackage.MSG__CONDITIONS:

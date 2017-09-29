@@ -169,184 +169,13 @@ public interface TExpPackage extends EPackage
   int TRACE_EXPRESSION__TERMS = 2;
 
   /**
-   * The feature id for the '<em><b>Roles L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__ROLES_L = 3;
-
-  /**
-   * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__ROLES = 4;
-
-  /**
    * The feature id for the '<em><b>Types L</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRACE_EXPRESSION__TYPES_L = 5;
-
-  /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__TYPES = 6;
-
-  /**
-   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__MODULES_L = 7;
-
-  /**
-   * The feature id for the '<em><b>Modules</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__MODULES = 8;
-
-  /**
-   * The feature id for the '<em><b>Decentralized L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__DECENTRALIZED_L = 9;
-
-  /**
-   * The feature id for the '<em><b>Decentralized</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__DECENTRALIZED = 10;
-
-  /**
-   * The feature id for the '<em><b>Partition L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__PARTITION_L = 11;
-
-  /**
-   * The feature id for the '<em><b>Partition</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__PARTITION = 12;
-
-  /**
-   * The feature id for the '<em><b>Constraints L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__CONSTRAINTS_L = 13;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__CONSTRAINTS = 14;
-
-  /**
-   * The feature id for the '<em><b>Gui L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__GUI_L = 15;
-
-  /**
-   * The feature id for the '<em><b>Gui</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__GUI = 16;
-
-  /**
-   * The feature id for the '<em><b>Minimal L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__MINIMAL_L = 17;
-
-  /**
-   * The feature id for the '<em><b>Minimal</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__MINIMAL = 18;
-
-  /**
-   * The feature id for the '<em><b>Threshold L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__THRESHOLD_L = 19;
-
-  /**
-   * The feature id for the '<em><b>Threshold</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__THRESHOLD = 20;
-
-  /**
-   * The feature id for the '<em><b>Channels L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__CHANNELS_L = 21;
-
-  /**
-   * The feature id for the '<em><b>Channels</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRACE_EXPRESSION__CHANNELS = 22;
+  int TRACE_EXPRESSION__TYPES_L = 3;
 
   /**
    * The number of structural features of the '<em>Trace Expression</em>' class.
@@ -355,7 +184,517 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_EXPRESSION_FEATURE_COUNT = 23;
+  int TRACE_EXPRESSION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.GenericTraceExpressionImpl <em>Generic Trace Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.GenericTraceExpressionImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getGenericTraceExpression()
+   * @generated
+   */
+  int GENERIC_TRACE_EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__NAME = TRACE_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Body L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__BODY_L = TRACE_EXPRESSION__BODY_L;
+
+  /**
+   * The feature id for the '<em><b>Terms</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
+
+  /**
+   * The feature id for the '<em><b>Types L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__TYPES_L = TRACE_EXPRESSION__TYPES_L;
+
+  /**
+   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__TYPES = TRACE_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Generic Trace Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl <em>Agent Trace Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAgentTraceExpression()
+   * @generated
+   */
+  int AGENT_TRACE_EXPRESSION = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__NAME = TRACE_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Body L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__BODY_L = TRACE_EXPRESSION__BODY_L;
+
+  /**
+   * The feature id for the '<em><b>Terms</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
+
+  /**
+   * The feature id for the '<em><b>Types L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__TYPES_L = TRACE_EXPRESSION__TYPES_L;
+
+  /**
+   * The feature id for the '<em><b>Roles L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__ROLES_L = TRACE_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__ROLES = TRACE_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__TYPES = TRACE_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Modules</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Decentralized L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = TRACE_EXPRESSION_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Decentralized</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__DECENTRALIZED = TRACE_EXPRESSION_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Partition L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__PARTITION_L = TRACE_EXPRESSION_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>Partition</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__PARTITION = TRACE_EXPRESSION_FEATURE_COUNT + 8;
+
+  /**
+   * The feature id for the '<em><b>Constraints L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = TRACE_EXPRESSION_FEATURE_COUNT + 9;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__CONSTRAINTS = TRACE_EXPRESSION_FEATURE_COUNT + 10;
+
+  /**
+   * The feature id for the '<em><b>Gui L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__GUI_L = TRACE_EXPRESSION_FEATURE_COUNT + 11;
+
+  /**
+   * The feature id for the '<em><b>Gui</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__GUI = TRACE_EXPRESSION_FEATURE_COUNT + 12;
+
+  /**
+   * The feature id for the '<em><b>Minimal L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MINIMAL_L = TRACE_EXPRESSION_FEATURE_COUNT + 13;
+
+  /**
+   * The feature id for the '<em><b>Minimal</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MINIMAL = TRACE_EXPRESSION_FEATURE_COUNT + 14;
+
+  /**
+   * The feature id for the '<em><b>Threshold L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__THRESHOLD_L = TRACE_EXPRESSION_FEATURE_COUNT + 15;
+
+  /**
+   * The feature id for the '<em><b>Threshold</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__THRESHOLD = TRACE_EXPRESSION_FEATURE_COUNT + 16;
+
+  /**
+   * The feature id for the '<em><b>Channels L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__CHANNELS_L = TRACE_EXPRESSION_FEATURE_COUNT + 17;
+
+  /**
+   * The feature id for the '<em><b>Channels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__CHANNELS = TRACE_EXPRESSION_FEATURE_COUNT + 18;
+
+  /**
+   * The number of structural features of the '<em>Agent Trace Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 19;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEventType()
+   * @generated
+   */
+  int EVENT_TYPE = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_TYPE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_TYPE__EXPR = 1;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_TYPE__EXPRS = 2;
+
+  /**
+   * The feature id for the '<em><b>Events</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_TYPE__EVENTS = 3;
+
+  /**
+   * The number of structural features of the '<em>Event Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_TYPE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgEventTypeImpl <em>Msg Event Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.MsgEventTypeImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getMsgEventType()
+   * @generated
+   */
+  int MSG_EVENT_TYPE = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE__EXPR = 1;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE__EXPRS = 2;
+
+  /**
+   * The feature id for the '<em><b>Msgs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE__MSGS = 3;
+
+  /**
+   * The feature id for the '<em><b>Channel</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE__CHANNEL = 4;
+
+  /**
+   * The number of structural features of the '<em>Msg Event Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG_EVENT_TYPE_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.GroundTermImpl <em>Ground Term</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.GroundTermImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getGroundTerm()
+   * @generated
+   */
+  int GROUND_TERM = 7;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUND_TERM__VARIABLE = 0;
+
+  /**
+   * The feature id for the '<em><b>Symbol</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUND_TERM__SYMBOL = 1;
+
+  /**
+   * The feature id for the '<em><b>Arg</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUND_TERM__ARG = 2;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUND_TERM__ARGS = 3;
+
+  /**
+   * The number of structural features of the '<em>Ground Term</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUND_TERM_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventImpl <em>Event</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.EventImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEvent()
+   * @generated
+   */
+  int EVENT = 8;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT__EXPR = 0;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT__EXPRS = 1;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT__CONSTRAINTS = 2;
+
+  /**
+   * The number of structural features of the '<em>Event</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.TermImpl <em>Term</em>}' class.
@@ -365,7 +704,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getTerm()
    * @generated
    */
-  int TERM = 3;
+  int TERM = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -402,7 +741,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 4;
+  int EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -522,70 +861,6 @@ public interface TExpPackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 12;
 
   /**
-   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEventType()
-   * @generated
-   */
-  int EVENT_TYPE = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE__EXPR = 1;
-
-  /**
-   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE__EXPRS = 2;
-
-  /**
-   * The feature id for the '<em><b>Msgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE__MSGS = 3;
-
-  /**
-   * The feature id for the '<em><b>Channel</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE__CHANNEL = 4;
-
-  /**
-   * The number of structural features of the '<em>Event Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT_TYPE_FEATURE_COUNT = 5;
-
-  /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl <em>Msg</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -593,43 +868,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getMsg()
    * @generated
    */
-  int MSG = 6;
-
-  /**
-   * The feature id for the '<em><b>Async sender</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MSG__ASYNC_SENDER = 0;
-
-  /**
-   * The feature id for the '<em><b>Receiver</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MSG__RECEIVER = 1;
-
-  /**
-   * The feature id for the '<em><b>Sender</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MSG__SENDER = 2;
-
-  /**
-   * The feature id for the '<em><b>Async receiver</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MSG__ASYNC_RECEIVER = 3;
+  int MSG = 11;
 
   /**
    * The feature id for the '<em><b>Performative</b></em>' attribute.
@@ -638,7 +877,43 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MSG__PERFORMATIVE = 4;
+  int MSG__PERFORMATIVE = 0;
+
+  /**
+   * The feature id for the '<em><b>Async sender</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG__ASYNC_SENDER = 1;
+
+  /**
+   * The feature id for the '<em><b>Receiver</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG__RECEIVER = 2;
+
+  /**
+   * The feature id for the '<em><b>Sender</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG__SENDER = 3;
+
+  /**
+   * The feature id for the '<em><b>Async receiver</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MSG__ASYNC_RECEIVER = 4;
 
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference.
@@ -675,7 +950,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getChannel()
    * @generated
    */
-  int CHANNEL = 7;
+  int CHANNEL = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -712,7 +987,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getRole()
    * @generated
    */
-  int ROLE = 8;
+  int ROLE = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -758,7 +1033,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getPartition()
    * @generated
    */
-  int PARTITION = 9;
+  int PARTITION = 14;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -786,7 +1061,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getTogether()
    * @generated
    */
-  int TOGETHER = 10;
+  int TOGETHER = 15;
 
   /**
    * The feature id for the '<em><b>Roles</b></em>' reference list.
@@ -814,7 +1089,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getConstraint()
    * @generated
    */
-  int CONSTRAINT = 11;
+  int CONSTRAINT = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' reference list.
@@ -887,7 +1162,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAtomExpression()
    * @generated
    */
-  int ATOM_EXPRESSION = 12;
+  int ATOM_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -951,7 +1226,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getVariableExpression()
    * @generated
    */
-  int VARIABLE_EXPRESSION = 13;
+  int VARIABLE_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1006,7 +1281,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getStringExpression()
    * @generated
    */
-  int STRING_EXPRESSION = 14;
+  int STRING_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1061,7 +1336,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getNumberExpression()
    * @generated
    */
-  int NUMBER_EXPRESSION = 15;
+  int NUMBER_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1116,7 +1391,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getListExpression()
    * @generated
    */
-  int LIST_EXPRESSION = 16;
+  int LIST_EXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1173,6 +1448,116 @@ public interface TExpPackage extends EPackage
   int LIST_EXPRESSION_FEATURE_COUNT = PROLOG_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.BasicEventImpl <em>Basic Event</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.BasicEventImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getBasicEvent()
+   * @generated
+   */
+  int BASIC_EVENT = 22;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_EVENT__EXPR = EVENT__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_EVENT__EXPRS = EVENT__EXPRS;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_EVENT__NAME = EVENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Basic Event</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_EVENT_FEATURE_COUNT = EVENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.DerivedEventImpl <em>Derived Event</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.DerivedEventImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getDerivedEvent()
+   * @generated
+   */
+  int DERIVED_EVENT = 23;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVED_EVENT__EXPR = EVENT__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVED_EVENT__EXPRS = EVENT__EXPRS;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVED_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
+
+  /**
+   * The feature id for the '<em><b>Base</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVED_EVENT__BASE = EVENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Derived Event</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVED_EVENT_FEATURE_COUNT = EVENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.ShuffleExprImpl <em>Shuffle Expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1180,7 +1565,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getShuffleExpr()
    * @generated
    */
-  int SHUFFLE_EXPR = 17;
+  int SHUFFLE_EXPR = 24;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1325,7 +1710,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getUnionExpr()
    * @generated
    */
-  int UNION_EXPR = 18;
+  int UNION_EXPR = 25;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1470,7 +1855,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAndExpr()
    * @generated
    */
-  int AND_EXPR = 19;
+  int AND_EXPR = 26;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1615,7 +2000,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCatExpr()
    * @generated
    */
-  int CAT_EXPR = 20;
+  int CAT_EXPR = 27;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1760,7 +2145,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getSeqExpr()
    * @generated
    */
-  int SEQ_EXPR = 21;
+  int SEQ_EXPR = 28;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1896,7 +2281,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getFilterExpr()
    * @generated
    */
-  int FILTER_EXPR = 22;
+  int FILTER_EXPR = 29;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -2032,7 +2417,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getVarExpr()
    * @generated
    */
-  int VAR_EXPR = 23;
+  int VAR_EXPR = 30;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -2168,7 +2553,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getTerminalExpr()
    * @generated
    */
-  int TERMINAL_EXPR = 24;
+  int TERMINAL_EXPR = 31;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -2304,7 +2689,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getSingletons()
    * @generated
    */
-  int SINGLETONS = 25;
+  int SINGLETONS = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' reference list.
@@ -2395,7 +2780,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getSize()
    * @generated
    */
-  int SIZE = 26;
+  int SIZE = 33;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' reference list.
@@ -2486,7 +2871,7 @@ public interface TExpPackage extends EPackage
    * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getCardinality()
    * @generated
    */
-  int CARDINALITY = 27;
+  int CARDINALITY = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' reference list.
@@ -2678,28 +3063,6 @@ public interface TExpPackage extends EPackage
   EReference getTraceExpression_Terms();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getRolesL <em>Roles L</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Roles L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getRolesL()
-   * @see #getTraceExpression()
-   * @generated
-   */
-  EAttribute getTraceExpression_RolesL();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getRoles <em>Roles</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Roles</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getRoles()
-   * @see #getTraceExpression()
-   * @generated
-   */
-  EReference getTraceExpression_Roles();
-
-  /**
    * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTypesL <em>Types L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2711,191 +3074,460 @@ public interface TExpPackage extends EPackage
   EAttribute getTraceExpression_TypesL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTypes <em>Types</em>}'.
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression <em>Generic Trace Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Generic Trace Expression</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
+   * @generated
+   */
+  EClass getGenericTraceExpression();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Types</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTypes()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression#getTypes()
+   * @see #getGenericTraceExpression()
    * @generated
    */
-  EReference getTraceExpression_Types();
+  EReference getGenericTraceExpression_Types();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModulesL <em>Modules L</em>}'.
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression <em>Agent Trace Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Agent Trace Expression</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+   * @generated
+   */
+  EClass getAgentTraceExpression();
+
+  /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRolesL <em>Roles L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Roles L</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRolesL()
+   * @see #getAgentTraceExpression()
+   * @generated
+   */
+  EAttribute getAgentTraceExpression_RolesL();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRoles <em>Roles</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Roles</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRoles()
+   * @see #getAgentTraceExpression()
+   * @generated
+   */
+  EReference getAgentTraceExpression_Roles();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getTypes <em>Types</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Types</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getTypes()
+   * @see #getAgentTraceExpression()
+   * @generated
+   */
+  EReference getAgentTraceExpression_Types();
+
+  /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModulesL <em>Modules L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Modules L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModulesL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModulesL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_ModulesL();
+  EAttribute getAgentTraceExpression_ModulesL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModules <em>Modules</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModules <em>Modules</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Modules</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModules()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModules()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_Modules();
+  EAttribute getAgentTraceExpression_Modules();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getDecentralizedL <em>Decentralized L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralizedL <em>Decentralized L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Decentralized L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getDecentralizedL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralizedL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_DecentralizedL();
+  EAttribute getAgentTraceExpression_DecentralizedL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getDecentralized <em>Decentralized</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralized <em>Decentralized</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Decentralized</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getDecentralized()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralized()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_Decentralized();
+  EAttribute getAgentTraceExpression_Decentralized();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getPartitionL <em>Partition L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartitionL <em>Partition L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Partition L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getPartitionL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartitionL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_PartitionL();
+  EAttribute getAgentTraceExpression_PartitionL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getPartition <em>Partition</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartition <em>Partition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Partition</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getPartition()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartition()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EReference getTraceExpression_Partition();
+  EReference getAgentTraceExpression_Partition();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getConstraintsL <em>Constraints L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraintsL <em>Constraints L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Constraints L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getConstraintsL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraintsL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_ConstraintsL();
+  EAttribute getAgentTraceExpression_ConstraintsL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getConstraints <em>Constraints</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraints <em>Constraints</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Constraints</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getConstraints()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraints()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EReference getTraceExpression_Constraints();
+  EReference getAgentTraceExpression_Constraints();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getGuiL <em>Gui L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGuiL <em>Gui L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Gui L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getGuiL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGuiL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_GuiL();
+  EAttribute getAgentTraceExpression_GuiL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getGui <em>Gui</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGui <em>Gui</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Gui</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getGui()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGui()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_Gui();
+  EAttribute getAgentTraceExpression_Gui();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getMinimalL <em>Minimal L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimalL <em>Minimal L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Minimal L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getMinimalL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimalL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_MinimalL();
+  EAttribute getAgentTraceExpression_MinimalL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getMinimal <em>Minimal</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimal <em>Minimal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Minimal</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getMinimal()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimal()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_Minimal();
+  EAttribute getAgentTraceExpression_Minimal();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getThresholdL <em>Threshold L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThresholdL <em>Threshold L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Threshold L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getThresholdL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThresholdL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_ThresholdL();
+  EAttribute getAgentTraceExpression_ThresholdL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getThreshold <em>Threshold</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThreshold <em>Threshold</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Threshold</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getThreshold()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThreshold()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_Threshold();
+  EAttribute getAgentTraceExpression_Threshold();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getChannelsL <em>Channels L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannelsL <em>Channels L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Channels L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getChannelsL()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannelsL()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EAttribute getTraceExpression_ChannelsL();
+  EAttribute getAgentTraceExpression_ChannelsL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getChannels <em>Channels</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannels <em>Channels</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Channels</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getChannels()
-   * @see #getTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannels()
+   * @see #getAgentTraceExpression()
    * @generated
    */
-  EReference getTraceExpression_Channels();
+  EReference getAgentTraceExpression_Channels();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.EventType <em>Event Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Event Type</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType
+   * @generated
+   */
+  EClass getEventType();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getName()
+   * @see #getEventType()
+   * @generated
+   */
+  EAttribute getEventType_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getExpr()
+   * @see #getEventType()
+   * @generated
+   */
+  EReference getEventType_Expr();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exprs</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getExprs()
+   * @see #getEventType()
+   * @generated
+   */
+  EReference getEventType_Exprs();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getEvents <em>Events</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Events</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getEvents()
+   * @see #getEventType()
+   * @generated
+   */
+  EReference getEventType_Events();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType <em>Msg Event Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Msg Event Type</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType
+   * @generated
+   */
+  EClass getMsgEventType();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType#getName()
+   * @see #getMsgEventType()
+   * @generated
+   */
+  EAttribute getMsgEventType_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType#getExpr()
+   * @see #getMsgEventType()
+   * @generated
+   */
+  EReference getMsgEventType_Expr();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exprs</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType#getExprs()
+   * @see #getMsgEventType()
+   * @generated
+   */
+  EReference getMsgEventType_Exprs();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType#getMsgs <em>Msgs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Msgs</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType#getMsgs()
+   * @see #getMsgEventType()
+   * @generated
+   */
+  EReference getMsgEventType_Msgs();
+
+  /**
+   * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.MsgEventType#getChannel <em>Channel</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Channel</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.MsgEventType#getChannel()
+   * @see #getMsgEventType()
+   * @generated
+   */
+  EReference getMsgEventType_Channel();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm <em>Ground Term</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Ground Term</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm
+   * @generated
+   */
+  EClass getGroundTerm();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Variable</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm#getVariable()
+   * @see #getGroundTerm()
+   * @generated
+   */
+  EAttribute getGroundTerm_Variable();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm#getSymbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Symbol</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm#getSymbol()
+   * @see #getGroundTerm()
+   * @generated
+   */
+  EAttribute getGroundTerm_Symbol();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm#getArg <em>Arg</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Arg</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm#getArg()
+   * @see #getGroundTerm()
+   * @generated
+   */
+  EReference getGroundTerm_Arg();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.GroundTerm#getArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Args</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.GroundTerm#getArgs()
+   * @see #getGroundTerm()
+   * @generated
+   */
+  EReference getGroundTerm_Args();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.Event <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Event</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.Event
+   * @generated
+   */
+  EClass getEvent();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.Event#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.Event#getExpr()
+   * @see #getEvent()
+   * @generated
+   */
+  EReference getEvent_Expr();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.Event#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exprs</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.Event#getExprs()
+   * @see #getEvent()
+   * @generated
+   */
+  EReference getEvent_Exprs();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.Event#getConstraints <em>Constraints</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraints</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.Event#getConstraints()
+   * @see #getEvent()
+   * @generated
+   */
+  EReference getEvent_Constraints();
 
   /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.Term <em>Term</em>}'.
@@ -3072,71 +3704,6 @@ public interface TExpPackage extends EPackage
   EReference getExpression_Expr();
 
   /**
-   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.EventType <em>Event Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Event Type</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType
-   * @generated
-   */
-  EClass getEventType();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getName()
-   * @see #getEventType()
-   * @generated
-   */
-  EAttribute getEventType_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExpr <em>Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expr</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getExpr()
-   * @see #getEventType()
-   * @generated
-   */
-  EReference getEventType_Expr();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getExprs <em>Exprs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Exprs</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getExprs()
-   * @see #getEventType()
-   * @generated
-   */
-  EReference getEventType_Exprs();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getMsgs <em>Msgs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Msgs</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getMsgs()
-   * @see #getEventType()
-   * @generated
-   */
-  EReference getEventType_Msgs();
-
-  /**
-   * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.EventType#getChannel <em>Channel</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Channel</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.EventType#getChannel()
-   * @see #getEventType()
-   * @generated
-   */
-  EReference getEventType_Channel();
-
-  /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.Msg <em>Msg</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3145,6 +3712,17 @@ public interface TExpPackage extends EPackage
    * @generated
    */
   EClass getMsg();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Performative</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative()
+   * @see #getMsg()
+   * @generated
+   */
+  EAttribute getMsg_Performative();
 
   /**
    * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getAsync_sender <em>Async sender</em>}'.
@@ -3189,17 +3767,6 @@ public interface TExpPackage extends EPackage
    * @generated
    */
   EReference getMsg_Async_receiver();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative <em>Performative</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Performative</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.Msg#getPerformative()
-   * @see #getMsg()
-   * @generated
-   */
-  EAttribute getMsg_Performative();
 
   /**
    * Returns the meta object for the containment reference '{@link it.unige.dibris.trace_expression_language.tExp.Msg#getContent <em>Content</em>}'.
@@ -3542,6 +4109,48 @@ public interface TExpPackage extends EPackage
    * @generated
    */
   EReference getListExpression_Tail();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.BasicEvent <em>Basic Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Basic Event</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.BasicEvent
+   * @generated
+   */
+  EClass getBasicEvent();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.unige.dibris.trace_expression_language.tExp.BasicEvent#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.BasicEvent#getName()
+   * @see #getBasicEvent()
+   * @generated
+   */
+  EAttribute getBasicEvent_Name();
+
+  /**
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.DerivedEvent <em>Derived Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Derived Event</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.DerivedEvent
+   * @generated
+   */
+  EClass getDerivedEvent();
+
+  /**
+   * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.DerivedEvent#getBase <em>Base</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Base</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.DerivedEvent#getBase()
+   * @see #getDerivedEvent()
+   * @generated
+   */
+  EReference getDerivedEvent_Base();
 
   /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.ShuffleExpr <em>Shuffle Expr</em>}'.
@@ -3961,22 +4570,6 @@ public interface TExpPackage extends EPackage
     EReference TRACE_EXPRESSION__TERMS = eINSTANCE.getTraceExpression_Terms();
 
     /**
-     * The meta object literal for the '<em><b>Roles L</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TRACE_EXPRESSION__ROLES_L = eINSTANCE.getTraceExpression_RolesL();
-
-    /**
-     * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TRACE_EXPRESSION__ROLES = eINSTANCE.getTraceExpression_Roles();
-
-    /**
      * The meta object literal for the '<em><b>Types L</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3985,12 +4578,56 @@ public interface TExpPackage extends EPackage
     EAttribute TRACE_EXPRESSION__TYPES_L = eINSTANCE.getTraceExpression_TypesL();
 
     /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.GenericTraceExpressionImpl <em>Generic Trace Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.GenericTraceExpressionImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getGenericTraceExpression()
+     * @generated
+     */
+    EClass GENERIC_TRACE_EXPRESSION = eINSTANCE.getGenericTraceExpression();
+
+    /**
      * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TRACE_EXPRESSION__TYPES = eINSTANCE.getTraceExpression_Types();
+    EReference GENERIC_TRACE_EXPRESSION__TYPES = eINSTANCE.getGenericTraceExpression_Types();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl <em>Agent Trace Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAgentTraceExpression()
+     * @generated
+     */
+    EClass AGENT_TRACE_EXPRESSION = eINSTANCE.getAgentTraceExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Roles L</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AGENT_TRACE_EXPRESSION__ROLES_L = eINSTANCE.getAgentTraceExpression_RolesL();
+
+    /**
+     * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGENT_TRACE_EXPRESSION__ROLES = eINSTANCE.getAgentTraceExpression_Roles();
+
+    /**
+     * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGENT_TRACE_EXPRESSION__TYPES = eINSTANCE.getAgentTraceExpression_Types();
 
     /**
      * The meta object literal for the '<em><b>Modules L</b></em>' attribute list feature.
@@ -3998,7 +4635,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__MODULES_L = eINSTANCE.getTraceExpression_ModulesL();
+    EAttribute AGENT_TRACE_EXPRESSION__MODULES_L = eINSTANCE.getAgentTraceExpression_ModulesL();
 
     /**
      * The meta object literal for the '<em><b>Modules</b></em>' attribute list feature.
@@ -4006,7 +4643,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__MODULES = eINSTANCE.getTraceExpression_Modules();
+    EAttribute AGENT_TRACE_EXPRESSION__MODULES = eINSTANCE.getAgentTraceExpression_Modules();
 
     /**
      * The meta object literal for the '<em><b>Decentralized L</b></em>' attribute list feature.
@@ -4014,7 +4651,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__DECENTRALIZED_L = eINSTANCE.getTraceExpression_DecentralizedL();
+    EAttribute AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = eINSTANCE.getAgentTraceExpression_DecentralizedL();
 
     /**
      * The meta object literal for the '<em><b>Decentralized</b></em>' attribute list feature.
@@ -4022,7 +4659,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__DECENTRALIZED = eINSTANCE.getTraceExpression_Decentralized();
+    EAttribute AGENT_TRACE_EXPRESSION__DECENTRALIZED = eINSTANCE.getAgentTraceExpression_Decentralized();
 
     /**
      * The meta object literal for the '<em><b>Partition L</b></em>' attribute list feature.
@@ -4030,7 +4667,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__PARTITION_L = eINSTANCE.getTraceExpression_PartitionL();
+    EAttribute AGENT_TRACE_EXPRESSION__PARTITION_L = eINSTANCE.getAgentTraceExpression_PartitionL();
 
     /**
      * The meta object literal for the '<em><b>Partition</b></em>' containment reference list feature.
@@ -4038,7 +4675,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TRACE_EXPRESSION__PARTITION = eINSTANCE.getTraceExpression_Partition();
+    EReference AGENT_TRACE_EXPRESSION__PARTITION = eINSTANCE.getAgentTraceExpression_Partition();
 
     /**
      * The meta object literal for the '<em><b>Constraints L</b></em>' attribute list feature.
@@ -4046,7 +4683,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__CONSTRAINTS_L = eINSTANCE.getTraceExpression_ConstraintsL();
+    EAttribute AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = eINSTANCE.getAgentTraceExpression_ConstraintsL();
 
     /**
      * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
@@ -4054,7 +4691,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TRACE_EXPRESSION__CONSTRAINTS = eINSTANCE.getTraceExpression_Constraints();
+    EReference AGENT_TRACE_EXPRESSION__CONSTRAINTS = eINSTANCE.getAgentTraceExpression_Constraints();
 
     /**
      * The meta object literal for the '<em><b>Gui L</b></em>' attribute list feature.
@@ -4062,7 +4699,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__GUI_L = eINSTANCE.getTraceExpression_GuiL();
+    EAttribute AGENT_TRACE_EXPRESSION__GUI_L = eINSTANCE.getAgentTraceExpression_GuiL();
 
     /**
      * The meta object literal for the '<em><b>Gui</b></em>' attribute list feature.
@@ -4070,7 +4707,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__GUI = eINSTANCE.getTraceExpression_Gui();
+    EAttribute AGENT_TRACE_EXPRESSION__GUI = eINSTANCE.getAgentTraceExpression_Gui();
 
     /**
      * The meta object literal for the '<em><b>Minimal L</b></em>' attribute list feature.
@@ -4078,7 +4715,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__MINIMAL_L = eINSTANCE.getTraceExpression_MinimalL();
+    EAttribute AGENT_TRACE_EXPRESSION__MINIMAL_L = eINSTANCE.getAgentTraceExpression_MinimalL();
 
     /**
      * The meta object literal for the '<em><b>Minimal</b></em>' attribute list feature.
@@ -4086,7 +4723,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__MINIMAL = eINSTANCE.getTraceExpression_Minimal();
+    EAttribute AGENT_TRACE_EXPRESSION__MINIMAL = eINSTANCE.getAgentTraceExpression_Minimal();
 
     /**
      * The meta object literal for the '<em><b>Threshold L</b></em>' attribute list feature.
@@ -4094,7 +4731,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__THRESHOLD_L = eINSTANCE.getTraceExpression_ThresholdL();
+    EAttribute AGENT_TRACE_EXPRESSION__THRESHOLD_L = eINSTANCE.getAgentTraceExpression_ThresholdL();
 
     /**
      * The meta object literal for the '<em><b>Threshold</b></em>' attribute list feature.
@@ -4102,7 +4739,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__THRESHOLD = eINSTANCE.getTraceExpression_Threshold();
+    EAttribute AGENT_TRACE_EXPRESSION__THRESHOLD = eINSTANCE.getAgentTraceExpression_Threshold();
 
     /**
      * The meta object literal for the '<em><b>Channels L</b></em>' attribute list feature.
@@ -4110,7 +4747,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRACE_EXPRESSION__CHANNELS_L = eINSTANCE.getTraceExpression_ChannelsL();
+    EAttribute AGENT_TRACE_EXPRESSION__CHANNELS_L = eINSTANCE.getAgentTraceExpression_ChannelsL();
 
     /**
      * The meta object literal for the '<em><b>Channels</b></em>' containment reference list feature.
@@ -4118,7 +4755,175 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TRACE_EXPRESSION__CHANNELS = eINSTANCE.getTraceExpression_Channels();
+    EReference AGENT_TRACE_EXPRESSION__CHANNELS = eINSTANCE.getAgentTraceExpression_Channels();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEventType()
+     * @generated
+     */
+    EClass EVENT_TYPE = eINSTANCE.getEventType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVENT_TYPE__NAME = eINSTANCE.getEventType_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT_TYPE__EXPR = eINSTANCE.getEventType_Expr();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT_TYPE__EXPRS = eINSTANCE.getEventType_Exprs();
+
+    /**
+     * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT_TYPE__EVENTS = eINSTANCE.getEventType_Events();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgEventTypeImpl <em>Msg Event Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.MsgEventTypeImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getMsgEventType()
+     * @generated
+     */
+    EClass MSG_EVENT_TYPE = eINSTANCE.getMsgEventType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MSG_EVENT_TYPE__NAME = eINSTANCE.getMsgEventType_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MSG_EVENT_TYPE__EXPR = eINSTANCE.getMsgEventType_Expr();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MSG_EVENT_TYPE__EXPRS = eINSTANCE.getMsgEventType_Exprs();
+
+    /**
+     * The meta object literal for the '<em><b>Msgs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MSG_EVENT_TYPE__MSGS = eINSTANCE.getMsgEventType_Msgs();
+
+    /**
+     * The meta object literal for the '<em><b>Channel</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MSG_EVENT_TYPE__CHANNEL = eINSTANCE.getMsgEventType_Channel();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.GroundTermImpl <em>Ground Term</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.GroundTermImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getGroundTerm()
+     * @generated
+     */
+    EClass GROUND_TERM = eINSTANCE.getGroundTerm();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUND_TERM__VARIABLE = eINSTANCE.getGroundTerm_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Symbol</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUND_TERM__SYMBOL = eINSTANCE.getGroundTerm_Symbol();
+
+    /**
+     * The meta object literal for the '<em><b>Arg</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUND_TERM__ARG = eINSTANCE.getGroundTerm_Arg();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUND_TERM__ARGS = eINSTANCE.getGroundTerm_Args();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventImpl <em>Event</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.EventImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEvent()
+     * @generated
+     */
+    EClass EVENT = eINSTANCE.getEvent();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT__EXPR = eINSTANCE.getEvent_Expr();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT__EXPRS = eINSTANCE.getEvent_Exprs();
+
+    /**
+     * The meta object literal for the '<em><b>Constraints</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT__CONSTRAINTS = eINSTANCE.getEvent_Constraints();
 
     /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.TermImpl <em>Term</em>}' class.
@@ -4253,56 +5058,6 @@ public interface TExpPackage extends EPackage
     EReference EXPRESSION__EXPR = eINSTANCE.getExpression_Expr();
 
     /**
-     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getEventType()
-     * @generated
-     */
-    EClass EVENT_TYPE = eINSTANCE.getEventType();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EVENT_TYPE__NAME = eINSTANCE.getEventType_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EVENT_TYPE__EXPR = eINSTANCE.getEventType_Expr();
-
-    /**
-     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EVENT_TYPE__EXPRS = eINSTANCE.getEventType_Exprs();
-
-    /**
-     * The meta object literal for the '<em><b>Msgs</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EVENT_TYPE__MSGS = eINSTANCE.getEventType_Msgs();
-
-    /**
-     * The meta object literal for the '<em><b>Channel</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EVENT_TYPE__CHANNEL = eINSTANCE.getEventType_Channel();
-
-    /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.MsgImpl <em>Msg</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4311,6 +5066,14 @@ public interface TExpPackage extends EPackage
      * @generated
      */
     EClass MSG = eINSTANCE.getMsg();
+
+    /**
+     * The meta object literal for the '<em><b>Performative</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MSG__PERFORMATIVE = eINSTANCE.getMsg_Performative();
 
     /**
      * The meta object literal for the '<em><b>Async sender</b></em>' reference feature.
@@ -4343,14 +5106,6 @@ public interface TExpPackage extends EPackage
      * @generated
      */
     EReference MSG__ASYNC_RECEIVER = eINSTANCE.getMsg_Async_receiver();
-
-    /**
-     * The meta object literal for the '<em><b>Performative</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MSG__PERFORMATIVE = eINSTANCE.getMsg_Performative();
 
     /**
      * The meta object literal for the '<em><b>Content</b></em>' containment reference feature.
@@ -4627,6 +5382,42 @@ public interface TExpPackage extends EPackage
      * @generated
      */
     EReference LIST_EXPRESSION__TAIL = eINSTANCE.getListExpression_Tail();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.BasicEventImpl <em>Basic Event</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.BasicEventImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getBasicEvent()
+     * @generated
+     */
+    EClass BASIC_EVENT = eINSTANCE.getBasicEvent();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BASIC_EVENT__NAME = eINSTANCE.getBasicEvent_Name();
+
+    /**
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.DerivedEventImpl <em>Derived Event</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.DerivedEventImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getDerivedEvent()
+     * @generated
+     */
+    EClass DERIVED_EVENT = eINSTANCE.getDerivedEvent();
+
+    /**
+     * The meta object literal for the '<em><b>Base</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DERIVED_EVENT__BASE = eINSTANCE.getDerivedEvent_Base();
 
     /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.ShuffleExprImpl <em>Shuffle Expr</em>}' class.

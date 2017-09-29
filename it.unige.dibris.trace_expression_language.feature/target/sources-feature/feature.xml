@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="it.unige.dibris.trace_expression_language.feature.source" version="1.0.0.201706231122" label="TExp Feature  Developer Resources">
-  <includes id="it.unige.dibris.trace_expression_language.feature" version="1.0.0.201706231122"/>
-  <plugin id="it.unige.dibris.trace_expression_language.source" version="1.0.0.201706231122" download-size="0" install-size="0" unpack="false"/>
-  <plugin id="it.unige.dibris.trace_expression_language.ide.source" version="1.0.0.201706231122" download-size="0" install-size="0" unpack="false"/>
-  <plugin id="it.unige.dibris.trace_expression_language.ui.source" version="1.0.0.201706231122" download-size="0" install-size="0" unpack="false"/>
+<feature id="it.unige.dibris.trace_expression_language.feature.source" version="1.0.0.201709281102" label="TExp Feature  Developer Resources">
+  <includes id="it.unige.dibris.trace_expression_language.feature" version="1.0.0.201709281102"/>
+  <plugin id="it.unige.dibris.trace_expression_language.source" version="1.0.0.201709281102" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="it.unige.dibris.trace_expression_language.ide.source" version="1.0.0.201709281102" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="it.unige.dibris.trace_expression_language.ui.source" version="1.0.0.201709281102" download-size="0" install-size="0" unpack="false"/>
 </feature>

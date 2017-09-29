@@ -5,18 +5,24 @@ package it.unige.dibris.trace_expression_language.serializer;
 
 import com.google.inject.Inject;
 import it.unige.dibris.trace_expression_language.services.TExpGrammarAccess;
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
 import it.unige.dibris.trace_expression_language.tExp.Cardinality;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Channel;
 import it.unige.dibris.trace_expression_language.tExp.Constraint;
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent;
 import it.unige.dibris.trace_expression_language.tExp.Domainmodel;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.NumberExpression;
 import it.unige.dibris.trace_expression_language.tExp.Partition;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
@@ -30,7 +36,6 @@ import it.unige.dibris.trace_expression_language.tExp.TExpPackage;
 import it.unige.dibris.trace_expression_language.tExp.Term;
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
 import it.unige.dibris.trace_expression_language.tExp.Together;
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
@@ -59,11 +64,17 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == TExpPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case TExpPackage.AGENT_TRACE_EXPRESSION:
+				sequence_AgentTraceExpression(context, (AgentTraceExpression) semanticObject); 
+				return; 
 			case TExpPackage.AND_EXPR:
 				sequence_AndExpr(context, (AndExpr) semanticObject); 
 				return; 
 			case TExpPackage.ATOM_EXPRESSION:
 				sequence_Expression0(context, (AtomExpression) semanticObject); 
+				return; 
+			case TExpPackage.BASIC_EVENT:
+				sequence_Event(context, (BasicEvent) semanticObject); 
 				return; 
 			case TExpPackage.CARDINALITY:
 				sequence_Constraint(context, (Cardinality) semanticObject); 
@@ -76,6 +87,9 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TExpPackage.CONSTRAINT:
 				sequence_Constraint(context, (Constraint) semanticObject); 
+				return; 
+			case TExpPackage.DERIVED_EVENT:
+				sequence_Event(context, (DerivedEvent) semanticObject); 
 				return; 
 			case TExpPackage.DOMAINMODEL:
 				sequence_Domainmodel(context, (Domainmodel) semanticObject); 
@@ -104,11 +118,20 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TExpPackage.FILTER_EXPR:
 				sequence_Primary(context, (FilterExpr) semanticObject); 
 				return; 
+			case TExpPackage.GENERIC_TRACE_EXPRESSION:
+				sequence_GenericTraceExpression(context, (GenericTraceExpression) semanticObject); 
+				return; 
+			case TExpPackage.GROUND_TERM:
+				sequence_GroundTerm(context, (GroundTerm) semanticObject); 
+				return; 
 			case TExpPackage.LIST_EXPRESSION:
 				sequence_Expression0(context, (ListExpression) semanticObject); 
 				return; 
 			case TExpPackage.MSG:
 				sequence_Msg(context, (Msg) semanticObject); 
+				return; 
+			case TExpPackage.MSG_EVENT_TYPE:
+				sequence_MsgEventType(context, (MsgEventType) semanticObject); 
 				return; 
 			case TExpPackage.NUMBER_EXPRESSION:
 				sequence_Expression0(context, (NumberExpression) semanticObject); 
@@ -146,9 +169,6 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TExpPackage.TOGETHER:
 				sequence_Together(context, (Together) semanticObject); 
 				return; 
-			case TExpPackage.TRACE_EXPRESSION:
-				sequence_TraceExpression(context, (TraceExpression) semanticObject); 
-				return; 
 			case TExpPackage.UNION_EXPR:
 				sequence_UnionExpr(context, (UnionExpr) semanticObject); 
 				return; 
@@ -162,6 +182,34 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     TraceExpression returns AgentTraceExpression
+	 *     AgentTraceExpression returns AgentTraceExpression
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         (
+	 *             (bodyL+='body:' terms+=Term+) | 
+	 *             (rolesL+='roles:' roles+=Role*) | 
+	 *             (typesL+='types:' types+=MsgEventType*) | 
+	 *             (modulesL+='modules:' modules+=Module*) | 
+	 *             (decentralizedL+='decentralized:' (decentralized+='true' | decentralized+='false')) | 
+	 *             (partitionL+='partition:' partition+=Partition) | 
+	 *             (constraintsL+='constraints:' constraints+=Constraint*) | 
+	 *             (guiL+='gui:' (gui+='true' | gui+='false')) | 
+	 *             (minimalL+='minimal:' (minimal+='true' | minimal+='false')) | 
+	 *             (thresholdL+='threshold:' threshold+=NUMBER) | 
+	 *             (channelsL+='channels:' channels+=Channel+)
+	 *         )+
+	 *     )
+	 */
+	protected void sequence_AgentTraceExpression(ISerializationContext context, AgentTraceExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -300,9 +348,33 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     EventType returns EventType
 	 *
 	 * Constraint:
-	 *     (name=ID (expr=Expression0 exprs+=Expression0*)? msgs+=Msg* channel=[Channel|ID]?)
+	 *     (name=ID (expr=GroundTerm exprs+=GroundTerm*)? events+=Event*)
 	 */
 	protected void sequence_EventType(ISerializationContext context, EventType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Event returns BasicEvent
+	 *
+	 * Constraint:
+	 *     (name=ID (expr=Expression0 exprs+=Expression0*)? constraints=ExpressionInfinity?)
+	 */
+	protected void sequence_Event(ISerializationContext context, BasicEvent semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Event returns DerivedEvent
+	 *
+	 * Constraint:
+	 *     (base=[EventType|ID] (expr=Expression0 exprs+=Expression0*)? constraints=ExpressionInfinity?)
+	 */
+	protected void sequence_Event(ISerializationContext context, DerivedEvent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -539,9 +611,46 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     FilterExpr returns Expression
 	 *
 	 * Constraint:
-	 *     (typeFilter=[EventType|ID] (first=Expression0 exprs+=Expression0*)? operator=OP400FX1 bodyFilter=Primary)
+	 *     ((typeFilter=[EventType|ID] | typeFilter=[MsgEventType|ID]) (first=Expression0 exprs+=Expression0*)? operator=OP400FX1 bodyFilter=Primary)
 	 */
 	protected void sequence_FilterExpr(ISerializationContext context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TraceExpression returns GenericTraceExpression
+	 *     GenericTraceExpression returns GenericTraceExpression
+	 *
+	 * Constraint:
+	 *     (name=ID ((bodyL+='body:' terms+=Term+) | (typesL+='types:' types+=EventType*))+)
+	 */
+	protected void sequence_GenericTraceExpression(ISerializationContext context, GenericTraceExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GroundTerm returns GroundTerm
+	 *
+	 * Constraint:
+	 *     (variable=VARIABLE | (symbol=ID arg=GroundTerm args+=GroundTerm*))
+	 */
+	protected void sequence_GroundTerm(ISerializationContext context, GroundTerm semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MsgEventType returns MsgEventType
+	 *
+	 * Constraint:
+	 *     (name=ID (expr=Expression0 exprs+=Expression0*)? msgs+=Msg* channel=[Channel|ID]?)
+	 */
+	protected void sequence_MsgEventType(ISerializationContext context, MsgEventType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -552,8 +661,9 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         performative=ATOM? 
 	 *         ((async_sender=[Role|ID] receiver=[Role|ID]) | (sender=[Role|ID] async_receiver=[Role|ID]) | (sender=[Role|ID] receiver=[Role|ID])) 
-	 *         ((performative=ATOM content=Expression0) | content=Expression0) 
+	 *         content=Expression0 
 	 *         conditions=ExpressionInfinity?
 	 *     )
 	 */
@@ -695,7 +805,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     SeqExpr returns Expression
 	 *
 	 * Constraint:
-	 *     (typeSeq=[EventType|ID] (first=Expression0 exprs+=Expression0*)? operator=OP600XFY bodySeq=Primary)
+	 *     ((typeSeq=[EventType|ID] | typeSeq=[MsgEventType|ID]) (first=Expression0 exprs+=Expression0*)? operator=OP600XFY bodySeq=Primary)
 	 */
 	protected void sequence_SeqExpr(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -768,33 +878,6 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     roles+=[Role|ID]+
 	 */
 	protected void sequence_Together(ISerializationContext context, Together semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     TraceExpression returns TraceExpression
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (
-	 *             (bodyL+='body:' terms+=Term+) | 
-	 *             (rolesL+='roles:' roles+=Role*) | 
-	 *             (typesL+='types:' types+=EventType*) | 
-	 *             (modulesL+='modules:' modules+=Module*) | 
-	 *             (decentralizedL+='decentralized:' (decentralized+='true' | decentralized+='false')) | 
-	 *             (partitionL+='partition:' partition+=Partition) | 
-	 *             (constraintsL+='constraints:' constraints+=Constraint*) | 
-	 *             (guiL+='gui:' (gui+='true' | gui+='false')) | 
-	 *             (minimalL+='minimal:' (minimal+='true' | minimal+='false')) | 
-	 *             (thresholdL+='threshold:' threshold+=NUMBER) | 
-	 *             (channelsL+='channels:' channels+=Channel+)
-	 *         )+
-	 *     )
-	 */
-	protected void sequence_TraceExpression(ISerializationContext context, TraceExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

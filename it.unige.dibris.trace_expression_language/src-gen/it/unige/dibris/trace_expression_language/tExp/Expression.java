@@ -97,12 +97,12 @@ public interface Expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type Filter</em>' reference.
-   * @see #setTypeFilter(EventType)
+   * @see #setTypeFilter(EObject)
    * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getExpression_TypeFilter()
    * @model
    * @generated
    */
-  EventType getTypeFilter();
+  EObject getTypeFilter();
 
   /**
    * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Expression#getTypeFilter <em>Type Filter</em>}' reference.
@@ -112,7 +112,7 @@ public interface Expression extends EObject
    * @see #getTypeFilter()
    * @generated
    */
-  void setTypeFilter(EventType value);
+  void setTypeFilter(EObject value);
 
   /**
    * Returns the value of the '<em><b>First</b></em>' containment reference.
@@ -217,12 +217,12 @@ public interface Expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type Seq</em>' reference.
-   * @see #setTypeSeq(EventType)
+   * @see #setTypeSeq(EObject)
    * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getExpression_TypeSeq()
    * @model
    * @generated
    */
-  EventType getTypeSeq();
+  EObject getTypeSeq();
 
   /**
    * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Expression#getTypeSeq <em>Type Seq</em>}' reference.
@@ -232,7 +232,7 @@ public interface Expression extends EObject
    * @see #getTypeSeq()
    * @generated
    */
-  void setTypeSeq(EventType value);
+  void setTypeSeq(EObject value);
 
   /**
    * Returns the value of the '<em><b>Body Seq</b></em>' containment reference.

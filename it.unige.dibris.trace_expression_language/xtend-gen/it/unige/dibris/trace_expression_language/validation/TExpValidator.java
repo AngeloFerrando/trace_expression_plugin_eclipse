@@ -4,6 +4,7 @@
 package it.unige.dibris.trace_expression_language.validation;
 
 import com.google.common.base.Objects;
+import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
 import it.unige.dibris.trace_expression_language.tExp.Cardinality;
@@ -14,6 +15,7 @@ import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
+import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
 import it.unige.dibris.trace_expression_language.tExp.Role;
 import it.unige.dibris.trace_expression_language.tExp.SeqExpr;
@@ -23,7 +25,6 @@ import it.unige.dibris.trace_expression_language.tExp.Size;
 import it.unige.dibris.trace_expression_language.tExp.Term;
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
 import it.unige.dibris.trace_expression_language.tExp.Together;
-import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
@@ -35,10 +36,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 /**
  * This class contains custom validation rules.
@@ -80,7 +83,7 @@ public class TExpValidator extends AbstractTExpValidator {
   public final static String HeadNotTerminating = "Head of a concatenation which cannot terminate";
   
   @Check
-  public void checkMainPresence(final TraceExpression tExp) {
+  public void checkMainPresence(final AgentTraceExpression tExp) {
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
       if ((term.getName().equals("Main") || term.getName().equals("main"))) {
@@ -101,7 +104,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConcatenations(final TraceExpression tExp) {
+  public void checkConcatenations(final AgentTraceExpression tExp) {
     final HashMap<String, Expression> assocT = new HashMap<String, Expression>();
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
@@ -179,7 +182,7 @@ public class TExpValidator extends AbstractTExpValidator {
                       boolean _tripleNotEquals_6 = (_left_3 != null);
                       if (_tripleNotEquals_6) {
                         if (((!MonitoringSafePartitionCheck.mayHalt(((CatExpr)expr).getLeft(), assocT, new HashMap<String, Expression>())) && 
-                          (MonitoringSafePartitionCheck.lastEventTypes(((CatExpr)expr).getLeft(), assocT, new HashMap<String, Expression>(), threshold).size() == 0))) {
+                          (MonitoringSafePartitionCheck.lastMsgEventTypes(((CatExpr)expr).getLeft(), assocT, new HashMap<String, Expression>(), threshold).size() == 0))) {
                           final ICompositeNode node = NodeModelUtils.findActualNodeFor(((CatExpr)expr).getLeft());
                           this.getMessageAcceptor().acceptWarning(
                             "The head of the concatenation does not terminate, the tail will not ever be consumed", 
@@ -225,7 +228,6 @@ public class TExpValidator extends AbstractTExpValidator {
   
   @Check
   public void checkSeqFilterExpr(final Expression expr) {
-    int count = 0;
     Expression seqExpr = ((Expression) null);
     if ((expr instanceof SeqExpr)) {
       seqExpr = ((SeqExpr)expr).getSeqExpr();
@@ -243,70 +245,104 @@ public class TExpValidator extends AbstractTExpValidator {
       }
     }
     if ((seqExpr != null)) {
-      PrologExpression _expr = seqExpr.getTypeSeq().getExpr();
-      boolean _tripleNotEquals = (_expr != null);
-      if (_tripleNotEquals) {
-        count++;
-      }
-      EList<PrologExpression> _exprs = seqExpr.getTypeSeq().getExprs();
-      for (final PrologExpression e : _exprs) {
-        count++;
-      }
-      PrologExpression _first = seqExpr.getFirst();
-      boolean _tripleNotEquals_1 = (_first != null);
-      if (_tripleNotEquals_1) {
-        count--;
-      }
-      EList<PrologExpression> _exprs_1 = seqExpr.getExprs();
-      for (final PrologExpression e_1 : _exprs_1) {
-        count--;
-      }
-      if ((count != 0)) {
-        final ICompositeNode node = NodeModelUtils.findActualNodeFor(seqExpr);
-        ValidationMessageAcceptor _messageAcceptor = this.getMessageAcceptor();
-        String _name = seqExpr.getTypeSeq().getName();
-        String _plus = ("Wrong number of arguments in " + _name);
-        _messageAcceptor.acceptError(_plus, seqExpr, 
-          node.getOffset(), 
-          node.getLength(), 
-          TExpValidator.WrongNumberArguments);
-      }
+      this.checkSeqExpr(seqExpr);
     } else {
       if ((filterExpr != null)) {
-        PrologExpression _expr_1 = filterExpr.getTypeFilter().getExpr();
-        boolean _tripleNotEquals_2 = (_expr_1 != null);
-        if (_tripleNotEquals_2) {
-          count++;
-        }
-        EList<PrologExpression> _exprs_2 = filterExpr.getTypeFilter().getExprs();
-        for (final PrologExpression e_2 : _exprs_2) {
-          count++;
-        }
-        PrologExpression _first_1 = filterExpr.getFirst();
-        boolean _tripleNotEquals_3 = (_first_1 != null);
-        if (_tripleNotEquals_3) {
-          count--;
-        }
-        EList<PrologExpression> _exprs_3 = filterExpr.getExprs();
-        for (final PrologExpression e_3 : _exprs_3) {
-          count--;
-        }
-        if ((count != 0)) {
-          final ICompositeNode node_1 = NodeModelUtils.findActualNodeFor(filterExpr);
-          ValidationMessageAcceptor _messageAcceptor_1 = this.getMessageAcceptor();
-          String _name_1 = filterExpr.getTypeFilter().getName();
-          String _plus_1 = ("Wrong number of arguments in " + _name_1);
-          _messageAcceptor_1.acceptError(_plus_1, filterExpr, 
-            node_1.getOffset(), 
-            node_1.getLength(), 
-            TExpValidator.WrongNumberArguments);
-        }
+        this.checkFilterExpr(((FilterExpr) filterExpr));
       }
     }
   }
   
+  private void checkFilterExpr(final FilterExpr filterExpr) {
+    int count = 0;
+    EObject expr = ((EObject) null);
+    List<? extends EObject> exprs = ((List<? extends EObject>) null);
+    String name = ((String) null);
+    EObject _typeFilter = filterExpr.getTypeFilter();
+    if ((_typeFilter instanceof EventType)) {
+      EObject _typeFilter_1 = filterExpr.getTypeFilter();
+      EventType typeFilter = ((EventType) _typeFilter_1);
+      expr = typeFilter.getExpr();
+      exprs = typeFilter.getExprs();
+      name = typeFilter.getName();
+    } else {
+      EObject _typeFilter_2 = filterExpr.getTypeFilter();
+      MsgEventType typeFilter_1 = ((MsgEventType) _typeFilter_2);
+      expr = typeFilter_1.getExpr();
+      exprs = typeFilter_1.getExprs();
+      name = typeFilter_1.getName();
+    }
+    if ((expr != null)) {
+      count++;
+    }
+    int _count = count;
+    final List<? extends EObject> _converted_exprs = (List<? extends EObject>)exprs;
+    int _length = ((Object[])Conversions.unwrapArray(_converted_exprs, Object.class)).length;
+    count = (_count + _length);
+    PrologExpression _first = filterExpr.getFirst();
+    boolean _tripleNotEquals = (_first != null);
+    if (_tripleNotEquals) {
+      count--;
+    }
+    int _count_1 = count;
+    int _length_1 = ((Object[])Conversions.unwrapArray(filterExpr.getExprs(), Object.class)).length;
+    count = (_count_1 - _length_1);
+    if ((count != 0)) {
+      final ICompositeNode node = NodeModelUtils.findActualNodeFor(filterExpr);
+      this.getMessageAcceptor().acceptError(
+        ("Wrong number of arguments in " + name), filterExpr, 
+        node.getOffset(), 
+        node.getLength(), 
+        TExpValidator.WrongNumberArguments);
+    }
+  }
+  
+  private void checkSeqExpr(final Expression seqExpr) {
+    int count = 0;
+    EObject expr = ((EObject) null);
+    List<? extends EObject> exprs = ((List<? extends EObject>) null);
+    String name = ((String) null);
+    EObject _typeSeq = seqExpr.getTypeSeq();
+    if ((_typeSeq instanceof EventType)) {
+      EObject _typeSeq_1 = seqExpr.getTypeSeq();
+      EventType typeSeq = ((EventType) _typeSeq_1);
+      expr = typeSeq.getExpr();
+      exprs = typeSeq.getExprs();
+      name = typeSeq.getName();
+    } else {
+      EObject _typeSeq_2 = seqExpr.getTypeSeq();
+      MsgEventType typeSeq_1 = ((MsgEventType) _typeSeq_2);
+      expr = typeSeq_1.getExpr();
+      exprs = typeSeq_1.getExprs();
+      name = typeSeq_1.getName();
+    }
+    if ((expr != null)) {
+      count++;
+    }
+    int _count = count;
+    final List<? extends EObject> _converted_exprs = (List<? extends EObject>)exprs;
+    int _length = ((Object[])Conversions.unwrapArray(_converted_exprs, Object.class)).length;
+    count = (_count + _length);
+    PrologExpression _first = seqExpr.getFirst();
+    boolean _tripleNotEquals = (_first != null);
+    if (_tripleNotEquals) {
+      count--;
+    }
+    int _count_1 = count;
+    int _length_1 = ((Object[])Conversions.unwrapArray(seqExpr.getExprs(), Object.class)).length;
+    count = (_count_1 - _length_1);
+    if ((count != 0)) {
+      final ICompositeNode node = NodeModelUtils.findActualNodeFor(seqExpr);
+      this.getMessageAcceptor().acceptError(
+        ("Wrong number of arguments in " + name), seqExpr, 
+        node.getOffset(), 
+        node.getLength(), 
+        TExpValidator.WrongNumberArguments);
+    }
+  }
+  
   @Check
-  public void checkVariablesInsideConditions(final EventType eventType) {
+  public void checkVariablesInsideConditions(final MsgEventType eventType) {
     ArrayList<String> varsET = new ArrayList<String>();
     this.addVariables(eventType.getExpr(), varsET);
     EList<PrologExpression> _exprs = eventType.getExprs();
@@ -461,9 +497,9 @@ public class TExpValidator extends AbstractTExpValidator {
     }
   }
   
-  public boolean areAllAsyncMsgs(final TraceExpression tExp) {
-    EList<EventType> _types = tExp.getTypes();
-    for (final EventType eventType : _types) {
+  public boolean areAllAsyncMsgs(final AgentTraceExpression tExp) {
+    EList<MsgEventType> _types = tExp.getTypes();
+    for (final MsgEventType eventType : _types) {
       EList<Msg> _msgs = eventType.getMsgs();
       for (final Msg msg : _msgs) {
         if (((msg.getAsync_sender() == null) && (msg.getAsync_receiver() == null))) {
@@ -474,9 +510,9 @@ public class TExpValidator extends AbstractTExpValidator {
     return true;
   }
   
-  public boolean areAllSyncMsgs(final TraceExpression tExp) {
-    EList<EventType> _types = tExp.getTypes();
-    for (final EventType eventType : _types) {
+  public boolean areAllSyncMsgs(final AgentTraceExpression tExp) {
+    EList<MsgEventType> _types = tExp.getTypes();
+    for (final MsgEventType eventType : _types) {
       EList<Msg> _msgs = eventType.getMsgs();
       for (final Msg msg : _msgs) {
         if (((msg.getAsync_sender() != null) || (msg.getAsync_receiver() != null))) {
@@ -488,7 +524,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMsgsConsistency(final TraceExpression tExp) {
+  public void checkMsgsConsistency(final AgentTraceExpression tExp) {
     if (((tExp.getTypes() == null) || (tExp.getTypes().size() == 0))) {
       return;
     }
@@ -505,10 +541,8 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkSequenceEventTypeConsistency(final SeqExpr expr) {
-    boolean _isEventTypeConsistency = this.isEventTypeConsistency(expr.getSeqExpr().getTypeSeq());
-    boolean _not = (!_isEventTypeConsistency);
-    if (_not) {
+  public void checkSequenceMsgEventTypeConsistency(final SeqExpr expr) {
+    if (((expr.getSeqExpr().getTypeSeq() instanceof MsgEventType) && (!this.isMsgEventTypeConsistency(((MsgEventType) expr.getSeqExpr().getTypeSeq()))))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(expr.getSeqExpr().getTypeSeq());
       this.getMessageAcceptor().acceptError(
         "All messages inside the event type must involve the same set of roles", 
@@ -519,7 +553,7 @@ public class TExpValidator extends AbstractTExpValidator {
     }
   }
   
-  public boolean isEventTypeConsistency(final EventType eventType) {
+  public boolean isMsgEventTypeConsistency(final MsgEventType eventType) {
     TreeSet<String> roles = new TreeSet<String>();
     EList<Msg> _msgs = eventType.getMsgs();
     for (final Msg msg : _msgs) {
@@ -551,7 +585,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkFreeVariables(final TraceExpression tExp) {
+  public void checkFreeVariables(final AgentTraceExpression tExp) {
     ArrayList<String> freeVars = new ArrayList<String>();
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
@@ -572,7 +606,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkPartitionCorrectlyEnabled(final TraceExpression tExp) {
+  public void checkPartitionCorrectlyEnabled(final AgentTraceExpression tExp) {
     if ((((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && 
       (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getPartition().get(0));
@@ -586,7 +620,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkContractiveness(final TraceExpression tExp) {
+  public void checkContractiveness(final AgentTraceExpression tExp) {
     Boolean _isContractive = ContractivenessCheck.isContractive(tExp);
     boolean _not = (!(_isContractive).booleanValue());
     if (_not) {
@@ -650,7 +684,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkNoDuplications(final TraceExpression tExp) {
+  public void checkNoDuplications(final AgentTraceExpression tExp) {
     if (((tExp.getBodyL() == null) || (tExp.getBodyL().size() != 1))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
@@ -754,7 +788,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void thresholdMustBePositive(final TraceExpression tExp) {
+  public void thresholdMustBePositive(final AgentTraceExpression tExp) {
     if ((((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0)) && (tExp.getThreshold().get(0).length() > 0))) {
       Double d = Double.valueOf(tExp.getThreshold().get(0));
       if ((((d).doubleValue() < 0) || ((d).doubleValue() > 1))) {
@@ -769,7 +803,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConstraintsOnlyIfDecentralized(final TraceExpression tExp) {
+  public void checkConstraintsOnlyIfDecentralized(final AgentTraceExpression tExp) {
     if (((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && ((tExp.getConstraints() != null) && (tExp.getConstraints().size() > 0)))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptWarning(
@@ -781,7 +815,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMinimalOnlyIfDecentralized(final TraceExpression tExp) {
+  public void checkMinimalOnlyIfDecentralized(final AgentTraceExpression tExp) {
     if (((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && ((tExp.getMinimal() != null) && (tExp.getMinimal().size() > 0)))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptWarning(
@@ -793,7 +827,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConstraintsOrPartition(final TraceExpression tExp) {
+  public void checkConstraintsOrPartition(final AgentTraceExpression tExp) {
     if (((((tExp.getConstraints() != null) && (tExp.getConstraints().size() > 0)) && 
       (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getConstraints().get(0));
@@ -814,7 +848,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMinimalOrPartition(final TraceExpression tExp) {
+  public void checkMinimalOrPartition(final AgentTraceExpression tExp) {
     if (((((tExp.getPartition() != null) && (tExp.getPartition().size() > 0)) && 
       (tExp.getMinimal() != null)) && (tExp.getMinimal().size() > 0))) {
       ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getPartition().get(0));
@@ -828,7 +862,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void criticalPointsTest(final TraceExpression tExp) {
+  public void criticalPointsTest(final AgentTraceExpression tExp) {
     if ((((((tExp.getDecentralized() != null) && (tExp.getDecentralized().size() > 0)) && 
       Objects.equal(tExp.getDecentralized().get(0), "true")) && (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       ArrayList<MonitoringSafePartitionCheck.CriticalPoint> criticalPoints = MonitoringSafePartitionCheck.isMonitoringSafe(tExp);
@@ -853,7 +887,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkAllRolesInPartition(final TraceExpression tExp) {
+  public void checkAllRolesInPartition(final AgentTraceExpression tExp) {
     if (((tExp.getPartition() != null) && (tExp.getPartition().size() > 0))) {
       EList<Role> _roles = tExp.getRoles();
       for (final Role role1 : _roles) {
