@@ -149,41 +149,41 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	public class NUMBERElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.NUMBER");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Alternatives cAlternatives_2_1 = (Alternatives)cGroup_2.eContents().get(1);
-		private final RuleCall cEXT_INTTerminalRuleCall_2_1_0 = (RuleCall)cAlternatives_2_1.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_2_1_1 = (RuleCall)cAlternatives_2_1.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final RuleCall cEXT_INTTerminalRuleCall_1_1_0 = (RuleCall)cAlternatives_1_1.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1_1_1 = (RuleCall)cAlternatives_1_1.eContents().get(1);
 		
 		//NUMBER hidden():
-		//	'-'? INT ('.' (EXT_INT | INT))?;
+		//	INT ('.' (EXT_INT | INT))?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'-'? INT ('.' (EXT_INT | INT))?
+		//// ?????
+		////	'-'? INT ('.' (EXT_INT | INT))?;
+		//INT ('.' (EXT_INT | INT))?
 		public Group getGroup() { return cGroup; }
 		
-		//'-'?
-		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
-		
+		//// ?????
+		////	'-'? INT ('.' (EXT_INT | INT))?;
 		//INT
-		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
 		
 		//('.' (EXT_INT | INT))?
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 		
 		//EXT_INT | INT
-		public Alternatives getAlternatives_2_1() { return cAlternatives_2_1; }
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
 		//EXT_INT
-		public RuleCall getEXT_INTTerminalRuleCall_2_1_0() { return cEXT_INTTerminalRuleCall_2_1_0; }
+		public RuleCall getEXT_INTTerminalRuleCall_1_1_0() { return cEXT_INTTerminalRuleCall_1_1_0; }
 		
 		//INT
-		public RuleCall getINTTerminalRuleCall_2_1_1() { return cINTTerminalRuleCall_2_1_1; }
+		public RuleCall getINTTerminalRuleCall_1_1_1() { return cINTTerminalRuleCall_1_1_1; }
 	}
 	public class ExpressionInfinityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.ExpressionInfinity");
@@ -817,21 +817,27 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTermsAssignment_5_0_1 = (Assignment)cGroup_5_0.eContents().get(1);
 		private final RuleCall cTermsTermParserRuleCall_5_0_1_0 = (RuleCall)cTermsAssignment_5_0_1.eContents().get(0);
 		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
-		private final Assignment cTypesLAssignment_5_1_0 = (Assignment)cGroup_5_1.eContents().get(0);
-		private final Keyword cTypesLTypesKeyword_5_1_0_0 = (Keyword)cTypesLAssignment_5_1_0.eContents().get(0);
-		private final Assignment cTypesAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
-		private final RuleCall cTypesEventTypeParserRuleCall_5_1_1_0 = (RuleCall)cTypesAssignment_5_1_1.eContents().get(0);
+		private final Assignment cModulesLAssignment_5_1_0 = (Assignment)cGroup_5_1.eContents().get(0);
+		private final Keyword cModulesLModulesKeyword_5_1_0_0 = (Keyword)cModulesLAssignment_5_1_0.eContents().get(0);
+		private final Assignment cModulesAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cModulesModuleParserRuleCall_5_1_1_0 = (RuleCall)cModulesAssignment_5_1_1.eContents().get(0);
+		private final Group cGroup_5_2 = (Group)cAlternatives_5.eContents().get(2);
+		private final Assignment cTypesLAssignment_5_2_0 = (Assignment)cGroup_5_2.eContents().get(0);
+		private final Keyword cTypesLTypesKeyword_5_2_0_0 = (Keyword)cTypesLAssignment_5_2_0.eContents().get(0);
+		private final Assignment cTypesAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
+		private final RuleCall cTypesEventTypeParserRuleCall_5_2_1_0 = (RuleCall)cTypesAssignment_5_2_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//GenericTraceExpression:
 		//	{GenericTraceExpression}
 		//	'trace_expression' '{'
-		//	'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+		//	'id:' name=ID (bodyL+='body:' terms+=Term+ | modulesL+='modules:' modules+=Module* | typesL+='types:'
+		//	types+=EventType*)+
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GenericTraceExpression} 'trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:'
-		//types+=EventType*)+ '}'
+		//{GenericTraceExpression} 'trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | modulesL+='modules:'
+		//modules+=Module* | typesL+='types:' types+=EventType*)+ '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{GenericTraceExpression}
@@ -852,7 +858,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDParserRuleCall_4_0() { return cNameIDParserRuleCall_4_0; }
 		
-		//(bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+		//(bodyL+='body:' terms+=Term+ | modulesL+='modules:' modules+=Module* | typesL+='types:' types+=EventType*)+
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
 		//bodyL+='body:' terms+=Term+
@@ -870,20 +876,35 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//Term
 		public RuleCall getTermsTermParserRuleCall_5_0_1_0() { return cTermsTermParserRuleCall_5_0_1_0; }
 		
-		//typesL+='types:' types+=EventType*
+		//modulesL+='modules:' modules+=Module*
 		public Group getGroup_5_1() { return cGroup_5_1; }
 		
+		//modulesL+='modules:'
+		public Assignment getModulesLAssignment_5_1_0() { return cModulesLAssignment_5_1_0; }
+		
+		//'modules:'
+		public Keyword getModulesLModulesKeyword_5_1_0_0() { return cModulesLModulesKeyword_5_1_0_0; }
+		
+		//modules+=Module*
+		public Assignment getModulesAssignment_5_1_1() { return cModulesAssignment_5_1_1; }
+		
+		//Module
+		public RuleCall getModulesModuleParserRuleCall_5_1_1_0() { return cModulesModuleParserRuleCall_5_1_1_0; }
+		
+		//typesL+='types:' types+=EventType*
+		public Group getGroup_5_2() { return cGroup_5_2; }
+		
 		//typesL+='types:'
-		public Assignment getTypesLAssignment_5_1_0() { return cTypesLAssignment_5_1_0; }
+		public Assignment getTypesLAssignment_5_2_0() { return cTypesLAssignment_5_2_0; }
 		
 		//'types:'
-		public Keyword getTypesLTypesKeyword_5_1_0_0() { return cTypesLTypesKeyword_5_1_0_0; }
+		public Keyword getTypesLTypesKeyword_5_2_0_0() { return cTypesLTypesKeyword_5_2_0_0; }
 		
 		//types+=EventType*
-		public Assignment getTypesAssignment_5_1_1() { return cTypesAssignment_5_1_1; }
+		public Assignment getTypesAssignment_5_2_1() { return cTypesAssignment_5_2_1; }
 		
 		//EventType
-		public RuleCall getTypesEventTypeParserRuleCall_5_1_1_0() { return cTypesEventTypeParserRuleCall_5_1_1_0; }
+		public RuleCall getTypesEventTypeParserRuleCall_5_2_1_0() { return cTypesEventTypeParserRuleCall_5_2_1_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -3220,7 +3241,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//NUMBER hidden():
-	//	'-'? INT ('.' (EXT_INT | INT))?;
+	//	INT ('.' (EXT_INT | INT))?;
 	public NUMBERElements getNUMBERAccess() {
 		return pNUMBER;
 	}
@@ -3388,7 +3409,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	//GenericTraceExpression:
 	//	{GenericTraceExpression}
 	//	'trace_expression' '{'
-	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | typesL+='types:' types+=EventType*)+
+	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | modulesL+='modules:' modules+=Module* | typesL+='types:'
+	//	types+=EventType*)+
 	//	'}';
 	public GenericTraceExpressionElements getGenericTraceExpressionAccess() {
 		return pGenericTraceExpression;

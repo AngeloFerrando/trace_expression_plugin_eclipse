@@ -35,6 +35,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getBodyL <em>Body L</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getTerms <em>Terms</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getModulesL <em>Modules L</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.impl.TraceExpressionImpl#getTypesL <em>Types L</em>}</li>
  * </ul>
  *
@@ -81,6 +83,26 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<Term> terms;
+
+  /**
+   * The cached value of the '{@link #getModulesL() <em>Modules L</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModulesL()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> modulesL;
+
+  /**
+   * The cached value of the '{@link #getModules() <em>Modules</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModules()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> modules;
 
   /**
    * The cached value of the '{@link #getTypesL() <em>Types L</em>}' attribute list.
@@ -169,6 +191,34 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<String> getModulesL()
+  {
+    if (modulesL == null)
+    {
+      modulesL = new EDataTypeEList<String>(String.class, this, TExpPackage.TRACE_EXPRESSION__MODULES_L);
+    }
+    return modulesL;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<String> getModules()
+  {
+    if (modules == null)
+    {
+      modules = new EDataTypeEList<String>(String.class, this, TExpPackage.TRACE_EXPRESSION__MODULES);
+    }
+    return modules;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getTypesL()
   {
     if (typesL == null)
@@ -210,6 +260,10 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
         return getBodyL();
       case TExpPackage.TRACE_EXPRESSION__TERMS:
         return getTerms();
+      case TExpPackage.TRACE_EXPRESSION__MODULES_L:
+        return getModulesL();
+      case TExpPackage.TRACE_EXPRESSION__MODULES:
+        return getModules();
       case TExpPackage.TRACE_EXPRESSION__TYPES_L:
         return getTypesL();
     }
@@ -238,6 +292,14 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
         getTerms().clear();
         getTerms().addAll((Collection<? extends Term>)newValue);
         return;
+      case TExpPackage.TRACE_EXPRESSION__MODULES_L:
+        getModulesL().clear();
+        getModulesL().addAll((Collection<? extends String>)newValue);
+        return;
+      case TExpPackage.TRACE_EXPRESSION__MODULES:
+        getModules().clear();
+        getModules().addAll((Collection<? extends String>)newValue);
+        return;
       case TExpPackage.TRACE_EXPRESSION__TYPES_L:
         getTypesL().clear();
         getTypesL().addAll((Collection<? extends String>)newValue);
@@ -265,6 +327,12 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
       case TExpPackage.TRACE_EXPRESSION__TERMS:
         getTerms().clear();
         return;
+      case TExpPackage.TRACE_EXPRESSION__MODULES_L:
+        getModulesL().clear();
+        return;
+      case TExpPackage.TRACE_EXPRESSION__MODULES:
+        getModules().clear();
+        return;
       case TExpPackage.TRACE_EXPRESSION__TYPES_L:
         getTypesL().clear();
         return;
@@ -288,6 +356,10 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
         return bodyL != null && !bodyL.isEmpty();
       case TExpPackage.TRACE_EXPRESSION__TERMS:
         return terms != null && !terms.isEmpty();
+      case TExpPackage.TRACE_EXPRESSION__MODULES_L:
+        return modulesL != null && !modulesL.isEmpty();
+      case TExpPackage.TRACE_EXPRESSION__MODULES:
+        return modules != null && !modules.isEmpty();
       case TExpPackage.TRACE_EXPRESSION__TYPES_L:
         return typesL != null && !typesL.isEmpty();
     }
@@ -309,6 +381,10 @@ public class TraceExpressionImpl extends MinimalEObjectImpl.Container implements
     result.append(name);
     result.append(", bodyL: ");
     result.append(bodyL);
+    result.append(", modulesL: ");
+    result.append(modulesL);
+    result.append(", modules: ");
+    result.append(modules);
     result.append(", typesL: ");
     result.append(typesL);
     result.append(')');

@@ -14,7 +14,6 @@ import it.unige.dibris.trace_expression_language.tExp.AndExpr
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 import it.unige.dibris.trace_expression_language.tExp.TraceExpression
 import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
-import it.unige.dibris.trace_expression_language.tExp.EventType
 
 class ContractivenessCheck {
 	

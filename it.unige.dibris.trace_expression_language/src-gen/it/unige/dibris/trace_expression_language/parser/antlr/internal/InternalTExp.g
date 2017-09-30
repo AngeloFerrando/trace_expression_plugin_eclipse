@@ -333,41 +333,34 @@ ruleNUMBER returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	leaveRule();
 }:
 	(
-		(
-			kw='-'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getNUMBERAccess().getHyphenMinusKeyword_0());
-			}
-		)?
-		this_INT_1=RULE_INT
+		this_INT_0=RULE_INT
 		{
-			$current.merge(this_INT_1);
+			$current.merge(this_INT_0);
 		}
 		{
-			newLeafNode(this_INT_1, grammarAccess.getNUMBERAccess().getINTTerminalRuleCall_1());
+			newLeafNode(this_INT_0, grammarAccess.getNUMBERAccess().getINTTerminalRuleCall_0());
 		}
 		(
 			kw='.'
 			{
 				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getNUMBERAccess().getFullStopKeyword_2_0());
+				newLeafNode(kw, grammarAccess.getNUMBERAccess().getFullStopKeyword_1_0());
 			}
 			(
-				this_EXT_INT_3=RULE_EXT_INT
+				this_EXT_INT_2=RULE_EXT_INT
 				{
-					$current.merge(this_EXT_INT_3);
+					$current.merge(this_EXT_INT_2);
 				}
 				{
-					newLeafNode(this_EXT_INT_3, grammarAccess.getNUMBERAccess().getEXT_INTTerminalRuleCall_2_1_0());
+					newLeafNode(this_EXT_INT_2, grammarAccess.getNUMBERAccess().getEXT_INTTerminalRuleCall_1_1_0());
 				}
 				    |
-				this_INT_4=RULE_INT
+				this_INT_3=RULE_INT
 				{
-					$current.merge(this_INT_4);
+					$current.merge(this_INT_3);
 				}
 				{
-					newLeafNode(this_INT_4, grammarAccess.getNUMBERAccess().getINTTerminalRuleCall_2_1_1());
+					newLeafNode(this_INT_3, grammarAccess.getNUMBERAccess().getINTTerminalRuleCall_1_1_1());
 				}
 			)
 		)?
@@ -1628,24 +1621,60 @@ ruleGenericTraceExpression returns [EObject current=null]
 			(
 				(
 					(
-						lv_typesL_7_0='types:'
+						lv_modulesL_7_0='modules:'
 						{
-							newLeafNode(lv_typesL_7_0, grammarAccess.getGenericTraceExpressionAccess().getTypesLTypesKeyword_5_1_0_0());
+							newLeafNode(lv_modulesL_7_0, grammarAccess.getGenericTraceExpressionAccess().getModulesLModulesKeyword_5_1_0_0());
 						}
 						{
 							if ($current==null) {
 								$current = createModelElement(grammarAccess.getGenericTraceExpressionRule());
 							}
-							addWithLastConsumed($current, "typesL", lv_typesL_7_0, "types:");
+							addWithLastConsumed($current, "modulesL", lv_modulesL_7_0, "modules:");
 						}
 					)
 				)
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getGenericTraceExpressionAccess().getTypesEventTypeParserRuleCall_5_1_1_0());
+							newCompositeNode(grammarAccess.getGenericTraceExpressionAccess().getModulesModuleParserRuleCall_5_1_1_0());
 						}
-						lv_types_8_0=ruleEventType
+						lv_modules_8_0=ruleModule
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getGenericTraceExpressionRule());
+							}
+							add(
+								$current,
+								"modules",
+								lv_modules_8_0,
+								"it.unige.dibris.trace_expression_language.TExp.Module");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)*
+			)
+			    |
+			(
+				(
+					(
+						lv_typesL_9_0='types:'
+						{
+							newLeafNode(lv_typesL_9_0, grammarAccess.getGenericTraceExpressionAccess().getTypesLTypesKeyword_5_2_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getGenericTraceExpressionRule());
+							}
+							addWithLastConsumed($current, "typesL", lv_typesL_9_0, "types:");
+						}
+					)
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getGenericTraceExpressionAccess().getTypesEventTypeParserRuleCall_5_2_1_0());
+						}
+						lv_types_10_0=ruleEventType
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getGenericTraceExpressionRule());
@@ -1653,7 +1682,7 @@ ruleGenericTraceExpression returns [EObject current=null]
 							add(
 								$current,
 								"types",
-								lv_types_8_0,
+								lv_types_10_0,
 								"it.unige.dibris.trace_expression_language.TExp.EventType");
 							afterParserOrEnumRuleCall();
 						}
@@ -1661,9 +1690,9 @@ ruleGenericTraceExpression returns [EObject current=null]
 				)*
 			)
 		)+
-		otherlv_9='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getGenericTraceExpressionAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_11, grammarAccess.getGenericTraceExpressionAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;

@@ -624,7 +624,7 @@ public class TExpSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     GenericTraceExpression returns GenericTraceExpression
 	 *
 	 * Constraint:
-	 *     (name=ID ((bodyL+='body:' terms+=Term+) | (typesL+='types:' types+=EventType*))+)
+	 *     (name=ID ((bodyL+='body:' terms+=Term+) | (modulesL+='modules:' modules+=Module*) | (typesL+='types:' types+=EventType*))+)
 	 */
 	protected void sequence_GenericTraceExpression(ISerializationContext context, GenericTraceExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

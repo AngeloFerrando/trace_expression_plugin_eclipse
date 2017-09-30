@@ -20,6 +20,7 @@ import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
+import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.NumberExpression;
@@ -709,6 +710,16 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
+      EList<String> _modules = t.getModules();
+      for(final String m : _modules) {
+        _builder.append(":- ensure_loaded(\'");
+        _builder.append(m);
+        _builder.append("\').");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    {
       EList<EventType> _types = t.getTypes();
       for(final EventType et : _types) {
         CharSequence _compile = this.compile(et, t.getName());
@@ -1263,29 +1274,49 @@ public class TExpGenerator extends AbstractGenerator {
           if ((expr instanceof VariableExpression)) {
             return ((VariableExpression)expr).getName();
           } else {
-            PrologExpression _left = expr.getLeft();
-            boolean _tripleNotEquals_1 = (_left != null);
-            if (_tripleNotEquals_1) {
-              PrologExpression _right = expr.getRight();
-              boolean _tripleNotEquals_2 = (_right != null);
-              if (_tripleNotEquals_2) {
-                String _compile_1 = this.compile(expr.getLeft());
-                String _plus_3 = (_compile_1 + " ");
-                String _op = expr.getOp();
-                String _plus_4 = (_plus_3 + _op);
-                String _plus_5 = (_plus_4 + " ");
-                String _compile_2 = this.compile(expr.getRight());
-                return (_plus_5 + _compile_2);
-              } else {
-                return this.compile(expr.getLeft());
+            if ((expr instanceof ListExpression)) {
+              String str = "[";
+              PrologExpression _head = ((ListExpression)expr).getHead();
+              boolean _tripleNotEquals_1 = (_head != null);
+              if (_tripleNotEquals_1) {
+                String _str = str;
+                String _compile_1 = this.compile(((ListExpression)expr).getHead());
+                str = (_str + _compile_1);
+                PrologExpression _tail = ((ListExpression)expr).getTail();
+                boolean _tripleNotEquals_2 = (_tail != null);
+                if (_tripleNotEquals_2) {
+                  String _str_1 = str;
+                  String _compile_2 = this.compile(((ListExpression)expr).getTail());
+                  String _plus_3 = ("|" + _compile_2);
+                  str = (_str_1 + _plus_3);
+                }
               }
+              return (str + "]");
             } else {
-              PrologExpression _right_1 = expr.getRight();
-              boolean _tripleNotEquals_3 = (_right_1 != null);
+              PrologExpression _left = expr.getLeft();
+              boolean _tripleNotEquals_3 = (_left != null);
               if (_tripleNotEquals_3) {
-                return this.compile(expr.getRight());
+                PrologExpression _right = expr.getRight();
+                boolean _tripleNotEquals_4 = (_right != null);
+                if (_tripleNotEquals_4) {
+                  String _compile_3 = this.compile(expr.getLeft());
+                  String _plus_4 = (_compile_3 + " ");
+                  String _op = expr.getOp();
+                  String _plus_5 = (_plus_4 + _op);
+                  String _plus_6 = (_plus_5 + " ");
+                  String _compile_4 = this.compile(expr.getRight());
+                  return (_plus_6 + _compile_4);
+                } else {
+                  return this.compile(expr.getLeft());
+                }
               } else {
-                return "";
+                PrologExpression _right_1 = expr.getRight();
+                boolean _tripleNotEquals_5 = (_right_1 != null);
+                if (_tripleNotEquals_5) {
+                  return this.compile(expr.getRight());
+                } else {
+                  return "";
+                }
               }
             }
           }

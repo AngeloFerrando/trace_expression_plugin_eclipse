@@ -99,7 +99,9 @@ terminal EXT_INT:
 	INT ('e' | 'E') ('-' | '+')? INT;
 
 NUMBER hidden():
-	'-'? INT ('.' (EXT_INT | INT))?;
+// ?????
+//	'-'? INT ('.' (EXT_INT | INT))?;
+	INT ('.' (EXT_INT | INT))?;
 
 // http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/4.html
 // xfx infix nonassociative 
@@ -181,6 +183,7 @@ GenericTraceExpression:
 	'trace_expression' '{'
 	 	'id:' name=ID
 	 	((bodyL+='body:' (terms+=Term)+) |
+	 	(modulesL+='modules:' (modules+=Module)*) |
 	 	(typesL+='types:' (types+=EventType)*))+
 	'}'
 ;

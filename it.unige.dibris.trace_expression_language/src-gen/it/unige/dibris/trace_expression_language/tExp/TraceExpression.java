@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getName <em>Name</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getBodyL <em>Body L</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTerms <em>Terms</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModulesL <em>Modules L</em>}</li>
+ *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModules <em>Modules</em>}</li>
  *   <li>{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTypesL <em>Types L</em>}</li>
  * </ul>
  *
@@ -85,6 +87,38 @@ public interface TraceExpression extends EObject
    * @generated
    */
   EList<Term> getTerms();
+
+  /**
+   * Returns the value of the '<em><b>Modules L</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Modules L</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modules L</em>' attribute list.
+   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getTraceExpression_ModulesL()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getModulesL();
+
+  /**
+   * Returns the value of the '<em><b>Modules</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Modules</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modules</em>' attribute list.
+   * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getTraceExpression_Modules()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getModules();
 
   /**
    * Returns the value of the '<em><b>Types L</b></em>' attribute list.

@@ -169,13 +169,31 @@ public interface TExpPackage extends EPackage
   int TRACE_EXPRESSION__TERMS = 2;
 
   /**
+   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRACE_EXPRESSION__MODULES_L = 3;
+
+  /**
+   * The feature id for the '<em><b>Modules</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRACE_EXPRESSION__MODULES = 4;
+
+  /**
    * The feature id for the '<em><b>Types L</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRACE_EXPRESSION__TYPES_L = 3;
+  int TRACE_EXPRESSION__TYPES_L = 5;
 
   /**
    * The number of structural features of the '<em>Trace Expression</em>' class.
@@ -184,7 +202,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_EXPRESSION_FEATURE_COUNT = 4;
+  int TRACE_EXPRESSION_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.GenericTraceExpressionImpl <em>Generic Trace Expression</em>}' class.
@@ -222,6 +240,24 @@ public interface TExpPackage extends EPackage
    * @ordered
    */
   int GENERIC_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
+
+  /**
+   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION__MODULES_L;
+
+  /**
+   * The feature id for the '<em><b>Modules</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION__MODULES;
 
   /**
    * The feature id for the '<em><b>Types L</b></em>' attribute list.
@@ -288,6 +324,24 @@ public interface TExpPackage extends EPackage
   int AGENT_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
 
   /**
+   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION__MODULES_L;
+
+  /**
+   * The feature id for the '<em><b>Modules</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGENT_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION__MODULES;
+
+  /**
    * The feature id for the '<em><b>Types L</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -324,31 +378,13 @@ public interface TExpPackage extends EPackage
   int AGENT_TRACE_EXPRESSION__TYPES = TRACE_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Modules L</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AGENT_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Modules</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AGENT_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION_FEATURE_COUNT + 4;
-
-  /**
    * The feature id for the '<em><b>Decentralized L</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = TRACE_EXPRESSION_FEATURE_COUNT + 5;
+  int AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = TRACE_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Decentralized</b></em>' attribute list.
@@ -357,7 +393,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__DECENTRALIZED = TRACE_EXPRESSION_FEATURE_COUNT + 6;
+  int AGENT_TRACE_EXPRESSION__DECENTRALIZED = TRACE_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Partition L</b></em>' attribute list.
@@ -366,7 +402,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__PARTITION_L = TRACE_EXPRESSION_FEATURE_COUNT + 7;
+  int AGENT_TRACE_EXPRESSION__PARTITION_L = TRACE_EXPRESSION_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Partition</b></em>' containment reference list.
@@ -375,7 +411,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__PARTITION = TRACE_EXPRESSION_FEATURE_COUNT + 8;
+  int AGENT_TRACE_EXPRESSION__PARTITION = TRACE_EXPRESSION_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Constraints L</b></em>' attribute list.
@@ -384,7 +420,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = TRACE_EXPRESSION_FEATURE_COUNT + 9;
+  int AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = TRACE_EXPRESSION_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -393,7 +429,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CONSTRAINTS = TRACE_EXPRESSION_FEATURE_COUNT + 10;
+  int AGENT_TRACE_EXPRESSION__CONSTRAINTS = TRACE_EXPRESSION_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Gui L</b></em>' attribute list.
@@ -402,7 +438,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__GUI_L = TRACE_EXPRESSION_FEATURE_COUNT + 11;
+  int AGENT_TRACE_EXPRESSION__GUI_L = TRACE_EXPRESSION_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Gui</b></em>' attribute list.
@@ -411,7 +447,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__GUI = TRACE_EXPRESSION_FEATURE_COUNT + 12;
+  int AGENT_TRACE_EXPRESSION__GUI = TRACE_EXPRESSION_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Minimal L</b></em>' attribute list.
@@ -420,7 +456,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MINIMAL_L = TRACE_EXPRESSION_FEATURE_COUNT + 13;
+  int AGENT_TRACE_EXPRESSION__MINIMAL_L = TRACE_EXPRESSION_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Minimal</b></em>' attribute list.
@@ -429,7 +465,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MINIMAL = TRACE_EXPRESSION_FEATURE_COUNT + 14;
+  int AGENT_TRACE_EXPRESSION__MINIMAL = TRACE_EXPRESSION_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Threshold L</b></em>' attribute list.
@@ -438,7 +474,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__THRESHOLD_L = TRACE_EXPRESSION_FEATURE_COUNT + 15;
+  int AGENT_TRACE_EXPRESSION__THRESHOLD_L = TRACE_EXPRESSION_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Threshold</b></em>' attribute list.
@@ -447,7 +483,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__THRESHOLD = TRACE_EXPRESSION_FEATURE_COUNT + 16;
+  int AGENT_TRACE_EXPRESSION__THRESHOLD = TRACE_EXPRESSION_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Channels L</b></em>' attribute list.
@@ -456,7 +492,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CHANNELS_L = TRACE_EXPRESSION_FEATURE_COUNT + 17;
+  int AGENT_TRACE_EXPRESSION__CHANNELS_L = TRACE_EXPRESSION_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Channels</b></em>' containment reference list.
@@ -465,7 +501,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CHANNELS = TRACE_EXPRESSION_FEATURE_COUNT + 18;
+  int AGENT_TRACE_EXPRESSION__CHANNELS = TRACE_EXPRESSION_FEATURE_COUNT + 16;
 
   /**
    * The number of structural features of the '<em>Agent Trace Expression</em>' class.
@@ -474,7 +510,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 19;
+  int AGENT_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 17;
 
   /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
@@ -3063,6 +3099,28 @@ public interface TExpPackage extends EPackage
   EReference getTraceExpression_Terms();
 
   /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModulesL <em>Modules L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Modules L</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModulesL()
+   * @see #getTraceExpression()
+   * @generated
+   */
+  EAttribute getTraceExpression_ModulesL();
+
+  /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModules <em>Modules</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Modules</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.TraceExpression#getModules()
+   * @see #getTraceExpression()
+   * @generated
+   */
+  EAttribute getTraceExpression_Modules();
+
+  /**
    * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.TraceExpression#getTypesL <em>Types L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3136,28 +3194,6 @@ public interface TExpPackage extends EPackage
    * @generated
    */
   EReference getAgentTraceExpression_Types();
-
-  /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModulesL <em>Modules L</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Modules L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModulesL()
-   * @see #getAgentTraceExpression()
-   * @generated
-   */
-  EAttribute getAgentTraceExpression_ModulesL();
-
-  /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModules <em>Modules</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Modules</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getModules()
-   * @see #getAgentTraceExpression()
-   * @generated
-   */
-  EAttribute getAgentTraceExpression_Modules();
 
   /**
    * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralizedL <em>Decentralized L</em>}'.
@@ -4570,6 +4606,22 @@ public interface TExpPackage extends EPackage
     EReference TRACE_EXPRESSION__TERMS = eINSTANCE.getTraceExpression_Terms();
 
     /**
+     * The meta object literal for the '<em><b>Modules L</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRACE_EXPRESSION__MODULES_L = eINSTANCE.getTraceExpression_ModulesL();
+
+    /**
+     * The meta object literal for the '<em><b>Modules</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRACE_EXPRESSION__MODULES = eINSTANCE.getTraceExpression_Modules();
+
+    /**
      * The meta object literal for the '<em><b>Types L</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4628,22 +4680,6 @@ public interface TExpPackage extends EPackage
      * @generated
      */
     EReference AGENT_TRACE_EXPRESSION__TYPES = eINSTANCE.getAgentTraceExpression_Types();
-
-    /**
-     * The meta object literal for the '<em><b>Modules L</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute AGENT_TRACE_EXPRESSION__MODULES_L = eINSTANCE.getAgentTraceExpression_ModulesL();
-
-    /**
-     * The meta object literal for the '<em><b>Modules</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute AGENT_TRACE_EXPRESSION__MODULES = eINSTANCE.getAgentTraceExpression_Modules();
 
     /**
      * The meta object literal for the '<em><b>Decentralized L</b></em>' attribute list feature.

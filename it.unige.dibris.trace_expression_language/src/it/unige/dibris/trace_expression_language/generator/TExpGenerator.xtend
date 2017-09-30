@@ -36,6 +36,7 @@ import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent
 import it.unige.dibris.trace_expression_language.tExp.DerivedEvent
 import org.eclipse.emf.common.util.EList
+import it.unige.dibris.trace_expression_language.tExp.ListExpression
 
 /**
  * Generates code from your model files on save.
@@ -271,6 +272,10 @@ class TExpGenerator extends AbstractGenerator {
 	'''
 	:- discontiguous match/3.
 	:- discontiguous event/2.
+	
+	«FOR m : t.modules»
+	:- ensure_loaded('«m»').
+	«ENDFOR»
 	
 	«FOR et : t.types»
 	«et.compile(t.name)»
@@ -518,6 +523,17 @@ class TExpGenerator extends AbstractGenerator {
 			return '\'' + expr.value + '\''
 		} else if(expr instanceof VariableExpression){
 			return expr.name
+		} else if (expr instanceof ListExpression) {
+			var str = '['
+			
+			if (expr.head !== null) {
+				str += expr.head.compile
+				
+				if (expr.tail !== null)
+					str += '|' + expr.tail.compile
+			}
+			
+			return str + ']'
 		} else{
 			if(expr.left !== null){
 				if(expr.right !== null){

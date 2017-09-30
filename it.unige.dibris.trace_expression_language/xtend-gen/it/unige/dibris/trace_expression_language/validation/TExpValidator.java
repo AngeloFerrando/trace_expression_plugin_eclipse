@@ -257,12 +257,12 @@ public class TExpValidator extends AbstractTExpValidator {
       this.checkSeqExpr(seqExpr);
     } else {
       if ((filterExpr != null)) {
-        this.checkFilterExpr(((FilterExpr) filterExpr));
+        this.checkFilterExpr(filterExpr);
       }
     }
   }
   
-  private void checkFilterExpr(final FilterExpr filterExpr) {
+  private void checkFilterExpr(final Expression filterExpr) {
     int count = 0;
     EObject expr = ((EObject) null);
     List<? extends EObject> exprs = ((List<? extends EObject>) null);
@@ -320,10 +320,17 @@ public class TExpValidator extends AbstractTExpValidator {
       name = typeSeq.getName();
     } else {
       EObject _typeSeq_2 = seqExpr.getTypeSeq();
-      MsgEventType typeSeq_1 = ((MsgEventType) _typeSeq_2);
-      expr = typeSeq_1.getExpr();
-      exprs = typeSeq_1.getExprs();
-      name = typeSeq_1.getName();
+      if ((_typeSeq_2 instanceof MsgEventType)) {
+        EObject _typeSeq_3 = seqExpr.getTypeSeq();
+        MsgEventType typeSeq_1 = ((MsgEventType) _typeSeq_3);
+        expr = typeSeq_1.getExpr();
+        exprs = typeSeq_1.getExprs();
+        name = typeSeq_1.getName();
+      } else {
+        Class<? extends EObject> _class = seqExpr.getTypeSeq().getClass();
+        String _plus = ("Unexpected type " + _class);
+        throw new AssertionError(_plus);
+      }
     }
     if ((expr != null)) {
       count++;

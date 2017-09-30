@@ -183,11 +183,11 @@ class TExpValidator extends AbstractTExpValidator {
 		if(seqExpr !== null){
 			checkSeqExpr(seqExpr)
 		} else if(filterExpr !== null){
-			checkFilterExpr(filterExpr as FilterExpr)
+			checkFilterExpr(filterExpr)
 		}
 	}
 	
-	private def void checkFilterExpr(FilterExpr filterExpr) {
+	private def void checkFilterExpr(Expression filterExpr) {
 		var count = 0
 		var expr = null as EObject
 		var exprs = null as List<? extends EObject>
@@ -238,12 +238,14 @@ class TExpValidator extends AbstractTExpValidator {
 			expr = typeSeq.expr
 			exprs = typeSeq.exprs
 			name = typeSeq.name
-		} else {
+		} else if (seqExpr.typeSeq instanceof MsgEventType) {
 			var typeSeq = seqExpr.typeSeq as MsgEventType
 			expr = typeSeq.expr
 			exprs = typeSeq.exprs
 			name = typeSeq.name
 		}
+		else
+			throw new AssertionError("Unexpected type " + seqExpr.typeSeq.class);
 		
 		if(expr !== null){
 			count++
