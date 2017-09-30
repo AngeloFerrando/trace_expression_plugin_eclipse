@@ -10,6 +10,7 @@ import it.unige.dibris.trace_expression_language.tExp.SeqExpr;
 import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr;
 import it.unige.dibris.trace_expression_language.tExp.Term;
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
+import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.validation.MonitoringSafePartitionCheck;
@@ -20,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 
 @SuppressWarnings("all")
 public class ContractivenessCheck {
-  public static Boolean isContractive(final AgentTraceExpression tExp) {
+  public static Boolean isContractive(final TraceExpression tExp) {
     final EList<Term> terms = tExp.getTerms();
     final LinkedHashMap<String, Expression> assocT = new LinkedHashMap<String, Expression>();
     final LinkedHashMap<String, Integer> assocD = new LinkedHashMap<String, Integer>();
@@ -31,8 +32,10 @@ public class ContractivenessCheck {
       if ((term_1.getName().equals("Main") || term_1.getName().equals("main"))) {
         assocD.put(term_1.getName(), Integer.valueOf(0));
         double threshold = 1.0;
-        if (((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0))) {
-          threshold = (Double.valueOf(tExp.getThreshold().get(0))).doubleValue();
+        if ((tExp instanceof AgentTraceExpression)) {
+          if (((((AgentTraceExpression)tExp).getThreshold() != null) && (((AgentTraceExpression)tExp).getThreshold().size() > 0))) {
+            threshold = (Double.valueOf(((AgentTraceExpression)tExp).getThreshold().get(0))).doubleValue();
+          }
         }
         return Boolean.valueOf(ContractivenessCheck.isContractive(term_1.getExpr(), 0, (-1), assocT, assocD, threshold));
       }
@@ -72,11 +75,11 @@ public class ContractivenessCheck {
                   if ((_typeSeq instanceof MsgEventType)) {
                     EObject _typeSeq_1 = ((SeqExpr)expr).getSeqExpr().getTypeSeq();
                     MsgEventType msgEv = ((MsgEventType) _typeSeq_1);
-                    if ((((msgEv.getChannel() == null) || (msgEv.getChannel().getReliability() == null)) || ((Double.valueOf(msgEv.getChannel().getReliability())).doubleValue() >= threshold))) {
-                      return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), depth, assocT, assocD, threshold);
+                    if ((((msgEv.getChannel() != null) && (msgEv.getChannel().getReliability() != null)) || ((Double.valueOf(msgEv.getChannel().getReliability())).doubleValue() < threshold))) {
+                      return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), deepestseq, assocT, assocD, threshold);
                     }
                   }
-                  return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), deepestseq, assocT, assocD, threshold);
+                  return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), depth, assocT, assocD, threshold);
                 } else {
                   if ((expr instanceof VarExpr)) {
                     return ContractivenessCheck.isContractive(((VarExpr)expr).getVarExpr().getBodyVar(), (depth + 1), deepestseq, assocT, assocD, threshold);

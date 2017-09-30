@@ -7,13 +7,17 @@ import com.google.common.base.Objects;
 import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
 import it.unige.dibris.trace_expression_language.tExp.Cardinality;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Channel;
 import it.unige.dibris.trace_expression_language.tExp.Constraint;
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent;
+import it.unige.dibris.trace_expression_language.tExp.Event;
 import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
@@ -25,6 +29,7 @@ import it.unige.dibris.trace_expression_language.tExp.Size;
 import it.unige.dibris.trace_expression_language.tExp.Term;
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr;
 import it.unige.dibris.trace_expression_language.tExp.Together;
+import it.unige.dibris.trace_expression_language.tExp.TraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
@@ -32,6 +37,7 @@ import it.unige.dibris.trace_expression_language.validation.AbstractTExpValidato
 import it.unige.dibris.trace_expression_language.validation.ContractivenessCheck;
 import it.unige.dibris.trace_expression_language.validation.MonitoringSafePartitionCheck;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
@@ -41,6 +47,7 @@ import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Conversions;
 
 /**
@@ -83,7 +90,7 @@ public class TExpValidator extends AbstractTExpValidator {
   public final static String HeadNotTerminating = "Head of a concatenation which cannot terminate";
   
   @Check
-  public void checkMainPresence(final AgentTraceExpression tExp) {
+  public void checkMainPresence(final TraceExpression tExp) {
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
       if ((term.getName().equals("Main") || term.getName().equals("main"))) {
@@ -104,15 +111,17 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConcatenations(final AgentTraceExpression tExp) {
+  public void checkConcatenations(final TraceExpression tExp) {
     final HashMap<String, Expression> assocT = new HashMap<String, Expression>();
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
       assocT.put(term.getName(), term.getExpr());
     }
     double threshold = 1.0;
-    if (((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0))) {
-      threshold = (Double.valueOf(tExp.getThreshold().get(0))).doubleValue();
+    if ((tExp instanceof AgentTraceExpression)) {
+      if (((((AgentTraceExpression)tExp).getThreshold() != null) && (((AgentTraceExpression)tExp).getThreshold().size() > 0))) {
+        threshold = (Double.valueOf(((AgentTraceExpression)tExp).getThreshold().get(0))).doubleValue();
+      }
     }
     EList<Term> _terms_1 = tExp.getTerms();
     for (final Term term_1 : _terms_1) {
@@ -342,6 +351,58 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
+  public void checkVariablesInsideConditions(final EventType eventType) {
+    ArrayList<String> varsET = new ArrayList<String>();
+    this.addVariables(eventType.getExpr(), varsET);
+    EList<GroundTerm> _exprs = eventType.getExprs();
+    for (final GroundTerm expr : _exprs) {
+      this.addVariables(expr, varsET);
+    }
+    ArrayList<String> varsL = new ArrayList<String>();
+    ArrayList<String> varsR = new ArrayList<String>();
+    EList<Event> _events = eventType.getEvents();
+    for (final Event e : _events) {
+      {
+        this.addVariablesEv(e, varsL);
+        this.addVariables(e.getConstraints(), varsR);
+      }
+    }
+    for (final String variable : varsET) {
+      if (((!varsL.contains(variable)) && (!varsR.contains(variable)))) {
+        final ICompositeNode node = NodeModelUtils.findActualNodeFor(eventType);
+        this.getMessageAcceptor().acceptWarning(
+          (("Free variable " + variable) + " not used"), eventType, 
+          node.getOffset(), 
+          node.getLength(), 
+          TExpValidator.FreeVariablesNotUsed);
+        return;
+      }
+    }
+  }
+  
+  protected void _addVariablesEv(final BasicEvent event, final List<String> vars) {
+    if ((event == null)) {
+      return;
+    }
+    this.addVariables(event.getExpr(), vars);
+    EList<PrologExpression> _exprs = event.getExprs();
+    for (final PrologExpression e : _exprs) {
+      this.addVariables(e, vars);
+    }
+  }
+  
+  protected void _addVariablesEv(final DerivedEvent event, final List<String> vars) {
+    if ((event == null)) {
+      return;
+    }
+    this.addVariables(event.getExpr(), vars);
+    EList<PrologExpression> _exprs = event.getExprs();
+    for (final PrologExpression e : _exprs) {
+      this.addVariables(e, vars);
+    }
+  }
+  
+  @Check
   public void checkVariablesInsideConditions(final MsgEventType eventType) {
     ArrayList<String> varsET = new ArrayList<String>();
     this.addVariables(eventType.getExpr(), varsET);
@@ -349,24 +410,24 @@ public class TExpValidator extends AbstractTExpValidator {
     for (final PrologExpression expr : _exprs) {
       this.addVariables(eventType.getExpr(), varsET);
     }
+    ArrayList<String> varsL = new ArrayList<String>();
+    ArrayList<String> varsR = new ArrayList<String>();
     EList<Msg> _msgs = eventType.getMsgs();
     for (final Msg msg : _msgs) {
       {
-        ArrayList<String> varsL = new ArrayList<String>();
-        ArrayList<String> varsR = new ArrayList<String>();
         this.addVariables(msg.getContent(), varsL);
         this.addVariables(msg.getConditions(), varsR);
-        for (final String variable : varsET) {
-          if (((!varsL.contains(variable)) && (!varsR.contains(variable)))) {
-            final ICompositeNode node = NodeModelUtils.findActualNodeFor(msg);
-            this.getMessageAcceptor().acceptWarning(
-              (("Free variable " + variable) + " not used"), msg, 
-              node.getOffset(), 
-              node.getLength(), 
-              TExpValidator.FreeVariablesNotUsed);
-            return;
-          }
-        }
+      }
+    }
+    for (final String variable : varsET) {
+      if (((!varsL.contains(variable)) && (!varsR.contains(variable)))) {
+        final ICompositeNode node = NodeModelUtils.findActualNodeFor(eventType);
+        this.getMessageAcceptor().acceptWarning(
+          (("Free variable " + variable) + " not used"), eventType, 
+          node.getOffset(), 
+          node.getLength(), 
+          TExpValidator.FreeVariablesNotUsed);
+        return;
       }
     }
   }
@@ -399,13 +460,30 @@ public class TExpValidator extends AbstractTExpValidator {
     }
   }
   
+  public void addVariables(final GroundTerm expr, final List<String> vars) {
+    if ((expr == null)) {
+      return;
+    }
+    String _variable = expr.getVariable();
+    boolean _tripleNotEquals = (_variable != null);
+    if (_tripleNotEquals) {
+      vars.add(expr.getVariable());
+    } else {
+      this.addVariables(expr.getArg(), vars);
+      EList<GroundTerm> _args = expr.getArgs();
+      for (final GroundTerm e : _args) {
+        this.addVariables(e, vars);
+      }
+    }
+  }
+  
   public void checkBoundedVariables(final Expression expr, final List<String> vars) {
     if ((expr == null)) {
       return;
     }
     if ((expr instanceof VarExpr)) {
       this.checkBoundedVariables(((VarExpr)expr).getVarExpr().getBodyVar(), vars);
-      vars.remove(((VarExpr)expr).getVarExpr().getVariable());
+      CollectionExtensions.<String>removeAll(vars, ((VarExpr)expr).getVarExpr().getVariable());
     } else {
       if ((expr instanceof FilterExpr)) {
         this.checkBoundedVariables(((FilterExpr)expr).getFilterExpr().getBodyFilter(), vars);
@@ -585,7 +663,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkFreeVariables(final AgentTraceExpression tExp) {
+  public void checkFreeVariables(final TraceExpression tExp) {
     ArrayList<String> freeVars = new ArrayList<String>();
     EList<Term> _terms = tExp.getTerms();
     for (final Term term : _terms) {
@@ -620,7 +698,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkContractiveness(final AgentTraceExpression tExp) {
+  public void checkContractiveness(final TraceExpression tExp) {
     Boolean _isContractive = ContractivenessCheck.isContractive(tExp);
     boolean _not = (!(_isContractive).booleanValue());
     if (_not) {
@@ -684,7 +762,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkNoDuplications(final AgentTraceExpression tExp) {
+  public void checkNoDuplications(final TraceExpression tExp) {
     if (((tExp.getBodyL() == null) || (tExp.getBodyL().size() != 1))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
@@ -693,84 +771,88 @@ public class TExpValidator extends AbstractTExpValidator {
         node.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getRolesL() == null) || (tExp.getRolesL().size() != 1))) {
+    if (((tExp.getTypesL() == null) || (tExp.getTypesL().size() != 1))) {
       final ICompositeNode node_1 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be one \'roles:\' field", tExp, 
+        "there must be one \'types:\' field", tExp, 
         node_1.getOffset(), 
         node_1.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getTypesL() == null) || (tExp.getTypesL().size() != 1))) {
+  }
+  
+  @Check
+  public void checkNoDuplications(final AgentTraceExpression tExp) {
+    if (((tExp.getRolesL() == null) || (tExp.getRolesL().size() != 1))) {
+      final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
+      this.getMessageAcceptor().acceptError(
+        "there must be one \'roles:\' field", tExp, 
+        node.getOffset(), 
+        node.getLength(), 
+        TExpValidator.OnlyOne);
+    }
+    if (((tExp.getModules() != null) && (tExp.getModules().size() > 1))) {
+      final ICompositeNode node_1 = NodeModelUtils.findActualNodeFor(tExp);
+      this.getMessageAcceptor().acceptError(
+        "there must be at most one \'modules:\' field", tExp, 
+        node_1.getOffset(), 
+        node_1.getLength(), 
+        TExpValidator.OnlyOne);
+    }
+    if (((tExp.getDecentralizedL() != null) && (tExp.getDecentralizedL().size() > 1))) {
       final ICompositeNode node_2 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be one \'types:\' field", tExp, 
+        "there must be at most one \'decentralized:\' field", tExp, 
         node_2.getOffset(), 
         node_2.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getModules() != null) && (tExp.getModules().size() > 1))) {
+    if (((tExp.getPartitionL() != null) && (tExp.getPartitionL().size() > 1))) {
       final ICompositeNode node_3 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'modules:\' field", tExp, 
+        "there must be at most one \'partition:\' field", tExp, 
         node_3.getOffset(), 
         node_3.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getDecentralizedL() != null) && (tExp.getDecentralizedL().size() > 1))) {
+    if (((tExp.getConstraintsL() != null) && (tExp.getConstraintsL().size() > 1))) {
       final ICompositeNode node_4 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'decentralized:\' field", tExp, 
+        "there must be at most one \'constraints:\' field", tExp, 
         node_4.getOffset(), 
         node_4.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getPartitionL() != null) && (tExp.getPartitionL().size() > 1))) {
+    if (((tExp.getGuiL() != null) && (tExp.getGuiL().size() > 1))) {
       final ICompositeNode node_5 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'partition:\' field", tExp, 
+        "only one \'gui:\' field is allowed", tExp, 
         node_5.getOffset(), 
         node_5.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getConstraintsL() != null) && (tExp.getConstraintsL().size() > 1))) {
+    if (((tExp.getMinimalL() != null) && (tExp.getMinimalL().size() > 1))) {
       final ICompositeNode node_6 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'constraints:\' field", tExp, 
+        "only one \'minimal:\' field is allowed", tExp, 
         node_6.getOffset(), 
         node_6.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getGuiL() != null) && (tExp.getGuiL().size() > 1))) {
+    if (((tExp.getThresholdL() != null) && (tExp.getThresholdL().size() > 1))) {
       final ICompositeNode node_7 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'gui:\' field is allowed", tExp, 
+        "only one \'threshold:\' field is allowed", tExp, 
         node_7.getOffset(), 
         node_7.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getMinimalL() != null) && (tExp.getMinimalL().size() > 1))) {
+    if (((tExp.getChannelsL() != null) && (tExp.getChannelsL().size() > 1))) {
       final ICompositeNode node_8 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'minimal:\' field is allowed", tExp, 
+        "only one \'channels:\' field is allowed", tExp, 
         node_8.getOffset(), 
         node_8.getLength(), 
-        TExpValidator.OnlyOne);
-    }
-    if (((tExp.getThresholdL() != null) && (tExp.getThresholdL().size() > 1))) {
-      final ICompositeNode node_9 = NodeModelUtils.findActualNodeFor(tExp);
-      this.getMessageAcceptor().acceptError(
-        "only one \'threshold:\' field is allowed", tExp, 
-        node_9.getOffset(), 
-        node_9.getLength(), 
-        TExpValidator.OnlyOne);
-    }
-    if (((tExp.getChannelsL() != null) && (tExp.getChannelsL().size() > 1))) {
-      final ICompositeNode node_10 = NodeModelUtils.findActualNodeFor(tExp);
-      this.getMessageAcceptor().acceptError(
-        "only one \'channels:\' field is allowed", tExp, 
-        node_10.getOffset(), 
-        node_10.getLength(), 
         TExpValidator.OnlyOne);
     }
   }
@@ -918,6 +1000,19 @@ public class TExpValidator extends AbstractTExpValidator {
           }
         }
       }
+    }
+  }
+  
+  public void addVariablesEv(final Event event, final List<String> vars) {
+    if (event instanceof BasicEvent) {
+      _addVariablesEv((BasicEvent)event, vars);
+      return;
+    } else if (event instanceof DerivedEvent) {
+      _addVariablesEv((DerivedEvent)event, vars);
+      return;
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(event, vars).toString());
     }
   }
 }

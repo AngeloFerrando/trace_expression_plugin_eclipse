@@ -30,6 +30,10 @@ import java.util.TreeSet
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.validation.Check
 import org.eclipse.emf.ecore.EObject
+import it.unige.dibris.trace_expression_language.tExp.TraceExpression
+import it.unige.dibris.trace_expression_language.tExp.GroundTerm
+import it.unige.dibris.trace_expression_language.tExp.BasicEvent
+import it.unige.dibris.trace_expression_language.tExp.DerivedEvent
 
 /**
  * This class contains custom validation rules. 
@@ -57,7 +61,7 @@ class TExpValidator extends AbstractTExpValidator {
 	
 
 	@Check
-	def checkMainPresence(AgentTraceExpression tExp) {
+	def checkMainPresence(TraceExpression tExp) {
 		for(term : tExp.terms){
 			if(term.name.equals("Main") || term.name.equals("main")) return
 		}
@@ -74,14 +78,16 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkConcatenations(AgentTraceExpression tExp){
+	def checkConcatenations(TraceExpression tExp){
 		val assocT = new HashMap<String, Expression>();
 		for(term : tExp.terms){
 			assocT.put(term.name, term.expr);
 		}
 		var threshold = 1.0
-		if(tExp.threshold !== null && tExp.threshold.size > 0){
-			threshold = Double.valueOf(tExp.threshold.get(0))
+		if(tExp instanceof AgentTraceExpression){
+			if(tExp.threshold !== null && tExp.threshold.size > 0){
+				threshold = Double.valueOf(tExp.threshold.get(0))
+			}
 		}
 		for(term : tExp.terms){
 			if(term.name.equals("Main") || term.name.equals("main")){
@@ -260,31 +266,77 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
+	def checkVariablesInsideConditions(EventType eventType){
+		var varsET = new ArrayList<String>
+		addVariables(eventType.expr, varsET)
+		for(expr : eventType.exprs){
+			addVariables(expr, varsET)
+		}
+		var varsL = new ArrayList<String>
+		var varsR = new ArrayList<String>
+		for(e : eventType.events){
+			addVariablesEv(e, varsL)
+			addVariables(e.constraints, varsR)
+		}
+		for(variable : varsET){
+			if(!varsL.contains(variable) && !varsR.contains(variable)){
+				val node = NodeModelUtils.findActualNodeFor(eventType)
+				messageAcceptor.acceptWarning(
+		                'Free variable ' + variable + ' not used',
+		                eventType,
+		                node.offset,
+		                node.length,
+		                FreeVariablesNotUsed
+		            )
+	            return
+			}
+		}
+	}
+	
+	def dispatch void addVariablesEv(BasicEvent event, List<String> vars){
+		if(event === null) {
+			return
+		}
+		addVariables(event.expr, vars)
+		for(e : event.exprs){
+			addVariables(e, vars)
+		}
+	}
+	
+	def dispatch void addVariablesEv(DerivedEvent event, List<String> vars){
+		if(event === null) {
+			return
+		}
+		addVariables(event.expr, vars)
+		for(e : event.exprs){
+			addVariables(e, vars)
+		}
+	}
+	
+	@Check
 	def checkVariablesInsideConditions(MsgEventType eventType){
 		var varsET = new ArrayList<String>
 		addVariables(eventType.expr, varsET)
 		for(expr : eventType.exprs){
 			addVariables(eventType.expr, varsET)
 		}
+		var varsL = new ArrayList<String>
+		var varsR = new ArrayList<String>
 		for(msg : eventType.msgs){
-			var varsL = new ArrayList<String>
-			var varsR = new ArrayList<String>
-			
 			addVariables(msg.content, varsL)
 			addVariables(msg.conditions, varsR)
-			
-			for(variable : varsET){
-				if(!varsL.contains(variable) && !varsR.contains(variable)){
-					val node = NodeModelUtils.findActualNodeFor(msg)
-					messageAcceptor.acceptWarning(
-			                'Free variable ' + variable + ' not used',
-			                msg,
-			                node.offset,
-			                node.length,
-			                FreeVariablesNotUsed
-			            )
-		            return
-				}
+		}
+		for(variable : varsET){
+			if(!varsL.contains(variable) && !varsR.contains(variable)){
+				val node = NodeModelUtils.findActualNodeFor(eventType)
+				messageAcceptor.acceptWarning(
+		                'Free variable ' + variable + ' not used',
+		                eventType,
+		                node.offset,
+		                node.length,
+		                FreeVariablesNotUsed
+		            )
+	            return
 			}
 		}
 	}
@@ -309,13 +361,27 @@ class TExpValidator extends AbstractTExpValidator {
 		}
 	}
 	
+	def void addVariables(GroundTerm expr, List<String> vars){
+		if(expr === null){
+			return
+		}
+		if(expr.variable !== null){
+			vars.add(expr.variable)
+		} else{
+			addVariables(expr.arg, vars)
+			for(e : expr.args){
+				addVariables(e, vars)
+			}
+		}
+	}
+	
 	def void checkBoundedVariables(Expression expr, List<String> vars){
 		if(expr === null){
 			return
 		}
 		if(expr instanceof VarExpr){
 			checkBoundedVariables(expr.varExpr.bodyVar, vars)
-			vars.remove(expr.varExpr.variable)
+			vars.removeAll(expr.varExpr.variable)
 		} else if(expr instanceof FilterExpr){
 			checkBoundedVariables(expr.filterExpr.bodyFilter, vars)
 			addVariables(expr.filterExpr.first, vars)
@@ -446,7 +512,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkFreeVariables(AgentTraceExpression tExp){
+	def checkFreeVariables(TraceExpression tExp){
 		var freeVars = new ArrayList<String>
 		
 		for(term : tExp.terms){
@@ -483,7 +549,7 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkContractiveness(AgentTraceExpression tExp){
+	def checkContractiveness(TraceExpression tExp){
 		if(!ContractivenessCheck.isContractive(tExp)){
 			for(term : tExp.terms){
 				val node = NodeModelUtils.findActualNodeFor(term)
@@ -537,21 +603,11 @@ class TExpValidator extends AbstractTExpValidator {
 	}
 	
 	@Check
-	def checkNoDuplications(AgentTraceExpression tExp){
+	def checkNoDuplications(TraceExpression tExp){
 		if(tExp.bodyL === null || tExp.bodyL.size != 1){
 			val node = NodeModelUtils.findActualNodeFor(tExp)
 				messageAcceptor.acceptError(
 			                'there must be one \'body:\' field',
-			                tExp,
-			                node.offset,
-			                node.length,
-			                OnlyOne
-			            )
-		}
-		if(tExp.rolesL === null || tExp.rolesL.size != 1){
-			val node = NodeModelUtils.findActualNodeFor(tExp)
-				messageAcceptor.acceptError(
-			                'there must be one \'roles:\' field',
 			                tExp,
 			                node.offset,
 			                node.length,
@@ -568,6 +624,21 @@ class TExpValidator extends AbstractTExpValidator {
 			                OnlyOne
 			            )
 		}
+	}
+	
+	@Check
+	def checkNoDuplications(AgentTraceExpression tExp){
+		if(tExp.rolesL === null || tExp.rolesL.size != 1){
+			val node = NodeModelUtils.findActualNodeFor(tExp)
+				messageAcceptor.acceptError(
+			                'there must be one \'roles:\' field',
+			                tExp,
+			                node.offset,
+			                node.length,
+			                OnlyOne
+			            )
+		}
+		
 		if(tExp.modules !== null && tExp.modules.size > 1){
 			val node = NodeModelUtils.findActualNodeFor(tExp)
 				messageAcceptor.acceptError(

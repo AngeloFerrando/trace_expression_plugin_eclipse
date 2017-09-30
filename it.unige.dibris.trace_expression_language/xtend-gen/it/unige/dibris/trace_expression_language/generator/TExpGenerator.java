@@ -36,6 +36,7 @@ import it.unige.dibris.trace_expression_language.tExp.Together;
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr;
 import it.unige.dibris.trace_expression_language.tExp.VarExpr;
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression;
+import java.util.Arrays;
 import java.util.StringJoiner;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -973,7 +974,7 @@ public class TExpGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final BasicEvent event, final EventType type, final String tExpCurrentName) {
+  protected CharSequence _compile(final BasicEvent event, final EventType type, final String tExpCurrentName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("match(");
     _builder.append(tExpCurrentName);
@@ -1012,23 +1013,7 @@ public class TExpGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final Event event, final EventType eventType, final String tExpCurrentName) {
-    CharSequence _xifexpression = null;
-    if ((event instanceof BasicEvent)) {
-      _xifexpression = this.compile(((BasicEvent) event), eventType, tExpCurrentName);
-    } else {
-      CharSequence _xifexpression_1 = null;
-      if ((event instanceof DerivedEvent)) {
-        _xifexpression_1 = this.compile(((DerivedEvent) event), eventType, tExpCurrentName);
-      } else {
-        throw new AssertionError("This kind of event is not supported");
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
-  }
-  
-  public CharSequence compile(final DerivedEvent event, final EventType type, final String tExpCurrentName) {
+  protected CharSequence _compile(final DerivedEvent event, final EventType type, final String tExpCurrentName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("match(");
     _builder.append(tExpCurrentName);
@@ -1062,6 +1047,17 @@ public class TExpGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * def compile(Event event, EventType eventType, String tExpCurrentName){
+   * if(event instanceof BasicEvent){
+   * (event as BasicEvent).compile(eventType, tExpCurrentName)
+   * } else if(event instanceof DerivedEvent){
+   * (event as DerivedEvent).compile(eventType, tExpCurrentName)
+   * } else{
+   * throw new AssertionError("This kind of event is not supported");
+   * }
+   * }
+   */
   public String compile(final GroundTerm gt) {
     String _variable = gt.getVariable();
     boolean _tripleNotEquals = (_variable != null);
@@ -1295,6 +1291,17 @@ public class TExpGenerator extends AbstractGenerator {
           }
         }
       }
+    }
+  }
+  
+  public CharSequence compile(final Event event, final EventType type, final String tExpCurrentName) {
+    if (event instanceof BasicEvent) {
+      return _compile((BasicEvent)event, type, tExpCurrentName);
+    } else if (event instanceof DerivedEvent) {
+      return _compile((DerivedEvent)event, type, tExpCurrentName);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(event, type, tExpCurrentName).toString());
     }
   }
 }

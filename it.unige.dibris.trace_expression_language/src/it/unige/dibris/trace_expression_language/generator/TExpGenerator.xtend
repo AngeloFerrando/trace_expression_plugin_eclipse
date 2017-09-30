@@ -31,7 +31,6 @@ import it.unige.dibris.trace_expression_language.tExp.Singletons
 import it.unige.dibris.trace_expression_language.tExp.Size
 import it.unige.dibris.trace_expression_language.tExp.Cardinality
 import it.unige.dibris.trace_expression_language.tExp.EventType
-import it.unige.dibris.trace_expression_language.tExp.Event
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm
 import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent
@@ -412,7 +411,7 @@ class TExpGenerator extends AbstractGenerator {
 	def compileExprs(GroundTerm expr, EList<GroundTerm> exprs)
 	'''«IF expr !== null»(«expr.compile»«FOR e : exprs», «e.compile»«ENDFOR»)«ENDIF»'''
 	
-	def compile(BasicEvent event, EventType type, String tExpCurrentName)
+	def dispatch compile(BasicEvent event, EventType type, String tExpCurrentName)
 	'''
 	match(«tExpCurrentName»,«event.name»«compileExprs(event.expr, event.exprs)», «type.name»«compileExprs(type.expr, type.exprs)»)«
 	IF event.constraints !== null» :- «event.constraints.compile»«ENDIF».
@@ -420,17 +419,7 @@ class TExpGenerator extends AbstractGenerator {
 	
 	'''
 	
-	def compile(Event event, EventType eventType, String tExpCurrentName){
-		if(event instanceof BasicEvent){
-			(event as BasicEvent).compile(eventType, tExpCurrentName)
-		} else if(event instanceof DerivedEvent){
-			(event as DerivedEvent).compile(eventType, tExpCurrentName)
-		} else{
-			throw new AssertionError("This kind of event is not supported");
-		}
-	}
-	
-	def compile(DerivedEvent event, EventType type, String tExpCurrentName) 
+	def dispatch compile(DerivedEvent event, EventType type, String tExpCurrentName) 
 	'''
 	match(«tExpCurrentName», Event, «type.name»«compileExprs(type.expr, type.exprs)») :-
 	match(«tExpCurrentName», Event, «event.base.name»«compileExprs(event.expr, event.exprs)»)«
@@ -438,6 +427,15 @@ class TExpGenerator extends AbstractGenerator {
 	
 	'''
 	
+	/*def compile(Event event, EventType eventType, String tExpCurrentName){
+		if(event instanceof BasicEvent){
+			(event as BasicEvent).compile(eventType, tExpCurrentName)
+		} else if(event instanceof DerivedEvent){
+			(event as DerivedEvent).compile(eventType, tExpCurrentName)
+		} else{
+			throw new AssertionError("This kind of event is not supported");
+		}
+	}*/
 	
 	def String compile(GroundTerm gt) {
 		if (gt.variable !== null)
