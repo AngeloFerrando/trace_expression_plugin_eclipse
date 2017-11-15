@@ -3,8 +3,6 @@
  */
 package it.unige.dibris.trace_expression_language.tExp;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -31,20 +29,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Constraint extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Left</b></em>' reference list.
-   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.Role}.
+   * Returns the value of the '<em><b>Left</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Left</em>' reference list isn't clear,
+   * If the meaning of the '<em>Left</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Left</em>' reference list.
+   * @return the value of the '<em>Left</em>' reference.
+   * @see #setLeft(Role)
    * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getConstraint_Left()
    * @model
    * @generated
    */
-  EList<Role> getLeft();
+  Role getLeft();
+
+  /**
+   * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getLeft <em>Left</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Left</em>' reference.
+   * @see #getLeft()
+   * @generated
+   */
+  void setLeft(Role value);
 
   /**
    * Returns the value of the '<em><b>Together</b></em>' attribute.
@@ -73,20 +81,30 @@ public interface Constraint extends EObject
   void setTogether(String value);
 
   /**
-   * Returns the value of the '<em><b>Right</b></em>' reference list.
-   * The list contents are of type {@link it.unige.dibris.trace_expression_language.tExp.Role}.
+   * Returns the value of the '<em><b>Right</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Right</em>' reference list isn't clear,
+   * If the meaning of the '<em>Right</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' reference list.
+   * @return the value of the '<em>Right</em>' reference.
+   * @see #setRight(Role)
    * @see it.unige.dibris.trace_expression_language.tExp.TExpPackage#getConstraint_Right()
    * @model
    * @generated
    */
-  EList<Role> getRight();
+  Role getRight();
+
+  /**
+   * Sets the value of the '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getRight <em>Right</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Right</em>' reference.
+   * @see #getRight()
+   * @generated
+   */
+  void setRight(Role value);
 
   /**
    * Returns the value of the '<em><b>Split</b></em>' attribute.

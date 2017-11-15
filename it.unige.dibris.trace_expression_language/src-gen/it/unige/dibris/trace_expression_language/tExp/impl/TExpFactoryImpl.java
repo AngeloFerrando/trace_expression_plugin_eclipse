@@ -69,7 +69,7 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
       case TExpPackage.PROLOG_EXPRESSION: return createPrologExpression();
       case TExpPackage.TRACE_EXPRESSION: return createTraceExpression();
       case TExpPackage.GENERIC_TRACE_EXPRESSION: return createGenericTraceExpression();
-      case TExpPackage.AGENT_TRACE_EXPRESSION: return createAgentTraceExpression();
+      case TExpPackage.INTERACTION_TRACE_EXPRESSION: return createInteractionTraceExpression();
       case TExpPackage.EVENT_TYPE: return createEventType();
       case TExpPackage.MSG_EVENT_TYPE: return createMsgEventType();
       case TExpPackage.GROUND_TERM: return createGroundTerm();
@@ -154,10 +154,10 @@ public class TExpFactoryImpl extends EFactoryImpl implements TExpFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AgentTraceExpression createAgentTraceExpression()
+  public InteractionTraceExpression createInteractionTraceExpression()
   {
-    AgentTraceExpressionImpl agentTraceExpression = new AgentTraceExpressionImpl();
-    return agentTraceExpression;
+    InteractionTraceExpressionImpl interactionTraceExpression = new InteractionTraceExpressionImpl();
+    return interactionTraceExpression;
   }
 
   /**

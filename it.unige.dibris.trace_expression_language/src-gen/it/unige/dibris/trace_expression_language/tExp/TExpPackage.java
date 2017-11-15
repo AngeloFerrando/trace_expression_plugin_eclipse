@@ -287,14 +287,14 @@ public interface TExpPackage extends EPackage
   int GENERIC_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl <em>Agent Trace Expression</em>}' class.
+   * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.InteractionTraceExpressionImpl <em>Interaction Trace Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl
-   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.InteractionTraceExpressionImpl
+   * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getInteractionTraceExpression()
    * @generated
    */
-  int AGENT_TRACE_EXPRESSION = 4;
+  int INTERACTION_TRACE_EXPRESSION = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -303,7 +303,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__NAME = TRACE_EXPRESSION__NAME;
+  int INTERACTION_TRACE_EXPRESSION__NAME = TRACE_EXPRESSION__NAME;
 
   /**
    * The feature id for the '<em><b>Body L</b></em>' attribute list.
@@ -312,7 +312,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__BODY_L = TRACE_EXPRESSION__BODY_L;
+  int INTERACTION_TRACE_EXPRESSION__BODY_L = TRACE_EXPRESSION__BODY_L;
 
   /**
    * The feature id for the '<em><b>Terms</b></em>' containment reference list.
@@ -321,7 +321,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
+  int INTERACTION_TRACE_EXPRESSION__TERMS = TRACE_EXPRESSION__TERMS;
 
   /**
    * The feature id for the '<em><b>Modules L</b></em>' attribute list.
@@ -330,7 +330,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION__MODULES_L;
+  int INTERACTION_TRACE_EXPRESSION__MODULES_L = TRACE_EXPRESSION__MODULES_L;
 
   /**
    * The feature id for the '<em><b>Modules</b></em>' attribute list.
@@ -339,7 +339,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION__MODULES;
+  int INTERACTION_TRACE_EXPRESSION__MODULES = TRACE_EXPRESSION__MODULES;
 
   /**
    * The feature id for the '<em><b>Types L</b></em>' attribute list.
@@ -348,7 +348,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__TYPES_L = TRACE_EXPRESSION__TYPES_L;
+  int INTERACTION_TRACE_EXPRESSION__TYPES_L = TRACE_EXPRESSION__TYPES_L;
 
   /**
    * The feature id for the '<em><b>Roles L</b></em>' attribute list.
@@ -357,7 +357,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__ROLES_L = TRACE_EXPRESSION_FEATURE_COUNT + 0;
+  int INTERACTION_TRACE_EXPRESSION__ROLES_L = TRACE_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Roles</b></em>' containment reference list.
@@ -366,7 +366,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__ROLES = TRACE_EXPRESSION_FEATURE_COUNT + 1;
+  int INTERACTION_TRACE_EXPRESSION__ROLES = TRACE_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -375,7 +375,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__TYPES = TRACE_EXPRESSION_FEATURE_COUNT + 2;
+  int INTERACTION_TRACE_EXPRESSION__TYPES = TRACE_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Decentralized L</b></em>' attribute list.
@@ -384,7 +384,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = TRACE_EXPRESSION_FEATURE_COUNT + 3;
+  int INTERACTION_TRACE_EXPRESSION__DECENTRALIZED_L = TRACE_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Decentralized</b></em>' attribute list.
@@ -393,7 +393,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__DECENTRALIZED = TRACE_EXPRESSION_FEATURE_COUNT + 4;
+  int INTERACTION_TRACE_EXPRESSION__DECENTRALIZED = TRACE_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Partition L</b></em>' attribute list.
@@ -402,7 +402,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__PARTITION_L = TRACE_EXPRESSION_FEATURE_COUNT + 5;
+  int INTERACTION_TRACE_EXPRESSION__PARTITION_L = TRACE_EXPRESSION_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Partition</b></em>' containment reference list.
@@ -411,7 +411,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__PARTITION = TRACE_EXPRESSION_FEATURE_COUNT + 6;
+  int INTERACTION_TRACE_EXPRESSION__PARTITION = TRACE_EXPRESSION_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Constraints L</b></em>' attribute list.
@@ -420,7 +420,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = TRACE_EXPRESSION_FEATURE_COUNT + 7;
+  int INTERACTION_TRACE_EXPRESSION__CONSTRAINTS_L = TRACE_EXPRESSION_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -429,7 +429,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CONSTRAINTS = TRACE_EXPRESSION_FEATURE_COUNT + 8;
+  int INTERACTION_TRACE_EXPRESSION__CONSTRAINTS = TRACE_EXPRESSION_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Gui L</b></em>' attribute list.
@@ -438,7 +438,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__GUI_L = TRACE_EXPRESSION_FEATURE_COUNT + 9;
+  int INTERACTION_TRACE_EXPRESSION__GUI_L = TRACE_EXPRESSION_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Gui</b></em>' attribute list.
@@ -447,7 +447,25 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__GUI = TRACE_EXPRESSION_FEATURE_COUNT + 10;
+  int INTERACTION_TRACE_EXPRESSION__GUI = TRACE_EXPRESSION_FEATURE_COUNT + 10;
+
+  /**
+   * The feature id for the '<em><b>Target L</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERACTION_TRACE_EXPRESSION__TARGET_L = TRACE_EXPRESSION_FEATURE_COUNT + 11;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERACTION_TRACE_EXPRESSION__TARGET = TRACE_EXPRESSION_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Minimal L</b></em>' attribute list.
@@ -456,7 +474,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MINIMAL_L = TRACE_EXPRESSION_FEATURE_COUNT + 11;
+  int INTERACTION_TRACE_EXPRESSION__MINIMAL_L = TRACE_EXPRESSION_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Minimal</b></em>' attribute list.
@@ -465,7 +483,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__MINIMAL = TRACE_EXPRESSION_FEATURE_COUNT + 12;
+  int INTERACTION_TRACE_EXPRESSION__MINIMAL = TRACE_EXPRESSION_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Threshold L</b></em>' attribute list.
@@ -474,7 +492,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__THRESHOLD_L = TRACE_EXPRESSION_FEATURE_COUNT + 13;
+  int INTERACTION_TRACE_EXPRESSION__THRESHOLD_L = TRACE_EXPRESSION_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Threshold</b></em>' attribute list.
@@ -483,7 +501,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__THRESHOLD = TRACE_EXPRESSION_FEATURE_COUNT + 14;
+  int INTERACTION_TRACE_EXPRESSION__THRESHOLD = TRACE_EXPRESSION_FEATURE_COUNT + 16;
 
   /**
    * The feature id for the '<em><b>Channels L</b></em>' attribute list.
@@ -492,7 +510,7 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CHANNELS_L = TRACE_EXPRESSION_FEATURE_COUNT + 15;
+  int INTERACTION_TRACE_EXPRESSION__CHANNELS_L = TRACE_EXPRESSION_FEATURE_COUNT + 17;
 
   /**
    * The feature id for the '<em><b>Channels</b></em>' containment reference list.
@@ -501,16 +519,16 @@ public interface TExpPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION__CHANNELS = TRACE_EXPRESSION_FEATURE_COUNT + 16;
+  int INTERACTION_TRACE_EXPRESSION__CHANNELS = TRACE_EXPRESSION_FEATURE_COUNT + 18;
 
   /**
-   * The number of structural features of the '<em>Agent Trace Expression</em>' class.
+   * The number of structural features of the '<em>Interaction Trace Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AGENT_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 17;
+  int INTERACTION_TRACE_EXPRESSION_FEATURE_COUNT = TRACE_EXPRESSION_FEATURE_COUNT + 19;
 
   /**
    * The meta object id for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
@@ -1128,7 +1146,7 @@ public interface TExpPackage extends EPackage
   int CONSTRAINT = 16;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' reference list.
+   * The feature id for the '<em><b>Left</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1146,7 +1164,7 @@ public interface TExpPackage extends EPackage
   int CONSTRAINT__TOGETHER = 1;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' reference list.
+   * The feature id for the '<em><b>Right</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2728,7 +2746,7 @@ public interface TExpPackage extends EPackage
   int SINGLETONS = 32;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' reference list.
+   * The feature id for the '<em><b>Left</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2746,7 +2764,7 @@ public interface TExpPackage extends EPackage
   int SINGLETONS__TOGETHER = CONSTRAINT__TOGETHER;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' reference list.
+   * The feature id for the '<em><b>Right</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2819,7 +2837,7 @@ public interface TExpPackage extends EPackage
   int SIZE = 33;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' reference list.
+   * The feature id for the '<em><b>Left</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2837,7 +2855,7 @@ public interface TExpPackage extends EPackage
   int SIZE__TOGETHER = CONSTRAINT__TOGETHER;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' reference list.
+   * The feature id for the '<em><b>Right</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2910,7 +2928,7 @@ public interface TExpPackage extends EPackage
   int CARDINALITY = 34;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' reference list.
+   * The feature id for the '<em><b>Left</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2928,7 +2946,7 @@ public interface TExpPackage extends EPackage
   int CARDINALITY__TOGETHER = CONSTRAINT__TOGETHER;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' reference list.
+   * The feature id for the '<em><b>Right</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3153,201 +3171,223 @@ public interface TExpPackage extends EPackage
   EReference getGenericTraceExpression_Types();
 
   /**
-   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression <em>Agent Trace Expression</em>}'.
+   * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression <em>Interaction Trace Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Agent Trace Expression</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+   * @return the meta object for class '<em>Interaction Trace Expression</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression
    * @generated
    */
-  EClass getAgentTraceExpression();
+  EClass getInteractionTraceExpression();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRolesL <em>Roles L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getRolesL <em>Roles L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Roles L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRolesL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getRolesL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_RolesL();
+  EAttribute getInteractionTraceExpression_RolesL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRoles <em>Roles</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getRoles <em>Roles</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Roles</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getRoles()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getRoles()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EReference getAgentTraceExpression_Roles();
+  EReference getInteractionTraceExpression_Roles();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getTypes <em>Types</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Types</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getTypes()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTypes()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EReference getAgentTraceExpression_Types();
+  EReference getInteractionTraceExpression_Types();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralizedL <em>Decentralized L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getDecentralizedL <em>Decentralized L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Decentralized L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralizedL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getDecentralizedL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_DecentralizedL();
+  EAttribute getInteractionTraceExpression_DecentralizedL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralized <em>Decentralized</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getDecentralized <em>Decentralized</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Decentralized</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getDecentralized()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getDecentralized()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_Decentralized();
+  EAttribute getInteractionTraceExpression_Decentralized();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartitionL <em>Partition L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getPartitionL <em>Partition L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Partition L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartitionL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getPartitionL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_PartitionL();
+  EAttribute getInteractionTraceExpression_PartitionL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartition <em>Partition</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getPartition <em>Partition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Partition</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getPartition()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getPartition()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EReference getAgentTraceExpression_Partition();
+  EReference getInteractionTraceExpression_Partition();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraintsL <em>Constraints L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getConstraintsL <em>Constraints L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Constraints L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraintsL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getConstraintsL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_ConstraintsL();
+  EAttribute getInteractionTraceExpression_ConstraintsL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraints <em>Constraints</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getConstraints <em>Constraints</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Constraints</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getConstraints()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getConstraints()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EReference getAgentTraceExpression_Constraints();
+  EReference getInteractionTraceExpression_Constraints();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGuiL <em>Gui L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getGuiL <em>Gui L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Gui L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGuiL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getGuiL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_GuiL();
+  EAttribute getInteractionTraceExpression_GuiL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGui <em>Gui</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getGui <em>Gui</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Gui</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getGui()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getGui()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_Gui();
+  EAttribute getInteractionTraceExpression_Gui();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimalL <em>Minimal L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTargetL <em>Target L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Target L</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTargetL()
+   * @see #getInteractionTraceExpression()
+   * @generated
+   */
+  EAttribute getInteractionTraceExpression_TargetL();
+
+  /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Target</em>'.
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getTarget()
+   * @see #getInteractionTraceExpression()
+   * @generated
+   */
+  EAttribute getInteractionTraceExpression_Target();
+
+  /**
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getMinimalL <em>Minimal L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Minimal L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimalL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getMinimalL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_MinimalL();
+  EAttribute getInteractionTraceExpression_MinimalL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimal <em>Minimal</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getMinimal <em>Minimal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Minimal</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getMinimal()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getMinimal()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_Minimal();
+  EAttribute getInteractionTraceExpression_Minimal();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThresholdL <em>Threshold L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getThresholdL <em>Threshold L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Threshold L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThresholdL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getThresholdL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_ThresholdL();
+  EAttribute getInteractionTraceExpression_ThresholdL();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThreshold <em>Threshold</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getThreshold <em>Threshold</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Threshold</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getThreshold()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getThreshold()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_Threshold();
+  EAttribute getInteractionTraceExpression_Threshold();
 
   /**
-   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannelsL <em>Channels L</em>}'.
+   * Returns the meta object for the attribute list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getChannelsL <em>Channels L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Channels L</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannelsL()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getChannelsL()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EAttribute getAgentTraceExpression_ChannelsL();
+  EAttribute getInteractionTraceExpression_ChannelsL();
 
   /**
-   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannels <em>Channels</em>}'.
+   * Returns the meta object for the containment reference list '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getChannels <em>Channels</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Channels</em>'.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression#getChannels()
-   * @see #getAgentTraceExpression()
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression#getChannels()
+   * @see #getInteractionTraceExpression()
    * @generated
    */
-  EReference getAgentTraceExpression_Channels();
+  EReference getInteractionTraceExpression_Channels();
 
   /**
    * Returns the meta object for class '{@link it.unige.dibris.trace_expression_language.tExp.EventType <em>Event Type</em>}'.
@@ -3954,10 +3994,10 @@ public interface TExpPackage extends EPackage
   EClass getConstraint();
 
   /**
-   * Returns the meta object for the reference list '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getLeft <em>Left</em>}'.
+   * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Left</em>'.
+   * @return the meta object for the reference '<em>Left</em>'.
    * @see it.unige.dibris.trace_expression_language.tExp.Constraint#getLeft()
    * @see #getConstraint()
    * @generated
@@ -3976,10 +4016,10 @@ public interface TExpPackage extends EPackage
   EAttribute getConstraint_Together();
 
   /**
-   * Returns the meta object for the reference list '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getRight <em>Right</em>}'.
+   * Returns the meta object for the reference '{@link it.unige.dibris.trace_expression_language.tExp.Constraint#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Right</em>'.
+   * @return the meta object for the reference '<em>Right</em>'.
    * @see it.unige.dibris.trace_expression_language.tExp.Constraint#getRight()
    * @see #getConstraint()
    * @generated
@@ -4648,14 +4688,14 @@ public interface TExpPackage extends EPackage
     EReference GENERIC_TRACE_EXPRESSION__TYPES = eINSTANCE.getGenericTraceExpression_Types();
 
     /**
-     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl <em>Agent Trace Expression</em>}' class.
+     * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.InteractionTraceExpressionImpl <em>Interaction Trace Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.AgentTraceExpressionImpl
-     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getAgentTraceExpression()
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.InteractionTraceExpressionImpl
+     * @see it.unige.dibris.trace_expression_language.tExp.impl.TExpPackageImpl#getInteractionTraceExpression()
      * @generated
      */
-    EClass AGENT_TRACE_EXPRESSION = eINSTANCE.getAgentTraceExpression();
+    EClass INTERACTION_TRACE_EXPRESSION = eINSTANCE.getInteractionTraceExpression();
 
     /**
      * The meta object literal for the '<em><b>Roles L</b></em>' attribute list feature.
@@ -4663,7 +4703,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__ROLES_L = eINSTANCE.getAgentTraceExpression_RolesL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__ROLES_L = eINSTANCE.getInteractionTraceExpression_RolesL();
 
     /**
      * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
@@ -4671,7 +4711,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGENT_TRACE_EXPRESSION__ROLES = eINSTANCE.getAgentTraceExpression_Roles();
+    EReference INTERACTION_TRACE_EXPRESSION__ROLES = eINSTANCE.getInteractionTraceExpression_Roles();
 
     /**
      * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
@@ -4679,7 +4719,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGENT_TRACE_EXPRESSION__TYPES = eINSTANCE.getAgentTraceExpression_Types();
+    EReference INTERACTION_TRACE_EXPRESSION__TYPES = eINSTANCE.getInteractionTraceExpression_Types();
 
     /**
      * The meta object literal for the '<em><b>Decentralized L</b></em>' attribute list feature.
@@ -4687,7 +4727,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__DECENTRALIZED_L = eINSTANCE.getAgentTraceExpression_DecentralizedL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__DECENTRALIZED_L = eINSTANCE.getInteractionTraceExpression_DecentralizedL();
 
     /**
      * The meta object literal for the '<em><b>Decentralized</b></em>' attribute list feature.
@@ -4695,7 +4735,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__DECENTRALIZED = eINSTANCE.getAgentTraceExpression_Decentralized();
+    EAttribute INTERACTION_TRACE_EXPRESSION__DECENTRALIZED = eINSTANCE.getInteractionTraceExpression_Decentralized();
 
     /**
      * The meta object literal for the '<em><b>Partition L</b></em>' attribute list feature.
@@ -4703,7 +4743,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__PARTITION_L = eINSTANCE.getAgentTraceExpression_PartitionL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__PARTITION_L = eINSTANCE.getInteractionTraceExpression_PartitionL();
 
     /**
      * The meta object literal for the '<em><b>Partition</b></em>' containment reference list feature.
@@ -4711,7 +4751,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGENT_TRACE_EXPRESSION__PARTITION = eINSTANCE.getAgentTraceExpression_Partition();
+    EReference INTERACTION_TRACE_EXPRESSION__PARTITION = eINSTANCE.getInteractionTraceExpression_Partition();
 
     /**
      * The meta object literal for the '<em><b>Constraints L</b></em>' attribute list feature.
@@ -4719,7 +4759,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__CONSTRAINTS_L = eINSTANCE.getAgentTraceExpression_ConstraintsL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__CONSTRAINTS_L = eINSTANCE.getInteractionTraceExpression_ConstraintsL();
 
     /**
      * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
@@ -4727,7 +4767,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGENT_TRACE_EXPRESSION__CONSTRAINTS = eINSTANCE.getAgentTraceExpression_Constraints();
+    EReference INTERACTION_TRACE_EXPRESSION__CONSTRAINTS = eINSTANCE.getInteractionTraceExpression_Constraints();
 
     /**
      * The meta object literal for the '<em><b>Gui L</b></em>' attribute list feature.
@@ -4735,7 +4775,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__GUI_L = eINSTANCE.getAgentTraceExpression_GuiL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__GUI_L = eINSTANCE.getInteractionTraceExpression_GuiL();
 
     /**
      * The meta object literal for the '<em><b>Gui</b></em>' attribute list feature.
@@ -4743,7 +4783,23 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__GUI = eINSTANCE.getAgentTraceExpression_Gui();
+    EAttribute INTERACTION_TRACE_EXPRESSION__GUI = eINSTANCE.getInteractionTraceExpression_Gui();
+
+    /**
+     * The meta object literal for the '<em><b>Target L</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTERACTION_TRACE_EXPRESSION__TARGET_L = eINSTANCE.getInteractionTraceExpression_TargetL();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTERACTION_TRACE_EXPRESSION__TARGET = eINSTANCE.getInteractionTraceExpression_Target();
 
     /**
      * The meta object literal for the '<em><b>Minimal L</b></em>' attribute list feature.
@@ -4751,7 +4807,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__MINIMAL_L = eINSTANCE.getAgentTraceExpression_MinimalL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__MINIMAL_L = eINSTANCE.getInteractionTraceExpression_MinimalL();
 
     /**
      * The meta object literal for the '<em><b>Minimal</b></em>' attribute list feature.
@@ -4759,7 +4815,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__MINIMAL = eINSTANCE.getAgentTraceExpression_Minimal();
+    EAttribute INTERACTION_TRACE_EXPRESSION__MINIMAL = eINSTANCE.getInteractionTraceExpression_Minimal();
 
     /**
      * The meta object literal for the '<em><b>Threshold L</b></em>' attribute list feature.
@@ -4767,7 +4823,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__THRESHOLD_L = eINSTANCE.getAgentTraceExpression_ThresholdL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__THRESHOLD_L = eINSTANCE.getInteractionTraceExpression_ThresholdL();
 
     /**
      * The meta object literal for the '<em><b>Threshold</b></em>' attribute list feature.
@@ -4775,7 +4831,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__THRESHOLD = eINSTANCE.getAgentTraceExpression_Threshold();
+    EAttribute INTERACTION_TRACE_EXPRESSION__THRESHOLD = eINSTANCE.getInteractionTraceExpression_Threshold();
 
     /**
      * The meta object literal for the '<em><b>Channels L</b></em>' attribute list feature.
@@ -4783,7 +4839,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGENT_TRACE_EXPRESSION__CHANNELS_L = eINSTANCE.getAgentTraceExpression_ChannelsL();
+    EAttribute INTERACTION_TRACE_EXPRESSION__CHANNELS_L = eINSTANCE.getInteractionTraceExpression_ChannelsL();
 
     /**
      * The meta object literal for the '<em><b>Channels</b></em>' containment reference list feature.
@@ -4791,7 +4847,7 @@ public interface TExpPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGENT_TRACE_EXPRESSION__CHANNELS = eINSTANCE.getAgentTraceExpression_Channels();
+    EReference INTERACTION_TRACE_EXPRESSION__CHANNELS = eINSTANCE.getInteractionTraceExpression_Channels();
 
     /**
      * The meta object literal for the '{@link it.unige.dibris.trace_expression_language.tExp.impl.EventTypeImpl <em>Event Type</em>}' class.
@@ -5266,7 +5322,7 @@ public interface TExpPackage extends EPackage
     EClass CONSTRAINT = eINSTANCE.getConstraint();
 
     /**
-     * The meta object literal for the '<em><b>Left</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Left</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5282,7 +5338,7 @@ public interface TExpPackage extends EPackage
     EAttribute CONSTRAINT__TOGETHER = eINSTANCE.getConstraint_Together();
 
     /**
-     * The meta object literal for the '<em><b>Right</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Right</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

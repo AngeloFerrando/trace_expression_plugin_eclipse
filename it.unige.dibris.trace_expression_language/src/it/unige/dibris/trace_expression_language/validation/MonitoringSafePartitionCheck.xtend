@@ -1,7 +1,7 @@
 package it.unige.dibris.trace_expression_language.validation
 
 import it.unige.dibris.trace_expression_language.tExp.Expression
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression
 import java.util.LinkedHashMap
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType
@@ -43,7 +43,7 @@ class MonitoringSafePartitionCheck {
 		}
 	}
 	
-	def static isMonitoringSafe(AgentTraceExpression tExp){
+	def static isMonitoringSafe(InteractionTraceExpression tExp){
 		val terms = tExp.terms
 		val assocT = new LinkedHashMap<String, Expression>();
 		val assocD = new LinkedHashMap<String, Expression>();

@@ -175,7 +175,7 @@ Expression0 returns PrologExpression:
 
 TraceExpression:
 	GenericTraceExpression |
-	AgentTraceExpression
+	InteractionTraceExpression
 ;
 
 GenericTraceExpression:
@@ -188,9 +188,9 @@ GenericTraceExpression:
 	'}'
 ;
 
-AgentTraceExpression:
-	{AgentTraceExpression} 
-	'agent_trace_expression' '{'
+InteractionTraceExpression:
+	{InteractionTraceExpression} 
+	'interaction_trace_expression' '{'
 	 	'id:' name=ID
 	 	((bodyL+='body:' (terms+=Term)+) |
 	 	(rolesL+='roles:' (roles+=Role (OP1000XFY)?)*) |
@@ -200,6 +200,7 @@ AgentTraceExpression:
 	 	(partitionL+='partition:' partition+=Partition) |
 	 	(constraintsL+='constraints:' (constraints+=Constraint)*) |
 	 	(guiL+='gui:' gui+=('true'|'false')) |
+	 	(targetL+='target:' target+=(ID))|
 	 	(minimalL+='minimal:' minimal+=('true'|'false')) |
 	 	(thresholdL+='threshold:' threshold+=(NUMBER)) |
 	 	(channelsL+='channels:' (channels+=Channel)+))+
@@ -292,8 +293,8 @@ Together:
 ;
 
 Constraint:
-	'[' (left+=[Role])+ ']' together='-><-' '[' (right+=[Role])+ ']' |
-	'[' (left+=[Role])+ ']' split='<-->' '[' (right+=[Role])+ ']' |
+	(left=[Role]) together='-><-' (right=[Role]) |
+	left=[Role] split='<-->' (right=[Role]) |
 	{Singletons} 'number_singletons' OP600XFY parMin=('('|'[') (minSingletons=INT) OP1000XFY (maxSingletons=INT) parMax=(')'|']') |
 	{Size} 'size_constraints' OP600XFY parMin=('('|'[') (minSize=INT) OP1000XFY (maxSize=INT) parMax=(')'|']') |
 	{Cardinality} 'number_constraints' OP600XFY parMin=('('|'[') (minCardinality=INT) OP1000XFY (maxCardinality=INT) parMax=(')'|']')

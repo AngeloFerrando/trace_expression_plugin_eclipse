@@ -785,21 +785,21 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.TraceExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cGenericTraceExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cAgentTraceExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cInteractionTraceExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//// Trace expressions    
 		//TraceExpression:
-		//	GenericTraceExpression | AgentTraceExpression;
+		//	GenericTraceExpression | InteractionTraceExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//GenericTraceExpression | AgentTraceExpression
+		//GenericTraceExpression | InteractionTraceExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//GenericTraceExpression
 		public RuleCall getGenericTraceExpressionParserRuleCall_0() { return cGenericTraceExpressionParserRuleCall_0; }
 		
-		//AgentTraceExpression
-		public RuleCall getAgentTraceExpressionParserRuleCall_1() { return cAgentTraceExpressionParserRuleCall_1; }
+		//InteractionTraceExpression
+		public RuleCall getInteractionTraceExpressionParserRuleCall_1() { return cInteractionTraceExpressionParserRuleCall_1; }
 	}
 	public class GenericTraceExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.GenericTraceExpression");
@@ -909,11 +909,11 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
-	public class AgentTraceExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.AgentTraceExpression");
+	public class InteractionTraceExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.InteractionTraceExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cAgentTraceExpressionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cAgent_trace_expressionKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cInteractionTraceExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cInteraction_trace_expressionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cIdKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -966,48 +966,53 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGuiTrueKeyword_5_7_1_0_0 = (Keyword)cGuiAlternatives_5_7_1_0.eContents().get(0);
 		private final Keyword cGuiFalseKeyword_5_7_1_0_1 = (Keyword)cGuiAlternatives_5_7_1_0.eContents().get(1);
 		private final Group cGroup_5_8 = (Group)cAlternatives_5.eContents().get(8);
-		private final Assignment cMinimalLAssignment_5_8_0 = (Assignment)cGroup_5_8.eContents().get(0);
-		private final Keyword cMinimalLMinimalKeyword_5_8_0_0 = (Keyword)cMinimalLAssignment_5_8_0.eContents().get(0);
-		private final Assignment cMinimalAssignment_5_8_1 = (Assignment)cGroup_5_8.eContents().get(1);
-		private final Alternatives cMinimalAlternatives_5_8_1_0 = (Alternatives)cMinimalAssignment_5_8_1.eContents().get(0);
-		private final Keyword cMinimalTrueKeyword_5_8_1_0_0 = (Keyword)cMinimalAlternatives_5_8_1_0.eContents().get(0);
-		private final Keyword cMinimalFalseKeyword_5_8_1_0_1 = (Keyword)cMinimalAlternatives_5_8_1_0.eContents().get(1);
+		private final Assignment cTargetLAssignment_5_8_0 = (Assignment)cGroup_5_8.eContents().get(0);
+		private final Keyword cTargetLTargetKeyword_5_8_0_0 = (Keyword)cTargetLAssignment_5_8_0.eContents().get(0);
+		private final Assignment cTargetAssignment_5_8_1 = (Assignment)cGroup_5_8.eContents().get(1);
+		private final RuleCall cTargetIDParserRuleCall_5_8_1_0 = (RuleCall)cTargetAssignment_5_8_1.eContents().get(0);
 		private final Group cGroup_5_9 = (Group)cAlternatives_5.eContents().get(9);
-		private final Assignment cThresholdLAssignment_5_9_0 = (Assignment)cGroup_5_9.eContents().get(0);
-		private final Keyword cThresholdLThresholdKeyword_5_9_0_0 = (Keyword)cThresholdLAssignment_5_9_0.eContents().get(0);
-		private final Assignment cThresholdAssignment_5_9_1 = (Assignment)cGroup_5_9.eContents().get(1);
-		private final RuleCall cThresholdNUMBERParserRuleCall_5_9_1_0 = (RuleCall)cThresholdAssignment_5_9_1.eContents().get(0);
+		private final Assignment cMinimalLAssignment_5_9_0 = (Assignment)cGroup_5_9.eContents().get(0);
+		private final Keyword cMinimalLMinimalKeyword_5_9_0_0 = (Keyword)cMinimalLAssignment_5_9_0.eContents().get(0);
+		private final Assignment cMinimalAssignment_5_9_1 = (Assignment)cGroup_5_9.eContents().get(1);
+		private final Alternatives cMinimalAlternatives_5_9_1_0 = (Alternatives)cMinimalAssignment_5_9_1.eContents().get(0);
+		private final Keyword cMinimalTrueKeyword_5_9_1_0_0 = (Keyword)cMinimalAlternatives_5_9_1_0.eContents().get(0);
+		private final Keyword cMinimalFalseKeyword_5_9_1_0_1 = (Keyword)cMinimalAlternatives_5_9_1_0.eContents().get(1);
 		private final Group cGroup_5_10 = (Group)cAlternatives_5.eContents().get(10);
-		private final Assignment cChannelsLAssignment_5_10_0 = (Assignment)cGroup_5_10.eContents().get(0);
-		private final Keyword cChannelsLChannelsKeyword_5_10_0_0 = (Keyword)cChannelsLAssignment_5_10_0.eContents().get(0);
-		private final Assignment cChannelsAssignment_5_10_1 = (Assignment)cGroup_5_10.eContents().get(1);
-		private final RuleCall cChannelsChannelParserRuleCall_5_10_1_0 = (RuleCall)cChannelsAssignment_5_10_1.eContents().get(0);
+		private final Assignment cThresholdLAssignment_5_10_0 = (Assignment)cGroup_5_10.eContents().get(0);
+		private final Keyword cThresholdLThresholdKeyword_5_10_0_0 = (Keyword)cThresholdLAssignment_5_10_0.eContents().get(0);
+		private final Assignment cThresholdAssignment_5_10_1 = (Assignment)cGroup_5_10.eContents().get(1);
+		private final RuleCall cThresholdNUMBERParserRuleCall_5_10_1_0 = (RuleCall)cThresholdAssignment_5_10_1.eContents().get(0);
+		private final Group cGroup_5_11 = (Group)cAlternatives_5.eContents().get(11);
+		private final Assignment cChannelsLAssignment_5_11_0 = (Assignment)cGroup_5_11.eContents().get(0);
+		private final Keyword cChannelsLChannelsKeyword_5_11_0_0 = (Keyword)cChannelsLAssignment_5_11_0.eContents().get(0);
+		private final Assignment cChannelsAssignment_5_11_1 = (Assignment)cGroup_5_11.eContents().get(1);
+		private final RuleCall cChannelsChannelParserRuleCall_5_11_1_0 = (RuleCall)cChannelsAssignment_5_11_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//AgentTraceExpression:
-		//	{AgentTraceExpression}
-		//	'agent_trace_expression' '{'
+		//InteractionTraceExpression:
+		//	{InteractionTraceExpression}
+		//	'interaction_trace_expression' '{'
 		//	'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:'
 		//	types+=MsgEventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true'
 		//	| 'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
-		//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
-		//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
+		//	guiL+='gui:' gui+=('true' | 'false') | targetL+='target:' target+=ID | minimalL+='minimal:' minimal+=('true' |
+		//	'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{AgentTraceExpression} 'agent_trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:'
-		//(roles+=Role OP1000XFY?)* | typesL+='types:' types+=MsgEventType* | modulesL+='modules:' modules+=Module* |
-		//decentralizedL+='decentralized:' decentralized+=('true' | 'false') | partitionL+='partition:' partition+=Partition |
-		//constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:'
-		//minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
-		//'}'
+		//{InteractionTraceExpression} 'interaction_trace_expression' '{' 'id:' name=ID (bodyL+='body:' terms+=Term+ |
+		//rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:' types+=MsgEventType* | modulesL+='modules:'
+		//modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' | 'false') | partitionL+='partition:'
+		//partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:' gui+=('true' | 'false') |
+		//targetL+='target:' target+=ID | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
+		//threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+ '}'
 		public Group getGroup() { return cGroup; }
 		
-		//{AgentTraceExpression}
-		public Action getAgentTraceExpressionAction_0() { return cAgentTraceExpressionAction_0; }
+		//{InteractionTraceExpression}
+		public Action getInteractionTraceExpressionAction_0() { return cInteractionTraceExpressionAction_0; }
 		
-		//'agent_trace_expression'
-		public Keyword getAgent_trace_expressionKeyword_1() { return cAgent_trace_expressionKeyword_1; }
+		//'interaction_trace_expression'
+		public Keyword getInteraction_trace_expressionKeyword_1() { return cInteraction_trace_expressionKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -1024,8 +1029,8 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//(bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:' types+=MsgEventType* |
 		//modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true' | 'false') |
 		//partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* | guiL+='gui:'
-		//gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:' threshold+=NUMBER
-		//| channelsL+='channels:' channels+=Channel+)+
+		//gui+=('true' | 'false') | targetL+='target:' target+=ID | minimalL+='minimal:' minimal+=('true' | 'false') |
+		//thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
 		//bodyL+='body:' terms+=Term+
@@ -1166,56 +1171,71 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		//'false'
 		public Keyword getGuiFalseKeyword_5_7_1_0_1() { return cGuiFalseKeyword_5_7_1_0_1; }
 		
-		//minimalL+='minimal:' minimal+=('true' | 'false')
+		//targetL+='target:' target+=ID
 		public Group getGroup_5_8() { return cGroup_5_8; }
 		
-		//minimalL+='minimal:'
-		public Assignment getMinimalLAssignment_5_8_0() { return cMinimalLAssignment_5_8_0; }
+		//targetL+='target:'
+		public Assignment getTargetLAssignment_5_8_0() { return cTargetLAssignment_5_8_0; }
 		
-		//'minimal:'
-		public Keyword getMinimalLMinimalKeyword_5_8_0_0() { return cMinimalLMinimalKeyword_5_8_0_0; }
+		//'target:'
+		public Keyword getTargetLTargetKeyword_5_8_0_0() { return cTargetLTargetKeyword_5_8_0_0; }
 		
-		//minimal+=('true' | 'false')
-		public Assignment getMinimalAssignment_5_8_1() { return cMinimalAssignment_5_8_1; }
+		//target+=ID
+		public Assignment getTargetAssignment_5_8_1() { return cTargetAssignment_5_8_1; }
 		
-		//('true' | 'false')
-		public Alternatives getMinimalAlternatives_5_8_1_0() { return cMinimalAlternatives_5_8_1_0; }
+		//ID
+		public RuleCall getTargetIDParserRuleCall_5_8_1_0() { return cTargetIDParserRuleCall_5_8_1_0; }
 		
-		//'true'
-		public Keyword getMinimalTrueKeyword_5_8_1_0_0() { return cMinimalTrueKeyword_5_8_1_0_0; }
-		
-		//'false'
-		public Keyword getMinimalFalseKeyword_5_8_1_0_1() { return cMinimalFalseKeyword_5_8_1_0_1; }
-		
-		//thresholdL+='threshold:' threshold+=NUMBER
+		//minimalL+='minimal:' minimal+=('true' | 'false')
 		public Group getGroup_5_9() { return cGroup_5_9; }
 		
-		//thresholdL+='threshold:'
-		public Assignment getThresholdLAssignment_5_9_0() { return cThresholdLAssignment_5_9_0; }
+		//minimalL+='minimal:'
+		public Assignment getMinimalLAssignment_5_9_0() { return cMinimalLAssignment_5_9_0; }
 		
-		//'threshold:'
-		public Keyword getThresholdLThresholdKeyword_5_9_0_0() { return cThresholdLThresholdKeyword_5_9_0_0; }
+		//'minimal:'
+		public Keyword getMinimalLMinimalKeyword_5_9_0_0() { return cMinimalLMinimalKeyword_5_9_0_0; }
 		
-		//threshold+=NUMBER
-		public Assignment getThresholdAssignment_5_9_1() { return cThresholdAssignment_5_9_1; }
+		//minimal+=('true' | 'false')
+		public Assignment getMinimalAssignment_5_9_1() { return cMinimalAssignment_5_9_1; }
 		
-		//NUMBER
-		public RuleCall getThresholdNUMBERParserRuleCall_5_9_1_0() { return cThresholdNUMBERParserRuleCall_5_9_1_0; }
+		//('true' | 'false')
+		public Alternatives getMinimalAlternatives_5_9_1_0() { return cMinimalAlternatives_5_9_1_0; }
 		
-		//channelsL+='channels:' channels+=Channel+
+		//'true'
+		public Keyword getMinimalTrueKeyword_5_9_1_0_0() { return cMinimalTrueKeyword_5_9_1_0_0; }
+		
+		//'false'
+		public Keyword getMinimalFalseKeyword_5_9_1_0_1() { return cMinimalFalseKeyword_5_9_1_0_1; }
+		
+		//thresholdL+='threshold:' threshold+=NUMBER
 		public Group getGroup_5_10() { return cGroup_5_10; }
 		
+		//thresholdL+='threshold:'
+		public Assignment getThresholdLAssignment_5_10_0() { return cThresholdLAssignment_5_10_0; }
+		
+		//'threshold:'
+		public Keyword getThresholdLThresholdKeyword_5_10_0_0() { return cThresholdLThresholdKeyword_5_10_0_0; }
+		
+		//threshold+=NUMBER
+		public Assignment getThresholdAssignment_5_10_1() { return cThresholdAssignment_5_10_1; }
+		
+		//NUMBER
+		public RuleCall getThresholdNUMBERParserRuleCall_5_10_1_0() { return cThresholdNUMBERParserRuleCall_5_10_1_0; }
+		
+		//channelsL+='channels:' channels+=Channel+
+		public Group getGroup_5_11() { return cGroup_5_11; }
+		
 		//channelsL+='channels:'
-		public Assignment getChannelsLAssignment_5_10_0() { return cChannelsLAssignment_5_10_0; }
+		public Assignment getChannelsLAssignment_5_11_0() { return cChannelsLAssignment_5_11_0; }
 		
 		//'channels:'
-		public Keyword getChannelsLChannelsKeyword_5_10_0_0() { return cChannelsLChannelsKeyword_5_10_0_0; }
+		public Keyword getChannelsLChannelsKeyword_5_11_0_0() { return cChannelsLChannelsKeyword_5_11_0_0; }
 		
 		//channels+=Channel+
-		public Assignment getChannelsAssignment_5_10_1() { return cChannelsAssignment_5_10_1; }
+		public Assignment getChannelsAssignment_5_11_1() { return cChannelsAssignment_5_11_1; }
 		
 		//Channel
-		public RuleCall getChannelsChannelParserRuleCall_5_10_1_0() { return cChannelsChannelParserRuleCall_5_10_1_0; }
+		public RuleCall getChannelsChannelParserRuleCall_5_11_1_0() { return cChannelsChannelParserRuleCall_5_11_1_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -2541,31 +2561,23 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.unige.dibris.trace_expression_language.TExp.Constraint");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cLeftAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cLeftRoleCrossReference_0_1_0 = (CrossReference)cLeftAssignment_0_1.eContents().get(0);
-		private final RuleCall cLeftRoleIDParserRuleCall_0_1_0_1 = (RuleCall)cLeftRoleCrossReference_0_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cTogetherAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final Keyword cTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_3_0 = (Keyword)cTogetherAssignment_0_3.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final Assignment cRightAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
-		private final CrossReference cRightRoleCrossReference_0_5_0 = (CrossReference)cRightAssignment_0_5.eContents().get(0);
-		private final RuleCall cRightRoleIDParserRuleCall_0_5_0_1 = (RuleCall)cRightRoleCrossReference_0_5_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_0_6 = (Keyword)cGroup_0.eContents().get(6);
+		private final Assignment cLeftAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final CrossReference cLeftRoleCrossReference_0_0_0 = (CrossReference)cLeftAssignment_0_0.eContents().get(0);
+		private final RuleCall cLeftRoleIDParserRuleCall_0_0_0_1 = (RuleCall)cLeftRoleCrossReference_0_0_0.eContents().get(1);
+		private final Assignment cTogetherAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_1_0 = (Keyword)cTogetherAssignment_0_1.eContents().get(0);
+		private final Assignment cRightAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final CrossReference cRightRoleCrossReference_0_2_0 = (CrossReference)cRightAssignment_0_2.eContents().get(0);
+		private final RuleCall cRightRoleIDParserRuleCall_0_2_0_1 = (RuleCall)cRightRoleCrossReference_0_2_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cLeftAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final CrossReference cLeftRoleCrossReference_1_1_0 = (CrossReference)cLeftAssignment_1_1.eContents().get(0);
-		private final RuleCall cLeftRoleIDParserRuleCall_1_1_0_1 = (RuleCall)cLeftRoleCrossReference_1_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cSplitAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final Keyword cSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_3_0 = (Keyword)cSplitAssignment_1_3.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Assignment cRightAssignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
-		private final CrossReference cRightRoleCrossReference_1_5_0 = (CrossReference)cRightAssignment_1_5.eContents().get(0);
-		private final RuleCall cRightRoleIDParserRuleCall_1_5_0_1 = (RuleCall)cRightRoleCrossReference_1_5_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_1_6 = (Keyword)cGroup_1.eContents().get(6);
+		private final Assignment cLeftAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final CrossReference cLeftRoleCrossReference_1_0_0 = (CrossReference)cLeftAssignment_1_0.eContents().get(0);
+		private final RuleCall cLeftRoleIDParserRuleCall_1_0_0_1 = (RuleCall)cLeftRoleCrossReference_1_0_0.eContents().get(1);
+		private final Assignment cSplitAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_1_0 = (Keyword)cSplitAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final CrossReference cRightRoleCrossReference_1_2_0 = (CrossReference)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightRoleIDParserRuleCall_1_2_0_1 = (RuleCall)cRightRoleCrossReference_1_2_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cSingletonsAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Keyword cNumber_singletonsKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
@@ -2619,97 +2631,71 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cParMaxRightSquareBracketKeyword_4_7_0_1 = (Keyword)cParMaxAlternatives_4_7_0.eContents().get(1);
 		
 		//Constraint:
-		//	'[' left+=[Role]+ ']' together='-><-' '[' right+=[Role]+ ']' |
-		//	'[' left+=[Role]+ ']' split='<-->' '[' right+=[Role]+ ']' | {Singletons} 'number_singletons' OP600XFY parMin=('(' |
-		//	'[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' | ']') | {Size} 'size_constraints' OP600XFY parMin=('('
-		//	| '[') minSize=INT OP1000XFY maxSize=INT parMax=(')' | ']') | {Cardinality} 'number_constraints' OP600XFY parMin=('('
-		//	| '[') minCardinality=INT OP1000XFY maxCardinality=INT parMax=(')' | ']');
+		//	left=[Role] together='-><-' right=[Role] | left=[Role] split='<-->' right=[Role] | {Singletons} 'number_singletons'
+		//	OP600XFY parMin=('(' | '[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' | ']') | {Size}
+		//	'size_constraints' OP600XFY parMin=('(' | '[') minSize=INT OP1000XFY maxSize=INT parMax=(')' | ']') | {Cardinality}
+		//	'number_constraints' OP600XFY parMin=('(' | '[') minCardinality=INT OP1000XFY maxCardinality=INT parMax=(')' | ']');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'[' left+=[Role]+ ']' together='-><-' '[' right+=[Role]+ ']' | '[' left+=[Role]+ ']' split='<-->' '[' right+=[Role]+ ']'
-		//| {Singletons} 'number_singletons' OP600XFY parMin=('(' | '[') minSingletons=INT OP1000XFY maxSingletons=INT
-		//parMax=(')' | ']') | {Size} 'size_constraints' OP600XFY parMin=('(' | '[') minSize=INT OP1000XFY maxSize=INT
-		//parMax=(')' | ']') | {Cardinality} 'number_constraints' OP600XFY parMin=('(' | '[') minCardinality=INT OP1000XFY
-		//maxCardinality=INT parMax=(')' | ']')
+		//left=[Role] together='-><-' right=[Role] | left=[Role] split='<-->' right=[Role] | {Singletons} 'number_singletons'
+		//OP600XFY parMin=('(' | '[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' | ']') | {Size}
+		//'size_constraints' OP600XFY parMin=('(' | '[') minSize=INT OP1000XFY maxSize=INT parMax=(')' | ']') | {Cardinality}
+		//'number_constraints' OP600XFY parMin=('(' | '[') minCardinality=INT OP1000XFY maxCardinality=INT parMax=(')' | ']')
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'[' left+=[Role]+ ']' together='-><-' '[' right+=[Role]+ ']'
+		//left=[Role] together='-><-' right=[Role]
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_0_0() { return cLeftSquareBracketKeyword_0_0; }
-		
-		//left+=[Role]+
-		public Assignment getLeftAssignment_0_1() { return cLeftAssignment_0_1; }
+		//left=[Role]
+		public Assignment getLeftAssignment_0_0() { return cLeftAssignment_0_0; }
 		
 		//[Role]
-		public CrossReference getLeftRoleCrossReference_0_1_0() { return cLeftRoleCrossReference_0_1_0; }
+		public CrossReference getLeftRoleCrossReference_0_0_0() { return cLeftRoleCrossReference_0_0_0; }
 		
 		//ID
-		public RuleCall getLeftRoleIDParserRuleCall_0_1_0_1() { return cLeftRoleIDParserRuleCall_0_1_0_1; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_0_2() { return cRightSquareBracketKeyword_0_2; }
+		public RuleCall getLeftRoleIDParserRuleCall_0_0_0_1() { return cLeftRoleIDParserRuleCall_0_0_0_1; }
 		
 		//together='-><-'
-		public Assignment getTogetherAssignment_0_3() { return cTogetherAssignment_0_3; }
+		public Assignment getTogetherAssignment_0_1() { return cTogetherAssignment_0_1; }
 		
 		//'-><-'
-		public Keyword getTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_3_0() { return cTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_3_0; }
+		public Keyword getTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_1_0() { return cTogetherHyphenMinusGreaterThanSignLessThanSignHyphenMinusKeyword_0_1_0; }
 		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_0_4() { return cLeftSquareBracketKeyword_0_4; }
-		
-		//right+=[Role]+
-		public Assignment getRightAssignment_0_5() { return cRightAssignment_0_5; }
+		//right=[Role]
+		public Assignment getRightAssignment_0_2() { return cRightAssignment_0_2; }
 		
 		//[Role]
-		public CrossReference getRightRoleCrossReference_0_5_0() { return cRightRoleCrossReference_0_5_0; }
+		public CrossReference getRightRoleCrossReference_0_2_0() { return cRightRoleCrossReference_0_2_0; }
 		
 		//ID
-		public RuleCall getRightRoleIDParserRuleCall_0_5_0_1() { return cRightRoleIDParserRuleCall_0_5_0_1; }
+		public RuleCall getRightRoleIDParserRuleCall_0_2_0_1() { return cRightRoleIDParserRuleCall_0_2_0_1; }
 		
-		//']'
-		public Keyword getRightSquareBracketKeyword_0_6() { return cRightSquareBracketKeyword_0_6; }
-		
-		//'[' left+=[Role]+ ']' split='<-->' '[' right+=[Role]+ ']'
+		//left=[Role] split='<-->' right=[Role]
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_1_0() { return cLeftSquareBracketKeyword_1_0; }
-		
-		//left+=[Role]+
-		public Assignment getLeftAssignment_1_1() { return cLeftAssignment_1_1; }
+		//left=[Role]
+		public Assignment getLeftAssignment_1_0() { return cLeftAssignment_1_0; }
 		
 		//[Role]
-		public CrossReference getLeftRoleCrossReference_1_1_0() { return cLeftRoleCrossReference_1_1_0; }
+		public CrossReference getLeftRoleCrossReference_1_0_0() { return cLeftRoleCrossReference_1_0_0; }
 		
 		//ID
-		public RuleCall getLeftRoleIDParserRuleCall_1_1_0_1() { return cLeftRoleIDParserRuleCall_1_1_0_1; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_1_2() { return cRightSquareBracketKeyword_1_2; }
+		public RuleCall getLeftRoleIDParserRuleCall_1_0_0_1() { return cLeftRoleIDParserRuleCall_1_0_0_1; }
 		
 		//split='<-->'
-		public Assignment getSplitAssignment_1_3() { return cSplitAssignment_1_3; }
+		public Assignment getSplitAssignment_1_1() { return cSplitAssignment_1_1; }
 		
 		//'<-->'
-		public Keyword getSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_3_0() { return cSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_3_0; }
+		public Keyword getSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_1_0() { return cSplitLessThanSignHyphenMinusHyphenMinusGreaterThanSignKeyword_1_1_0; }
 		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_1_4() { return cLeftSquareBracketKeyword_1_4; }
-		
-		//right+=[Role]+
-		public Assignment getRightAssignment_1_5() { return cRightAssignment_1_5; }
+		//right=[Role]
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
 		//[Role]
-		public CrossReference getRightRoleCrossReference_1_5_0() { return cRightRoleCrossReference_1_5_0; }
+		public CrossReference getRightRoleCrossReference_1_2_0() { return cRightRoleCrossReference_1_2_0; }
 		
 		//ID
-		public RuleCall getRightRoleIDParserRuleCall_1_5_0_1() { return cRightRoleIDParserRuleCall_1_5_0_1; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_1_6() { return cRightSquareBracketKeyword_1_6; }
+		public RuleCall getRightRoleIDParserRuleCall_1_2_0_1() { return cRightRoleIDParserRuleCall_1_2_0_1; }
 		
 		//{Singletons} 'number_singletons' OP600XFY parMin=('(' | '[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' |
 		//']')
@@ -2931,7 +2917,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	private final Expression0Elements pExpression0;
 	private final TraceExpressionElements pTraceExpression;
 	private final GenericTraceExpressionElements pGenericTraceExpression;
-	private final AgentTraceExpressionElements pAgentTraceExpression;
+	private final InteractionTraceExpressionElements pInteractionTraceExpression;
 	private final EventTypeElements pEventType;
 	private final MsgEventTypeElements pMsgEventType;
 	private final GroundTermElements pGroundTerm;
@@ -3004,7 +2990,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		this.pExpression0 = new Expression0Elements();
 		this.pTraceExpression = new TraceExpressionElements();
 		this.pGenericTraceExpression = new GenericTraceExpressionElements();
-		this.pAgentTraceExpression = new AgentTraceExpressionElements();
+		this.pInteractionTraceExpression = new InteractionTraceExpressionElements();
 		this.pEventType = new EventTypeElements();
 		this.pMsgEventType = new MsgEventTypeElements();
 		this.pGroundTerm = new GroundTermElements();
@@ -3397,7 +3383,7 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//// Trace expressions    
 	//TraceExpression:
-	//	GenericTraceExpression | AgentTraceExpression;
+	//	GenericTraceExpression | InteractionTraceExpression;
 	public TraceExpressionElements getTraceExpressionAccess() {
 		return pTraceExpression;
 	}
@@ -3420,21 +3406,21 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 		return getGenericTraceExpressionAccess().getRule();
 	}
 	
-	//AgentTraceExpression:
-	//	{AgentTraceExpression}
-	//	'agent_trace_expression' '{'
+	//InteractionTraceExpression:
+	//	{InteractionTraceExpression}
+	//	'interaction_trace_expression' '{'
 	//	'id:' name=ID (bodyL+='body:' terms+=Term+ | rolesL+='roles:' (roles+=Role OP1000XFY?)* | typesL+='types:'
 	//	types+=MsgEventType* | modulesL+='modules:' modules+=Module* | decentralizedL+='decentralized:' decentralized+=('true'
 	//	| 'false') | partitionL+='partition:' partition+=Partition | constraintsL+='constraints:' constraints+=Constraint* |
-	//	guiL+='gui:' gui+=('true' | 'false') | minimalL+='minimal:' minimal+=('true' | 'false') | thresholdL+='threshold:'
-	//	threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
+	//	guiL+='gui:' gui+=('true' | 'false') | targetL+='target:' target+=ID | minimalL+='minimal:' minimal+=('true' |
+	//	'false') | thresholdL+='threshold:' threshold+=NUMBER | channelsL+='channels:' channels+=Channel+)+
 	//	'}';
-	public AgentTraceExpressionElements getAgentTraceExpressionAccess() {
-		return pAgentTraceExpression;
+	public InteractionTraceExpressionElements getInteractionTraceExpressionAccess() {
+		return pInteractionTraceExpression;
 	}
 	
-	public ParserRule getAgentTraceExpressionRule() {
-		return getAgentTraceExpressionAccess().getRule();
+	public ParserRule getInteractionTraceExpressionRule() {
+		return getInteractionTraceExpressionAccess().getRule();
 	}
 	
 	//EventType:
@@ -3646,11 +3632,10 @@ public class TExpGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Constraint:
-	//	'[' left+=[Role]+ ']' together='-><-' '[' right+=[Role]+ ']' |
-	//	'[' left+=[Role]+ ']' split='<-->' '[' right+=[Role]+ ']' | {Singletons} 'number_singletons' OP600XFY parMin=('(' |
-	//	'[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' | ']') | {Size} 'size_constraints' OP600XFY parMin=('('
-	//	| '[') minSize=INT OP1000XFY maxSize=INT parMax=(')' | ']') | {Cardinality} 'number_constraints' OP600XFY parMin=('('
-	//	| '[') minCardinality=INT OP1000XFY maxCardinality=INT parMax=(')' | ']');
+	//	left=[Role] together='-><-' right=[Role] | left=[Role] split='<-->' right=[Role] | {Singletons} 'number_singletons'
+	//	OP600XFY parMin=('(' | '[') minSingletons=INT OP1000XFY maxSingletons=INT parMax=(')' | ']') | {Size}
+	//	'size_constraints' OP600XFY parMin=('(' | '[') minSize=INT OP1000XFY maxSize=INT parMax=(')' | ']') | {Cardinality}
+	//	'number_constraints' OP600XFY parMin=('(' | '[') minCardinality=INT OP1000XFY maxCardinality=INT parMax=(')' | ']');
 	public ConstraintElements getConstraintAccess() {
 		return pConstraint;
 	}

@@ -102,11 +102,11 @@ public class TExpSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TExpPackage.AGENT_TRACE_EXPRESSION:
+      case TExpPackage.INTERACTION_TRACE_EXPRESSION:
       {
-        AgentTraceExpression agentTraceExpression = (AgentTraceExpression)theEObject;
-        T result = caseAgentTraceExpression(agentTraceExpression);
-        if (result == null) result = caseTraceExpression(agentTraceExpression);
+        InteractionTraceExpression interactionTraceExpression = (InteractionTraceExpression)theEObject;
+        T result = caseInteractionTraceExpression(interactionTraceExpression);
+        if (result == null) result = caseTraceExpression(interactionTraceExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -407,17 +407,17 @@ public class TExpSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Agent Trace Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Interaction Trace Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Agent Trace Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Interaction Trace Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAgentTraceExpression(AgentTraceExpression object)
+  public T caseInteractionTraceExpression(InteractionTraceExpression object)
   {
     return null;
   }

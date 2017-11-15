@@ -60,13 +60,13 @@ public interface TExpFactory extends EFactory
   GenericTraceExpression createGenericTraceExpression();
 
   /**
-   * Returns a new object of class '<em>Agent Trace Expression</em>'.
+   * Returns a new object of class '<em>Interaction Trace Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Agent Trace Expression</em>'.
+   * @return a new object of class '<em>Interaction Trace Expression</em>'.
    * @generated
    */
-  AgentTraceExpression createAgentTraceExpression();
+  InteractionTraceExpression createInteractionTraceExpression();
 
   /**
    * Returns a new object of class '<em>Event Type</em>'.

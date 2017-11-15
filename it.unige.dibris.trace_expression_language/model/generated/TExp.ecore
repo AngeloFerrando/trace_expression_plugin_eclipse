@@ -30,7 +30,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//EventType" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AgentTraceExpression" eSuperTypes="#//TraceExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionTraceExpression" eSuperTypes="#//TraceExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rolesL" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
@@ -53,6 +53,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gui" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetL" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimalL" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimal" unique="false"
@@ -156,11 +160,9 @@
         eType="#//Role"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" unique="false" upperBound="-1"
-        eType="#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Role"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="together" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" unique="false" upperBound="-1"
-        eType="#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Role"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

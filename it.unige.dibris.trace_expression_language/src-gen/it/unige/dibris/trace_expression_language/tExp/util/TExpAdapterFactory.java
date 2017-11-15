@@ -96,9 +96,9 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
         return createGenericTraceExpressionAdapter();
       }
       @Override
-      public Adapter caseAgentTraceExpression(AgentTraceExpression object)
+      public Adapter caseInteractionTraceExpression(InteractionTraceExpression object)
       {
-        return createAgentTraceExpressionAdapter();
+        return createInteractionTraceExpressionAdapter();
       }
       @Override
       public Adapter caseEventType(EventType object)
@@ -333,16 +333,16 @@ public class TExpAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression <em>Agent Trace Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression <em>Interaction Trace Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+   * @see it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression
    * @generated
    */
-  public Adapter createAgentTraceExpressionAdapter()
+  public Adapter createInteractionTraceExpressionAdapter()
   {
     return null;
   }

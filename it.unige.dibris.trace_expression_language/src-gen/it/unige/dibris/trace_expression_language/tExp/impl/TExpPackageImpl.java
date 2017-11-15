@@ -3,7 +3,6 @@
  */
 package it.unige.dibris.trace_expression_language.tExp.impl;
 
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
@@ -19,6 +18,7 @@ import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
@@ -89,7 +89,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass agentTraceExpressionEClass = null;
+  private EClass interactionTraceExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -519,9 +519,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAgentTraceExpression()
+  public EClass getInteractionTraceExpression()
   {
-    return agentTraceExpressionEClass;
+    return interactionTraceExpressionEClass;
   }
 
   /**
@@ -529,9 +529,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_RolesL()
+  public EAttribute getInteractionTraceExpression_RolesL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -539,9 +539,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAgentTraceExpression_Roles()
+  public EReference getInteractionTraceExpression_Roles()
   {
-    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)interactionTraceExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -549,9 +549,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAgentTraceExpression_Types()
+  public EReference getInteractionTraceExpression_Types()
   {
-    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(2);
+    return (EReference)interactionTraceExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -559,9 +559,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_DecentralizedL()
+  public EAttribute getInteractionTraceExpression_DecentralizedL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -569,9 +569,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_Decentralized()
+  public EAttribute getInteractionTraceExpression_Decentralized()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -579,9 +579,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_PartitionL()
+  public EAttribute getInteractionTraceExpression_PartitionL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -589,9 +589,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAgentTraceExpression_Partition()
+  public EReference getInteractionTraceExpression_Partition()
   {
-    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(6);
+    return (EReference)interactionTraceExpressionEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -599,9 +599,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_ConstraintsL()
+  public EAttribute getInteractionTraceExpression_ConstraintsL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -609,9 +609,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAgentTraceExpression_Constraints()
+  public EReference getInteractionTraceExpression_Constraints()
   {
-    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(8);
+    return (EReference)interactionTraceExpressionEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -619,9 +619,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_GuiL()
+  public EAttribute getInteractionTraceExpression_GuiL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -629,9 +629,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_Gui()
+  public EAttribute getInteractionTraceExpression_Gui()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(10);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -639,9 +639,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_MinimalL()
+  public EAttribute getInteractionTraceExpression_TargetL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(11);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(11);
   }
 
   /**
@@ -649,9 +649,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_Minimal()
+  public EAttribute getInteractionTraceExpression_Target()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(12);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -659,9 +659,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_ThresholdL()
+  public EAttribute getInteractionTraceExpression_MinimalL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(13);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(13);
   }
 
   /**
@@ -669,9 +669,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_Threshold()
+  public EAttribute getInteractionTraceExpression_Minimal()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(14);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -679,9 +679,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAgentTraceExpression_ChannelsL()
+  public EAttribute getInteractionTraceExpression_ThresholdL()
   {
-    return (EAttribute)agentTraceExpressionEClass.getEStructuralFeatures().get(15);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(15);
   }
 
   /**
@@ -689,9 +689,29 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAgentTraceExpression_Channels()
+  public EAttribute getInteractionTraceExpression_Threshold()
   {
-    return (EReference)agentTraceExpressionEClass.getEStructuralFeatures().get(16);
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInteractionTraceExpression_ChannelsL()
+  {
+    return (EAttribute)interactionTraceExpressionEClass.getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getInteractionTraceExpression_Channels()
+  {
+    return (EReference)interactionTraceExpressionEClass.getEStructuralFeatures().get(18);
   }
 
   /**
@@ -1813,24 +1833,26 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     genericTraceExpressionEClass = createEClass(GENERIC_TRACE_EXPRESSION);
     createEReference(genericTraceExpressionEClass, GENERIC_TRACE_EXPRESSION__TYPES);
 
-    agentTraceExpressionEClass = createEClass(AGENT_TRACE_EXPRESSION);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__ROLES_L);
-    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__ROLES);
-    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__TYPES);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__DECENTRALIZED_L);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__DECENTRALIZED);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__PARTITION_L);
-    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__PARTITION);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CONSTRAINTS_L);
-    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CONSTRAINTS);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__GUI_L);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__GUI);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MINIMAL_L);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__MINIMAL);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__THRESHOLD_L);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__THRESHOLD);
-    createEAttribute(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CHANNELS_L);
-    createEReference(agentTraceExpressionEClass, AGENT_TRACE_EXPRESSION__CHANNELS);
+    interactionTraceExpressionEClass = createEClass(INTERACTION_TRACE_EXPRESSION);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__ROLES_L);
+    createEReference(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__ROLES);
+    createEReference(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__TYPES);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__DECENTRALIZED_L);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__DECENTRALIZED);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__PARTITION_L);
+    createEReference(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__PARTITION);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__CONSTRAINTS_L);
+    createEReference(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__CONSTRAINTS);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__GUI_L);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__GUI);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__TARGET_L);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__TARGET);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__MINIMAL_L);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__MINIMAL);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__THRESHOLD_L);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__THRESHOLD);
+    createEAttribute(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__CHANNELS_L);
+    createEReference(interactionTraceExpressionEClass, INTERACTION_TRACE_EXPRESSION__CHANNELS);
 
     eventTypeEClass = createEClass(EVENT_TYPE);
     createEAttribute(eventTypeEClass, EVENT_TYPE__NAME);
@@ -2000,7 +2022,7 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
 
     // Add supertypes to classes
     genericTraceExpressionEClass.getESuperTypes().add(this.getTraceExpression());
-    agentTraceExpressionEClass.getESuperTypes().add(this.getTraceExpression());
+    interactionTraceExpressionEClass.getESuperTypes().add(this.getTraceExpression());
     atomExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     variableExpressionEClass.getESuperTypes().add(this.getPrologExpression());
     stringExpressionEClass.getESuperTypes().add(this.getPrologExpression());
@@ -2040,24 +2062,26 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEClass(genericTraceExpressionEClass, GenericTraceExpression.class, "GenericTraceExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGenericTraceExpression_Types(), this.getEventType(), null, "types", null, 0, -1, GenericTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(agentTraceExpressionEClass, AgentTraceExpression.class, "AgentTraceExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAgentTraceExpression_RolesL(), ecorePackage.getEString(), "rolesL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgentTraceExpression_Roles(), this.getRole(), null, "roles", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgentTraceExpression_Types(), this.getMsgEventType(), null, "types", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_DecentralizedL(), ecorePackage.getEString(), "decentralizedL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_Decentralized(), ecorePackage.getEString(), "decentralized", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_PartitionL(), ecorePackage.getEString(), "partitionL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgentTraceExpression_Partition(), this.getPartition(), null, "partition", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_ConstraintsL(), ecorePackage.getEString(), "constraintsL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgentTraceExpression_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_GuiL(), ecorePackage.getEString(), "guiL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_Gui(), ecorePackage.getEString(), "gui", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_MinimalL(), ecorePackage.getEString(), "minimalL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_Minimal(), ecorePackage.getEString(), "minimal", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_ThresholdL(), ecorePackage.getEString(), "thresholdL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_Threshold(), ecorePackage.getEString(), "threshold", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAgentTraceExpression_ChannelsL(), ecorePackage.getEString(), "channelsL", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgentTraceExpression_Channels(), this.getChannel(), null, "channels", null, 0, -1, AgentTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(interactionTraceExpressionEClass, InteractionTraceExpression.class, "InteractionTraceExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInteractionTraceExpression_RolesL(), ecorePackage.getEString(), "rolesL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInteractionTraceExpression_Roles(), this.getRole(), null, "roles", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInteractionTraceExpression_Types(), this.getMsgEventType(), null, "types", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_DecentralizedL(), ecorePackage.getEString(), "decentralizedL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_Decentralized(), ecorePackage.getEString(), "decentralized", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_PartitionL(), ecorePackage.getEString(), "partitionL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInteractionTraceExpression_Partition(), this.getPartition(), null, "partition", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_ConstraintsL(), ecorePackage.getEString(), "constraintsL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInteractionTraceExpression_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_GuiL(), ecorePackage.getEString(), "guiL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_Gui(), ecorePackage.getEString(), "gui", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_TargetL(), ecorePackage.getEString(), "targetL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_Target(), ecorePackage.getEString(), "target", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_MinimalL(), ecorePackage.getEString(), "minimalL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_Minimal(), ecorePackage.getEString(), "minimal", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_ThresholdL(), ecorePackage.getEString(), "thresholdL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_Threshold(), ecorePackage.getEString(), "threshold", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInteractionTraceExpression_ChannelsL(), ecorePackage.getEString(), "channelsL", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInteractionTraceExpression_Channels(), this.getChannel(), null, "channels", null, 0, -1, InteractionTraceExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventTypeEClass, EventType.class, "EventType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEventType_Name(), ecorePackage.getEString(), "name", null, 0, 1, EventType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2126,9 +2150,9 @@ public class TExpPackageImpl extends EPackageImpl implements TExpPackage
     initEReference(getTogether_Roles(), this.getRole(), null, "roles", null, 0, -1, Together.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConstraint_Left(), this.getRole(), null, "left", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Left(), this.getRole(), null, "left", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraint_Together(), ecorePackage.getEString(), "together", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Right(), this.getRole(), null, "right", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Right(), this.getRole(), null, "right", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraint_Split(), ecorePackage.getEString(), "split", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraint_ParMin(), ecorePackage.getEString(), "parMin", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraint_ParMax(), ecorePackage.getEString(), "parMax", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

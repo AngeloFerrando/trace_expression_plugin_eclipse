@@ -4,7 +4,6 @@
 package it.unige.dibris.trace_expression_language.validation;
 
 import com.google.common.base.Objects;
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
@@ -18,6 +17,7 @@ import it.unige.dibris.trace_expression_language.tExp.EventType;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
@@ -118,9 +118,9 @@ public class TExpValidator extends AbstractTExpValidator {
       assocT.put(term.getName(), term.getExpr());
     }
     double threshold = 1.0;
-    if ((tExp instanceof AgentTraceExpression)) {
-      if (((((AgentTraceExpression)tExp).getThreshold() != null) && (((AgentTraceExpression)tExp).getThreshold().size() > 0))) {
-        threshold = (Double.valueOf(((AgentTraceExpression)tExp).getThreshold().get(0))).doubleValue();
+    if ((tExp instanceof InteractionTraceExpression)) {
+      if (((((InteractionTraceExpression)tExp).getThreshold() != null) && (((InteractionTraceExpression)tExp).getThreshold().size() > 0))) {
+        threshold = (Double.valueOf(((InteractionTraceExpression)tExp).getThreshold().get(0))).doubleValue();
       }
     }
     EList<Term> _terms_1 = tExp.getTerms();
@@ -582,7 +582,7 @@ public class TExpValidator extends AbstractTExpValidator {
     }
   }
   
-  public boolean areAllAsyncMsgs(final AgentTraceExpression tExp) {
+  public boolean areAllAsyncMsgs(final InteractionTraceExpression tExp) {
     EList<MsgEventType> _types = tExp.getTypes();
     for (final MsgEventType eventType : _types) {
       EList<Msg> _msgs = eventType.getMsgs();
@@ -595,7 +595,7 @@ public class TExpValidator extends AbstractTExpValidator {
     return true;
   }
   
-  public boolean areAllSyncMsgs(final AgentTraceExpression tExp) {
+  public boolean areAllSyncMsgs(final InteractionTraceExpression tExp) {
     EList<MsgEventType> _types = tExp.getTypes();
     for (final MsgEventType eventType : _types) {
       EList<Msg> _msgs = eventType.getMsgs();
@@ -609,7 +609,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMsgsConsistency(final AgentTraceExpression tExp) {
+  public void checkMsgsConsistency(final InteractionTraceExpression tExp) {
     if (((tExp.getTypes() == null) || (tExp.getTypes().size() == 0))) {
       return;
     }
@@ -627,7 +627,7 @@ public class TExpValidator extends AbstractTExpValidator {
   
   @Check
   public void checkSequenceMsgEventTypeConsistency(final SeqExpr expr) {
-    if (((expr.getSeqExpr().getTypeSeq() instanceof MsgEventType) && (!this.isMsgEventTypeConsistency(((MsgEventType) expr.getSeqExpr().getTypeSeq()))))) {
+    if (((expr.getSeqExpr().getTypeSeq() instanceof MsgEventType) && (!this.isMsgEventTypeConsistent(((MsgEventType) expr.getSeqExpr().getTypeSeq()))))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(expr.getSeqExpr().getTypeSeq());
       this.getMessageAcceptor().acceptError(
         "All messages inside the event type must involve the same set of roles", 
@@ -638,7 +638,7 @@ public class TExpValidator extends AbstractTExpValidator {
     }
   }
   
-  public boolean isMsgEventTypeConsistency(final MsgEventType eventType) {
+  public boolean isMsgEventTypeConsistent(final MsgEventType eventType) {
     TreeSet<String> roles = new TreeSet<String>();
     EList<Msg> _msgs = eventType.getMsgs();
     for (final Msg msg : _msgs) {
@@ -691,7 +691,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkPartitionCorrectlyEnabled(final AgentTraceExpression tExp) {
+  public void checkPartitionCorrectlyEnabled(final InteractionTraceExpression tExp) {
     if ((((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && 
       (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getPartition().get(0));
@@ -789,7 +789,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkNoDuplications(final AgentTraceExpression tExp) {
+  public void checkNoDuplications(final InteractionTraceExpression tExp) {
     if (((tExp.getRolesL() == null) || (tExp.getRolesL().size() != 1))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
@@ -798,68 +798,76 @@ public class TExpValidator extends AbstractTExpValidator {
         node.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getModules() != null) && (tExp.getModules().size() > 1))) {
+    if (((tExp.getTargetL() == null) || (tExp.getTargetL().size() != 1))) {
       final ICompositeNode node_1 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'modules:\' field", tExp, 
+        "there must be one \'target:\' field", tExp, 
         node_1.getOffset(), 
         node_1.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getDecentralizedL() != null) && (tExp.getDecentralizedL().size() > 1))) {
+    if (((tExp.getModules() != null) && (tExp.getModules().size() > 1))) {
       final ICompositeNode node_2 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'decentralized:\' field", tExp, 
+        "there must be at most one \'modules:\' field", tExp, 
         node_2.getOffset(), 
         node_2.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getPartitionL() != null) && (tExp.getPartitionL().size() > 1))) {
+    if (((tExp.getDecentralizedL() != null) && (tExp.getDecentralizedL().size() > 1))) {
       final ICompositeNode node_3 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'partition:\' field", tExp, 
+        "there must be at most one \'decentralized:\' field", tExp, 
         node_3.getOffset(), 
         node_3.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getConstraintsL() != null) && (tExp.getConstraintsL().size() > 1))) {
+    if (((tExp.getPartitionL() != null) && (tExp.getPartitionL().size() > 1))) {
       final ICompositeNode node_4 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "there must be at most one \'constraints:\' field", tExp, 
+        "there must be at most one \'partition:\' field", tExp, 
         node_4.getOffset(), 
         node_4.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getGuiL() != null) && (tExp.getGuiL().size() > 1))) {
+    if (((tExp.getConstraintsL() != null) && (tExp.getConstraintsL().size() > 1))) {
       final ICompositeNode node_5 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'gui:\' field is allowed", tExp, 
+        "there must be at most one \'constraints:\' field", tExp, 
         node_5.getOffset(), 
         node_5.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getMinimalL() != null) && (tExp.getMinimalL().size() > 1))) {
+    if (((tExp.getGuiL() != null) && (tExp.getGuiL().size() > 1))) {
       final ICompositeNode node_6 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'minimal:\' field is allowed", tExp, 
+        "only one \'gui:\' field is allowed", tExp, 
         node_6.getOffset(), 
         node_6.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getThresholdL() != null) && (tExp.getThresholdL().size() > 1))) {
+    if (((tExp.getMinimalL() != null) && (tExp.getMinimalL().size() > 1))) {
       final ICompositeNode node_7 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'threshold:\' field is allowed", tExp, 
+        "only one \'minimal:\' field is allowed", tExp, 
         node_7.getOffset(), 
         node_7.getLength(), 
         TExpValidator.OnlyOne);
     }
-    if (((tExp.getChannelsL() != null) && (tExp.getChannelsL().size() > 1))) {
+    if (((tExp.getThresholdL() != null) && (tExp.getThresholdL().size() > 1))) {
       final ICompositeNode node_8 = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptError(
-        "only one \'channels:\' field is allowed", tExp, 
+        "only one \'threshold:\' field is allowed", tExp, 
         node_8.getOffset(), 
         node_8.getLength(), 
+        TExpValidator.OnlyOne);
+    }
+    if (((tExp.getChannelsL() != null) && (tExp.getChannelsL().size() > 1))) {
+      final ICompositeNode node_9 = NodeModelUtils.findActualNodeFor(tExp);
+      this.getMessageAcceptor().acceptError(
+        "only one \'channels:\' field is allowed", tExp, 
+        node_9.getOffset(), 
+        node_9.getLength(), 
         TExpValidator.OnlyOne);
     }
   }
@@ -877,7 +885,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void thresholdMustBePositive(final AgentTraceExpression tExp) {
+  public void thresholdMustBePositive(final InteractionTraceExpression tExp) {
     if ((((tExp.getThreshold() != null) && (tExp.getThreshold().size() > 0)) && (tExp.getThreshold().get(0).length() > 0))) {
       Double d = Double.valueOf(tExp.getThreshold().get(0));
       if ((((d).doubleValue() < 0) || ((d).doubleValue() > 1))) {
@@ -892,7 +900,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConstraintsOnlyIfDecentralized(final AgentTraceExpression tExp) {
+  public void checkConstraintsOnlyIfDecentralized(final InteractionTraceExpression tExp) {
     if (((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && ((tExp.getConstraints() != null) && (tExp.getConstraints().size() > 0)))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptWarning(
@@ -904,7 +912,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMinimalOnlyIfDecentralized(final AgentTraceExpression tExp) {
+  public void checkMinimalOnlyIfDecentralized(final InteractionTraceExpression tExp) {
     if (((((tExp.getDecentralized() == null) || (tExp.getDecentralized().size() == 0)) || Objects.equal(tExp.getDecentralized().get(0), "false")) && ((tExp.getMinimal() != null) && (tExp.getMinimal().size() > 0)))) {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp);
       this.getMessageAcceptor().acceptWarning(
@@ -916,7 +924,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkConstraintsOrPartition(final AgentTraceExpression tExp) {
+  public void checkConstraintsOrPartition(final InteractionTraceExpression tExp) {
     if (((((tExp.getConstraints() != null) && (tExp.getConstraints().size() > 0)) && 
       (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getConstraints().get(0));
@@ -937,7 +945,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkMinimalOrPartition(final AgentTraceExpression tExp) {
+  public void checkMinimalOrPartition(final InteractionTraceExpression tExp) {
     if (((((tExp.getPartition() != null) && (tExp.getPartition().size() > 0)) && 
       (tExp.getMinimal() != null)) && (tExp.getMinimal().size() > 0))) {
       ICompositeNode node = NodeModelUtils.findActualNodeFor(tExp.getPartition().get(0));
@@ -951,7 +959,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void criticalPointsTest(final AgentTraceExpression tExp) {
+  public void criticalPointsTest(final InteractionTraceExpression tExp) {
     if ((((((tExp.getDecentralized() != null) && (tExp.getDecentralized().size() > 0)) && 
       Objects.equal(tExp.getDecentralized().get(0), "true")) && (tExp.getPartition() != null)) && (tExp.getPartition().size() > 0))) {
       ArrayList<MonitoringSafePartitionCheck.CriticalPoint> criticalPoints = MonitoringSafePartitionCheck.isMonitoringSafe(tExp);
@@ -976,7 +984,7 @@ public class TExpValidator extends AbstractTExpValidator {
   }
   
   @Check
-  public void checkAllRolesInPartition(final AgentTraceExpression tExp) {
+  public void checkAllRolesInPartition(final InteractionTraceExpression tExp) {
     if (((tExp.getPartition() != null) && (tExp.getPartition().size() > 0))) {
       EList<Role> _roles = tExp.getRoles();
       for (final Role role1 : _roles) {

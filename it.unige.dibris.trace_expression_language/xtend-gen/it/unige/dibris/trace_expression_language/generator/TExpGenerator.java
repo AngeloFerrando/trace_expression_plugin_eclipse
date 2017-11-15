@@ -5,7 +5,6 @@ package it.unige.dibris.trace_expression_language.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.AtomExpression;
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent;
@@ -20,6 +19,7 @@ import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.GenericTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
@@ -46,6 +46,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -57,9 +58,14 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class TExpGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<AgentTraceExpression> _filter = Iterables.<AgentTraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), AgentTraceExpression.class);
-    for (final AgentTraceExpression tExp : _filter) {
-      {
+    Iterable<InteractionTraceExpression> _filter = Iterables.<InteractionTraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), InteractionTraceExpression.class);
+    for (final InteractionTraceExpression tExp : _filter) {
+      final Function1<String, String> _function = (String s) -> {
+        return s.toUpperCase();
+      };
+      String _apply = _function.apply(tExp.getTarget().get(0));
+      boolean _equals = Objects.equal(_apply, "JADE");
+      if (_equals) {
         String _name = tExp.getName();
         String _plus = (_name + ".pl");
         fsa.generateFile(_plus, this.compile(tExp));
@@ -72,13 +78,13 @@ public class TExpGenerator extends AbstractGenerator {
     }
     Iterable<GenericTraceExpression> _filter_1 = Iterables.<GenericTraceExpression>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), GenericTraceExpression.class);
     for (final GenericTraceExpression te : _filter_1) {
-      String _name = te.getName();
-      String _plus = (_name + ".pl");
-      fsa.generateFile(_plus, this.compile(te));
+      String _name_1 = te.getName();
+      String _plus_3 = (_name_1 + ".pl");
+      fsa.generateFile(_plus_3, this.compile(te));
     }
   }
   
-  public CharSequence javaCompile(final AgentTraceExpression tExp) {
+  public CharSequence javaCompile(final InteractionTraceExpression tExp) {
     StringConcatenation _builder = new StringConcatenation();
     String _upperCase = tExp.getName().substring(0, 1).toUpperCase();
     String _substring = tExp.getName().substring(1);
@@ -95,9 +101,13 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("import it.dibris.unige.TExpSWIPrologConnector.JPL.JPLInitializer;");
     _builder.newLine();
-    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.texp.AgentTraceExpression;");
+    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.texp.TraceExpression;");
     _builder.newLine();
     _builder.append("import it.dibris.unige.TExpSWIPrologConnector.decentralized.Partition;");
+    _builder.newLine();
+    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.decentralized.Condition;");
+    _builder.newLine();
+    _builder.append("import it.dibris.unige.TExpSWIPrologConnector.decentralized.ConditionsFactory;");
     _builder.newLine();
     _builder.append("import it.unige.dibris.TExpRVJade.Channel;");
     _builder.newLine();
@@ -135,7 +145,7 @@ public class TExpGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("AgentTraceExpression tExp = new AgentTraceExpression(\"");
+    _builder.append("TraceExpression tExp = new TraceExpression(\"");
     String _name = tExp.getName();
     _builder.append(_name, "\t\t");
     _builder.append(".pl\");");
@@ -289,44 +299,38 @@ public class TExpGenerator extends AbstractGenerator {
             _builder.append("Partition<String> partition = new Partition<>(groups);");
             _builder.newLine();
           } else {
+            _builder.append("\t\t");
+            _builder.append("List<Condition<String>> constraints = new ArrayList<>();");
+            _builder.newLine();
             {
               EList<Constraint> _constraints_1 = tExp.getConstraints();
               for(final Constraint constraint_1 : _constraints_1) {
                 {
-                  EList<Role> _left = constraint_1.getLeft();
-                  for(final Role role1 : _left) {
-                    {
-                      EList<Role> _right = constraint_1.getRight();
-                      for(final Role role2 : _right) {
-                        {
-                          String _together = constraint_1.getTogether();
-                          boolean _tripleNotEquals_1 = (_together != null);
-                          if (_tripleNotEquals_1) {
-                            _builder.append("\t\t");
-                            _builder.append("List<Condition<String>> constraints = new ArrayList<>();");
-                            _builder.newLine();
-                            _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionsFactory.createMustBeTogetherCondition(\"");
-                            String _name_9 = role1.getName();
-                            _builder.append(_name_9, "\t\t");
-                            _builder.append("\",\"");
-                            String _name_10 = role2.getName();
-                            _builder.append(_name_10, "\t\t");
-                            _builder.append("\"));");
-                            _builder.newLineIfNotEmpty();
-                          } else {
-                            _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionsFactory.createMustBeSplitCondition(\"");
-                            String _name_11 = role1.getName();
-                            _builder.append(_name_11, "\t\t");
-                            _builder.append("\",\"");
-                            String _name_12 = role2.getName();
-                            _builder.append(_name_12, "\t\t");
-                            _builder.append("\"));");
-                            _builder.newLineIfNotEmpty();
-                          }
-                        }
-                      }
+                  String _together = constraint_1.getTogether();
+                  boolean _tripleNotEquals_1 = (_together != null);
+                  if (_tripleNotEquals_1) {
+                    _builder.append("\t\t");
+                    _builder.append("constraints.add(ConditionsFactory.createMustBeTogetherCondition(\"");
+                    String _name_9 = constraint_1.getLeft().getName();
+                    _builder.append(_name_9, "\t\t");
+                    _builder.append("\",\"");
+                    String _name_10 = constraint_1.getRight().getName();
+                    _builder.append(_name_10, "\t\t");
+                    _builder.append("\"));");
+                    _builder.newLineIfNotEmpty();
+                  } else {
+                    String _split = constraint_1.getSplit();
+                    boolean _tripleNotEquals_2 = (_split != null);
+                    if (_tripleNotEquals_2) {
+                      _builder.append("\t\t");
+                      _builder.append("constraints.add(ConditionsFactory.createMustBeSplitCondition(\"");
+                      String _name_11 = constraint_1.getLeft().getName();
+                      _builder.append(_name_11, "\t\t");
+                      _builder.append("\",\"");
+                      String _name_12 = constraint_1.getRight().getName();
+                      _builder.append(_name_12, "\t\t");
+                      _builder.append("\"));");
+                      _builder.newLineIfNotEmpty();
                     }
                   }
                 }
@@ -471,7 +475,7 @@ public class TExpGenerator extends AbstractGenerator {
                           boolean _equals_7 = Objects.equal(_parMax_4, ")");
                           if (_equals_7) {
                             _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(");
                             int _minCardinality = ((Cardinality)constraint_1).getMinCardinality();
                             int _minus_8 = (_minCardinality - 1);
                             _builder.append(_minus_8, "\t\t");
@@ -483,7 +487,7 @@ public class TExpGenerator extends AbstractGenerator {
                             _builder.newLineIfNotEmpty();
                           } else {
                             _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(");
                             int _minCardinality_1 = ((Cardinality)constraint_1).getMinCardinality();
                             int _minus_10 = (_minCardinality_1 - 1);
                             _builder.append(_minus_10, "\t\t");
@@ -500,7 +504,7 @@ public class TExpGenerator extends AbstractGenerator {
                           boolean _equals_8 = Objects.equal(_parMax_5, ")");
                           if (_equals_8) {
                             _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(");
                             int _minCardinality_2 = ((Cardinality)constraint_1).getMinCardinality();
                             _builder.append(_minCardinality_2, "\t\t");
                             _builder.append(",");
@@ -511,7 +515,7 @@ public class TExpGenerator extends AbstractGenerator {
                             _builder.newLineIfNotEmpty();
                           } else {
                             _builder.append("\t\t");
-                            _builder.append("constraints.add(ConditionFactory.createNumberOfConstraintsCondition(");
+                            _builder.append("constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(");
                             int _minCardinality_3 = ((Cardinality)constraint_1).getMinCardinality();
                             _builder.append(_minCardinality_3, "\t\t");
                             _builder.append(",");
@@ -593,8 +597,8 @@ public class TExpGenerator extends AbstractGenerator {
       for(final Channel channel : _channels) {
         {
           String _reliability = channel.getReliability();
-          boolean _tripleNotEquals_2 = (_reliability != null);
-          if (_tripleNotEquals_2) {
+          boolean _tripleNotEquals_3 = (_reliability != null);
+          if (_tripleNotEquals_3) {
             _builder.append("\t\t");
             _builder.append("Channel.addChannel(new SimulatedChannel(\"");
             String _name_13 = channel.getName();
@@ -638,7 +642,7 @@ public class TExpGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public String compile(final AgentTraceExpression tExp) {
+  public String compile(final InteractionTraceExpression tExp) {
     String _xblockexpression = null;
     {
       String str = ":- discontiguous match/3.\n";

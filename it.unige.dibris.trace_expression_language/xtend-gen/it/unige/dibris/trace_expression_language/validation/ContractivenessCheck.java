@@ -1,10 +1,10 @@
 package it.unige.dibris.trace_expression_language.validation;
 
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.SeqExpr;
 import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr;
@@ -32,9 +32,9 @@ public class ContractivenessCheck {
       if ((term_1.getName().equals("Main") || term_1.getName().equals("main"))) {
         assocD.put(term_1.getName(), Integer.valueOf(0));
         double threshold = 1.0;
-        if ((tExp instanceof AgentTraceExpression)) {
-          if (((((AgentTraceExpression)tExp).getThreshold() != null) && (((AgentTraceExpression)tExp).getThreshold().size() > 0))) {
-            threshold = (Double.valueOf(((AgentTraceExpression)tExp).getThreshold().get(0))).doubleValue();
+        if ((tExp instanceof InteractionTraceExpression)) {
+          if (((((InteractionTraceExpression)tExp).getThreshold() != null) && (((InteractionTraceExpression)tExp).getThreshold().size() > 0))) {
+            threshold = (Double.valueOf(((InteractionTraceExpression)tExp).getThreshold().get(0))).doubleValue();
           }
         }
         return Boolean.valueOf(ContractivenessCheck.isContractive(term_1.getExpr(), 0, (-1), assocT, assocD, threshold));

@@ -5,7 +5,7 @@ Export-Package: it.unige.dibris.trace_expression_language.ui.quickfix,
  it.unige.dibris.trace_expression_language.ui.contentassist,it.unige.d
  ibris.trace_expression_language.ui.internal
 Bundle-Name: it.unige.dibris.trace_expression_language.ui
-Bundle-Version: 1.0.0.201709281102
+Bundle-Version: 1.0.0.201710030932
 Require-Bundle: it.unige.dibris.trace_expression_language,it.unige.dib
  ris.trace_expression_language.ide,org.eclipse.xtext.ui,org.eclipse.xt
  ext.ui.shared,org.eclipse.xtext.ui.codetemplates.ui,org.eclipse.ui.ed

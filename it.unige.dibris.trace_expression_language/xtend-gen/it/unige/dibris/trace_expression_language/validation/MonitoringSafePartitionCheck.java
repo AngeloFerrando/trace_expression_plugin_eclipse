@@ -1,11 +1,11 @@
 package it.unige.dibris.trace_expression_language.validation;
 
 import com.google.common.base.Objects;
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.AndExpr;
 import it.unige.dibris.trace_expression_language.tExp.CatExpr;
 import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.Partition;
@@ -54,7 +54,7 @@ public class MonitoringSafePartitionCheck {
     }
   }
   
-  public static ArrayList<MonitoringSafePartitionCheck.CriticalPoint> isMonitoringSafe(final AgentTraceExpression tExp) {
+  public static ArrayList<MonitoringSafePartitionCheck.CriticalPoint> isMonitoringSafe(final InteractionTraceExpression tExp) {
     final EList<Term> terms = tExp.getTerms();
     final LinkedHashMap<String, Expression> assocT = new LinkedHashMap<String, Expression>();
     final LinkedHashMap<String, Expression> assocD = new LinkedHashMap<String, Expression>();

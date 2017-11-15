@@ -7,18 +7,13 @@ import it.unige.dibris.trace_expression_language.tExp.Constraint;
 import it.unige.dibris.trace_expression_language.tExp.Role;
 import it.unige.dibris.trace_expression_language.tExp.TExpPackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,14 +36,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 public class ConstraintImpl extends MinimalEObjectImpl.Container implements Constraint
 {
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' reference list.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected EList<Role> left;
+  protected Role left;
 
   /**
    * The default value of the '{@link #getTogether() <em>Together</em>}' attribute.
@@ -71,14 +66,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
   protected String together = TOGETHER_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' reference list.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRight()
    * @generated
    * @ordered
    */
-  protected EList<Role> right;
+  protected Role right;
 
   /**
    * The default value of the '{@link #getSplit() <em>Split</em>}' attribute.
@@ -166,13 +161,42 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Role> getLeft()
+  public Role getLeft()
   {
-    if (left == null)
+    if (left != null && left.eIsProxy())
     {
-      left = new EObjectResolvingEList<Role>(Role.class, this, TExpPackage.CONSTRAINT__LEFT);
+      InternalEObject oldLeft = (InternalEObject)left;
+      left = (Role)eResolveProxy(oldLeft);
+      if (left != oldLeft)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TExpPackage.CONSTRAINT__LEFT, oldLeft, left));
+      }
     }
     return left;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Role basicGetLeft()
+  {
+    return left;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeft(Role newLeft)
+  {
+    Role oldLeft = left;
+    left = newLeft;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.CONSTRAINT__LEFT, oldLeft, left));
   }
 
   /**
@@ -203,13 +227,42 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Role> getRight()
+  public Role getRight()
   {
-    if (right == null)
+    if (right != null && right.eIsProxy())
     {
-      right = new EObjectResolvingEList<Role>(Role.class, this, TExpPackage.CONSTRAINT__RIGHT);
+      InternalEObject oldRight = (InternalEObject)right;
+      right = (Role)eResolveProxy(oldRight);
+      if (right != oldRight)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TExpPackage.CONSTRAINT__RIGHT, oldRight, right));
+      }
     }
     return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Role basicGetRight()
+  {
+    return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRight(Role newRight)
+  {
+    Role oldRight = right;
+    right = newRight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TExpPackage.CONSTRAINT__RIGHT, oldRight, right));
   }
 
   /**
@@ -292,11 +345,13 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
     switch (featureID)
     {
       case TExpPackage.CONSTRAINT__LEFT:
-        return getLeft();
+        if (resolve) return getLeft();
+        return basicGetLeft();
       case TExpPackage.CONSTRAINT__TOGETHER:
         return getTogether();
       case TExpPackage.CONSTRAINT__RIGHT:
-        return getRight();
+        if (resolve) return getRight();
+        return basicGetRight();
       case TExpPackage.CONSTRAINT__SPLIT:
         return getSplit();
       case TExpPackage.CONSTRAINT__PAR_MIN:
@@ -312,22 +367,19 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case TExpPackage.CONSTRAINT__LEFT:
-        getLeft().clear();
-        getLeft().addAll((Collection<? extends Role>)newValue);
+        setLeft((Role)newValue);
         return;
       case TExpPackage.CONSTRAINT__TOGETHER:
         setTogether((String)newValue);
         return;
       case TExpPackage.CONSTRAINT__RIGHT:
-        getRight().clear();
-        getRight().addAll((Collection<? extends Role>)newValue);
+        setRight((Role)newValue);
         return;
       case TExpPackage.CONSTRAINT__SPLIT:
         setSplit((String)newValue);
@@ -353,13 +405,13 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
     switch (featureID)
     {
       case TExpPackage.CONSTRAINT__LEFT:
-        getLeft().clear();
+        setLeft((Role)null);
         return;
       case TExpPackage.CONSTRAINT__TOGETHER:
         setTogether(TOGETHER_EDEFAULT);
         return;
       case TExpPackage.CONSTRAINT__RIGHT:
-        getRight().clear();
+        setRight((Role)null);
         return;
       case TExpPackage.CONSTRAINT__SPLIT:
         setSplit(SPLIT_EDEFAULT);
@@ -385,11 +437,11 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
     switch (featureID)
     {
       case TExpPackage.CONSTRAINT__LEFT:
-        return left != null && !left.isEmpty();
+        return left != null;
       case TExpPackage.CONSTRAINT__TOGETHER:
         return TOGETHER_EDEFAULT == null ? together != null : !TOGETHER_EDEFAULT.equals(together);
       case TExpPackage.CONSTRAINT__RIGHT:
-        return right != null && !right.isEmpty();
+        return right != null;
       case TExpPackage.CONSTRAINT__SPLIT:
         return SPLIT_EDEFAULT == null ? split != null : !SPLIT_EDEFAULT.equals(split);
       case TExpPackage.CONSTRAINT__PAR_MIN:

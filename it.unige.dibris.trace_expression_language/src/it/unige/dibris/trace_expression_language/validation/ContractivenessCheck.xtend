@@ -13,7 +13,7 @@ import it.unige.dibris.trace_expression_language.tExp.CatExpr
 import it.unige.dibris.trace_expression_language.tExp.AndExpr
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType
 import it.unige.dibris.trace_expression_language.tExp.TraceExpression
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression
 
 class ContractivenessCheck {
 	
@@ -28,7 +28,7 @@ class ContractivenessCheck {
 			if(term.name.equals("Main") || term.name.equals("main")){
 				assocD.put(term.name, 0);
 				var threshold = 1.0
-				if(tExp instanceof AgentTraceExpression){
+				if(tExp instanceof InteractionTraceExpression){
 					if(tExp.threshold !== null && tExp.threshold.size > 0){
 						threshold = Double.valueOf(tExp.threshold.get(0))
 					}

@@ -11,11 +11,12 @@ Export-Package: it.unige.dibris.trace_expression_language.validation,i
  unige.dibris.trace_expression_language.parser.antlr,it.unige.dibris.t
  race_expression_language.services
 Bundle-Name: it.unige.dibris.trace_expression_language
-Bundle-Version: 1.0.0.201709281102
+Bundle-Version: 1.0.0.201710030932
 Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.
  equinox.common;bundle-version="3.7.0",org.eclipse.emf.ecore,org.eclip
  se.xtext.xbase.lib,org.antlr.runtime,org.eclipse.xtext.util,org.eclip
- se.xtend.lib,org.eclipse.emf.common
+ se.xtend.lib,org.eclipse.emf.common,com.google.guava,org.eclipse.xten
+ d.lib.macro
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

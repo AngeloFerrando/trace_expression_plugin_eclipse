@@ -268,33 +268,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='it.unige.dibris.trace_expression_language.feature.feature.jar' version='1.0.0.201709281102'>
-      <properties size='4'>
-        <property name='org.eclipse.equinox.p2.name' value='TExp Feature'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.jar' version='1.0.0.201709281102'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201709281102'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='config.a.jre.javase' version='1.7.0' singleton='false'>
       <hostRequirements size='1'>
         <required namespace='org.eclipse.equinox.p2.iu' name='a.jre.javase' range='1.7.0'/>
@@ -313,6 +286,37 @@
         <instructions size='1'>
           <instruction key='install'>
 
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201710030932' singleton='false'>
+      <update id='it.unige.dibris.trace_expression_language.ide.source' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language.ide Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ide'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201710030932'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ide.source&#xA;Bundle-Version: 1.0.0.201710030932
           </instruction>
         </instructions>
       </touchpointData>
@@ -495,6 +499,57 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext.xbase.ide;singleton:=true&#xA;Bundle-Version: 2.12.0.v20170519-0752
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='it.unige.dibris.trace_expression_language' version='1.0.0.201710030932'>
+      <update id='it.unige.dibris.trace_expression_language' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='14'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' version='1.0.0.201710030932'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.validation' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.serializer' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.parser.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.scoping' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp.util' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.parser.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.services' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='12'>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.7.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.google.guava' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language; singleton:=true&#xA;Bundle-Version: 1.0.0.201710030932
           </instruction>
         </instructions>
       </touchpointData>
@@ -1044,6 +1099,37 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.source' version='1.0.0.201710030932' singleton='false'>
+      <update id='it.unige.dibris.trace_expression_language.source' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.source' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.source' version='1.0.0.201710030932'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.source' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.source&#xA;Bundle-Version: 1.0.0.201710030932
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.core.databinding.observable' version='1.6.0.v20160511-1747' singleton='false'>
       <update id='org.eclipse.core.databinding.observable' range='[0.0.0,1.6.0.v20160511-1747)' severity='0'/>
       <properties size='8'>
@@ -1490,6 +1576,37 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201710030932' singleton='false'>
+      <update id='it.unige.dibris.trace_expression_language.ui.source' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language.ui Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201710030932'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ui.source&#xA;Bundle-Version: 1.0.0.201710030932
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.w3c.dom.svg' version='1.1.0.v201011041433' singleton='false'>
       <update id='org.w3c.dom.svg' range='[0.0.0,1.1.0.v201011041433)' severity='0'/>
       <properties size='5'>
@@ -1889,55 +2006,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='it.unige.dibris.trace_expression_language' version='1.0.0.201709281102'>
-      <update id='it.unige.dibris.trace_expression_language' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='14'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' version='1.0.0.201709281102'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.validation' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.serializer' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.generator' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.parser.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.scoping' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.tExp.util' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.parser.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.services' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='10'>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.7.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language; singleton:=true&#xA;Bundle-Version: 1.0.0.201709281102
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.e4.core.contexts' version='1.5.0.v20160504-0909' singleton='false'>
       <update id='org.eclipse.e4.core.contexts' range='[0.0.0,1.5.0.v20160504-0909)' severity='0'/>
       <properties size='8'>
@@ -2139,40 +2207,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.equinox.p2.metadata.repository;singleton:=true&#xA;Bundle-Version: 1.2.300.v20160419-0834
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201709281102'>
-      <update id='it.unige.dibris.trace_expression_language.ide' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language.ide'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ide'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='5'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201709281102'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ide.contentassist.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ide.contentassist.antlr.internal' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='4'>
-        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.201709281102
           </instruction>
         </instructions>
       </touchpointData>
@@ -3330,6 +3364,50 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201710030932'>
+      <update id='it.unige.dibris.trace_expression_language.ui' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language.ui'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201710030932'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.quickfix' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.contentassist' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.internal' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='13'>
+        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.201710030932
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.equinox.app' version='1.3.400.v20150715-1528'>
       <update id='org.eclipse.equinox.app' range='[0.0.0,1.3.400.v20150715-1528)' severity='0'/>
       <properties size='8'>
@@ -3516,37 +3594,6 @@
           </instruction>
           <instruction key='zipped'>
             true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.source' version='1.0.0.201709281102' singleton='false'>
-      <update id='it.unige.dibris.trace_expression_language.source' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.source' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.source' version='1.0.0.201709281102'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.source' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.source&#xA;Bundle-Version: 1.0.0.201709281102
           </instruction>
         </instructions>
       </touchpointData>
@@ -3744,50 +3791,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.apache.commons.cli&#xA;Bundle-Version: 1.2.0.v201404270220
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201709281102'>
-      <update id='it.unige.dibris.trace_expression_language.ui' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language.ui'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='6'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201709281102'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.quickfix' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.contentassist' version='0.0.0'/>
-        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ui.internal' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='13'>
-        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ui' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.201709281102
           </instruction>
         </instructions>
       </touchpointData>
@@ -4355,6 +4358,32 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.feature.source.feature.group' version='1.0.0.201710030932' singleton='false'>
+      <update id='it.unige.dibris.trace_expression_language.feature.source.feature.group' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='6'>
+        <property name='org.eclipse.equinox.p2.name' value='TExp Feature  Developer Resources'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.group' version='1.0.0.201710030932'/>
+      </provides>
+      <requires size='5'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.group' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.source' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide.source' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui.source' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.jar' range='[1.0.0.201710030932,1.0.0.201710030932]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
     <unit id='org.apache.commons.jxpath' version='1.3.0.v200911051830' singleton='false'>
       <update id='org.apache.commons.jxpath' range='[0.0.0,1.3.0.v200911051830)' severity='0'/>
       <properties size='5'>
@@ -4624,34 +4653,6 @@
         <provided namespace='osgi.ee' name='JavaSE' version='1.7.0'/>
       </provides>
       <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.feature.source.feature.jar' version='1.0.0.201709281102'>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='TExp Feature  Developer Resources'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.jar' version='1.0.0.201709281102'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201709281102'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
     </unit>
     <unit id='org.eclipse.core.databinding' version='1.6.0.v20160412-0910' singleton='false'>
       <update id='org.eclipse.core.databinding' range='[0.0.0,1.6.0.v20160412-0910)' severity='0'/>
@@ -5858,6 +5859,30 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.feature.feature.group' version='1.0.0.201710030932' singleton='false'>
+      <update id='it.unige.dibris.trace_expression_language.feature.feature.group' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='TExp Feature'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.group' version='1.0.0.201710030932'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui' range='[1.0.0.201710030932,1.0.0.201710030932]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.jar' range='[1.0.0.201710030932,1.0.0.201710030932]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
     <unit id='org.eclipse.xtext.xbase.lib' version='2.12.0.v20170518-0757' singleton='false'>
       <update id='org.eclipse.xtext.xbase.lib' range='[0.0.0,2.12.0.v20170518-0757)' severity='0'/>
       <properties size='5'>
@@ -5931,30 +5956,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='it.unige.dibris.trace_expression_language.feature.feature.group' version='1.0.0.201709281102' singleton='false'>
-      <update id='it.unige.dibris.trace_expression_language.feature.feature.group' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='TExp Feature'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.group' version='1.0.0.201709281102'/>
-      </provides>
-      <requires size='4'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.jar' range='[1.0.0.201709281102,1.0.0.201709281102]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-    </unit>
     <unit id='org.w3c.dom.smil' version='1.0.1.v200903091627' singleton='false'>
       <update id='org.w3c.dom.smil' range='[0.0.0,1.0.1.v200903091627)' severity='0'/>
       <properties size='5'>
@@ -5987,64 +5988,36 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201709281102' singleton='false'>
-      <update id='it.unige.dibris.trace_expression_language.ui.source' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language.ui Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201709281102'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ui.source' version='1.0.0.201709281102'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ui.source&#xA;Bundle-Version: 1.0.0.201709281102
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201709281102' singleton='false'>
-      <update id='it.unige.dibris.trace_expression_language.ide.source' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='it.unige.dibris.trace_expression_language.ide Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+    <unit id='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201710030932'>
+      <update id='it.unige.dibris.trace_expression_language.ide' range='[0.0.0,1.0.0.201710030932)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='it.unige.dibris.trace_expression_language.ide'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
         <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
         <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.ide'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
       </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201709281102'/>
-        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201709281102'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201710030932'/>
+        <provided namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201710030932'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ide.contentassist.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='it.unige.dibris.trace_expression_language.ide.contentassist.antlr.internal' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
       </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='it.unige.dibris.trace_expression_language' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
+      </requires>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ide.source' version='1.0.0.201709281102'/>
+        <artifact classifier='osgi.bundle' id='it.unige.dibris.trace_expression_language.ide' version='1.0.0.201710030932'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ide.source&#xA;Bundle-Version: 1.0.0.201709281102
+            Bundle-SymbolicName: it.unige.dibris.trace_expression_language.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.201710030932
           </instruction>
         </instructions>
       </touchpointData>
@@ -6090,6 +6063,33 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.core.contenttype; singleton:=true&#xA;Bundle-Version: 3.5.100.v20160418-1621
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='it.unige.dibris.trace_expression_language.feature.feature.jar' version='1.0.0.201710030932'>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='TExp Feature'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.jar' version='1.0.0.201710030932'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201710030932'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
           </instruction>
         </instructions>
       </touchpointData>
@@ -6569,6 +6569,34 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='it.unige.dibris.trace_expression_language.feature.source.feature.jar' version='1.0.0.201710030932'>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='TExp Feature  Developer Resources'/>
+        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
+        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.jar' version='1.0.0.201710030932'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201710030932'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='it.unige.dibris.trace_expression_language.feature.source' version='1.0.0.201710030932'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.xtext.ui.shared' version='2.12.0.v20170519-0809'>
       <update id='org.eclipse.xtext.ui.shared' range='[0.0.0,2.12.0.v20170519-0809)' severity='0'/>
       <properties size='6'>
@@ -6755,32 +6783,6 @@
           </instruction>
         </instructions>
       </touchpointData>
-    </unit>
-    <unit id='it.unige.dibris.trace_expression_language.feature.source.feature.group' version='1.0.0.201709281102' singleton='false'>
-      <update id='it.unige.dibris.trace_expression_language.feature.source.feature.group' range='[0.0.0,1.0.0.201709281102)' severity='0'/>
-      <properties size='6'>
-        <property name='org.eclipse.equinox.p2.name' value='TExp Feature  Developer Resources'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='it.unige.dibris.trace_expression_language'/>
-        <property name='maven-artifactId' value='it.unige.dibris.trace_expression_language.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.group' version='1.0.0.201709281102'/>
-      </provides>
-      <requires size='5'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.feature.group' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.source' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ide.source' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.ui.source' range='[1.0.0.201709281102,1.0.0.201709281102]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='it.unige.dibris.trace_expression_language.feature.source.feature.jar' range='[1.0.0.201709281102,1.0.0.201709281102]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.equinox.preferences' version='3.6.0.v20160120-1756'>
       <update id='org.eclipse.equinox.preferences' range='[0.0.0,3.6.0.v20160120-1756)' severity='0'/>

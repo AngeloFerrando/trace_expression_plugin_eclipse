@@ -19,7 +19,7 @@ import it.unige.dibris.trace_expression_language.tExp.ShuffleExpr
 import it.unige.dibris.trace_expression_language.tExp.StringExpression
 import it.unige.dibris.trace_expression_language.tExp.Term
 import it.unige.dibris.trace_expression_language.tExp.TerminalExpr
-import it.unige.dibris.trace_expression_language.tExp.AgentTraceExpression
+import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression
 import it.unige.dibris.trace_expression_language.tExp.UnionExpr
 import it.unige.dibris.trace_expression_language.tExp.VarExpr
 import it.unige.dibris.trace_expression_language.tExp.VariableExpression
@@ -46,21 +46,18 @@ import it.unige.dibris.trace_expression_language.tExp.ListExpression
 class TExpGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-		for (AgentTraceExpression tExp : resource.allContents.toIterable.filter(AgentTraceExpression)) {
-            fsa.generateFile(tExp.name + '.pl', tExp.compile)
-            fsa.generateFile(tExp.name.substring(0, 1).toUpperCase + tExp.name.substring(1) + '.java', tExp.javaCompile)
+		for (InteractionTraceExpression tExp : resource.allContents.toIterable.filter(InteractionTraceExpression)) {
+            if([String s | s.toUpperCase].apply(tExp.target.get(0)) == "JADE"){
+            	fsa.generateFile(tExp.name + '.pl', tExp.compile)
+            	fsa.generateFile(tExp.name.substring(0, 1).toUpperCase + tExp.name.substring(1) + '.java', tExp.javaCompile)
+            }
         }
         
         for (GenericTraceExpression te : resource.allContents.toIterable.filter(GenericTraceExpression))
         	fsa.generateFile(te.name + '.pl', te.compile)
 	}
 	
-	def javaCompile(AgentTraceExpression tExp)
+	def javaCompile(InteractionTraceExpression tExp)
 	''' 
 		«var name = tExp.name.substring(0, 1).toUpperCase + tExp.name.substring(1)»
 		import java.io.IOException;
@@ -69,8 +66,10 @@ class TExpGenerator extends AbstractGenerator {
 		
 		import it.dibris.unige.TExpSWIPrologConnector.exceptions.DecentralizedPartitionNotFoundException;
 		import it.dibris.unige.TExpSWIPrologConnector.JPL.JPLInitializer;
-		import it.dibris.unige.TExpSWIPrologConnector.texp.AgentTraceExpression;
+		import it.dibris.unige.TExpSWIPrologConnector.texp.TraceExpression;
 		import it.dibris.unige.TExpSWIPrologConnector.decentralized.Partition;
+		import it.dibris.unige.TExpSWIPrologConnector.decentralized.Condition;
+		import it.dibris.unige.TExpSWIPrologConnector.decentralized.ConditionsFactory;
 		import it.unige.dibris.TExpRVJade.Channel;
 		import it.unige.dibris.TExpRVJade.Monitor;
 		import it.unige.dibris.TExpRVJade.SimulatedChannel;
@@ -87,7 +86,7 @@ class TExpGenerator extends AbstractGenerator {
 			public static void main(String[] args) throws StaleProxyException, DecentralizedPartitionNotFoundException, IOException {
 				JPLInitializer.init();
 				
-				AgentTraceExpression tExp = new AgentTraceExpression("«tExp.name».pl");
+				TraceExpression tExp = new TraceExpression("«tExp.name».pl");
 				
 				/* Initialize JADE environment */
 				jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -129,17 +128,13 @@ class TExpGenerator extends AbstractGenerator {
 				«ENDFOR»
 				Partition<String> partition = new Partition<>(groups);
 				«ELSE»
-				«FOR constraint : tExp.constraints»
-				«FOR role1 : constraint.left»
-				«FOR role2 : constraint.right»
-				«IF constraint.together !== null»
 				List<Condition<String>> constraints = new ArrayList<>();
-				constraints.add(ConditionsFactory.createMustBeTogetherCondition("«role1.name»","«role2.name»"));
-				«ELSE»
-				constraints.add(ConditionsFactory.createMustBeSplitCondition("«role1.name»","«role2.name»"));
+				«FOR constraint : tExp.constraints»
+				«IF constraint.together !== null»
+				constraints.add(ConditionsFactory.createMustBeTogetherCondition("«constraint.left.name»","«constraint.right.name»"));
+				«ELSEIF constraint.split !== null»
+				constraints.add(ConditionsFactory.createMustBeSplitCondition("«constraint.left.name»","«constraint.right.name»"));
 				«ENDIF»
-				«ENDFOR»
-				«ENDFOR»
 				«IF constraint instanceof Singletons»
 				«IF constraint.parMin == '('»
 				«IF constraint.parMax == ')'»
@@ -173,15 +168,15 @@ class TExpGenerator extends AbstractGenerator {
 				«IF constraint instanceof Cardinality»
 				«IF constraint.parMin == '('»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberOfConstraintsCondition(«constraint.minCardinality - 1»,«constraint.maxCardinality - 1»));
+				constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(«constraint.minCardinality - 1»,«constraint.maxCardinality - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberOfConstraintsCondition(«constraint.minCardinality - 1»,«constraint.maxCardinality»));
+				constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(«constraint.minCardinality - 1»,«constraint.maxCardinality»));
 				«ENDIF»
 				«ELSE»
 				«IF constraint.parMax == ')'»
-				constraints.add(ConditionFactory.createNumberOfConstraintsCondition(«constraint.minCardinality»,«constraint.maxCardinality - 1»));
+				constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(«constraint.minCardinality»,«constraint.maxCardinality - 1»));
 				«ELSE»
-				constraints.add(ConditionFactory.createNumberOfConstraintsCondition(«constraint.minCardinality»,«constraint.maxCardinality»));			
+				constraints.add(ConditionsFactory.createNumberOfConstraintsCondition(«constraint.minCardinality»,«constraint.maxCardinality»));			
 				«ENDIF»
 				«ENDIF»
 				«ENDIF»
@@ -227,7 +222,7 @@ class TExpGenerator extends AbstractGenerator {
 		}
 	''' 
 	
-	def compile(AgentTraceExpression tExp){
+	def compile(InteractionTraceExpression tExp){
 		/*for(MsgEventType type : tExp.types){
 			return "match(event(" + type.event.name + ", " + type.event.content + "), " + type.name + ")";
 		} */
