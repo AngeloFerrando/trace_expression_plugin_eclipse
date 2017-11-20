@@ -34,6 +34,7 @@ import it.unige.dibris.trace_expression_language.tExp.TraceExpression
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm
 import it.unige.dibris.trace_expression_language.tExp.BasicEvent
 import it.unige.dibris.trace_expression_language.tExp.DerivedEvent
+import it.unige.dibris.trace_expression_language.tExp.ListExpression
 
 /**
  * This class contains custom validation rules. 
@@ -353,7 +354,10 @@ class TExpValidator extends AbstractTExpValidator {
 			if(expr.terms !== null){
 				addVariables(expr.terms, vars)
 			} 
-		} else{
+		} else if (expr instanceof ListExpression) {
+			addVariables(expr.head, vars)
+			addVariables(expr.tail, vars)
+		} else {
 			if(expr.left !== null){
 				addVariables(expr.left, vars)
 			} 
