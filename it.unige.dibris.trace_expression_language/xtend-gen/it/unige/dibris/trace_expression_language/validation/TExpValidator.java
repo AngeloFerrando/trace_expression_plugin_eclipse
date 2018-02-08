@@ -18,6 +18,7 @@ import it.unige.dibris.trace_expression_language.tExp.Expression;
 import it.unige.dibris.trace_expression_language.tExp.FilterExpr;
 import it.unige.dibris.trace_expression_language.tExp.GroundTerm;
 import it.unige.dibris.trace_expression_language.tExp.InteractionTraceExpression;
+import it.unige.dibris.trace_expression_language.tExp.ListExpression;
 import it.unige.dibris.trace_expression_language.tExp.Msg;
 import it.unige.dibris.trace_expression_language.tExp.MsgEventType;
 import it.unige.dibris.trace_expression_language.tExp.PrologExpression;
@@ -453,15 +454,20 @@ public class TExpValidator extends AbstractTExpValidator {
           this.addVariables(((AtomExpression)expr).getTerms(), vars);
         }
       } else {
-        PrologExpression _left = expr.getLeft();
-        boolean _tripleNotEquals_1 = (_left != null);
-        if (_tripleNotEquals_1) {
-          this.addVariables(expr.getLeft(), vars);
-        }
-        PrologExpression _right = expr.getRight();
-        boolean _tripleNotEquals_2 = (_right != null);
-        if (_tripleNotEquals_2) {
-          this.addVariables(expr.getRight(), vars);
+        if ((expr instanceof ListExpression)) {
+          this.addVariables(((ListExpression)expr).getHead(), vars);
+          this.addVariables(((ListExpression)expr).getTail(), vars);
+        } else {
+          PrologExpression _left = expr.getLeft();
+          boolean _tripleNotEquals_1 = (_left != null);
+          if (_tripleNotEquals_1) {
+            this.addVariables(expr.getLeft(), vars);
+          }
+          PrologExpression _right = expr.getRight();
+          boolean _tripleNotEquals_2 = (_right != null);
+          if (_tripleNotEquals_2) {
+            this.addVariables(expr.getRight(), vars);
+          }
         }
       }
     }

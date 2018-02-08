@@ -62,7 +62,7 @@ class ContractivenessCheck {
 		} else if(expr instanceof SeqExpr){
 			if(expr.seqExpr.typeSeq instanceof MsgEventType) {
 				var msgEv = expr.seqExpr.typeSeq as MsgEventType
-				if (msgEv.channel !== null && msgEv.channel.reliability !== null || Double.valueOf(msgEv.channel.reliability) < threshold)
+				if (msgEv.channel !== null && msgEv.channel.reliability !== null && Double.valueOf(msgEv.channel.reliability) < threshold)//} || Double.valueOf(msgEv.channel.reliability) < threshold)
 					return isContractive(expr.seqExpr.bodySeq, depth + 1, deepestseq, assocT, assocD, threshold)
 			} 
 			return isContractive(expr.seqExpr.bodySeq, depth + 1, depth, assocT, assocD, threshold)

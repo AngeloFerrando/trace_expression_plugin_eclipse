@@ -75,7 +75,7 @@ public class ContractivenessCheck {
                   if ((_typeSeq instanceof MsgEventType)) {
                     EObject _typeSeq_1 = ((SeqExpr)expr).getSeqExpr().getTypeSeq();
                     MsgEventType msgEv = ((MsgEventType) _typeSeq_1);
-                    if ((((msgEv.getChannel() != null) && (msgEv.getChannel().getReliability() != null)) || ((Double.valueOf(msgEv.getChannel().getReliability())).doubleValue() < threshold))) {
+                    if ((((msgEv.getChannel() != null) && (msgEv.getChannel().getReliability() != null)) && ((Double.valueOf(msgEv.getChannel().getReliability())).doubleValue() < threshold))) {
                       return ContractivenessCheck.isContractive(((SeqExpr)expr).getSeqExpr().getBodySeq(), (depth + 1), deepestseq, assocT, assocD, threshold);
                     }
                   }
