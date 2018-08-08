@@ -75,13 +75,25 @@ class MonitoringSafePartitionCheck {
 								solvedR = false
 								for(r : groups.roles){
 									for(msg : cp.evType1.msgs){
-										if(r.name == msg.sender.name || r.name == msg.receiver.name){
-											solvedL = true
+										if(msg.async_receiver !== null){
+											solvedL = r.name == msg.sender.name
+										}
+										else if(msg.async_sender !== null){
+											solvedL = r.name == msg.receiver.name
+										}
+										else{
+											solvedL = r.name == msg.sender.name || r.name == msg.receiver.name
 										}
 									}
 									for(msg : cp.evType2.msgs){
-										if(r.name == msg.sender.name || r.name == msg.receiver.name){
-											solvedR = true
+										if(msg.async_receiver !== null){
+											solvedR = r.name == msg.sender.name
+										}
+										else if(msg.async_sender !== null){
+											solvedR = r.name == msg.receiver.name
+										}
+										else{
+											solvedR = r.name == msg.sender.name || r.name == msg.receiver.name
 										}
 									}
 								}
@@ -365,11 +377,11 @@ class MonitoringSafePartitionCheck {
 				roles.add(msg.sender.name)
 				roles.add(msg.receiver.name)	
 			} else if(msg.async_sender !== null){
-				roles.add(msg.async_sender.name)
+				// roles.add(msg.async_sender.name)
 				roles.add(msg.receiver.name)
 			} else{
 				roles.add(msg.sender.name)
-				roles.add(msg.async_receiver.name)
+				// roles.add(msg.async_receiver.name)
 			}
 		}
 		return roles
