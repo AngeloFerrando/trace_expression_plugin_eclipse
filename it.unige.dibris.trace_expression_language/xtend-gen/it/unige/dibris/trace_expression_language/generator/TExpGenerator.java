@@ -1225,20 +1225,20 @@ public class TExpGenerator extends AbstractGenerator {
       String _plus_3 = (_plus_2 + "), content(");
       String _compile = this.compile(msg.getContent());
       String _plus_4 = (_plus_3 + _compile);
-      return (_plus_4 + "), s");
+      return (_plus_4 + "), r");
     } else {
       Role _async_receiver = msg.getAsync_receiver();
       boolean _tripleNotEquals_2 = (_async_receiver != null);
       if (_tripleNotEquals_2) {
         String _name_2 = msg.getSender().getName();
-        String _plus_5 = ((("msg(performtive(" + performative) + "), sender(") + _name_2);
+        String _plus_5 = ((("msg(performative(" + performative) + "), sender(") + _name_2);
         String _plus_6 = (_plus_5 + "), receiver(");
         String _name_3 = msg.getAsync_receiver().getName();
         String _plus_7 = (_plus_6 + _name_3);
         String _plus_8 = (_plus_7 + "), content(");
         String _compile_1 = this.compile(msg.getContent());
         String _plus_9 = (_plus_8 + _compile_1);
-        return (_plus_9 + "), r");
+        return (_plus_9 + "), s");
       } else {
         String _name_4 = msg.getSender().getName();
         String _plus_10 = ((("msg(performative(" + performative) + "), sender(") + _name_4);

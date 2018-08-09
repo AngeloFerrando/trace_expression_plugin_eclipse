@@ -497,9 +497,9 @@ class TExpGenerator extends AbstractGenerator {
 			performative = msg.performative
 		}
 		if(msg.async_sender !== null){
-			return 'msg(performative(' + performative + '), sender(' + msg.async_sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), s'
+			return 'msg(performative(' + performative + '), sender(' + msg.async_sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), r'
 		} else if(msg.async_receiver !== null){
-			return 'msg(performtive(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.async_receiver.name + '), content(' + msg.content.compile + '), r'
+			return 'msg(performative(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.async_receiver.name + '), content(' + msg.content.compile + '), s'
 		} else{
 			return 'msg(performative(' + performative + '), sender(' + msg.sender.name + '), receiver(' + msg.receiver.name + '), content(' + msg.content.compile + '), _'
 		}

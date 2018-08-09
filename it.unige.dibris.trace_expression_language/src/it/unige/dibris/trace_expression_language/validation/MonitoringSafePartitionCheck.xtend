@@ -74,27 +74,31 @@ class MonitoringSafePartitionCheck {
 								solvedL = false
 								solvedR = false
 								for(r : groups.roles){
-									for(msg : cp.evType1.msgs){
-										if(msg.async_receiver !== null){
-											solvedL = r.name == msg.sender.name
-										}
-										else if(msg.async_sender !== null){
-											solvedL = r.name == msg.receiver.name
-										}
-										else{
-											solvedL = r.name == msg.sender.name || r.name == msg.receiver.name
+									if(!solvedL){
+										for(msg : cp.evType1.msgs){
+											if(msg.async_receiver !== null){
+												solvedL = r.name == msg.sender.name
+											}
+											else if(msg.async_sender !== null){
+												solvedL = r.name == msg.receiver.name
+											}
+											else{
+												solvedL = (r.name == msg.sender.name || r.name == msg.receiver.name)
+											}
 										}
 									}
-									for(msg : cp.evType2.msgs){
-										if(msg.async_receiver !== null){
-											solvedR = r.name == msg.sender.name
-										}
-										else if(msg.async_sender !== null){
-											solvedR = r.name == msg.receiver.name
-										}
-										else{
-											solvedR = r.name == msg.sender.name || r.name == msg.receiver.name
-										}
+									if(!solvedR){
+										for(msg : cp.evType2.msgs){
+											if(msg.async_receiver !== null){
+												solvedR = r.name == msg.sender.name
+											}
+											else if(msg.async_sender !== null){
+												solvedR = r.name == msg.receiver.name
+											}
+											else{
+												solvedR = (r.name == msg.sender.name || r.name == msg.receiver.name)
+											}
+									}
 									}
 								}
 							}
