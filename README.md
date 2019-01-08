@@ -128,8 +128,9 @@ https://github.com/AngeloFerrando/website/raw/master/assets/rivertools/jadeconne
 	
 	c) Set the name to SWI_LIB
 	
-	d) Set the value to the path to the SWI-Prolog library. For instance, on MacOSX is something like: 
-     /opt/local/lib/swipl-<version>/lib/x86_64- darwin15.0.0/
+	d) Set the value to the path to the SWI-Prolog library. For instance, on MacOSX is something like:
+	
+		/opt/local/lib/swipl-<version>/lib/x86_64- darwin15.0.0/
   
 7. The last thing you need to do before running the MAS is to change the path to pingpong.pl (line 27 in Pingpong.java). You have to set it to the absolute path corresponding to the file generated in MyPingPongExample project.
 
