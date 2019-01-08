@@ -18,17 +18,42 @@ Installing SWI-Prolog is very easy:
     3. sudo apt-get update
     4. sudo apt-get install swi-prolog
   • On Windows
-    - Download either 32 bit or 64bit from http://www.swi-prolog.org/download/stable
+    - Download either 32 bit or 64 bit from http://www.swi-prolog.org/download/stable
   • On MacOSX (using Homebrew  http://mxcl.github.io/homebrew/) 
     – brew install swi-prolog
     
-Now you are ready to define inside RIVERtools a variation of the ping pong example presented previously in this chapter. Specifically, in this example the number of ping is equal to the number of pong.
+# How to install RIVERtools Eclipse plugin
 
-14 Development of a framework supporting trace expressions RV
+1. Link for downloading last Eclipse IDE: 
+   https://www.eclipse.org/downloads/packages/installer
+
+2. Install Xtext plugin on Eclipse:
+  a) Choose Help -> Install New Software... from the menu bar and Add...
+  b) Insert http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/. This site aggregates all the necessary and optional components and dependencies of Xtext.
+  c) Select the Xtext SDK from the category Xtext and complete the wizard by clicking the Next button until you can click Finish.
+  d) After a quick download and a restart of Eclipse, Xtext is ready to use.
+ 
+ 3. Link for downloading RIVERtools plugin:
+    https://github.com/AngeloFerrando/website/raw/master/assets/rivertools/plugin/rivertools.zip
+    
+ 4. Install RIVERtools plugin:
+  a) Choose Help -> Install New Software... from the menu bar and Add...
+  b) Choose Archive...
+  c) Select the rivertools.zip file downloaded previously.
+  d) Select TExp Feature from the list ("group items by category" must be unchecked) and Next -> Finish.
+  e) After a quick download and a restart of Eclipse, the plugin is ready to use.
+  
+# How to use RIVERtools plugin (through an example)
+
+1. Create a new project (a General project, not a Java Project) and call it MyPingPongExample.
+
 2. Inside the created project, create a new file and call it pingpong.texp.
+
 3. An Eclipse popup should ask you if you want to configure the project with Xtext: say yes. If Eclipse does not ask you, right-click on the project folder -> Configure -> Convert to Xtext project...
-4. NowyoucandefinetraceexpressionswiththefullsupportoftheRIVER- tools plugin.
-Now you are ready to define inside RIVERtools a variation of the ping pong example presented previously in this chapter. Specifically, in this example the number of ping is equal to the number of pong.
+
+4. Now you can define trace expressions with the full support of the RIVERtools plugin.
+
+Example of trace expression in RIVERtools.
 
 interaction_trace_expression { 
   id : pingpong
