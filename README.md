@@ -6,11 +6,11 @@ RIVERtools is an IDE supporting the use of the "trace expressions" formalism by 
 
 What you are going to install.
 
-  • SWI-Prolog
+	• SWI-Prolog
   
-  • Eclipse(with Xtext plugin) 
+	• Eclipse(with Xtext plugin) 
   
-  • RIVERtools Eclipse plugin
+	• RIVERtools Eclipse plugin
 
 # How to install SWI-Prolog
 
