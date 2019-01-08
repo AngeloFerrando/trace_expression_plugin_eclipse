@@ -109,8 +109,10 @@ Since Eclipse is using the RIVERtools plugin to analyze the trace expression, al
 https://github.com/AngeloFerrando/website/raw/master/assets/rivertools/jadeconnector/example/pingpongmas.zip
 
 2. Import the example into Eclipse:
-  a) File -> Import... -> Existing Projects into Workspace.
-  b) Select archive file and select pingpongmas.zip downloaded previously, then finish.
+
+	a) File -> Import... -> Existing Projects into Workspace.
+	
+	b) Select archive file and select pingpongmas.zip downloaded previously, then finish.
   
 3. Inside the JADE project example you have two agents SenderAgent and ReceiverAgent. Note that you have already indicated these classes inside pingpong.texp.
 
@@ -119,10 +121,14 @@ https://github.com/AngeloFerrando/website/raw/master/assets/rivertools/jadeconne
 5. Run it. An exception will be thrown ("SWI_LIB environment variable not defined").
 
 6. How to set the SWI_LIB environment variable
-  a) Right-click on Pingpong.java (the one inside MyPingPongMAS) -> Run as -> Run Configurations...
-  b) Pass to the Environment tab and then New...
-  c) Set the name to SWI_LIB
-  d) Set the value to the path to the SWI-Prolog library. For instance, on MacOSX is something like: 
+
+	a) Right-click on Pingpong.java (the one inside MyPingPongMAS) -> Run as -> Run Configurations...
+	
+	b) Pass to the Environment tab and then New...
+	
+	c) Set the name to SWI_LIB
+	
+	d) Set the value to the path to the SWI-Prolog library. For instance, on MacOSX is something like: 
      /opt/local/lib/swipl-<version>/lib/x86_64- darwin15.0.0/
   
 7. The last thing you need to do before running the MAS is to change the path to pingpong.pl (line 27 in Pingpong.java). You have to set it to the absolute path corresponding to the file generated in MyPingPongExample project.
