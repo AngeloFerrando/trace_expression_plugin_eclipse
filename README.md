@@ -75,29 +75,31 @@ Installing SWI-Prolog is very easy:
 
 Example of trace expression in RIVERtools.
 
-interaction_trace_expression { 
-
-  id : pingpong
-  
-  target : jade 
-  
-  roles : alice$SenderAgent(’bob’, ’ping’, ’5’)$ bob$ReceiverAgent ( ’ alice ’ , ’pong ’ , ’5 ’)$
-  
-  types : 
-  
-    ping : { alice => bob : ping } 
-	
-    pong : { bob => alice : pong }
-	
-  body :
-  
-    main <− pingpong ∗ main 
-	
-    pingpong <−
-	
-        ( ping : ( pingpong \/ epsilon ) * pong : epsilon )
+	interaction_trace_expression { 
 		
-}
+		id : pingpong
+		
+		target : jade 
+		
+		roles : 
+		
+			alice$SenderAgent(’bob’, ’ping’, ’5’)$ 
+		
+			bob$ReceiverAgent ( ’ alice ’ , ’pong ’ , ’5 ’)$
+		
+		types : 
+		
+			ping : { alice => bob : ping } 
+			
+			pong : { bob => alice : pong }
+			
+		body :
+		
+			main <− pingpong ∗ main 
+			pingpong <−
+				( ping : ( pingpong \/ epsilon ) * pong : epsilon )
+		
+	}
 
 Since Eclipse is using the RIVERtools plugin to analyze the trace expression, all syntax and types errors are promptly indicated to the developer. As presented before in this chapter, we are interested in automatically generating the code that will be used for verifying our multiagent system. When no errors are found from RIVERtools, a new folder src-gen is created. Inside this folder we can find the Java and Prolog code that have been automatically generated through the compilation of the trace expression.
 
