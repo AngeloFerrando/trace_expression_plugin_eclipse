@@ -5,21 +5,33 @@ RIVERtools is an IDE supporting the use of the "trace expressions" formalism by 
 # Tutorial: How to use RIVERtools
 
 What you are going to install.
+
   • SWI-Prolog
+  
   • Eclipse(with Xtext plugin) 
+  
   • RIVERtools Eclipse plugin
 
 # How to install SWI-Prolog
 
 Installing SWI-Prolog is very easy:
+
   • On Linux:
+  
     1. sudo apt-get install software-properties-common
+    
     2. sudo apt-add-repository ppa:swi-prolog/stable
+    
     3. sudo apt-get update
+    
     4. sudo apt-get install swi-prolog
+    
   • On Windows
+  
     - Download either 32 bit or 64 bit from http://www.swi-prolog.org/download/stable
+    
   • On MacOSX (using Homebrew  http://mxcl.github.io/homebrew/) 
+  
     – brew install swi-prolog
     
 # How to install RIVERtools Eclipse plugin
