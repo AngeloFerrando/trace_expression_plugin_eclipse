@@ -40,19 +40,28 @@ Installing SWI-Prolog is very easy:
    https://www.eclipse.org/downloads/packages/installer
 
 2. Install Xtext plugin on Eclipse:
+
   a) Choose Help -> Install New Software... from the menu bar and Add...
+  
   b) Insert http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/. This site aggregates all the necessary and optional components and dependencies of Xtext.
+  
   c) Select the Xtext SDK from the category Xtext and complete the wizard by clicking the Next button until you can click Finish.
+  
   d) After a quick download and a restart of Eclipse, Xtext is ready to use.
  
  3. Link for downloading RIVERtools plugin:
     https://github.com/AngeloFerrando/website/raw/master/assets/rivertools/plugin/rivertools.zip
     
  4. Install RIVERtools plugin:
+ 
   a) Choose Help -> Install New Software... from the menu bar and Add...
+  
   b) Choose Archive...
+  
   c) Select the rivertools.zip file downloaded previously.
+  
   d) Select TExp Feature from the list ("group items by category" must be unchecked) and Next -> Finish.
+  
   e) After a quick download and a restart of Eclipse, the plugin is ready to use.
   
 # How to use RIVERtools plugin (through an example)
